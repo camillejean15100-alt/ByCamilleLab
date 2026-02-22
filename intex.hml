@@ -2,13 +2,10 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Studio Graphisme Camille Lab</title>
     <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <header>
         <nav>
             <a href="#" class="active">Accueil</a>
@@ -18,29 +15,21 @@
             <a href="#">Contact</a>
         </nav>
     </header>
-
-    <main class="hero-section">
+    <main>
         <h1 class="main-title">LE GRAPHISME AU SERVICE DE LA TERRE</h1>
-
-        <div class="character-wrapper">
-            <div id="speech-bubble" class="bubble">
+        <div class="perso-wrap">
+            <div id="bulle" class="speech-bubble">
                 <p>« ma mission : cultivons ensemble votre image de marque »</p>
             </div>
-            <img src="personnage-camille.png" alt="Camille" class="character-img">
+            <img src="personnage.png" alt="Perso">
         </div>
     </main>
-
     <script>
-        window.addEventListener('scroll', () => {
-            const bubble = document.getElementById('speech-bubble');
-            // La bulle s'affiche dès qu'on dépasse 80px de scroll
-            if (window.scrollY > 80) {
-                bubble.classList.add('visible');
-            } else {
-                bubble.classList.remove('visible');
-            }
-        });
+        window.onscroll = function() {
+            var b = document.getElementById("bulle");
+            if (window.pageYOffset > 50) b.style.opacity = "1";
+            else b.style.opacity = "0";
+        };
     </script>
-
 </body>
 </html>
