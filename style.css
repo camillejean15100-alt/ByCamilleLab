@@ -65,55 +65,64 @@ header nav ul li a.active {
 }
 
 /* --- LA BULLE PARFAITEMENT CALÉE SUR LE PERSO --- */
+/* --- TA BULLE D'ORIGINE (RESTAURÉE) --- */
 .speech-bubble {
     position: fixed;
-    top: 38%; 
-    left: 36%; 
-    
-    display: inline-block;
-    width: auto;
-    max-width: 450px; 
-    
-    background-color: rgba(234, 220, 155, 0.85); 
-    padding: 20px 35px;
-    border-radius: 15px; 
-    
-    box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.3); 
-    
-    z-index: 500;
+    top: 50%; 
+    left: 48%;
+    transform: translate(100px, -50%); /* Départ pour l'anim */
     opacity: 0;
-    transform: translateX(-20px); 
-    transition: transform 0.6s ease-out, opacity 0.5s ease-out;
+    background-color: #EADC9B; /* Ta couleur exacte */
+    padding: 25px 45px;
+    border-radius: 30px;
+    box-shadow: 8px 8px 20px rgba(0,0,0,0.1);
+    z-index: 500;
+    cursor: pointer;
+    transition: transform 0.8s ease-out, opacity 0.6s ease-out;
 }
 
+/* Ta pointe sur le côté gauche */
 .speech-bubble::after {
     content: '';
     position: absolute;
-    left: -30px; 
-    top: 40%;
-    width: 50px;
-    height: 50px;
-    background-color: rgba(234, 220, 155, 0.85);
-    clip-path: polygon(100% 0%, 100% 100%, 0% 100%);
-    border-radius: 0 0 100% 0;
-    z-index: -1;
+    left: -25px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-style: solid;
+    border-width: 15px 30px 15px 0;
+    border-color: transparent #EADC9B transparent transparent;
 }
 
-.visible {
-    opacity: 1 !important;
-    transform: translateX(0) !important;
+.speech-bubble.visible {
+    opacity: 1;
+    transform: translate(-50%, -50%);
 }
 
 .speech-bubble p {
-    color: #684132; /* Marron foncé */
-    font-family: "Californian FB", serif; 
+    color: #684132;
+    font-family: "Californian FB", serif;
     font-weight: bold;
     text-align: center;
-    font-size: 1.6rem; 
-    line-height: 1.3;
+    font-size: 1.8rem;
     margin: 0;
+    line-height: 1.2;
 }
 
+/* --- LES CARTES DE SERVICES --- */
+.services-container {
+    display: none;
+    opacity: 0;
+    position: fixed;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    z-index: 600;
+    transition: opacity 0.8s ease-in-out;
+}
 /* --- SECTION SERVICES : ALIGNEMENT PARFAIT --- */
 /* --- ÉTAPE 1 : LA BULLE ARRIVE PAR LA DROITE --- */
 .speech-bubble {
