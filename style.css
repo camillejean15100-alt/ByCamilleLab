@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
 
-/* Reset pour supprimer les points du menu et coller le fond */
+/* Reset radical pour supprimer les puces et marges */
 * {
     margin: 0;
     padding: 0;
@@ -9,21 +9,36 @@
 }
 
 body {
-    height: 160vh; /* Hauteur pour permettre le scroll */
-    background: url('image_abdb77.jpg') no-repeat center center fixed;
+    height: 160vh; 
+    /* Image de fond : fondaccueil */
+    background: url('fondaccueil.jpg') no-repeat center center fixed;
     background-size: cover;
 }
 
-/* MENU - Californian FB / Bleu 1D70B7 / Vert 87B347 */
-header nav ul {
-    display: flex;
-    justify-content: flex-end;
-    padding: 30px 60px;
-    gap: 25px;
+/* NAVIGATION / MENU */
+header {
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 60px;
+}
+
+/* Ton logo : logocamille */
+.logo img {
+    height: 75px;
+    content: url('logocamille.png');
+}
+
+header nav ul {
+    display: flex;
+    gap: 30px;
 }
 
 header nav ul li a {
@@ -31,43 +46,43 @@ header nav ul li a {
     font-family: "Californian FB", serif;
     font-weight: bold;
     font-size: 20px;
-    color: #1D70B7;
+    color: #1D70B7; /* Bleu exigé */
 }
 
 header nav ul li a.active {
-    color: #87B347;
+    color: #87B347; /* Vert exigé */
 }
 
-/* TITRE - Gochi Hand / Couleur 3B505C / Ombre Blanche */
+/* TITRE : Gochi Hand avec ombre blanche nette */
 h1 {
     position: fixed;
     top: 15%;
     width: 100%;
     text-align: center;
     font-family: 'Gochi Hand', cursive;
-    font-size: 4rem;
+    font-size: 4.5rem;
     color: #3B505C;
     text-shadow: 2px 2px 0px #FFFFFF, -2px -2px 0px #FFFFFF, 2px -2px 0px #FFFFFF, -2px 2px 0px #FFFFFF;
 }
 
-/* LA BULLE - Apparition par la GAUCHE */
+/* LA BULLE : Animation de glissement par la GAUCHE */
 .speech-bubble {
     position: fixed;
-    top: 45%;
+    top: 48%;
     left: 38%;
     background-color: #EADC9B;
-    padding: 25px 40px;
-    border-radius: 40px;
-    box-shadow: 5px 5px 0px #FFFFFF;
+    padding: 25px 45px;
+    border-radius: 45px;
+    box-shadow: 6px 6px 0px #FFFFFF; /* Ombre portée blanche non floue */
     z-index: 500;
     
-    /* CACHÉ À GAUCHE AU DÉPART */
+    /* ÉTAT INITIAL : Caché loin à gauche */
     opacity: 0;
-    transform: translateX(-400px); /* Hors champ à gauche */
-    transition: transform 0.8s ease-out, opacity 0.5s ease-out;
+    transform: translateX(-600px); 
+    transition: transform 0.9s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease-out;
 }
 
-/* Classe ajoutée par le JS au scroll */
+/* ÉTAT FINAL : Activé par le scroll */
 .visible {
     opacity: 1 !important;
     transform: translateX(0) !important;
@@ -77,6 +92,7 @@ h1 {
     color: #684132;
     font-family: sans-serif;
     font-weight: bold;
+    font-size: 1.3rem;
     text-align: center;
     text-shadow: 1px 1px 0px #FFFFFF;
     margin: 0;
