@@ -75,17 +75,23 @@ header nav ul li a.active {
     text-shadow: 2px 2px 0px #FFFFFF, -2px -2px 0px #FFFFFF, 2px -2px 0px #FFFFFF, -2px 2px 0px #FFFFFF;
 }
 
-/* --- LA BULLE DESIGN EXACT --- */
+/* --- LA BULLE (MODIFICATIONS UNIQUEMENT ICI) --- */
 .speech-bubble {
     position: fixed;
     top: 50%;
     left: 45%; 
-    background-color: #EADC9B; /* Jaune sable */
-    padding: 20px 40px;
-    border-radius: 15px; /* Coins rectangulaires arrondis */
     
-    /* Ombre grise portée diffuse */
-    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2); 
+    /* Couleur EADC9B avec 90% d'opacité pour la transparence */
+    background-color: rgba(234, 220, 155, 0.9); 
+    
+    /* Espacement interne pour que le texte respire */
+    padding: 20px 40px;
+    
+    /* Coins arrondis légers comme sur le modèle */
+    border-radius: 15px; 
+    
+    /* Ombre portée légère noire et diffuse */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); 
     
     z-index: 500;
     opacity: 0;
@@ -93,32 +99,34 @@ header nav ul li a.active {
     transition: transform 0.8s ease-out, opacity 0.5s ease-out;
 }
 
-/* La pointe incurvée à gauche */
+/* La pointe fine et courbée vers la gauche */
 .speech-bubble::after {
     content: '';
     position: absolute;
     left: -25px;
-    bottom: 15%;
+    bottom: 20%;
     width: 40px;
     height: 40px;
-    background-color: #EADC9B;
-    /* Création de la pointe courbe avec clip-path */
+    background-color: rgba(234, 220, 155, 0.9);
+    /* Création de la courbure spécifique */
     clip-path: polygon(100% 0%, 100% 100%, 0% 100%);
     border-radius: 0 0 100% 0;
     z-index: -1;
 }
 
-/* Apparition au scroll */
+/* Apparition au scroll via le JS */
 .visible {
     opacity: 1 !important;
     transform: translateX(0) !important;
 }
 
+/* Style du texte à l'intérieur */
 .speech-bubble p {
-    color: #684132; /* Marron */
-    font-family: 'Georgia', serif; /* Police Serif */
+    color: #684132; /* Marron foncé spécifié */
+    font-family: "Californian FB", serif; /* Typo spécifiée */
     font-weight: bold;
     text-align: center;
     font-size: 1.4rem;
     line-height: 1.3;
+    margin: 0;
 }
