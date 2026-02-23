@@ -43,9 +43,17 @@ nav {
 }
 
 .logo img {
-    height: 150px; /* Taille augmentée significativement pour qu'il s'impose */
-    width: auto;    /* Conserve le ratio largeur/hauteur */
-    display: block; /* Évite les décalages de ligne */
+    height: 250px !important; /* On double carrément la mise avec un !important */
+    width: auto !important;
+    max-height: none !important; /* On fait sauter les limites potentielles */
+    object-fit: contain;
+}
+
+/* On s'assure que le conteneur du logo ne le bride pas */
+.logo {
+    display: flex;
+    align-items: center;
+    height: auto;
 }
 
 header nav ul {
