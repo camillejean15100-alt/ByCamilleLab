@@ -1,9 +1,10 @@
 window.addEventListener('scroll', function() {
-    const bubble = document.querySelector('.speech-bubble');
-    // Dès qu'on scroll un tout petit peu (30px), la bulle jaillit
-    if (window.scrollY > 30) {
-        bubble.classList.add('visible');
+    const laBulle = document.querySelector('.speech-bubble');
+    
+    // Si on a descendu de plus de 40 pixels
+    if (window.scrollY > 40) {
+        laBulle.classList.add('visible');
     } else {
-        bubble.classList.remove('visible');
+        laBulle.classList.remove('visible');
     }
 });
