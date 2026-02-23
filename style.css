@@ -1,106 +1,90 @@
-/* 1. IMPORTATION TYPO */
+/* 1. TYPOS */
 @import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
 
-/* 2. CONFIGURATION DE LA PAGE */
-html {
-    scroll-behavior: smooth;
+/* 2. RESET (Pour enlever les points noirs et caler le fond) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    height: 200vh; /* Permet le scroll pour déclencher l'effet */
+    height: 120vh; /* Juste assez pour le scroll */
     background: url('image_abdb77.jpg') no-repeat center center fixed;
     background-size: cover;
+    overflow-x: hidden;
 }
 
 /* 3. LE MENU (Californian FB) */
-/* Cible la liste d'origine de ton HTML */
-header nav ul, ul {
-    list-style: none;
+/* On cible la liste pour enlever les points et l'aligner à droite */
+nav ul, ul {
+    list-style: none !important;
     display: flex;
     justify-content: flex-end;
     padding: 30px 60px;
     gap: 20px;
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100%;
-    z-index: 1000;
 }
 
-header nav ul li a, li a {
+nav ul li a, ul li a {
     text-decoration: none;
-    font-family: "Californian FB", "Georgia", serif;
+    font-family: "Californian FB", serif;
     font-weight: bold;
     font-size: 20px;
-    color: #1D70B7;
+    color: #1D70B7; /* Bleu */
 }
 
-header nav ul li a.active, .active {
+/* Couleur verte pour la page active */
+nav ul li a.active, .active {
     color: #87B347 !important;
 }
 
 /* 4. LE TITRE (Gochi Hand) */
 h1 {
-    position: fixed;
-    top: 15%;
-    width: 100%;
-    text-align: center;
     font-family: 'Gochi Hand', cursive;
-    font-size: 4.5rem;
     color: #3B505C;
+    text-align: center;
+    font-size: 4rem;
+    margin-top: 10vh;
     /* Ombre portée blanche non floue */
-    text-shadow: 3px 3px 0px #FFFFFF;
-    margin: 0;
-    z-index: 10;
+    text-shadow: 2px 2px 0px #FFFFFF, -2px -2px 0px #FFFFFF, 2px -2px 0px #FFFFFF, -2px 2px 0px #FFFFFF;
 }
 
-/* 5. LA BULLE DYNAMIQUE */
-/* Cible la div ou la section qui contient ton texte de mission */
+/* 5. LA BULLE (Dynamique au scroll) */
+/* Je cible ta div de mission */
 .speech-bubble, [class*="bubble"] {
     position: fixed;
-    top: 45%;
-    left: 38%;
+    top: 50%;
+    left: 40%;
     background-color: #EADC9B;
     padding: 25px 40px;
-    border-radius: 50px 50px 50px 10px;
-    /* Ombre portée blanche non floue */
-    box-shadow: 6px 6px 0px #FFFFFF;
+    border-radius: 40px 40px 40px 5px;
+    box-shadow: 5px 5px 0px #FFFFFF; /* Ombre blanche nette */
     z-index: 100;
     
-    /* CONFIGURATION DE L'EFFET AU SCROLL (SANS JS) */
+    /* Effet caché par défaut */
     opacity: 0;
-    transform: scale(0.5);
-    animation: popIn linear forwards;
-    animation-timeline: scroll();
-    animation-range: 50px 200px; /* Apparaît entre 50px et 200px de scroll */
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
 }
 
-@keyframes popIn {
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
+/* Le texte à l'intérieur de la bulle */
 .speech-bubble p, [class*="bubble"] p {
     color: #684132;
-    font-family: sans-serif;
     font-weight: bold;
-    font-size: 1.4rem;
-    margin: 0;
     text-shadow: 1px 1px 0px #FFFFFF;
-    line-height: 1.3;
+    font-family: sans-serif;
+    margin: 0;
 }
 
-/* 6. RESPONSIVE */
+/* 6. DÉCLENCHEUR DU SCROLL */
+/* Quand on ajoute la classe 'visible' via le petit script */
+.visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* RESPONSIVE */
 @media (max-width: 768px) {
-    h1 { font-size: 2.5rem; top: 20%; }
-    .speech-bubble, [class*="bubble"] { 
-        left: 5%; 
-        width: 90%; 
-        top: 55%;
-        padding: 15px;
-    }
+    h1 { font-size: 2rem; }
+    nav ul { justify-content: center; padding: 20px; }
 }
