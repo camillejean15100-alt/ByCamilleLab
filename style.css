@@ -1,25 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
 
-/* RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    list-style: none !important; /* Supprime les puces du menu */
+    list-style: none !important;
+}
+
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    height: 160vh; /* Permet de scroller pour voir la bulle arriver */
-    background-color: #3B505C; /* Couleur de secours si l'image rate */
-    background-image: url('fondaccueil.jpg'); 
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    background-size: cover;
-    font-family: sans-serif;
+    min-height: 160vh;
+    /* On force l'image avec !important pour écraser tout conflit */
+    background-image: url('fondaccueil.jpg') !important; 
+    background-attachment: fixed !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-color: #3B505C; /* Garde la couleur au cas où */
 }
 
-/* MENU */
+/* --- LE RESTE DU CODE --- */
+
 header {
     position: fixed;
     top: 0;
@@ -31,7 +37,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 25px 60px;
+    padding: 20px 60px;
 }
 
 .logo img {
@@ -48,14 +54,13 @@ header nav ul li a {
     font-family: "Californian FB", serif;
     font-weight: bold;
     font-size: 1.2rem;
-    color: #1D70B7; /* Bleu */
+    color: #1D70B7;
 }
 
 header nav ul li a.active {
-    color: #87B347; /* Vert */
+    color: #87B347;
 }
 
-/* TITRE */
 .main-title {
     position: fixed;
     top: 15%;
@@ -64,38 +69,32 @@ header nav ul li a.active {
     font-family: 'Gochi Hand', cursive;
     font-size: 4.5rem;
     color: #3B505C;
-    /* Ombre portée blanche non floue */
     text-shadow: 2px 2px 0px #FFFFFF, -2px -2px 0px #FFFFFF, 2px -2px 0px #FFFFFF, -2px 2px 0px #FFFFFF;
 }
 
-/* BULLE DYNAMIQUE */
 .speech-bubble {
     position: fixed;
-    top: 48%;
-    left: 38%;
-    background-color: #EADC9B; /* Fond bulle */
+    top: 50%;
+    left: 40%;
+    background-color: #EADC9B;
     padding: 25px 45px;
     border-radius: 40px;
-    /* Ombre portée blanche non floue */
     box-shadow: 6px 6px 0px #FFFFFF;
     z-index: 500;
-    
-    /* Animation : Cachée à gauche */
     opacity: 0;
-    transform: translateX(-600px); 
+    transform: translateX(-100vw);
     transition: transform 0.8s ease-out, opacity 0.5s ease-out;
 }
 
-/* État quand on scrolle */
 .visible {
     opacity: 1 !important;
     transform: translateX(0) !important;
 }
 
 .speech-bubble p {
-    color: #684132; /* Texte marron */
+    color: #684132;
     font-weight: bold;
     text-align: center;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     text-shadow: 1px 1px 0px #FFFFFF;
 }
