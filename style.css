@@ -11,7 +11,7 @@
 body {
     height: 160vh; 
     /* Image de fond : fondaccueil */
-    background: url('fondaccueil.png') no-repeat center center fixed;
+    background: url('fondaccueil.jpg') no-repeat center center fixed;
     background-size: cover;
 }
 
@@ -33,7 +33,7 @@ nav {
 /* Ton logo : logocamille */
 .logo img {
     height: 75px;
-    content: url('logocamille.jpg');
+    content: url('logocamille.png');
 }
 
 header nav ul {
