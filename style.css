@@ -79,8 +79,8 @@ header nav ul li a.active {
 .speech-bubble {
     position: fixed;
     /* On la place pile au niveau de l'épaule/bouche du personnage */
-    top: 38%; 
-    left: 36%; 
+    top: 40%; 
+    left: 35%; 
     
     /* Format compact : la bulle s'adapte au texte sans s'étendre */
     display: inline-block;
