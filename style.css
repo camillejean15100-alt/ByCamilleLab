@@ -11,7 +11,7 @@
 body {
     height: 160vh; 
     /* Image de fond : fondaccueil */
-    background: url('fondaccueil.jpg') no-repeat center center fixed;
+    background: url('fondaccueil.png') no-repeat center center fixed;
     background-size: cover;
 }
 
