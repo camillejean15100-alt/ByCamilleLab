@@ -76,13 +76,15 @@ header nav ul li a.active {
 /* --- LE TITRE --- */
 .main-title {
     position: fixed;
-    top: 20%;
+    /* On passe de 15% à 25% ou 30% pour l'éloigner du menu */
+    top: 28%; 
     width: 100%;
     text-align: center;
     font-family: 'Gochi Hand', cursive;
     font-size: 4.5rem;
     color: #3B505C;
     text-shadow: 2px 2px 0px #FFFFFF, -2px -2px 0px #FFFFFF, 2px -2px 0px #FFFFFF, -2px 2px 0px #FFFFFF;
+    z-index: 10; /* Pour s'assurer qu'il reste sous le menu si besoin */
 }
 
 /* --- LA BULLE PARFAITEMENT CALÉE SUR LE PERSO --- */
