@@ -9,78 +9,52 @@
 
 body {
     min-height: 160vh;
-    /* Nom exact avec deux 'u' pour ton image */
     background: url('fondaccueuil.jpg') no-repeat center center fixed !important;
     background-size: cover !important;
-    background-color: #3B505C;
     font-family: sans-serif;
 }
 
-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-}
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 60px;
-}
-
-.logo img {
-    height: 70px;
-}
-
-header nav ul {
-    display: flex;
-    gap: 30px;
-}
-
-header nav ul li a {
-    text-decoration: none;
-    font-family: "Californian FB", serif;
-    font-weight: bold;
-    font-size: 1.1rem;
-    color: #1D70B7;
-}
-
-header nav ul li a.active {
-    color: #87B347;
-}
-
+/* --- TITRE --- */
 .main-title {
     position: fixed;
     top: 15%;
     width: 100%;
     text-align: center;
     font-family: 'Gochi Hand', cursive;
-    font-size: 4.2rem;
+    font-size: 4rem;
     color: #3B505C;
     text-shadow: 2px 2px 0px #FFFFFF, -2px -2px 0px #FFFFFF, 2px -2px 0px #FFFFFF, -2px 2px 0px #FFFFFF;
 }
 
-/* DESIGN GÉLULE AMÉLIORÉ */
+/* --- LA BULLE DESIGN --- */
 .speech-bubble {
     position: fixed;
-    top: 52%; 
-    left: 55%; 
-    background-color: #EADC9B; /* Couleur sable */
+    top: 48%;
+    left: 42%; /* Ajusté pour être proche du personnage */
     
-    /* Plus de padding pour la forme allongée */
-    padding: 25px 60px; 
-    border-radius: 100px; /* Coins totalement arrondis */
+    /* Couleur sable avec transparence (0.9 = 90% opaque) */
+    background-color: rgba(234, 220, 155, 0.9); 
     
-    /* Ombre blanche nette épaisse */
-    box-shadow: 10px 10px 0px #FFFFFF; 
+    padding: 25px 40px;
+    border-radius: 30px; /* Coins arrondis mais pas gélule totale */
+    box-shadow: 8px 8px 0px rgba(255, 255, 255, 0.5); /* Ombre blanche semi-transparente */
     
     z-index: 500;
     opacity: 0;
-    /* Animation : glisse depuis la gauche */
-    transform: translateX(-300px);
-    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s ease-out;
+    transform: translateX(-100px);
+    transition: transform 0.8s ease-out, opacity 0.5s ease-out;
+}
+
+/* La pointe de la bulle (le petit triangle) */
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    left: -20px; /* Sort de la bulle à gauche */
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 15px 25px 15px 0;
+    border-style: solid;
+    border-color: transparent rgba(234, 220, 155, 0.9) transparent transparent;
 }
 
 .visible {
@@ -89,10 +63,10 @@ header nav ul li a.active {
 }
 
 .speech-bubble p {
-    color: #684132; /* Marron foncé du texte */
+    color: #684132;
     font-weight: bold;
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     line-height: 1.4;
-    margin: 0;
+    font-family: 'Arial', sans-serif;
 }
