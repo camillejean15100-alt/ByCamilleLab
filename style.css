@@ -14,6 +14,42 @@ body {
     font-family: sans-serif;
 }
 
+/* --- TON MENU RÉTABLI --- */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 60px;
+}
+
+.logo img {
+    height: 75px;
+}
+
+header nav ul {
+    display: flex;
+    gap: 30px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    font-family: "Californian FB", serif;
+    font-weight: bold;
+    font-size: 20px;
+    color: #1D70B7;
+}
+
+header nav ul li a.active {
+    color: #87B347;
+}
+
 /* --- TITRE --- */
 .main-title {
     position: fixed;
@@ -21,40 +57,40 @@ body {
     width: 100%;
     text-align: center;
     font-family: 'Gochi Hand', cursive;
-    font-size: 4rem;
+    font-size: 4.5rem;
     color: #3B505C;
     text-shadow: 2px 2px 0px #FFFFFF, -2px -2px 0px #FFFFFF, 2px -2px 0px #FFFFFF, -2px 2px 0px #FFFFFF;
 }
 
-/* --- LA BULLE DESIGN --- */
+/* --- LA BULLE (DESIGN EXACT) --- */
 .speech-bubble {
     position: fixed;
-    top: 48%;
-    left: 42%; /* Ajusté pour être proche du personnage */
+    top: 50%;
+    left: 45%; 
     
-    /* Couleur sable avec transparence (0.9 = 90% opaque) */
-    background-color: rgba(234, 220, 155, 0.9); 
+    /* Couleur sable avec légère transparence */
+    background-color: rgba(234, 220, 155, 0.92); 
     
-    padding: 25px 40px;
-    border-radius: 30px; /* Coins arrondis mais pas gélule totale */
-    box-shadow: 8px 8px 0px rgba(255, 255, 255, 0.5); /* Ombre blanche semi-transparente */
+    padding: 25px 50px;
+    border-radius: 40px;
+    box-shadow: 10px 10px 0px #FFFFFF; /* Ombre blanche nette */
     
     z-index: 500;
     opacity: 0;
-    transform: translateX(-100px);
-    transition: transform 0.8s ease-out, opacity 0.5s ease-out;
+    transform: translateX(-200px);
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s ease-out;
 }
 
-/* La pointe de la bulle (le petit triangle) */
+/* La petite pointe qui va vers le personnage */
 .speech-bubble::after {
     content: '';
     position: absolute;
-    left: -20px; /* Sort de la bulle à gauche */
+    left: -25px; /* Pointe vers la gauche */
     top: 50%;
     transform: translateY(-50%);
-    border-width: 15px 25px 15px 0;
+    border-width: 15px 30px 15px 0;
     border-style: solid;
-    border-color: transparent rgba(234, 220, 155, 0.9) transparent transparent;
+    border-color: transparent rgba(234, 220, 155, 0.92) transparent transparent;
 }
 
 .visible {
@@ -68,5 +104,5 @@ body {
     text-align: center;
     font-size: 1.3rem;
     line-height: 1.4;
-    font-family: 'Arial', sans-serif;
+    margin: 0;
 }
