@@ -174,3 +174,24 @@ header nav ul li a.active {
     text-align: center;
     box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
+/* --- BOUTON RETOUR DISCRET --- */
+.btn-retour {
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: none;
+    border: 2px solid #684132;
+    color: #684132;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-family: "Californian FB", serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-retour:hover {
+    background-color: #684132;
+    color: #EADC9B;
+}
