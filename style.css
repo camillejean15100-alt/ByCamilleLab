@@ -7,14 +7,13 @@
     list-style: none !important;
 }
 
-/* 1. CACHER LA BARRE DE SCROLL (MAIS GARDER LE SCROLL) */
+/* 1. BARRE DE SCROLL INVISIBLE */
 html {
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE/Edge */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
-
 html::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    display: none;
 }
 
 body {
@@ -24,11 +23,12 @@ body {
     font-family: sans-serif;
 }
 
-/* 2. MENU (POSITION STABLE) */
+/* 2. MENU FIXE (RESTE TOUJOURS EN HAUT AU SCROLL) */
 header {
-    width: 100%;
-    position: absolute; 
+    position: fixed; /* Fixé à l'écran */
     top: 0;
+    left: 0;
+    width: 100%;
     z-index: 1000;
 }
 
@@ -60,7 +60,7 @@ header nav ul li a.active {
     color: #87B347;
 }
 
-/* 3. TITRE */
+/* 3. TITRE FIXE */
 .main-title {
     position: fixed;
     top: 15%;
@@ -72,24 +72,20 @@ header nav ul li a.active {
     text-shadow: 2px 2px 0px #FFFFFF, -2px -2px 0px #FFFFFF, 2px -2px 0px #FFFFFF, -2px 2px 0px #FFFFFF;
 }
 
-/* 4. LA BULLE SANS FLÈCHE */
+/* 4. LA BULLE SANS FLÈCHE (DESIGN FINAL) */
 .speech-bubble {
     position: fixed;
     top: 50%;
     left: 45%; 
-    background-color: rgba(234, 220, 155, 0.92); /* Transparence sable */
+    background-color: rgba(234, 220, 155, 0.92); 
     padding: 25px 50px;
     border-radius: 40px;
-    box-shadow: 10px 10px 0px #FFFFFF; /* Ombre blanche */
+    box-shadow: 10px 10px 0px #FFFFFF; 
     z-index: 500;
-    
-    /* Animation de glissement */
     opacity: 0;
     transform: translateX(-200px);
     transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s ease-out;
 }
-
-/* Note : Le sélecteur ::after (la flèche) a été supprimé ici */
 
 .visible {
     opacity: 1 !important;
