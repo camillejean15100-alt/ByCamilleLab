@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
 
+/* --- RÉINITIALISATION ET SCROLL --- */
 * {
     margin: 0;
     padding: 0;
@@ -7,25 +8,27 @@
     list-style: none !important;
 }
 
-/* 1. BARRE DE SCROLL INVISIBLE */
+/* Cache la barre de scroll tout en permettant de défiler */
 html {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
 }
+
 html::-webkit-scrollbar {
-    display: none;
+    display: none; /* Chrome, Safari, Opera */
 }
 
 body {
     min-height: 160vh;
+    /* Nom exact de ton fichier image */
     background: url('fondaccueuil.jpg') no-repeat center center fixed !important;
     background-size: cover !important;
     font-family: sans-serif;
 }
 
-/* 2. MENU FIXE (RESTE TOUJOURS EN HAUT AU SCROLL) */
+/* --- LE MENU : RESTE TOUJOURS EN HAUT --- */
 header {
-    position: fixed; /* Fixé à l'écran */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -53,14 +56,14 @@ header nav ul li a {
     font-family: "Californian FB", serif;
     font-weight: bold;
     font-size: 20px;
-    color: #1D70B7;
+    color: #1D70B7; /* Bleu du design */
 }
 
 header nav ul li a.active {
-    color: #87B347;
+    color: #87B347; /* Vert du design */
 }
 
-/* 3. TITRE FIXE */
+/* --- LE TITRE --- */
 .main-title {
     position: fixed;
     top: 15%;
@@ -72,30 +75,50 @@ header nav ul li a.active {
     text-shadow: 2px 2px 0px #FFFFFF, -2px -2px 0px #FFFFFF, 2px -2px 0px #FFFFFF, -2px 2px 0px #FFFFFF;
 }
 
-/* 4. LA BULLE SANS FLÈCHE (DESIGN FINAL) */
+/* --- LA BULLE DESIGN EXACT --- */
 .speech-bubble {
     position: fixed;
     top: 50%;
     left: 45%; 
-    background-color: rgba(234, 220, 155, 0.92); 
-    padding: 25px 50px;
-    border-radius: 40px;
-    box-shadow: 10px 10px 0px #FFFFFF; 
+    background-color: #EADC9B; /* Jaune sable */
+    padding: 20px 40px;
+    border-radius: 15px; /* Coins rectangulaires arrondis */
+    
+    /* Ombre grise portée diffuse */
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2); 
+    
     z-index: 500;
     opacity: 0;
-    transform: translateX(-200px);
-    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s ease-out;
+    transform: translateX(-150px);
+    transition: transform 0.8s ease-out, opacity 0.5s ease-out;
 }
 
+/* La pointe incurvée à gauche */
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    left: -25px;
+    bottom: 15%;
+    width: 40px;
+    height: 40px;
+    background-color: #EADC9B;
+    /* Création de la pointe courbe avec clip-path */
+    clip-path: polygon(100% 0%, 100% 100%, 0% 100%);
+    border-radius: 0 0 100% 0;
+    z-index: -1;
+}
+
+/* Apparition au scroll */
 .visible {
     opacity: 1 !important;
     transform: translateX(0) !important;
 }
 
 .speech-bubble p {
-    color: #684132;
+    color: #684132; /* Marron */
+    font-family: 'Georgia', serif; /* Police Serif */
     font-weight: bold;
     text-align: center;
-    font-size: 1.3rem;
-    line-height: 1.4;
+    font-size: 1.4rem;
+    line-height: 1.3;
 }
