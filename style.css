@@ -199,3 +199,55 @@ header nav ul li a.active {
     line-height: 1.3;
     margin: 0;
 }
+/* Le conteneur des 3 icônes */
+.services-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    position: fixed;
+    top: 50%; /* Centré verticalement */
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centrage parfait */
+    width: 90%;
+    z-index: 600;
+    opacity: 0; /* Invisible au début */
+    pointer-events: none; /* Impossible de cliquer dessus tant qu'il est invisible */
+    transition: opacity 0.6s ease-in-out;
+}
+
+/* Style des cartes (Beige comme la bulle) */
+.service-card {
+    background-color: #EADC9B; /* Couleur beige */
+    border-radius: 15px;
+    padding: 30px 20px;
+    flex: 1;
+    max-width: 320px;
+    text-align: center;
+    box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.service-card img {
+    height: 110px; /* Taille des icônes */
+    margin-bottom: 20px;
+}
+
+.service-card p {
+    font-family: "Californian FB", serif;
+    font-size: 1.4rem;
+    color: #684132; /* Marron du logo */
+    line-height: 1.4;
+    font-weight: bold;
+}
+
+/* Classe pour afficher les services */
+.services-visible {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+/* Classe pour faire disparaître la bulle */
+.bubble-hidden {
+    opacity: 0 !important;
+    transform: scale(0.9) !important;
+    pointer-events: none;
+}
