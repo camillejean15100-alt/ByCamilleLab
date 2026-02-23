@@ -1,134 +1,93 @@
-/* Reset & Fonts */
-* {
+/* 1. IMPORTATION DE LA TYPO */
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
+
+/* 2. CONFIGURATION DU FOND (Vérifie bien le nom de ton image) */
+body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif; /* Fallback */
-    overflow-x: hidden;
-    background-image: url('fond-campagne.jpg'); /* Ton image de fond complète */
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-}
-
-/* Navigation */
-header {
     width: 100%;
-    padding: 20px 50px;
-    position: fixed;
-    top: 0;
-    z-index: 1000;
+    height: 200vh; /* On force de la hauteur pour permettre le scroll */
+    background: url('image_abdb77.jpg') no-repeat center top;
+    background-size: contain;
+    background-attachment: fixed;
+    background-color: #f0f0f0; /* Couleur de secours si l'image rate */
 }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-nav ul {
+/* 3. LE MENU (Californian FB) */
+header nav ul {
     list-style: none;
     display: flex;
-    gap: 20px;
+    justify-content: flex-end;
+    padding: 20px 50px;
+    gap: 15px;
 }
 
-nav ul li a {
+header nav ul li a {
     text-decoration: none;
     font-family: "Californian FB", "Georgia", serif;
     font-weight: bold;
-    font-size: 1.2rem;
-    color: #1D70B7;
-    transition: color 0.3s;
+    font-size: 20px;
+    color: #1D70B7; /* Bleu standard */
 }
 
-nav ul li a.active {
-    color: #87B347;
+header nav ul li a.active, 
+header nav ul li a:hover {
+    color: #87B347; /* Vert quand on est dessus */
 }
 
-/* Titre Principal */
-.main-title {
-    font-family: 'Gochi Hand', cursive;
-    font-size: 3.5rem;
+/* 4. LE TITRE (Gochi Hand) */
+h1, .main-title {
+    font-family: 'Gochi Hand', cursive !important;
     color: #3B505C;
     text-align: center;
-    margin-top: 120px;
+    font-size: clamp(2rem, 5vw, 4rem);
+    margin-top: 50px;
+    /* Ombre portée blanche nette */
     text-shadow: 2px 2px 0px #FFFFFF, -2px -2px 0px #FFFFFF, 2px -2px 0px #FFFFFF, -2px 2px 0px #FFFFFF;
 }
 
-/* Scène */
-.hero {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-}
-
-.scene-container {
-    position: relative;
-    width: 100%;
-    max-width: 1200px;
-    height: 600px;
-    margin-top: 50px;
-}
-
-.character {
-    position: absolute;
-    bottom: 50px;
-    left: 5%;
-    width: 350px;
-    z-index: 2;
-}
-
-/* Bulle de texte */
+/* 5. LA BULLE DYNAMIQUE */
+/* Elle est cachée par défaut (opacity 0) */
 .speech-bubble {
-    position: absolute;
-    top: 20%;
-    left: 35%;
-    background-color: rgba(234, 220, 155, 0.9); /* EADC9B avec légère transparence */
-    padding: 30px;
-    border-radius: 50px 50px 50px 5px;
-    max-width: 400px;
+    position: fixed; /* Pour qu'elle reste visible par rapport à l'écran */
+    top: 45%;
+    left: 40%;
+    background-color: #EADC9B;
+    padding: 25px;
+    border-radius: 30px;
+    max-width: 300px;
     border: none;
-    box-shadow: 10px 10px 0px rgba(0,0,0,0.05);
+    z-index: 100;
     
-    /* Animation initiale : masquée */
+    /* Animation de base */
     opacity: 0;
-    transform: scale(0.5) translateY(50px);
-    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: scale(0.8) translateY(20px);
+    transition: all 0.6s ease-out;
+    
+    /* Ombre portée blanche non floue */
+    box-shadow: 5px 5px 0px #FFFFFF;
 }
 
-/* Effet au Scroll (Trigger via une classe ou animation moderne) */
-/* Pour Github, on utilise une animation qui se déclenche quand la bulle entre dans la vue */
-@keyframes popIn {
-    to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
-}
-
-.speech-bubble {
-    animation: popIn forwards;
-    animation-timeline: view();
-    animation-range: entry 20% cover 40%;
+/* 6. L'EFFET AU SCROLL */
+/* Cette classe sera ajoutée par le petit script HTML quand tu descendras */
+.visible {
+    opacity: 1 !important;
+    transform: scale(1) translateY(0) !important;
 }
 
 .speech-bubble p {
     color: #684132;
-    font-size: 1.5rem;
     font-weight: bold;
     text-align: center;
-    line-height: 1.4;
-    text-shadow: 1.5px 1.5px 0px #FFFFFF;
+    margin: 0;
+    font-family: sans-serif;
+    /* Ombre blanche sur le texte */
+    text-shadow: 1px 1px 0px #FFFFFF;
 }
 
-/* Responsive */
+/* 7. RESPONSIVE RAPIDE */
 @media (max-width: 768px) {
-    .main-title { font-size: 2rem; padding: 0 10px; }
-    nav ul { display: none; } /* Simplification mobile */
-    .character { width: 200px; }
-    .speech-bubble { left: 10%; top: 10%; font-size: 1rem; }
+    body { background-size: cover; }
+    h1 { font-size: 1.5rem; }
+    .speech-bubble { left: 10%; width: 80%; }
 }
