@@ -1,102 +1,134 @@
-/* --- CONFIGURATION GENERALE --- */
-body, html {
+/* Reset & Fonts */
+* {
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%; /* Important pour le scroll */
+    box-sizing: border-box;
 }
 
 body {
-    background: url('fond-campagne.jpg') no-repeat center bottom;
+    font-family: Arial, sans-serif; /* Fallback */
+    overflow-x: hidden;
+    background-image: url('fond-campagne.jpg'); /* Ton image de fond complète */
     background-size: cover;
-    min-height: 150vh; /* Permet d'avoir du scroll pour tester l'effet */
+    background-attachment: fixed;
+    background-position: center;
 }
 
-/* --- NAVIGATION --- */
+/* Navigation */
 header {
     width: 100%;
-    padding: 30px 60px;
-    display: flex;
-    justify-content: flex-end;
+    padding: 20px 50px;
     position: fixed;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
 }
 
-nav a {
-    font-family: "Californian FB", serif;
-    font-weight: bold;
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
     text-decoration: none;
-    margin-left: 25px;
+    font-family: "Californian FB", "Georgia", serif;
+    font-weight: bold;
     font-size: 1.2rem;
-    color: #1D70B7; /* Bleu spécifié */
+    color: #1D70B7;
+    transition: color 0.3s;
 }
 
-nav a.active {
-    color: #87B347; /* Vert spécifié */
+nav ul li a.active {
+    color: #87B347;
 }
 
-/* --- TITRE PRINCIPAL --- */
+/* Titre Principal */
 .main-title {
     font-family: 'Gochi Hand', cursive;
-    color: #3B505C; /* Couleur spécifiée */
-    font-size: 4.5rem;
+    font-size: 3.5rem;
+    color: #3B505C;
     text-align: center;
     margin-top: 120px;
-    /* Ombre portée blanche non floue */
-    text-shadow: 4px 4px 0px #FFFFFF;
-    letter-spacing: 2px;
+    text-shadow: 2px 2px 0px #FFFFFF, -2px -2px 0px #FFFFFF, 2px -2px 0px #FFFFFF, -2px 2px 0px #FFFFFF;
 }
 
-/* --- PERSONNAGE ET BULLE --- */
-.character-wrapper {
-    position: fixed;
-    bottom: 20px;
-    left: 50px;
-    width: 350px;
+/* Scène */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
 }
 
-.character-img {
+.scene-container {
+    position: relative;
     width: 100%;
-    height: auto;
+    max-width: 1200px;
+    height: 600px;
+    margin-top: 50px;
 }
 
-.bubble {
+.character {
     position: absolute;
-    top: -100px;
-    right: -240px;
-    background-color: #EADC9B; /* Fond bulle spécifié */
-    padding: 20px 30px;
-    border-radius: 40px;
-    width: 320px;
-    border: 2px solid #FFFFFF;
+    bottom: 50px;
+    left: 5%;
+    width: 350px;
+    z-index: 2;
+}
+
+/* Bulle de texte */
+.speech-bubble {
+    position: absolute;
+    top: 20%;
+    left: 35%;
+    background-color: rgba(234, 220, 155, 0.9); /* EADC9B avec légère transparence */
+    padding: 30px;
+    border-radius: 50px 50px 50px 5px;
+    max-width: 400px;
+    border: none;
+    box-shadow: 10px 10px 0px rgba(0,0,0,0.05);
     
-    /* Animation initiale : cachée */
+    /* Animation initiale : masquée */
     opacity: 0;
-    transform: scale(0.8) translateY(20px);
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: scale(0.5) translateY(50px);
+    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.bubble.visible {
-    opacity: 1;
-    transform: scale(1) translateY(0);
+/* Effet au Scroll (Trigger via une classe ou animation moderne) */
+/* Pour Github, on utilise une animation qui se déclenche quand la bulle entre dans la vue */
+@keyframes popIn {
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
 }
 
-.bubble p {
-    font-family: "Californian FB", serif;
+.speech-bubble {
+    animation: popIn forwards;
+    animation-timeline: view();
+    animation-range: entry 20% cover 40%;
+}
+
+.speech-bubble p {
+    color: #684132;
+    font-size: 1.5rem;
     font-weight: bold;
-    font-style: italic;
-    color: #684132; /* Couleur texte mission */
     text-align: center;
-    margin: 0;
-    font-size: 1.3rem;
-    /* Ombre portée blanche non floue */
-    text-shadow: 1px 1px 0px #FFFFFF;
+    line-height: 1.4;
+    text-shadow: 1.5px 1.5px 0px #FFFFFF;
 }
 
-/* --- RESPONSIVE BASIQUE --- */
-@media (max-width: 900px) {
-    .main-title { font-size: 2.5rem; }
-    .character-wrapper { width: 200px; left: 20px; }
-    .bubble { width: 200px; right: -150px; top: -120px; font-size: 0.9rem; }
+/* Responsive */
+@media (max-width: 768px) {
+    .main-title { font-size: 2rem; padding: 0 10px; }
+    nav ul { display: none; } /* Simplification mobile */
+    .character { width: 200px; }
+    .speech-bubble { left: 10%; top: 10%; font-size: 1rem; }
 }
