@@ -27,27 +27,28 @@ body {
 }
 
 /* --- LE MENU : RESTE TOUJOURS EN HAUT --- */
-/* --- 1. LE LOGO (Ajusté pour être visible mais discret) --- */
+/* --- LE LOGO (RETOUR À UNE TAILLE PROPRE) --- */
 .logo img {
-    height: 80px; /* Taille équilibrée */
+    height: 90px !important; /* Taille nette pour être lisible mais pas envahissant */
     width: auto;
     display: block;
 }
 
-/* --- 2. LA NAVIGATION (Compacte pour gagner de la place) --- */
+/* --- LA NAVIGATION (FIXÉE ET PROPRE) --- */
 header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
+    background: transparent; /* Pour ne pas masquer le fond */
 }
 
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 60px; /* Moins de vide en haut et en bas */
+    padding: 15px 60px; /* Équilibre entre le logo et les liens */
 }
 
 header nav ul {
@@ -59,18 +60,18 @@ header nav ul li a {
     text-decoration: none;
     font-family: "Californian FB", serif;
     font-weight: bold;
-    font-size: 19px;
-    color: #1D70B7;
+    font-size: 20px;
+    color: #1D70B7; /* Bleu d'origine */
 }
 
-/* --- 3. LE TITRE (Recalé pour aérer le haut) --- */
+/* --- LE TITRE (POSITIONNÉ PAR RAPPORT AU LOGO) --- */
 .main-title {
     position: fixed;
-    top: 140px; /* Position précise sous le menu au lieu d'un % instable */
+    top: 160px; /* Descendu juste assez pour laisser respirer le logo de 90px */
     width: 100%;
     text-align: center;
     font-family: 'Gochi Hand', cursive;
-    font-size: 3.8rem; /* Un peu plus fin pour le style */
+    font-size: 4.2rem; /* Taille d'origine pour l'impact */
     color: #3B505C;
     text-shadow: 2px 2px 0px #FFFFFF, -2px -2px 0px #FFFFFF, 2px -2px 0px #FFFFFF, -2px 2px 0px #FFFFFF;
     z-index: 10;
