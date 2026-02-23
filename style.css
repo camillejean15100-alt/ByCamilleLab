@@ -1,30 +1,24 @@
-/* --- LE FOND ET LA BASE --- */
-body {
+/* --- LE FOND CORRECT --- */
+.home-bg {
+    background: url('fondaccueil.jpg') no-repeat center center fixed;
+    background-size: cover;
     margin: 0;
     padding: 0;
-    background: url('fondaccueil.jpg') no-repeat center center fixed; /* Nom corrigé */
-    background-size: cover;
-    font-family: sans-serif;
 }
 
-/* --- MENU : BLEU ET VERT --- */
-header { position: fixed; top: 0; width: 100%; z-index: 1000; }
-nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 60px; }
+/* --- NAVIGATION --- */
+header nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 60px; }
 .logo img { height: 90px !important; width: auto; }
 
 header nav ul { display: flex; list-style: none; gap: 30px; }
-header nav ul li a {
-    text-decoration: none;
-    font-family: "Californian FB", serif;
-    font-weight: bold;
-    font-size: 20px;
-    color: #1D70B7 !important; /* Bleu Camille */
-    transition: 0.3s;
+header nav ul li a { 
+    text-decoration: none; 
+    font-family: "Californian FB", serif; 
+    font-weight: bold; 
+    font-size: 20px; 
+    color: #1D70B7 !important; /* Bleu */
 }
-
-header nav ul li a.active {
-    color: #92B73E !important; /* Vert Camille */
-}
+header nav ul li a.active { color: #92B73E !important; } /* Vert Accueil */
 
 /* --- TITRE --- */
 .main-title {
@@ -36,9 +30,10 @@ header nav ul li a.active {
     font-size: 4.2rem;
     color: #3B505C;
     text-shadow: 2px 2px 0px #FFF, -2px -2px 0px #FFF;
+    z-index: 10;
 }
 
-/* --- LA BULLE ET SA POINTE --- */
+/* --- LA BULLE BEIGE --- */
 .speech-bubble {
     position: fixed;
     top: 52%; 
@@ -47,12 +42,13 @@ header nav ul li a.active {
     background-color: #EADC9B; 
     padding: 25px 45px;
     border-radius: 30px;
-    box-shadow: 8px 8px 20px rgba(0,0,0,0.2);
+    box-shadow: 8px 8px 20px rgba(0,0,0,0.1);
     cursor: pointer;
     z-index: 500;
+    transition: all 0.5s ease;
 }
 
-/* La pointe vers Camille */
+/* La pointe vers la gauche */
 .speech-bubble::after {
     content: '';
     position: absolute;
@@ -71,9 +67,10 @@ header nav ul li a.active {
     text-align: center;
     font-size: 1.8rem;
     margin: 0;
+    line-height: 1.2;
 }
 
-/* --- LES CARTES SERVICES --- */
+/* --- LES SERVICES --- */
 .services-container {
     display: none;
     opacity: 0;
@@ -96,9 +93,5 @@ header nav ul li a.active {
     box-shadow: 10px 10px 25px rgba(0,0,0,0.1);
 }
 
-.service-card p {
-    color: #684132;
-    font-family: "Californian FB", serif;
-    font-size: 1.4rem;
-    font-weight: bold;
-}
+.service-card img { height: 110px; margin-bottom: 25px; }
+.service-card p { color: #684132; font-family: "Californian FB", serif; font-size: 1.4rem; font-weight: bold; }
