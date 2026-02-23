@@ -67,12 +67,67 @@ header nav ul li a {
     transition: color 0.3s ease;
 }
 
-/* 2. Au survol ET pour la page active (Vert) */
-header nav ul li a:hover, 
-header nav ul li a.active {
-    color: #92B73E !important; /* Le vert que tu veux garder */
+/* --- FORCE LE BLEU ET LE VERT DU MENU --- */
+
+/* Couleur de base : BLEU */
+header nav ul li a {
+    color: #1D70B7 !important; 
+    text-decoration: none !important;
 }
 
+/* Page active et Survol : VERT */
+header nav ul li a.active, 
+header nav ul li a:hover {
+    color: #92B73E !important; 
+}/* --- LE HEADER ET LE MENU (COMPLET ET PROPRE) --- */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: transparent; /* Garde ton ciel visible */
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 60px; /* Espace équilibré autour du logo */
+}
+
+/* Le Logo */
+.logo img {
+    height: 90px !important; /* Taille nette et lisible */
+    width: auto;
+    display: block;
+}
+
+/* La Liste des liens */
+header nav ul {
+    display: flex;
+    list-style: none; /* Enlève les puces */
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+/* Style des liens : BLEU par défaut */
+header nav ul li a {
+    text-decoration: none;
+    font-family: "Californian FB", serif;
+    font-weight: bold;
+    font-size: 20px;
+    color: #1D70B7 !important; /* Ton bleu d'origine */
+    transition: color 0.3s ease;
+}
+
+/* État survol (HOVER) et Page actuelle (ACTIVE) : VERT */
+header nav ul li a:hover, 
+header nav ul li a.active {
+    color: #92B73E !important; /* Ton vert fétiche */
+}
 /* --- LE TITRE (POSITIONNÉ PAR RAPPORT AU LOGO) --- */
 .main-title {
     position: fixed;
