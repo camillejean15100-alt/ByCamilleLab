@@ -56,12 +56,21 @@ header nav ul {
     gap: 30px;
 }
 
+
+/* 1. L'état normal des liens (Bleu) */
 header nav ul li a {
     text-decoration: none;
     font-family: "Californian FB", serif;
     font-weight: bold;
     font-size: 20px;
-    color: #1D70B7; /* Bleu d'origine */
+    color: #1D70B7 !important; /* Le bleu d'origine */
+    transition: color 0.3s ease;
+}
+
+/* 2. Au survol ET pour la page active (Vert) */
+header nav ul li a:hover, 
+header nav ul li a.active {
+    color: #92B73E !important; /* Le vert que tu veux garder */
 }
 
 /* --- LE TITRE (POSITIONNÉ PAR RAPPORT AU LOGO) --- */
