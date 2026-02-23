@@ -115,45 +115,62 @@ header nav ul li a.active {
 }
 
 /* --- SECTION SERVICES : ALIGNEMENT PARFAIT --- */
+/* --- ÉTAPE 1 : LA BULLE ARRIVE PAR LA DROITE --- */
+.speech-bubble {
+    position: fixed;
+    top: 45%; 
+    left: 48%;
+    transform: translate(100px, -50%); /* Départ hors-champ à droite */
+    opacity: 0;
+    background-color: rgba(234, 220, 155, 0.9); 
+    padding: 20px 35px;
+    border-radius: 15px; 
+    box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.2); 
+    z-index: 500;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.6s ease-out;
+    cursor: pointer;
+}
+
+/* La pointe vers Camille */
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    left: -20px; 
+    top: 50%;
+    transform: translateY(-50%);
+    border-style: solid;
+    border-width: 15px 25px 15px 0;
+    border-color: transparent rgba(234, 220, 155, 0.9) transparent transparent;
+}
+
+/* État quand la bulle est en place */
+.speech-bubble.visible {
+    opacity: 1;
+    transform: translate(-50%, -50%); /* Position finale centrée */
+}
+
+/* --- ÉTAPE 2 : LES CARTES DE SERVICES --- */
 .services-container {
-    display: none; /* Initialement caché */
+    display: none; /* Caché au début */
     opacity: 0;
     position: fixed;
     top: 50%;
-    left: 55%; /* Décalé légèrement à droite pour laisser de la place au perso */
+    left: 55%; /* Décalé pour ne pas écraser Camille */
     transform: translate(-50%, -50%);
-    width: 75%; /* Largeur contenue pour l'équilibre visuel */
+    width: 75%;
     display: flex;
-    justify-content: space-between; /* Espacement égal entre les cartes */
-    align-items: stretch;
+    justify-content: center;
     gap: 20px;
     z-index: 600;
     transition: opacity 0.8s ease-in-out;
 }
 
 .service-card {
-    background-color: rgba(234, 220, 155, 0.8); /* Beige semi-transparent */
+    background-color: rgba(234, 220, 155, 0.85); /* Semi-transparent */
     border-radius: 15px;
     padding: 30px 20px;
-    flex: 1; /* Toutes les cartes ont la même largeur */
+    flex: 1;
     max-width: 300px;
     text-align: center;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.service-card img {
-    width: 80px; /* Taille ajustée des icônes */
-    height: auto;
-    margin-bottom: 20px;
-}
-
-.service-card p {
-    color: #684132; /* Marron foncé */
-    font-family: "Californian FB", serif;
-    font-size: 1.4rem;
-    font-weight: bold;
-    line-height: 1.2;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
