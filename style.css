@@ -43,7 +43,9 @@ nav {
 }
 
 .logo img {
-    height: 80px;
+    height: 150px; /* Taille augmentée significativement pour qu'il s'impose */
+    width: auto;    /* Conserve le ratio largeur/hauteur */
+    display: block; /* Évite les décalages de ligne */
 }
 
 header nav ul {
