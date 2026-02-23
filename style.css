@@ -64,41 +64,61 @@ header nav ul li a.active {
 }
 
 /* --- LA BULLE (DESIGN AMÉLIORÉ) --- */
+/* --- LA BULLE PARFAITEMENT CALÉE SUR LE PERSO --- */
 .speech-bubble {
     position: fixed;
-    top: 48%;
-    left: 45%; 
-    background-color: rgba(234, 220, 155, 0.92); /* Transparence sable */
-    padding: 25px 50px;
-    border-radius: 40px;
-    box-shadow: 10px 10px 0px #FFFFFF;
+    /* On la place pile au niveau de l'épaule/bouche du personnage */
+    top: 38%; 
+    left: 36%; 
+    
+    /* Format compact : la bulle s'adapte au texte sans s'étendre */
+    display: inline-block;
+    width: auto;
+    max-width: 450px; 
+    
+    /* Style visuel : Jaune sable avec transparence */
+    background-color: rgba(234, 220, 155, 0.85); 
+    padding: 20px 35px;
+    border-radius: 15px; 
+    
+    /* Ombre portée noire légère pour le relief */
+    box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.3); 
+    
     z-index: 500;
     opacity: 0;
-    transform: translateX(-200px); /* Arrive de la gauche */
-    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s ease-out;
+    /* Animation fluide qui part du personnage */
+    transform: translateX(-20px); 
+    transition: transform 0.6s ease-out, opacity 0.5s ease-out;
 }
 
-/* La pointe vers le personnage */
+/* La pointe courbée qui part de la bouche du perso */
 .speech-bubble::after {
     content: '';
     position: absolute;
-    left: -25px;
-    top: 50%;
-    transform: translateY(-50%);
-    border-width: 15px 30px 15px 0;
-    border-style: solid;
-    border-color: transparent rgba(234, 220, 155, 0.92) transparent transparent;
+    left: -30px; 
+    top: 40%;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(234, 220, 155, 0.85);
+    /* Forme incurvée spécifique */
+    clip-path: polygon(100% 0%, 100% 100%, 0% 100%);
+    border-radius: 0 0 100% 0;
+    z-index: -1;
 }
 
+/* Classe activée par ton JS au scroll */
 .visible {
     opacity: 1 !important;
     transform: translateX(0) !important;
 }
 
+/* Texte interne avec la typo et couleur demandées */
 .speech-bubble p {
-    color: #684132;
+    color: #684132; /* Marron foncé */
+    font-family: "Californian FB", serif; 
     font-weight: bold;
     text-align: center;
-    font-size: 1.3rem;
-    line-height: 1.4;
+    font-size: 1.6rem; 
+    line-height: 1.3;
+    margin: 0;
 }
