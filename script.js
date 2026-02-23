@@ -1,5 +1,4 @@
 window.onload = function() {
-    // 1. Arrivée de la bulle par la droite au chargement
     const bulle = document.getElementById('missionBubble');
     if (bulle) {
         setTimeout(() => {
@@ -8,21 +7,19 @@ window.onload = function() {
     }
 };
 
+// --- ALLER VERS LES SERVICES ---
 function transitionVersServices() {
     const bulle = document.getElementById('missionBubble');
     const services = document.getElementById('servicesIcons');
     const titre = document.querySelector('.main-title');
 
-    if (bulle && services) {
-        // 2. Disparition fluide de la bulle et du titre
+    if (bulle && services && bulle.style.display !== 'none') {
         bulle.style.opacity = "0";
-        bulle.style.transform = "translate(-50%, -100%)"; // S'envole vers le haut
+        bulle.style.transform = "translate(-50%, -100%)"; 
         if (titre) titre.style.opacity = "0";
 
         setTimeout(() => {
             bulle.style.display = "none";
-            
-            // 3. Apparition des services au centre
             services.style.display = "flex";
             setTimeout(() => {
                 services.style.opacity = "1";
@@ -31,10 +28,38 @@ function transitionVersServices() {
     }
 }
 
-// Support Clavier pour l'instinct de progression
+// --- REVENIR À LA BULLE (NOUVEAU) ---
+function retourVersBulle() {
+    const bulle = document.getElementById('missionBubble');
+    const services = document.getElementById('servicesIcons');
+    const titre = document.querySelector('.main-title');
+
+    if (services && bulle && services.style.display !== 'none') {
+        // 1. Les services s'effacent
+        services.style.opacity = "0";
+        
+        setTimeout(() => {
+            services.style.display = "none";
+            
+            // 2. La bulle et le titre réapparaissent
+            bulle.style.display = "inline-block";
+            if (titre) titre.style.opacity = "1";
+            
+            setTimeout(() => {
+                bulle.style.opacity = "1";
+                bulle.style.transform = "translate(-50%, -50%)"; // Elle revient au centre
+            }, 50);
+        }, 600);
+    }
+}
+
+// Support Clavier complet
 document.addEventListener('keydown', (e) => {
-    if (e.keyCode === 32 || e.keyCode === 39) { // Espace ou Flèche Droite
+    if (e.keyCode === 32 || e.keyCode === 39) { // Espace ou Droite -> Suivant
         if (e.keyCode === 32) e.preventDefault();
         transitionVersServices();
+    }
+    if (e.keyCode === 37) { // Flèche Gauche -> Retour
+        retourVersBulle();
     }
 });
