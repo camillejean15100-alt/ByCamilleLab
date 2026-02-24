@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
 
-/* --- RESET & BASES --- */
+/* --- RESET & CONFIGURATION --- */
 * {
     margin: 0;
     padding: 0;
@@ -8,11 +8,26 @@
     list-style: none !important;
 }
 
+html {
+    scroll-behavior: smooth; /* Pour un défilement doux vers les sections */
+}
+
 body {
     min-height: 100vh;
+    font-family: "Californian FB", serif;
+    background-color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* --- ACCUEIL (FIXÉ) --- */
+/* On garde l'accueil bloqué pour l'animation de départ */
+main {
+    height: 100vh;
+    width: 100%;
     background: url('fondaccueuil.jpg') no-repeat center center fixed !important;
     background-size: cover !important;
-    overflow-x: hidden;
+    position: relative;
+    z-index: 1;
 }
 
 /* --- LE MENU --- */
@@ -48,7 +63,7 @@ header nav ul li a {
     color: #1D70B7;
     padding-bottom: 5px;
     border-bottom: 3px solid transparent;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 header nav ul li a:hover,
@@ -57,9 +72,9 @@ header nav ul li a.active {
     border-bottom: 3px solid #87B347 !important;
 }
 
-/* --- TITRE FIXE (IMMOBILE) --- */
+/* --- TITRE ACCUEIL --- */
 .main-title {
-    position: fixed;
+    position: absolute;
     top: 15%;
     width: 100%;
     text-align: center;
@@ -68,24 +83,21 @@ header nav ul li a.active {
     color: #3B505C;
     text-shadow: 2px 2px 0px #FFFFFF, -2px -2px 0px #FFFFFF, 2px -2px 0px #FFFFFF, -2px 2px 0px #FFFFFF;
     z-index: 100;
-    opacity: 1 !important;
 }
 
-/* --- TA BULLE (FLUIDE ET RÉACTIVE) --- */
+/* --- BULLE DE DIALOGUE --- */
 .speech-bubble {
     position: fixed;
     top: 50%; 
-    left: 48%;
-    transform: translate(100px, -50%); /* Position de départ pour l'effet d'entrée */
+    left: 45%; 
+    transform: translate(50px, -50%);
     opacity: 0;
     background-color: #EADC9B;
     padding: 25px 45px;
     border-radius: 30px;
     box-shadow: 8px 8px 20px rgba(0,0,0,0.1);
     z-index: 500;
-    cursor: pointer;
-    /* Transition courte et dynamique */
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease-out;
+    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.6s ease;
 }
 
 .speech-bubble::after {
@@ -99,7 +111,6 @@ header nav ul li a.active {
     border-color: transparent #EADC9B transparent transparent;
 }
 
-/* Classe d'activation (Entrée) */
 .speech-bubble.visible {
     opacity: 1;
     transform: translate(-50%, -50%);
@@ -107,32 +118,27 @@ header nav ul li a.active {
 
 .speech-bubble p {
     color: #684132;
-    font-family: "Californian FB", serif;
     font-weight: bold;
     text-align: center;
     font-size: 1.8rem;
-    margin: 0;
     line-height: 1.2;
 }
 
-/* --- SECTION SERVICES (OPTIMISÉE) --- */
+/* --- CONTENEUR SERVICES (DÉCALÉ À GAUCHE POUR LE PERSO) --- */
 .services-container {
     display: none; 
     opacity: 0;
     position: fixed;
     top: 55%;
-    left: 50%;
-    transform: translate(-50%, -45%); /* Départ légèrement plus bas pour l'effet de montée */
-    width: 90%;
+    left: 40%; /* Laisse le perso visible à droite */
+    transform: translate(-50%, -48%);
+    width: 75%;
     justify-content: center;
-    align-items: stretch;
     gap: 20px;
     z-index: 600;
-    /* Transition de fondu et de montée synchronisée */
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* Classe d'activation (Apparition via JS) */
 .services-container.active {
     display: flex !important;
     opacity: 1;
@@ -140,11 +146,11 @@ header nav ul li a.active {
 }
 
 .service-card {
-    background-color: rgba(234, 220, 155, 0.85);
+    background-color: rgba(234, 220, 155, 0.9);
     border-radius: 20px;
-    padding: 35px 25px;
+    padding: 30px 20px;
     flex: 1;
-    max-width: 330px; 
+    max-width: 300px; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -153,18 +159,106 @@ header nav ul li a.active {
 }
 
 .service-card img {
-    height: 120px;
-    width: auto;
-    margin-bottom: 30px;
-    display: block;
+    height: 100px;
+    margin-bottom: 20px;
 }
 
 .service-card p {
     color: #684132;
-    font-family: "Californian FB", serif !important;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: bold;
     line-height: 1.3;
-    margin: 0;
+}
+
+/* --- STYLES DES SECTIONS SUIVANTES --- */
+.content-section {
+    position: relative;
+    z-index: 10; /* Pour passer au-dessus du fond fixe au scroll */
+    padding: 100px 10%;
+    min-height: 100vh;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.alt-bg { background-color: #f9f6ef; }
+
+.section-title {
+    font-family: 'Gochi Hand', cursive;
+    font-size: 3.5rem;
+    color: #87B347;
+    margin-bottom: 60px;
+}
+
+/* GRILLE PROJETS */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
     width: 100%;
 }
+
+.project-item {
+    height: 300px;
+    background: #EADC9B;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+}
+
+.project-item:hover { transform: translateY(-10px); }
+
+/* TARIFS */
+.pricing-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.price-card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    border: 2px solid #EADC9B;
+    text-align: center;
+    width: 280px;
+}
+
+.price-card.popular {
+    border-color: #87B347;
+    box-shadow: 0 15px 30px rgba(135, 179, 71, 0.2);
+}
+
+.price-card h3 { color: #684132; font-size: 1.8rem; margin-bottom: 15px; }
+
+.price { color: #1D70B7; font-size: 1.6rem; font-weight: bold; margin-bottom: 20px; }
+
+/* CONTACT */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.contact-form input, .contact-form textarea {
+    padding: 15px;
+    border: 2px solid #EADC9B;
+    border-radius: 10px;
+    outline: none;
+}
+
+.btn-submit {
+    background: #87B347;
+    color: white;
+    border: none;
+    padding: 15px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btn-submit:hover { background: #1D70B7; }
