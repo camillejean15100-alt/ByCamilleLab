@@ -146,3 +146,73 @@ header nav ul li a.active {
     font-size: 1.6rem;
     font-weight: bold;
 }
+
+/* PORTFOLIO */
+
+.section-projets {
+    position: relative;
+    padding: 80px 0 150px 0; /* Espace pour l'herbe en bas */
+    background-color: #fcf6e6; /* Couleur crème du fond */
+    
+    /* ON INJECTE LES DÉCORS ICI */
+    background-image: 
+        url('traitcoccinelle.png'), 
+        url('coccinelle.png'),
+        url('feuille1.png');
+    background-repeat: no-repeat;
+    
+    /* POSITIONNEMENT : Trait / Coccinelle / Feuille */
+    background-position: 
+        10px 50px,    /* Trait : à gauche, 50px du haut */
+        280px 180px,  /* Coccinelle : placée au bout du trait */
+        120px 300px;  /* Feuille 1 : près du premier cadre */
+        
+    background-size: 300px, 40px, 30px; /* Taille de chaque image */
+}
+
+/* Ajout de feuilles supplémentaires avec des pseudos-éléments */
+.section-projets::before {
+    content: "";
+    position: absolute;
+    top: 250px;
+    right: 20%;
+    width: 40px;
+    height: 40px;
+    background: url('feuille2.png') no-repeat;
+    background-size: contain;
+    transform: rotate(15deg);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2; /* Pour passer au-dessus des décors de fond */
+}
+
+/* Style des cadres blancs */
+.project-card {
+    background: #ffffff;
+    aspect-ratio: 1.5 / 1;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+}
+
+.project-card:hover {
+    transform: scale(1.03);
+}
+
+/* L'herbe en bas (basée sur plante.png) */
+.herbe-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: url('plante.png') repeat-x bottom; /* Se répète sur toute la largeur */
+    background-size: contain;
+}
