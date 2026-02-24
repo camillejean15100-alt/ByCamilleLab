@@ -26,14 +26,14 @@ header {
 
 nav {
     display: flex;
-    justify-content: space-between; /* Pousse le logo à gauche et la liste à droite */
+    justify-content: space-between;
     align-items: center;
     padding: 20px 50px;
-    background-color: transparent; /* Pour garder ton fond crème */
+    background-color: transparent;
 }
 
 .logo img {
-    height: 60px; /* À ajuster selon la taille de ton fichier */
+    height: 60px;
 }
 
 nav ul {
@@ -41,6 +41,7 @@ nav ul {
     display: flex;
     margin: 0;
     padding: 0;
+    gap: 30px;
 }
 
 nav ul li {
@@ -48,42 +49,25 @@ nav ul li {
     align-items: center;
 }
 
-/* On ajoute les barres verticales "|" sauf après le dernier élément */
 nav ul li:not(:last-child)::after {
     content: "|";
     margin: 0 10px;
-    color: #1a4a8e; /* La couleur bleue de ton texte */
+    color: #1a4a8e;
     font-weight: normal;
 }
 
 nav ul li a {
     text-decoration: none;
     color: #1a4a8e;
-    font-family: 'Arial', sans-serif; /* Remplace par ta police si tu l'as importée */
-    font-size: 1.1rem;
-    transition: color 0.3s;
-}
-
-/* Style pour le lien actif ou au survol */
-nav ul li a.active, 
-nav ul li a:hover {
-    color: #84a356; /* Le vert de "Voir mes projets" dans ta maquette */
-}
-
-header nav ul { display: flex; gap: 30px; }
-
-header nav ul li a {
-    text-decoration: none;
     font-family: "Californian FB", serif;
     font-weight: bold;
     font-size: 22px;
-    color: #1D70B7;
-    padding-bottom: 5px;
-    border-bottom: 3px solid transparent;
     transition: 0.3s;
-    
+    border-bottom: 3px solid transparent;
 }
-header nav ul li a.active {
+
+nav ul li a.active, 
+nav ul li a:hover {
     color: #87B347 !important;
     border-bottom: 3px solid #87B347 !important;
 }
@@ -113,6 +97,7 @@ header nav ul li a.active {
     z-index: 500;
     transition: transform 0.8s, opacity 0.6s;
     box-shadow: 8px 8px 20px rgba(0,0,0,0.1);
+    cursor: pointer;
 }
 
 .speech-bubble::after {
@@ -139,64 +124,53 @@ header nav ul li a.active {
     text-align: center;
 }
 
-/* --- LES CARTES (LEFT À 38% COMME DEMANDÉ) --- */
-/* 1. État initial : les cartes sont cachées */
+/* --- LES CARTES --- */
 #servicesIcons {
-    display: none; /* Totalement absent au début */
+    display: none; /* Caché par défaut */
     opacity: 0;
+    position: fixed;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
     transition: opacity 0.8s ease-in-out;
+    z-index: 600;
 }
 
-/* 2. État quand le JS ajoute la classe .active */
+/* Correction de la priorité : On force l'affichage quand .active est là */
 #servicesIcons.active {
-    display: flex; /* On le fait réapparaître dans le flux */
-    opacity: 1;    /* On le rend visible */
+    display: flex !important;
+    opacity: 1 !important;
 }
 
-/* Style rapide pour tes cartes (ajustements suggérés) */
 .service-card {
-    width: 250px;
+    width: 280px;
     text-align: center;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.5); /* Effet léger sur le fond crème */
-    border-radius: 15px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.05);
 }
 
 .service-card img {
-    width: 80px;
+    width: 100px;
     height: auto;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
+.service-card p {
+    font-family: "Californian FB", serif;
+    color: #3B505C;
+    font-size: 1.2rem;
+    line-height: 1.4;
+}
 
-/* --- AJOUTS POUR LE RESPONSIVE --- */
-
+/* --- RESPONSIVE --- */
 @media (max-width: 1024px) {
-    .main-title {
-        font-size: 3rem;
-        top: 12%;
-    }
-
-    .speech-bubble {
-        left: 50%;
-        transform: translate(-50%, -50%); /* Centré sur tablette */
-        width: 80%;
-    }
-
-    .services-container {
-        left: 50%;
-        transform: translate(-50%, -50%);
-        flex-wrap: wrap; /* Les cartes passent à la ligne si besoin */
-        justify-content: center;
-        width: 95%;
-    }
-
-    .service-card {
-        width: 280px;
-    }
+    .main-title { font-size: 3rem; top: 12%; }
+    .speech-bubble { width: 80%; left: 50%; }
+    .service-card { width: 250px; }
 }
-
-/* RESPONSIVE */
