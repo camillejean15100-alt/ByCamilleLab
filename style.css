@@ -28,19 +28,19 @@ header {
 nav {
     display: flex;
     justify-content: space-between;
-    align-items: center; /* ALIGNEMENT CENTRAL VERTICAL PARFAIT */
+    align-items: center; /* ALIGNEMENT VERTICAL AU CENTRE DU LOGO */
     width: 100%;
 }
 
 .logo img {
-    height: 105px; /* Ta taille de logo */
+    height: 105px; /* Ta taille de logo bloquée */
     width: auto;
     display: block;
 }
 
 header nav ul {
     display: flex;
-    align-items: center; /* Aligne les liens et les barres | au centre */
+    align-items: center; /* Aligne les liens et les barres au centre */
     margin: 0;
     padding: 0;
 }
