@@ -178,65 +178,77 @@ header nav ul li a.active {
 /* RESPONSIVE */
 
 /* --- LE MODE MOBILE QUI FONCTIONNE --- */
+
 @media (max-width: 768px) {
-    body {
-        overflow-y: auto !important; /* On autorise enfin le scroll */
-        display: block; 
+    /* On bloque tout mouvement vertical */
+    body, html {
+        overflow: hidden !important;
+        height: 100%;
     }
 
-    /* Le titre : plus petit et moins haut */
+    /* MENU : Plus fin et discret en haut */
+    nav {
+        padding: 10px 15px;
+    }
+    .logo img { height: 40px; } /* Logo réduit */
+    
+    header nav ul { 
+        gap: 12px; 
+    }
+    header nav ul li a {
+        font-size: 14px; /* Liens plus petits pour tenir sur une ligne */
+    }
+
+    /* TITRE : On réduit drastiquement la taille */
     .main-title {
-        position: relative; /* Il ne flotte plus, il suit le scroll */
-        top: 0;
-        padding: 100px 20px 40px; /* Espace pour le menu */
-        font-size: 2.2rem;
-        width: 100%;
+        font-size: 1.8rem;
+        top: 15%;
     }
 
-    /* La bulle : on la centre et on enlève le transform complexe */
+    /* LA BULLE : On ajuste pour qu'elle ne mange pas tout l'écran */
     .speech-bubble {
-        position: relative;
-        top: 0;
-        left: 0 !important;
-        transform: none !important;
-        margin: 20px auto; /* Centrage automatique */
-        width: 85%;
-        opacity: 0;
-        display: block;
+        width: 80%;
+        padding: 15px 20px;
+        left: 50% !important;
+        top: 50%;
+        transform: translate(-50%, -50%) !important;
     }
-
-    /* Animation mobile simplifiée */
-    .speech-bubble.visible {
-        opacity: 1 !important;
-        transform: translateY(0) !important;
+    .speech-bubble p {
+        font-size: 1.2rem;
     }
+    .speech-bubble::after { display: none; }
 
-    /* On enlève la pointe de la bulle sur mobile (ça gâche l'espace) */
-    .speech-bubble::after {
-        display: none;
-    }
-
-    /* Les cartes : en colonne, bien espacées */
+    /* LES CARTES : On les réduit pour qu'elles rentrent à trois sans scroller */
     .services-container {
-        position: relative;
-        top: 0;
-        left: 0 !important;
-        transform: none !important;
-        flex-direction: column; /* Une carte par ligne */
-        align-items: center;
-        width: 100%;
-        padding: 20px;
-        gap: 25px;
-        margin-bottom: 50px;
+        display: none; /* Caché par défaut comme avant */
+        flex-direction: column;
+        gap: 8px; /* Espace minimum entre les cartes */
+        top: 55%;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: 90%;
+    }
+
+    .services-container.active {
+        display: flex !important;
+        opacity: 1 !important;
     }
 
     .service-card {
         width: 100%;
-        max-width: 320px; /* Pas trop large sur les grands téléphones */
-        padding: 30px 20px;
+        padding: 10px; /* Moins de padding intérieur */
+        flex-direction: row; /* Image à gauche, texte à droite pour gagner de la hauteur */
+        height: 70px; /* Hauteur fixe pour forcer le "no scroll" */
+        gap: 15px;
     }
 
     .service-card img {
-        height: 100px;
+        height: 40px; /* Petites icônes */
+        margin-bottom: 0;
+    }
+
+    .service-card p {
+        font-size: 0.9rem; /* Texte compact */
+        text-align: left;
     }
 }
