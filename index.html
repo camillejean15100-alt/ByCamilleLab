@@ -9,57 +9,42 @@
 <body id="site-body">
 
     <header>
-  <nav>
-    <div class="logo"><img src="logocamille.png" alt="Logo"></div>
-    <ul>
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="projets.html">Voir mes projets</a></li>
-        <li><a href="propos.html">À Propos</a></li>
-        <li><a href="tarifs.html">Tarifs</a></li>
-        <li><a href="contact.html">Contact</a></li>
-    </ul>
-</nav>
+        <nav>
+            <div class="logo"><img src="logocamille.png" alt="Logo"></div>
+            <ul>
+                <li><a href="#" id="link-acc" class="active" onclick="afficherSection('accueil')">Accueil</a></li>
+                <li><a href="#" id="link-proj" onclick="afficherSection('projets')">Voir mes projets</a></li>
+                <li><a href="#">À Propos</a></li>
+                <li><a href="#">Tarifs</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main>
-        <h1 class="main-title">LE GRAPHISME AU SERVICE DE LA TERRE</h1>
-
         <section id="section-accueil">
+            <h1 class="main-title">LE GRAPHISME AU SERVICE DE LA TERRE</h1>
+            
             <div class="speech-bubble" id="missionBubble">
                 <p>« ma mission :<br>cultivons ensemble votre<br>image de marque »</p>
             </div>
 
             <div class="services-container" id="servicesIcons">
-                <div class="service-card">
-                    <img src="certif.png" alt="Logo">
-                    <p>Un logo et une image de marque qui vous ressemblent.</p>
-                </div>
-                <div class="service-card">
-                    <img src="panier.png" alt="Packaging">
-                    <p>Création d'étiquettes & de packagings pour vos produits.</p>
-                </div>
-                <div class="service-card">
-                    <img src="panneaux.png" alt="Supports">
-                    <p>Panneaux & supports pour rendre votre ferme visible.</p>
-                </div>
+                <div class="service-card"><img src="certif.png"><p>Un logo unique.</p></div>
+                <div class="service-card"><img src="panier.png"><p>Packaging miel.</p></div>
+                <div class="service-card"><img src="panneaux.png"><p>Supports ferme.</p></div>
             </div>
         </section>
 
-   <section id="section-projets">
-    <h2 class="citation-bleue">"De la graine à l'image : mes dernières réalisations."</h2>
-    
-    <div class="galerie-grid">
-        <div class="card-projet"></div>
-        <div class="card-projet"></div>
-        <div class="card-projet"></div>
-        <div class="card-projet"></div>
-        <div class="card-projet"></div>
-        <div class="card-projet"></div>
-        <div class="card-projet"></div>
-        <div class="card-projet"></div>
-    </div>
-</section>
-        
+        <section id="section-projets" style="display: none;">
+            <h2 class="citation-bleue">"De la graine à l'image : mes dernières réalisations."</h2>
+            <div class="galerie-grid">
+                <div class="card-projet"></div><div class="card-projet"></div>
+                <div class="card-projet"></div><div class="card-projet"></div>
+                <div class="card-projet"></div><div class="card-projet"></div>
+                <div class="card-projet"></div><div class="card-projet"></div>
+            </div>
+        </section>
     </main>
 
     <script src="script.js"></script>
