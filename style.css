@@ -136,47 +136,39 @@ header nav ul li a.active {
     line-height: 1.3;
 }
 
-/* --- LES CARTES : ALIGNEMENT ET CENTRAGE --- */
-.services-container {
-    display: none;
-    opacity: 0;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    max-width: 1200px;
-    display: flex;
-    justify-content: center; /* Centre les cartes horizontalement */
-    align-items: stretch; /* Force les cartes à avoir la même hauteur */
-    gap: 30px;
-    z-index: 600;
-    transition: opacity 0.8s ease;
-}
-
+/* --- ALIGNEMENT DES CARTES (CORRIGÉ) --- */
 .service-card {
-    background-color: rgba(234, 220, 155, 0.85); /* Ton beige semi-transparent */
+    background-color: rgba(234, 220, 155, 0.85);
     border-radius: 20px;
     padding: 40px 25px;
     flex: 1;
     max-width: 350px;
+    
+    /* Ces 4 lignes assurent le centrage parfait des icônes */
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centre les éléments à l'intérieur */
-    justify-content: center; /* Centre verticalement le contenu */
+    align-items: center;      /* Centre horizontalement */
+    justify-content: center;   /* Centre verticalement */
+    
     text-align: center;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    min-height: 400px;         /* Donne une hauteur égale pour le centrage */
 }
 
 .service-card img {
-    height: 120px;
+    /* On s'assure que l'icône ne prend pas toute la place et reste centrée */
     width: auto;
-    margin-bottom: 30px;
+    height: 100px;            /* Ajuste selon ton envie */
+    margin-bottom: 25px;      /* Espace constant entre l'icône et le texte */
+    display: block;
 }
 
 .service-card p {
-    font-size: 1.4rem;
+    font-family: "Californian FB", serif !important;
+    color: #684132 !important;
+    font-size: 1.3rem;
     font-weight: bold;
     line-height: 1.4;
     margin: 0;
+    width: 100%;              /* Pour que le centrage du texte soit total */
 }
