@@ -2,32 +2,38 @@ window.addEventListener('DOMContentLoaded', () => {
     const bubble = document.getElementById('missionBubble');
     const services = document.getElementById('servicesIcons');
 
-    // 1. Apparition de la bulle (immédiat)
+    // 1. Ton animation d'accueil (ne change pas)
     setTimeout(() => {
-        bubble.classList.add('visible');
+        if(bubble) bubble.classList.add('visible');
     }, 100);
 
-    // 2. Transition vers les cartes (après 1.6s)
     setTimeout(() => {
-        bubble.classList.remove('visible'); 
-        
+        if(bubble) bubble.classList.remove('visible'); 
         setTimeout(() => {
-            bubble.style.display = 'none';
-            services.classList.add('active'); // Utilise ton CSS ".services-container.active"
+            if(bubble) bubble.style.display = 'none';
+            if(services) services.classList.add('active');
         }, 600); 
     }, 1600);
 });
 
+// 2. Ta navigation (Switch de section)
 function changerPage(pageId) {
-    // 1. Switch des sections
-    document.getElementById('section-accueil').style.display = (pageId === 'accueil') ? 'block' : 'none';
-    document.getElementById('section-projets').style.display = (pageId === 'projets') ? 'block' : 'none';
+    const acc = document.getElementById('section-accueil');
+    const proj = document.getElementById('section-projets');
+    const liens = document.querySelectorAll('header nav ul li a');
 
-    // 2. Switch de la classe active (le trait vert)
-    document.querySelectorAll('nav ul li a').forEach(link => {
-        link.classList.remove('active');
-    });
-    
-    // On cible le lien cliqué par son onclick
-    event.currentTarget.classList.add('active');
+    // Masquage / Affichage
+    if (pageId === 'projets') {
+        acc.style.display = 'none';
+        proj.style.display = 'block';
+    } else {
+        proj.style.display = 'none';
+        acc.style.display = 'block';
+    }
+
+    // Gestion du trait vert (Active)
+    liens.forEach(link => link.classList.remove('active'));
+    if (event && event.currentTarget) {
+        event.currentTarget.classList.add('active');
+    }
 }
