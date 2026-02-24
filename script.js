@@ -18,16 +18,3 @@ window.addEventListener('DOMContentLoaded', () => {
     }, 1600);
 });
 
-function changerPage(nom) {
-    const acc = document.getElementById('section-accueil');
-    const proj = document.getElementById('section-projets');
-    const body = document.getElementById('site-body');
-
-    if (nom === 'projets') {
-        acc.style.display = 'none';
-        proj.style.display = 'block';
-        body.style.background = "#F3E9C7"; // Passage au fond beige
-    } else {
-        location.reload(); // Retour accueil
-    }
-}
