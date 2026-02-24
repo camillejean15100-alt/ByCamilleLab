@@ -16,24 +16,16 @@ body {
 }
 
 /* --- LE MENU --- */
-header {
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    padding: 30px 60px; /* Ajuste l'espace du haut ici */
-}
-
 nav {
     display: flex;
     justify-content: space-between; 
-    align-items: flex-end; /* Aligne le bas du menu sur le bas du logo */
+    align-items: flex-end; /* On force l'alignement sur le bas */
     width: 100%;
 }
 
 .logo {
     flex-shrink: 0;
+    line-height: 0; /* Supprime l'espace résiduel sous l'image */
 }
 
 .logo img {
@@ -44,15 +36,16 @@ nav {
 
 header nav ul {
     display: flex;
-    align-items: flex-end; /* Force l'alignement sur le bas du texte */
+    align-items: baseline; /* Aligne le texte sur sa ligne d'écriture */
     margin: 0;
     padding: 0;
-    padding-bottom: 15px; /* Ajuste cette valeur pour que le texte soit pile sur la ligne du logo */
+    /* Cet ajustement est la clé : */
+    margin-bottom: 22px; 
 }
 
 header nav ul li {
     display: flex;
-    align-items: center;
+    align-items: baseline;
 }
 
 header nav ul li a {
@@ -61,25 +54,11 @@ header nav ul li a {
     font-weight: bold;
     font-size: 24px;
     color: #1D70B7;
-    padding-bottom: 5px; /* Espace avant le trait vert */
+    padding-bottom: 5px; 
     border-bottom: 4px solid transparent; 
     transition: 0.3s;
-    line-height: 1; /* Évite les décalages de police */
-}
-
-/* L'effet au passage et l'état actif */
-header nav ul li a:hover,
-header nav ul li a.active {
-    color: #87B347 !important;
-    border-bottom: 4px solid #87B347 !important;
-}
-
-header nav ul li:not(:last-child)::after {
-    content: "|";
-    margin: 0 20px;
-    color: #1D70B7;
-    font-size: 22px;
-    opacity: 0.7;
+    display: inline-block;
+    vertical-align: baseline;
 }
 
 /* --- TITRE --- */
