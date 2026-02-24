@@ -41,10 +41,7 @@ header nav ul li a {
     font-weight: bold;
     font-size: 22px;
     color: #1D70B7;
-    transition: all 0.3s;
 }
-
-header nav ul li a:hover { color: #87B347 !important; }
 
 /* --- TITRE --- */
 .main-title {
@@ -58,7 +55,7 @@ header nav ul li a:hover { color: #87B347 !important; }
     text-shadow: 2px 2px 0px #FFFFFF, -2px -2px 0px #FFFFFF, 2px -2px 0px #FFFFFF, -2px 2px 0px #FFFFFF;
 }
 
-/* --- LA BULLE (REMISE À SA PLACE INITIALE) --- */
+/* --- LA VRAIE BULLE (AVEC SA POINTE) --- */
 .speech-bubble {
     position: fixed;
     top: 50%; 
@@ -70,12 +67,14 @@ header nav ul li a:hover { color: #87B347 !important; }
     border-radius: 30px;
     z-index: 500;
     transition: transform 0.8s ease-out, opacity 0.6s ease-out;
+    box-shadow: 8px 8px 20px rgba(0,0,0,0.1);
 }
 
+/* C'est ce bloc qui crée la pointe de la bulle ! */
 .speech-bubble::after {
     content: '';
     position: absolute;
-    left: -25px;
+    left: -25px; /* La pointe sort à gauche vers Camille */
     top: 50%;
     transform: translateY(-50%);
     border-style: solid;
@@ -94,14 +93,13 @@ header nav ul li a:hover { color: #87B347 !important; }
     line-height: 1.2;
 }
 
-/* --- LES CARTES (DESIGN RESTAURÉ + POSITION AJUSTÉE) --- */
+/* --- LES CARTES (DESIGN OK + POSITION ENTRE PERSO ET TRACTEUR) --- */
 .services-container {
     display: none; 
     opacity: 0;
     position: fixed;
     top: 55%;
-    /* AJUSTEMENT ICI : 58% pour être entre le perso et le tracteur */
-    left: 58%; 
+    left: 58%; /* Poussé vers la droite pour libérer ton visage */
     transform: translate(-50%, -50%);
     width: 80%; 
     display: flex;
@@ -117,11 +115,11 @@ header nav ul li a:hover { color: #87B347 !important; }
 }
 
 .service-card {
-    background-color: rgba(234, 220, 155, 0.85); /* Ton beige d'origine */
+    background-color: rgba(234, 220, 155, 0.85);
     border-radius: 20px;
-    padding: 35px 25px; /* Tes marges d'origine */
+    padding: 35px 25px; 
     flex: 1;
-    max-width: 330px;  /* Ta largeur d'origine */
+    max-width: 330px;  
     display: flex;
     flex-direction: column;
     align-items: center;
