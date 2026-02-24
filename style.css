@@ -7,71 +7,57 @@ body {
     background: url('fondaccueuil.jpg') no-repeat center center fixed;
     background-size: cover;
     font-family: Arial, sans-serif;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
-/* HEADER & NAV */
-header nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 25px 60px;
-    align-items: center;
-}
-
+/* NAVIGATION */
+header nav { display: flex; justify-content: space-between; padding: 20px 60px; }
 header nav ul { display: flex; list-style: none; gap: 30px; }
-header nav ul li a { 
-    text-decoration: none; 
-    color: #1D70B7; 
-    font-weight: bold; 
-    font-size: 1.2rem; 
-}
-header nav ul li a.active { color: #87B347; }
+header nav ul li a { text-decoration: none; color: #1D70B7; font-weight: bold; }
 
-/* LE TITRE QUI NE DOIT PAS BOUGER */
+/* TITRE */
 .main-title {
     text-align: center;
-    padding-top: 50px;
+    margin-top: 50px;
     font-family: 'Gochi Hand', cursive;
     font-size: 4rem;
     color: #3B505C;
     text-shadow: 2px 2px white;
 }
 
-/* LA BULLE DE DIALOGUE */
+/* REGLAGE BULLE (IMAGE 1) */
 .speech-bubble {
     position: absolute;
     top: 35%;
-    left: 15%;
+    left: 12%;
     background: white;
-    padding: 20px 30px;
-    border-radius: 50px;
-    box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
-    cursor: pointer;
+    padding: 25px 35px;
+    border-radius: 60px;
+    box-shadow: 5px 10px 20px rgba(0,0,0,0.1);
 }
+.speech-bubble p { font-family: 'Gochi Hand'; font-size: 1.8rem; color: #3B505C; text-align: center; }
 
-.speech-bubble p {
-    font-family: 'Gochi Hand', cursive;
-    font-size: 1.8rem;
-    color: #3B505C;
-    line-height: 1.2;
-    text-align: center;
-}
-
-/* LES CARTES SERVICES */
+/* REGLAGE CARTES (IMAGE 1) */
 .services-container {
+    position: absolute;
+    bottom: 10%;
+    width: 100%;
     display: flex;
     justify-content: center;
-    gap: 40px;
-    margin-top: 150px;
+    gap: 50px;
 }
-
 .service-card {
     background: rgba(255, 255, 255, 0.9);
     padding: 20px;
     border-radius: 20px;
-    width: 250px;
+    width: 260px;
     text-align: center;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
+.service-card img { width: 70px; margin-bottom: 10px; }
 
-.service-card img { width: 80px; margin-bottom: 15px; }
+/* STYLE PROJETS (IMAGE 2) */
+body.mode-projets { background: #F3E9C7 !important; }
+.citation-bleue { text-align: center; color: #1D70B7; font-family: 'Gochi Hand'; font-size: 2.5rem; margin-top: 100px; }
+.galerie-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; width: 80%; margin: 50px auto; }
+.card { background: white; aspect-ratio: 1.5/1; border-radius: 10px; }
