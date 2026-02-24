@@ -109,7 +109,7 @@ header nav ul li a.active {
     opacity: 0;
     position: fixed;
     top: 55%;
-    left: 32%; /* Pile dans le creux de l'image */
+    left: 38%; /* Pile dans le creux de l'image */
     transform: translateY(-50%); 
     width: auto; 
     display: flex;
