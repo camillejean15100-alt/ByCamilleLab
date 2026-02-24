@@ -15,7 +15,7 @@ body {
     overflow: hidden;
 }
 
-/* --- LE MENU (BLEU ET VERT - REPARÉ) --- */
+/* --- LE MENU (COULEURS OK) --- */
 header {
     width: 100%;
     position: fixed;
@@ -40,13 +40,12 @@ header nav ul li a {
     font-family: "Californian FB", serif;
     font-weight: bold;
     font-size: 22px;
-    color: #1D70B7; /* Bleu d'origine */
+    color: #1D70B7;
     padding-bottom: 5px;
     border-bottom: 3px solid transparent;
     transition: all 0.3s ease-in-out;
 }
 
-/* Le vert quand on survole ou quand c'est la page active */
 header nav ul li a:hover,
 header nav ul li a.active {
     color: #87B347 !important;
@@ -65,7 +64,7 @@ header nav ul li a.active {
     text-shadow: 2px 2px 0px #FFFFFF, -2px -2px 0px #FFFFFF, 2px -2px 0px #FFFFFF, -2px 2px 0px #FFFFFF;
 }
 
-/* --- LA BULLE (POSITION ORIGINALE + POINTE) --- */
+/* --- LA BULLE (POSITION INITIALE + POINTE) --- */
 .speech-bubble {
     position: fixed;
     top: 50%; 
@@ -99,18 +98,17 @@ header nav ul li a.active {
     font-weight: bold;
     font-size: 1.8rem;
     text-align: center;
-    line-height: 1.2;
 }
 
-/* --- LES CARTES (LE DESIGN ET LE PLACEMENT QUE TU AS VALIDÉ) --- */
+/* --- LES CARTES (ENTRE CAMILLE ET LE TOURNESOL) --- */
 .services-container {
     display: none; 
     opacity: 0;
     position: fixed;
     top: 55%;
-    left: 45%; 
+    left: 40%; /* Ajusté pour être pile entre le perso et le tournesol */
     transform: translateY(-50%); 
-    width: 50%; 
+    width: 55%; 
     display: flex;
     justify-content: flex-start;
     gap: 20px;
