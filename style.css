@@ -69,7 +69,6 @@ nav ul li a.active,
 nav ul li a:hover {
     color: #84a356; /* Le vert de "Voir mes projets" dans ta maquette */
 }
-.logo img { height: 75px; }
 
 header nav ul { display: flex; gap: 30px; }
 
