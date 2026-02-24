@@ -1,26 +1,18 @@
-window.addEventListener('DOMContentLoaded', () => {
-    const bubble = document.getElementById('missionBubble');
-    const services = document.getElementById('servicesIcons');
+function changerPage(pageId) {
+    const sectionAccueil = document.getElementById('section-accueil');
+    const sectionProjets = document.getElementById('section-projets');
+    const liens = document.querySelectorAll('nav ul li a');
 
-    // Apparition de la bulle
-    setTimeout(() => {
-        bubble.classList.add('visible');
-    }, 500);
+    // On retire la classe 'active' de tous les boutons du menu
+    liens.forEach(lien => lien.classList.remove('active'));
 
-    // Clic sur la bulle
-    bubble.addEventListener('click', () => {
-        // 1. On lance l'animation de sortie de la bulle
-        bubble.style.opacity = '0';
-        bubble.style.transform = 'translate(-50%, -60%)'; // Elle monte un peu en disparaissant
-        
-        setTimeout(() => {
-            bubble.style.display = 'none'; // On l'enlève
-            
-            // 2. On affiche les cartes
-            services.classList.add('active');
-            
-            // Debug pour toi (à supprimer après) :
-            console.log("Les cartes ont maintenant la classe :", services.className);
-        }, 600);
-    });
-});
+    if (pageId === 'accueil') {
+        sectionProjets.style.display = 'none';
+        sectionAccueil.style.display = 'block';
+        document.getElementById('link-acc').classList.add('active');
+    } else if (pageId === 'projets') {
+        sectionAccueil.style.display = 'none';
+        sectionProjets.style.display = 'block';
+        document.getElementById('link-proj').classList.add('active');
+    }
+}
