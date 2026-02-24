@@ -134,7 +134,7 @@ header nav ul li a.active {
     padding: 50px 30px; 
     flex: 1;
     max-width: 350px; 
-    min-height: 520px; /* Hauteur pour bien remplir l'espace */
+    min-height: 450px; /* Hauteur pour bien remplir l'espace */
     display: flex;
     flex-direction: column;
     align-items: center;
