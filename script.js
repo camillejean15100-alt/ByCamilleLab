@@ -19,24 +19,29 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 function changerPage(page) {
-    // On récupère les deux sections
     const accueil = document.getElementById('section-accueil');
     const projets = document.getElementById('section-projets');
-    const titreH1 = document.querySelector('.main-title');
+    const linkAcc = document.getElementById('link-acc');
+    const linkProj = document.getElementById('link-proj');
 
     if (page === 'projets') {
-        // --- MODE PROJETS ---
-        accueil.style.display = 'none';      // Cache tout l'accueil
-        if(titreH1) titreH1.style.display = 'none'; // Cache le titre H1
+        accueil.style.display = 'none';
+        projets.style.display = 'block';
         
-        projets.style.display = 'block';     // Affiche la galerie
-        document.body.style.backgroundImage = "none"; // Nettoie le fond du body
+        // Gestion du menu actif (Vert)
+        linkProj.classList.add('active');
+        linkAcc.classList.remove('active');
+        
+        // Application du fond spécifique à la galerie
+        document.body.style.backgroundImage = "url('voirmesprojets.jpg')";
     } else {
-        // --- MODE ACCUEIL ---
-        accueil.style.display = 'block';     // Réaffiche l'accueil
-        if(titreH1) titreH1.style.display = 'block'; 
+        accueil.style.display = 'block';
+        projets.style.display = 'none';
         
-        projets.style.display = 'none';      // Cache la galerie
+        linkAcc.classList.add('active');
+        linkProj.classList.remove('active');
+        
+        // Retour au fond d'accueil
         document.body.style.backgroundImage = "url('fondaccueil.jpg')";
     }
 }
