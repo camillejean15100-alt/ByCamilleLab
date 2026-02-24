@@ -16,36 +16,37 @@ body {
 }
 
 /* --- LE MENU --- */
-nav {
-    display: flex;
-    justify-content: space-between; 
-    align-items: flex-end; /* On force l'alignement sur le bas */
+header {
     width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 25px 50px; /* L'espace que tu as sur ta maquette */
 }
 
-.logo {
-    flex-shrink: 0;
-    line-height: 0; /* Supprime l'espace résiduel sous l'image */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* Calé sur le bas du texte "Camille" */
 }
 
 .logo img {
-    height: 105px; /* Ta taille de logo */
+    height: 105px; /* Ta taille réelle */
     width: auto;
     display: block;
 }
 
 header nav ul {
     display: flex;
-    align-items: baseline; /* Aligne le texte sur sa ligne d'écriture */
     margin: 0;
     padding: 0;
-    /* Cet ajustement est la clé : */
-    margin-bottom: 22px; 
+    padding-bottom: 12px; /* Ajustement précis pour la ligne de base */
 }
 
 header nav ul li {
     display: flex;
-    align-items: baseline;
+    align-items: center;
 }
 
 header nav ul li a {
@@ -54,13 +55,27 @@ header nav ul li a {
     font-weight: bold;
     font-size: 24px;
     color: #1D70B7;
-    padding-bottom: 5px; 
-    border-bottom: 4px solid transparent; 
+    padding: 0 5px 8px 5px; /* Espace pour le trait vert */
+    border-bottom: 4px solid transparent;
     transition: 0.3s;
-    display: inline-block;
-    vertical-align: baseline;
+    white-space: nowrap;
 }
 
+/* Ton effet de survol et le trait vert actif */
+header nav ul li a:hover,
+header nav ul li a.active {
+    color: #87B347 !important;
+    border-bottom: 4px solid #87B347 !important;
+}
+
+/* Séparateurs | avec l'espace de la maquette */
+header nav ul li:not(:last-child)::after {
+    content: "|";
+    padding: 0 20px; /* C'est ça qui manque à ton rendu ! */
+    color: #1D70B7;
+    font-size: 20px;
+    font-weight: normal;
+}
 /* --- TITRE --- */
 .main-title {
     position: fixed;
