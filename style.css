@@ -22,31 +22,32 @@ header {
     top: 0;
     left: 0;
     z-index: 1000;
-    padding: 30px 60px; /* Espace identique à la maquette */
+    padding: 30px 60px; /* Ajuste l'espace du haut ici */
 }
 
 nav {
     display: flex;
-    justify-content: space-between; /* Logo à gauche, Menu à droite */
-    align-items: center; 
+    justify-content: space-between; 
+    align-items: flex-end; /* Aligne le bas du menu sur le bas du logo */
     width: 100%;
 }
 
 .logo {
-    flex-shrink: 0; /* Empêche l'image de devenir "toute petite" */
+    flex-shrink: 0;
 }
 
 .logo img {
-    height: 100px; /* Taille verrouillée */
+    height: 105px; /* Ta taille de logo */
     width: auto;
     display: block;
 }
 
 header nav ul {
     display: flex;
-    align-items: center;
+    align-items: flex-end; /* Force l'alignement sur le bas du texte */
     margin: 0;
     padding: 0;
+    padding-bottom: 15px; /* Ajuste cette valeur pour que le texte soit pile sur la ligne du logo */
 }
 
 header nav ul li {
@@ -54,33 +55,30 @@ header nav ul li {
     align-items: center;
 }
 
-/* Style des liens - Police et Couleur */
 header nav ul li a {
     text-decoration: none;
     font-family: "Californian FB", serif;
     font-weight: bold;
     font-size: 24px;
     color: #1D70B7;
-    padding-bottom: 8px; /* Espace pour le trait vert */
+    padding-bottom: 5px; /* Espace avant le trait vert */
     border-bottom: 4px solid transparent; 
-    transition: all 0.3s ease;
-    white-space: nowrap; /* Empêche le texte de revenir à la ligne */
+    transition: 0.3s;
+    line-height: 1; /* Évite les décalages de police */
 }
 
-/* Effet Hover et Active (Le trait vert de la maquette) */
+/* L'effet au passage et l'état actif */
 header nav ul li a:hover,
 header nav ul li a.active {
     color: #87B347 !important;
     border-bottom: 4px solid #87B347 !important;
 }
 
-/* Les barres séparatrices "|" bien espacées */
 header nav ul li:not(:last-child)::after {
     content: "|";
-    margin: 0 25px; /* L'espace exact pour que ça ne fasse pas "moche" */
+    margin: 0 20px;
     color: #1D70B7;
     font-size: 22px;
-    font-weight: normal;
     opacity: 0.7;
 }
 
