@@ -28,46 +28,33 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 50px;
-    background-color: transparent;
+    width: 100%;
 }
 
-.logo img {
-    height: 60px;
+.logo img { 
+    height: 75px; 
+    width: auto; /* Garde les proportions */
+    display: block;
 }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-    gap: 30px;
-}
-
-nav ul li {
-    display: flex;
+header nav ul { 
+    display: flex; 
+    gap: 30px; 
     align-items: center;
 }
 
-nav ul li:not(:last-child)::after {
-    content: "|";
-    margin: 0 10px;
-    color: #1a4a8e;
-    font-weight: normal;
-}
-
-nav ul li a {
+header nav ul li a {
     text-decoration: none;
-    color: #1a4a8e;
     font-family: "Californian FB", serif;
     font-weight: bold;
     font-size: 22px;
-    transition: 0.3s;
+    color: #1D70B7;
+    padding-bottom: 5px;
     border-bottom: 3px solid transparent;
+    transition: 0.3s;
 }
 
-nav ul li a.active, 
-nav ul li a:hover {
+header nav ul li a.active {
     color: #87B347 !important;
     border-bottom: 3px solid #87B347 !important;
 }
