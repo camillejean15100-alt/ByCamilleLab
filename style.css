@@ -15,7 +15,7 @@ body {
     overflow-x: hidden;
 }
 
-/* --- LE MENU : BLEU ET VERT AU SURVOL --- */
+/* --- LE MENU : INTERACTIF --- */
 header {
     width: 100%;
     position: fixed;
@@ -57,9 +57,9 @@ header nav ul li a.active {
     border-bottom: 3px solid #87B347 !important;
 }
 
-/* --- TITRE --- */
+/* --- TITRE FIXE (NE BOUGE JAMAIS) --- */
 .main-title {
-    position: fixed;
+    position: fixed; /* Il reste scotché en haut */
     top: 15%;
     width: 100%;
     text-align: center;
@@ -67,6 +67,7 @@ header nav ul li a.active {
     font-size: 4.5rem;
     color: #3B505C;
     text-shadow: 2px 2px 0px #FFFFFF, -2px -2px 0px #FFFFFF, 2px -2px 0px #FFFFFF, -2px 2px 0px #FFFFFF;
+    z-index: 100; /* Derrière la bulle et les services pour ne pas gêner */
 }
 
 /* --- TA BULLE PARFAITE (RESTAURÉE) --- */
@@ -111,18 +112,18 @@ header nav ul li a.active {
     line-height: 1.2;
 }
 
-/* --- SECTION SERVICES : ERGONOMIE CORRIGÉE --- */
+/* --- SECTION SERVICES : ERGONOMIQUE --- */
 .services-container {
     display: none; 
     opacity: 0;
     position: fixed;
-    top: 52%; 
+    top: 55%; /* Un peu plus bas pour laisser le titre fixe respirer */
     left: 65%; 
     transform: translate(-50%, -50%);
     width: 85%; 
     display: flex;
     justify-content: center;
-    align-items: stretch; /* Force toutes les cartes à avoir la même hauteur naturellement */
+    align-items: stretch; 
     gap: 20px;
     z-index: 600;
     transition: opacity 0.8s ease-in-out;
@@ -131,7 +132,7 @@ header nav ul li a.active {
 .service-card {
     background-color: rgba(234, 220, 155, 0.85);
     border-radius: 20px;
-    padding: 35px 25px; /* Padding réduit pour plus de légèreté */
+    padding: 35px 25px;
     flex: 1;
     max-width: 330px; 
     display: flex;
@@ -142,15 +143,16 @@ header nav ul li a.active {
 }
 
 .service-card img {
-    height: 120px; /* Taille plus équilibrée pour l'ergonomie */
+    height: 120px;
     width: auto;
-    margin-bottom: 30px; /* Marge fixe pour aligner les textes */
+    margin-bottom: 30px;
+    display: block;
 }
 
 .service-card p {
     color: #684132;
     font-family: "Californian FB", serif !important;
-    font-size: 1.6rem; /* Taille généreuse mais mieux proportionnée */
+    font-size: 1.6rem;
     font-weight: bold;
     line-height: 1.3;
     margin: 0;
