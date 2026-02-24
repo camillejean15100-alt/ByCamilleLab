@@ -2,19 +2,23 @@ window.addEventListener('DOMContentLoaded', () => {
     const bubble = document.getElementById('missionBubble');
     const services = document.getElementById('servicesIcons');
 
-    // 1. Apparition de la bulle (immédiat)
+    // 1. Apparition
     setTimeout(() => {
         bubble.classList.add('visible');
-    }, 100);
+    }, 200);
 
-    // 2. Disparition bulle + Apparition cartes (après 1.5s)
+    // 2. Transition
     setTimeout(() => {
-        bubble.classList.remove('visible'); // Lance la transition CSS de sortie
+        bubble.style.opacity = '0';
         
         setTimeout(() => {
             bubble.style.display = 'none';
-            services.classList.add('active'); // Affiche les cartes à 38%
-        }, 600); // Attend la fin de la transition de la bulle
-    }, 1600);
+            services.classList.add('active');
+            
+            // Sur mobile, on réactive le scroll une fois les cartes là
+            if(window.innerWidth <= 768) {
+                document.body.style.overflowY = "auto";
+            }
+        }, 600);
+    }, 2500); 
 });
-
