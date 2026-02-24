@@ -1,29 +1,33 @@
-// Variable pour stocker le minuteur (au cas où on veut l'arrêter)
+// Variable pour le minuteur auto
 let autoTransitionTimer;
 
 window.onload = function() {
-    const bulle = document.getElementById('missionBubble');
+    // On cherche l'élément qui a la classe 'speech-bubble'
+    const bulle = document.querySelector('.speech-bubble');
+    
     if (bulle) {
-        // 1. Apparition de la bulle après 0.5s
+        // 1. On s'assure qu'elle est prête à être vue
+        bulle.style.display = "block"; 
+        
         setTimeout(() => {
+            // 2. On ajoute la classe pour l'animation d'entrée
             bulle.classList.add('visible');
             
-            // 2. Démarrage du compte à rebours pour la transition automatique
-            // On laisse 6 secondes (6000ms) pour lire le texte de la bulle
+            // 3. Lancement du défilement auto après 7 secondes
             autoTransitionTimer = setTimeout(() => {
                 transitionVersServices();
-            }, 6000); 
+            }, 7000); 
         }, 500);
     }
 };
 
 // --- ALLER VERS LES SERVICES ---
 function transitionVersServices() {
-    const bulle = document.getElementById('missionBubble');
-    const services = document.getElementById('servicesIcons');
+    const bulle = document.querySelector('.speech-bubble');
+    const services = document.querySelector('.services-container');
 
-    if (bulle && services && bulle.style.display !== 'none') {
-        // Si l'utilisateur clique ou utilise les flèches, on annule le minuteur auto
+    if (bulle && services && getComputedStyle(bulle).display !== 'none') {
+        // On arrête le minuteur si l'utilisateur a cliqué lui-même
         clearTimeout(autoTransitionTimer);
 
         bulle.style.opacity = "0";
@@ -39,4 +43,33 @@ function transitionVersServices() {
     }
 }
 
-// ... garde le reste de tes fonctions (retourVersBulle et Clavier)
+// --- REVENIR À LA BULLE ---
+function retourVersBulle() {
+    const bulle = document.querySelector('.speech-bubble');
+    const services = document.querySelector('.services-container');
+
+    if (services && bulle && getComputedStyle(services).display !== 'none') {
+        services.style.opacity = "0";
+        
+        setTimeout(() => {
+            services.style.display = "none";
+            bulle.style.display = "block";
+            
+            setTimeout(() => {
+                bulle.style.opacity = "1";
+                bulle.style.transform = "translate(-50%, -50%)";
+            }, 50);
+        }, 600);
+    }
+}
+
+// Support Clavier (Espace, Droite, Gauche)
+document.addEventListener('keydown', (e) => {
+    if (e.code === "Space" || e.code === "ArrowRight") {
+        if (e.code === "Space") e.preventDefault();
+        transitionVersServices();
+    }
+    if (e.code === "ArrowLeft") {
+        retourVersBulle();
+    }
+});
