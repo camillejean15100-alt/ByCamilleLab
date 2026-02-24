@@ -5,42 +5,41 @@ function changerPage(page) {
     const linkProj = document.getElementById('link-proj');
 
     if (page === 'projets') {
-        // Affiche Projets, cache Accueil
         accueil.style.display = 'none';
         projets.style.display = 'block';
         
         // Menu : "Voir mes projets" devient VERT
-        linkProj.style.color = "#8db600";
-        linkAcc.style.color = "#1a5a96"; 
+        linkProj.classList.add('active');
+        linkAcc.classList.remove('active');
         
-        // Change le fond d'écran
-        document.body.style.backgroundImage = "url('voirmesprojets.jpg')";
+        // Change le fond du body pour la galerie
+        document.body.style.background = "url('voirmesprojets.jpg') no-repeat center center fixed";
+        document.body.style.backgroundSize = "cover";
     } else {
-        // Affiche Accueil, cache Projets
         accueil.style.display = 'block';
         projets.style.display = 'none';
         
-        // Menu : "Accueil" devient VERT (ou bleu selon ton choix)
-        linkAcc.style.color = "#8db600";
-        linkProj.style.color = "#1a5a96";
+        // Menu : "Accueil" redevient VERT
+        linkAcc.classList.add('active');
+        linkProj.classList.remove('active');
         
         // Remet le fond d'accueil
-        document.body.style.backgroundImage = "url('fondaccueil.jpg')";
+        document.body.style.background = "url('fondaccueil.jpg') no-repeat center center fixed";
+        document.body.style.backgroundSize = "cover";
     }
 }
 
-// Garde ton animation de bulle ici en dessous...
+// Ton animation de bulle (on ne la touche pas, elle fonctionne)
 window.addEventListener('DOMContentLoaded', () => {
     const bubble = document.getElementById('missionBubble');
     const services = document.getElementById('servicesIcons');
-    if (bubble && services) {
+    if (bubble) {
         setTimeout(() => { bubble.classList.add('visible'); }, 500);
         setTimeout(() => {
             bubble.style.opacity = '0';
             setTimeout(() => {
                 bubble.style.display = 'none';
-                services.classList.add('active');
-                services.style.display = 'flex';
+                if(services) services.classList.add('active');
             }, 600);
         }, 3500);
     }
