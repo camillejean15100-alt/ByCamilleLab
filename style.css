@@ -64,15 +64,14 @@ header nav ul li a.active {
     text-shadow: 2px 2px 0px #FFFFFF, -2px -2px 0px #FFFFFF, 2px -2px 0px #FFFFFF, -2px 2px 0px #FFFFFF;
 }
 
-/* --- LA BULLE PARFAITEMENT CALÉE SUR LE PERSO --- */
-/* --- TA BULLE D'ORIGINE (RESTAURÉE) --- */
+/* --- TA BULLE D'ORIGINE (NON MODIFIÉE) --- */
 .speech-bubble {
     position: fixed;
     top: 50%; 
     left: 48%;
-    transform: translate(100px, -50%); /* Départ pour l'anim */
+    transform: translate(100px, -50%);
     opacity: 0;
-    background-color: #EADC9B; /* Ta couleur exacte */
+    background-color: #EADC9B;
     padding: 25px 45px;
     border-radius: 30px;
     box-shadow: 8px 8px 20px rgba(0,0,0,0.1);
@@ -81,7 +80,6 @@ header nav ul li a.active {
     transition: transform 0.8s ease-out, opacity 0.6s ease-out;
 }
 
-/* Ta pointe sur le côté gauche */
 .speech-bubble::after {
     content: '';
     position: absolute;
@@ -108,25 +106,17 @@ header nav ul li a.active {
     line-height: 1.2;
 }
 
-/*bulle ce que je propose*/
-
-/* --- ALIGNEMENT HORIZONTAL STRICT --- */
+/* --- ALIGNEMENT DES SERVICES (CORRECTION PANNEAU) --- */
 .service-card {
     background-color: rgba(234, 220, 155, 0.8);
     border-radius: 15px;
     padding: 30px 20px;
     flex: 1;
     max-width: 300px;
-    
-    /* On utilise flex pour organiser l'icône et le texte */
     display: flex;
     flex-direction: column;
     align-items: center;
-    
-    /* On force une hauteur minimale pour que les cartes soient identiques */
-    min-height: 380px; 
-    
-    /* On pousse le texte vers le bas pour qu'ils s'alignent tous */
+    min-height: 400px; /* Assure que toutes les cartes ont la même taille */
     justify-content: flex-start; 
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
@@ -134,8 +124,7 @@ header nav ul li a.active {
 .service-card img {
     height: 90px;
     width: auto;
-    /* On fixe une marge basse identique pour tout le monde */
-    margin-bottom: 40px; 
+    margin-bottom: 40px; /* Verrouille la hauteur de départ du texte */
     display: block;
 }
 
@@ -147,8 +136,6 @@ header nav ul li a.active {
     line-height: 1.4;
     margin: 0;
     text-align: center;
-    
-    /* Ce paramètre assure que le début du texte est au même niveau partout */
-    display: flex;
-    align-items: flex-start; 
+    display: block; /* Retour au mode bloc pour un centrage propre */
+    width: 100%;
 }
