@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
 
-/* --- BASES & RESET --- */
+/* --- BASES --- */
 * {
     margin: 0;
     padding: 0;
@@ -12,8 +12,7 @@ body {
     min-height: 100vh;
     background: url('fondaccueuil.jpg') no-repeat center center fixed !important;
     background-size: cover !important;
-    overflow-x: hidden; /* Empêche le scroll horizontal parasite */
-    font-family: "Californian FB", serif;
+    overflow: hidden;
 }
 
 /* --- LE MENU --- */
@@ -45,40 +44,14 @@ header nav ul li a {
     padding-bottom: 5px;
     border-bottom: 3px solid transparent;
     transition: 0.3s;
+    
 }
-
-/* État Hover et Activation via l'ancre #projets */
-header nav ul li a:hover,
-#projets:target ~ header nav ul li a[href="#projets"] {
+header nav ul li a.active {
     color: #87B347 !important;
     border-bottom: 3px solid #87B347 !important;
 }
 
-/* --- SECTION PROJETS (LA VUE BEIGE) --- */
-#projets {
-    display: none; /* Masqué par défaut */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #F3E9C7 !important;
-    z-index: 900; /* Sous le menu mais sur l'accueil */
-    padding-top: 150px;
-    overflow-y: auto;
-}
-
-/* Affichage quand l'URL contient #projets */
-#projets:target {
-    display: block !important;
-}
-
-/* Cacher l'accueil quand on regarde les projets */
-#projets:target ~ #wrapper-accueil {
-    display: none !important;
-}
-
-/* --- SECTION ACCUEIL --- */
+/* --- TITRE --- */
 .main-title {
     position: fixed;
     top: 15%;
@@ -90,50 +63,63 @@ header nav ul li a:hover,
     text-shadow: 2px 2px 0px #FFFFFF, -2px -2px 0px #FFFFFF;
 }
 
-/* LA BULLE */
+/* --- LA BULLE (AVEC SA POINTE) --- */
 .speech-bubble {
     position: fixed;
     top: 50%; 
     left: 48%; 
-    transform: translate(150px, -50%); /* Départ pour l'animation JS */
+    transform: translate(100px, -50%);
     opacity: 0;
     background-color: #EADC9B;
     padding: 25px 45px;
     border-radius: 30px;
     z-index: 500;
+    transition: transform 0.8s, opacity 0.6s;
     box-shadow: 8px 8px 20px rgba(0,0,0,0.1);
-    transition: transform 0.8s ease-out, opacity 0.6s;
 }
 
-.speech-bubble.visible {
-    opacity: 1 !important;
-    transform: translate(-50%, -50%) !important;
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    left: -25px; 
+    top: 50%;
+    transform: translateY(-50%);
+    border-style: solid;
+    border-width: 15px 30px 15px 0;
+    border-color: transparent #EADC9B transparent transparent;
+}
+
+.speech-bubble.visible { 
+    opacity: 1 !important; 
+    transform: translate(-50%, -50%) !important; 
 }
 
 .speech-bubble p {
     color: #684132;
+    font-family: "Californian FB", serif;
     font-weight: bold;
     font-size: 1.8rem;
     text-align: center;
 }
 
-/* LES CARTES (Tes positions exactes) */
+/* --- LES CARTES (LEFT À 38% COMME DEMANDÉ) --- */
 .services-container {
-    display: none;
+    display: none; 
     opacity: 0;
     position: fixed;
     top: 55%;
     left: 38%; 
-    transform: translateY(-40%);
+    transform: translateY(-50%); 
+    width: auto; 
+    display: flex;
     gap: 20px;
     z-index: 600;
-    transition: opacity 0.8s, transform 0.8s;
+    transition: opacity 0.8s;
 }
 
 .services-container.active {
     display: flex !important;
     opacity: 1 !important;
-    transform: translateY(-50%) !important;
 }
 
 .service-card {
@@ -148,31 +134,44 @@ header nav ul li a:hover,
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
-.service-card img { height: 120px; margin-bottom: 30px; }
-.service-card p { color: #684132; font-size: 1.6rem; font-weight: bold; }
-
-/* --- GRILLE PROJETS --- */
-.citation-bleue {
-    text-align: center;
-    color: #1D70B7;
-    font-family: 'Gochi Hand', cursive;
-    font-size: 2.5rem;
-    margin-bottom: 40px;
+.service-card img { 
+    height: 120px; 
+    margin-bottom: 30px; 
 }
 
-.galerie-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
+.service-card p {
+    color: #684132;
+    font-family: "Californian FB", serif;
+    font-size: 1.6rem;
+    font-weight: bold;
 }
 
-.card-projet {
-    background: white;
-    aspect-ratio: 1 / 1;
-    border-radius: 15px;
+
+/* --- AJOUTS POUR LE RESPONSIVE --- */
+
+@media (max-width: 1024px) {
+    .main-title {
+        font-size: 3rem;
+        top: 12%;
+    }
+
+    .speech-bubble {
+        left: 50%;
+        transform: translate(-50%, -50%); /* Centré sur tablette */
+        width: 80%;
+    }
+
+    .services-container {
+        left: 50%;
+        transform: translate(-50%, -50%);
+        flex-wrap: wrap; /* Les cartes passent à la ligne si besoin */
+        justify-content: center;
+        width: 95%;
+    }
+
+    .service-card {
+        width: 280px;
+    }
 }
 
-/* --- RESPONSIVE --- */
+/* RESPONSIVE */
