@@ -170,8 +170,65 @@ header nav ul li:not(:last-child)::after {
 }
 
 .service-card p {
-    color: #684132 ;
+    color: #684132;
     font-family: "Californian FB", serif;
     font-size: 1.6rem;
     font-weight: bold;
 }
+
+/* Couleurs du design */
+:root {
+    --camille-blue: #2a5a9a;
+    --camille-green: #7da144;
+}
+
+/* Intro Projets */
+.intro-projets {
+    text-align: center;
+    position: relative;
+    margin: 40px auto;
+    max-width: 600px;
+}
+
+.ladybug {
+    width: 50px;
+    position: absolute;
+    left: 10%;
+    top: -20px;
+}
+
+.quote-projets {
+    font-family: 'Architects Daughter', cursive, sans-serif; /* Police manuscrite conseillée */
+    color: var(--camille-blue);
+    font-size: 1.8rem;
+    line-height: 1.3;
+}
+
+/* Grille Portfolio */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 colonnes */
+    gap: 25px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.project-card {
+    background: #fff;
+    aspect-ratio: 1.5; /* Ratio rectangulaire */
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    position: relative;
+    border: 1px solid rgba(0,0,0,0.03);
+}
+
+/* Petites feuilles décoratives */
+.leaf {
+    position: absolute;
+    width: 30px;
+    z-index: 2;
+}
+.leaf-tl { top: -15px; left: -10px; transform: rotate(-15deg); }
+.leaf-tr { top: -15px; right: 10px; transform: rotate(20deg); }
+.leaf-bm { bottom: -15px; left: 50%; transform: translateX(-50%); }
