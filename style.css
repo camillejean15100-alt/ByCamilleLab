@@ -129,6 +129,7 @@ header nav ul li a.active {
 }
 
 .service-card img {
+    height: 90px;
     width: auto;
     /* On fixe une marge basse identique pour tout le monde */
     margin-bottom: 40px; 
