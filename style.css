@@ -92,18 +92,18 @@ header nav ul li a {
     line-height: 1.2;
 }
 
-/* --- LES CARTES (DÉCALAGE AJUSTÉ À 62% POUR LIBÉRER LE PERSO) --- */
+/* --- LES CARTES (CALÉES POUR ÉVITER CAMILLE ET LE TOURNESOL) --- */
 .services-container {
     display: none; 
     opacity: 0;
     position: fixed;
     top: 55%;
-    /* ON DÉCALE ENCORE UN PEU PLUS À DROITE */
-    left: 62%; 
-    transform: translate(-50%, -50%);
-    width: 80%; 
+    /* On fixe le début du bloc à 45% de l'écran pour laisser Camille à gauche */
+    left: 45%; 
+    transform: translateY(-50%); 
+    width: 50%; /* On réduit la zone pour qu'elle ne s'étale pas trop vers la gauche */
     display: flex;
-    justify-content: center;
+    justify-content: flex-start; /* Les cartes s'alignent vers la droite à partir du point left */
     gap: 20px;
     z-index: 600;
     transition: opacity 0.8s ease-in-out;
@@ -118,8 +118,7 @@ header nav ul li a {
     background-color: rgba(234, 220, 155, 0.85);
     border-radius: 20px;
     padding: 35px 25px; 
-    flex: 1;
-    max-width: 330px;  
+    flex: 0 1 330px; /* On empêche les cartes de trop grossir */
     display: flex;
     flex-direction: column;
     align-items: center;
