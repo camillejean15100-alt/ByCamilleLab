@@ -176,79 +176,79 @@ header nav ul li a.active {
 }
 
 /* RESPONSIVE */
-
-/* --- LE MODE MOBILE QUI FONCTIONNE --- */
-
 @media (max-width: 768px) {
-    /* On bloque tout mouvement vertical */
+    /* Blocage du scroll pour rester sur une seule vue */
     body, html {
         overflow: hidden !important;
         height: 100%;
     }
 
-    /* MENU : Plus fin et discret en haut */
+    /* --- MENU MOBILE DISCRET --- */
     nav {
-        padding: 10px 15px;
-    }
-    .logo img { height: 40px; } /* Logo réduit */
-    
-    header nav ul { 
-        gap: 12px; 
-    }
-    header nav ul li a {
-        font-size: 14px; /* Liens plus petits pour tenir sur une ligne */
+        padding: 15px 20px;
+        flex-direction: row; /* On force la ligne */
+        justify-content: space-between;
+        background: rgba(255, 255, 255, 0.1); /* Optionnel : léger fond pour la lisibilité */
     }
 
-    /* TITRE : On réduit drastiquement la taille */
+    .logo img { 
+        height: 45px; /* Logo beaucoup plus petit */
+    }
+
+    header nav ul { 
+        gap: 10px; /* On serre les liens */
+    }
+
+    header nav ul li a {
+        font-size: 13px; /* Taille de police fine */
+        padding-bottom: 2px;
+        border-bottom-width: 2px; /* Soulignement plus fin */
+    }
+
+    /* --- TITRE --- */
     .main-title {
         font-size: 1.8rem;
-        top: 15%;
+        top: 18%; /* On le descend un peu pour l'aérer du menu */
     }
 
-    /* LA BULLE : On ajuste pour qu'elle ne mange pas tout l'écran */
+    /* --- BULLE --- */
     .speech-bubble {
-        width: 80%;
-        padding: 15px 20px;
+        width: 75%;
+        padding: 15px 25px;
         left: 50% !important;
         top: 50%;
         transform: translate(-50%, -50%) !important;
     }
     .speech-bubble p {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
-    .speech-bubble::after { display: none; }
 
-    /* LES CARTES : On les réduit pour qu'elles rentrent à trois sans scroller */
+    /* --- CARTES SERVICES (FORMAT BANDEAU) --- */
     .services-container {
-        display: none; /* Caché par défaut comme avant */
-        flex-direction: column;
-        gap: 8px; /* Espace minimum entre les cartes */
-        top: 55%;
+        top: 60%;
         left: 50% !important;
         transform: translate(-50%, -50%) !important;
-        width: 90%;
-    }
-
-    .services-container.active {
-        display: flex !important;
-        opacity: 1 !important;
+        width: 85%;
+        gap: 10px;
     }
 
     .service-card {
         width: 100%;
-        padding: 10px; /* Moins de padding intérieur */
-        flex-direction: row; /* Image à gauche, texte à droite pour gagner de la hauteur */
-        height: 70px; /* Hauteur fixe pour forcer le "no scroll" */
+        height: 65px; /* Hauteur fixe pour éviter le débordement */
+        padding: 10px 15px;
+        flex-direction: row; /* Image à côté du texte */
+        justify-content: flex-start;
         gap: 15px;
     }
 
     .service-card img {
-        height: 40px; /* Petites icônes */
+        height: 35px; /* Icônes miniatures */
         margin-bottom: 0;
     }
 
     .service-card p {
-        font-size: 0.9rem; /* Texte compact */
+        font-size: 0.85rem;
         text-align: left;
+        line-height: 1.1;
     }
 }
