@@ -26,11 +26,49 @@ header {
 
 nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Pousse le logo à gauche et la liste à droite */
     align-items: center;
-    padding: 25px 60px;
+    padding: 20px 50px;
+    background-color: transparent; /* Pour garder ton fond crème */
 }
 
+.logo img {
+    height: 60px; /* À ajuster selon la taille de ton fichier */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: flex;
+    align-items: center;
+}
+
+/* On ajoute les barres verticales "|" sauf après le dernier élément */
+nav ul li:not(:last-child)::after {
+    content: "|";
+    margin: 0 10px;
+    color: #1a4a8e; /* La couleur bleue de ton texte */
+    font-weight: normal;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #1a4a8e;
+    font-family: 'Arial', sans-serif; /* Remplace par ta police si tu l'as importée */
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+/* Style pour le lien actif ou au survol */
+nav ul li a.active, 
+nav ul li a:hover {
+    color: #84a356; /* Le vert de "Voir mes projets" dans ta maquette */
+}
 .logo img { height: 75px; }
 
 header nav ul { display: flex; gap: 30px; }
