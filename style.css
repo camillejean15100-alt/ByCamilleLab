@@ -136,39 +136,55 @@ header nav ul li a.active {
     line-height: 1.3;
 }
 
-/* --- ALIGNEMENT DES CARTES (CORRIGÉ) --- */
-.service-card {
-    background-color: rgba(234, 220, 155, 0.85);
-    border-radius: 20px;
-    padding: 40px 25px;
-    flex: 1;
-    max-width: 350px;
-    
-    /* Ces 4 lignes assurent le centrage parfait des icônes */
-    display: flex;
-    flex-direction: column;
-    align-items: center;      /* Centre horizontalement */
-    justify-content: center;   /* Centre verticalement */
-    
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    min-height: 400px;         /* Donne une hauteur égale pour le centrage */
+/* --- FORCE LA TYPO ET LA COULEUR SUR TOUT LE SITE --- */
+body, p, span, a {
+    font-family: "Californian FB", serif !important;
+    color: #684132 !important; /* Marron exact du design */
 }
 
-.service-card img {
-    /* On s'assure que l'icône ne prend pas toute la place et reste centrée */
-    width: auto;
-    height: 100px;            /* Ajuste selon ton envie */
-    margin-bottom: 25px;      /* Espace constant entre l'icône et le texte */
-    display: block;
+/* --- LA BULLE : DESIGN ET TYPO --- */
+.speech-bubble p {
+    font-family: "Californian FB", serif !important;
+    color: #684132 !important;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* --- LES CARTES : CENTRAGE ET DÉCALAGE POUR CAMILLE --- */
+.services-container {
+    display: none;
+    opacity: 0;
+    position: fixed;
+    top: 50%;
+    left: 62%; /* Décalage à droite pour voir Camille à gauche */
+    transform: translate(-50%, -50%);
+    width: 65%; 
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    z-index: 600;
+}
+
+.service-card {
+    background-color: rgba(234, 220, 155, 0.75); /* Plus transparent pour voir le fond */
+    border-radius: 20px;
+    padding: 30px;
+    flex: 1;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centre les icônes horizontalement */
+    justify-content: center; /* Centre verticalement */
+    text-align: center;
 }
 
 .service-card p {
     font-family: "Californian FB", serif !important;
     color: #684132 !important;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     font-weight: bold;
     line-height: 1.4;
-    margin: 0;
-    width: 100%;              /* Pour que le centrage du texte soit total */
+    margin-top: 20px; /* Espace sous l'icône */
 }
