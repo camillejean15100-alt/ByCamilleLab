@@ -2,18 +2,19 @@ window.addEventListener('DOMContentLoaded', () => {
     const bubble = document.getElementById('missionBubble');
     const services = document.getElementById('servicesIcons');
 
-    // 1. Apparition de la bulle (immédiat)
+    // 1. On fait apparaître la bulle (ton CSS gère la transition)
     setTimeout(() => {
         bubble.classList.add('visible');
-    }, 100);
+    }, 500);
 
-    // 2. Disparition bulle + Apparition cartes (après 1.5s)
-    setTimeout(() => {
-        bubble.classList.remove('visible'); // Lance la transition CSS de sortie
+    // 2. Au clic sur la bulle, on passe aux cartes
+    bubble.addEventListener('click', () => {
+        bubble.classList.remove('visible');
         
+        // On attend la fin de l'effacement pour afficher les cartes
         setTimeout(() => {
             bubble.style.display = 'none';
-            services.classList.add('active'); // Affiche les cartes à 38%
-        }, 600); // Attend la fin de la transition de la bulle
-    }, 1600);
+            services.classList.add('active');
+        }, 600);
+    });
 });
