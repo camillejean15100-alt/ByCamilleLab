@@ -22,26 +22,27 @@ header {
     top: 0;
     left: 0;
     z-index: 1000;
-    padding: 25px 50px; /* L'espace que tu as sur ta maquette */
+    padding: 30px 60px; /* Redonne l'espace extérieur */
 }
 
 nav {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-end; /* Calé sur le bas du texte "Camille" */
+    justify-content: space-between; 
+    align-items: flex-end; /* Aligne le menu sur le bas du texte du logo */
 }
 
 .logo img {
-    height: 105px; /* Ta taille réelle */
+    height: 105px; /* Taille fixe */
     width: auto;
     display: block;
 }
 
 header nav ul {
     display: flex;
+    align-items: center;
     margin: 0;
     padding: 0;
-    padding-bottom: 12px; /* Ajustement précis pour la ligne de base */
+    padding-bottom: 12px; /* Ajuste pour être pile en face du texte "Camille" */
 }
 
 header nav ul li {
@@ -55,23 +56,22 @@ header nav ul li a {
     font-weight: bold;
     font-size: 24px;
     color: #1D70B7;
-    padding: 0 5px 8px 5px; /* Espace pour le trait vert */
-    border-bottom: 4px solid transparent;
+    padding-bottom: 5px; 
+    border-bottom: 4px solid transparent; 
     transition: 0.3s;
-    white-space: nowrap;
 }
 
-/* Ton effet de survol et le trait vert actif */
+/* --- EFFET AU PASSAGE ET ÉTAT ACTIF --- */
 header nav ul li a:hover,
 header nav ul li a.active {
     color: #87B347 !important;
     border-bottom: 4px solid #87B347 !important;
 }
 
-/* Séparateurs | avec l'espace de la maquette */
+/* --- LES SÉPARATEURS (LA CORRECTION MAJEURE) --- */
 header nav ul li:not(:last-child)::after {
     content: "|";
-    padding: 0 20px; /* C'est ça qui manque à ton rendu ! */
+    margin: 0 25px; /* Force l'espacement que j'avais oublié */
     color: #1D70B7;
     font-size: 20px;
     font-weight: normal;
