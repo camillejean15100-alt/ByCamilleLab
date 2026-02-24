@@ -3,29 +3,26 @@ window.addEventListener('load', function() {
     const services = document.getElementById('servicesIcons');
 
     if (bulle && services) {
-        // 1. Apparition quasi instantanée
+        // 1. Entrée de la bulle
         setTimeout(() => {
             bulle.classList.add('visible');
             
-            // 2. TEMPS DE LECTURE ULTRA-COURT : 1.2 seconde
+            // 2. Temps de lecture idéal : 2.5 secondes
             setTimeout(() => {
-                
-                // Sortie percutante (plus rapide)
-                bulle.style.transition = "all 0.4s ease-in"; 
+                // Sortie douce de la bulle
                 bulle.style.opacity = "0";
-                bulle.style.transform = "translate(-50%, -150%)"; 
+                bulle.style.transform = "translate(-50%, -100%)";
 
-                // 3. ENCHAÎNEMENT IMMÉDIAT
+                // 3. Arrivée des services
                 setTimeout(() => {
                     bulle.style.display = "none";
-                    services.style.setProperty('display', 'flex', 'important');
+                    services.style.display = "flex";
                     
-                    setTimeout(() => {
-                        services.style.opacity = "1";
-                    }, 50);
-                }, 400); 
-
-            }, 1200); // 1.2 seconde de présence
-        }, 200);
+                    requestAnimationFrame(() => {
+                        services.classList.add('active');
+                    });
+                }, 600);
+            }, 2500); 
+        }, 500);
     }
 });
