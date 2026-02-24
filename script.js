@@ -1,46 +1,33 @@
-function changerPage(page) {
-    const accueil = document.getElementById('section-accueil');
-    const projets = document.getElementById('section-projets');
-    const linkAcc = document.getElementById('link-acc');
-    const linkProj = document.getElementById('link-proj');
-
-    if (page === 'projets') {
-        accueil.style.display = 'none';
-        projets.style.display = 'block';
-        
-        // Menu : "Voir mes projets" devient VERT
-        linkProj.classList.add('active');
-        linkAcc.classList.remove('active');
-        
-        // Change le fond du body pour la galerie
-        document.body.style.background = "url('voirmesprojets.jpg') no-repeat center center fixed";
-        document.body.style.backgroundSize = "cover";
-    } else {
-        accueil.style.display = 'block';
-        projets.style.display = 'none';
-        
-        // Menu : "Accueil" redevient VERT
-        linkAcc.classList.add('active');
-        linkProj.classList.remove('active');
-        
-        // Remet le fond d'accueil
-        document.body.style.background = "url('fondaccueil.jpg') no-repeat center center fixed";
-        document.body.style.backgroundSize = "cover";
-    }
-}
-
-// Ton animation de bulle (on ne la touche pas, elle fonctionne)
 window.addEventListener('DOMContentLoaded', () => {
     const bubble = document.getElementById('missionBubble');
     const services = document.getElementById('servicesIcons');
-    if (bubble) {
-        setTimeout(() => { bubble.classList.add('visible'); }, 500);
+
+    // 1. Apparition de la bulle (immédiat)
+    setTimeout(() => {
+        bubble.classList.add('visible');
+    }, 100);
+
+    // 2. Disparition bulle + Apparition cartes (après 1.5s)
+    setTimeout(() => {
+        bubble.classList.remove('visible'); // Lance la transition CSS de sortie
+        
         setTimeout(() => {
-            bubble.style.opacity = '0';
-            setTimeout(() => {
-                bubble.style.display = 'none';
-                if(services) services.classList.add('active');
-            }, 600);
-        }, 3500);
-    }
+            bubble.style.display = 'none';
+            services.classList.add('active'); // Affiche les cartes à 38%
+        }, 600); // Attend la fin de la transition de la bulle
+    }, 1600);
 });
+
+function changerPage(nom) {
+    const acc = document.getElementById('section-accueil');
+    const proj = document.getElementById('section-projets');
+    const body = document.getElementById('site-body');
+
+    if (nom === 'projets') {
+        acc.style.display = 'none';
+        proj.style.display = 'block';
+        body.style.background = "#F3E9C7"; // Passage au fond beige
+    } else {
+        location.reload(); // Retour accueil
+    }
+}
