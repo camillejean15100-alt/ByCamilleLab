@@ -22,29 +22,27 @@ header {
     top: 0;
     left: 0;
     z-index: 1000;
-    padding: 30px 60px;
+    padding: 20px 60px;
 }
 
 nav {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start; /* On part du haut pour contrôler la descente */
+    align-items: center; /* ALIGNEMENT CENTRAL VERTICAL PARFAIT */
+    width: 100%;
 }
 
 .logo img {
-    height: 105px; /* On verrouille la taille */
+    height: 105px; /* Ta taille de logo */
     width: auto;
     display: block;
 }
 
 header nav ul {
     display: flex;
+    align-items: center; /* Aligne les liens et les barres | au centre */
     margin: 0;
     padding: 0;
-    /* AJUSTEMENT CHIRURGICAL ICI */
-    /* Augmente ce chiffre (ex: 65px) pour descendre le menu */
-    /* Diminue ce chiffre (ex: 55px) pour le remonter */
-    padding-top: 60px; 
 }
 
 header nav ul li {
@@ -57,18 +55,26 @@ header nav ul li a {
     font-family: "Californian FB", serif;
     font-weight: bold;
     font-size: 24px;
-    color: #1D70B7;
-    padding-bottom: 5px; 
-    border-bottom: 4px solid transparent; 
-    line-height: 1; /* Aligne la base des lettres proprement */
+    color: #1D70B7; /* RETOUR AU BLEU */
+    padding-bottom: 5px;
+    border-bottom: 4px solid transparent;
+    transition: 0.3s;
 }
 
-/* Espacement des barres comme sur ta maquette */
+/* Hover et Active : Trait vert */
+header nav ul li a:hover,
+header nav ul li a.active {
+    color: #87B347 !important;
+    border-bottom: 4px solid #87B347 !important;
+}
+
+/* Séparateurs | bleus et centrés */
 header nav ul li:not(:last-child)::after {
     content: "|";
     margin: 0 25px;
-    color: #1D70B7;
-    font-size: 20px;
+    color: #1D70B7; /* BLEU */
+    font-size: 22px;
+    font-weight: normal;
 }
 /* --- TITRE --- */
 .main-title {
