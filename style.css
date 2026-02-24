@@ -15,7 +15,7 @@ body {
     overflow: hidden;
 }
 
-/* --- LE MENU (COULEURS RÉPARÉES) --- */
+/* --- LE MENU --- */
 header {
     width: 100%;
     position: fixed;
@@ -40,7 +40,7 @@ header nav ul li a {
     font-family: "Californian FB", serif;
     font-weight: bold;
     font-size: 22px;
-    color: #1D70B7; /* Bleu */
+    color: #1D70B7;
     padding-bottom: 5px;
     border-bottom: 3px solid transparent;
     transition: 0.3s;
@@ -48,7 +48,7 @@ header nav ul li a {
 
 header nav ul li a:hover,
 header nav ul li a.active {
-    color: #87B347 !important; /* Vert */
+    color: #87B347 !important;
     border-bottom: 3px solid #87B347 !important;
 }
 
@@ -103,13 +103,13 @@ header nav ul li a.active {
     text-align: center;
 }
 
-/* --- LES CARTES (PLACEMENT ENTRE TOI ET LE TOURNESOL) --- */
+/* --- LES CARTES (LEFT À 38% COMME DEMANDÉ) --- */
 .services-container {
     display: none; 
     opacity: 0;
     position: fixed;
     top: 55%;
-    left: 38%; /* Pile dans le creux de l'image */
+    left: 38%; 
     transform: translateY(-50%); 
     width: auto; 
     display: flex;
@@ -127,7 +127,7 @@ header nav ul li a.active {
     background-color: rgba(234, 220, 155, 0.85);
     border-radius: 20px;
     padding: 35px 25px; 
-    width: 330px; /* Ta largeur parfaite */
+    width: 330px; 
     display: flex;
     flex-direction: column;
     align-items: center;
