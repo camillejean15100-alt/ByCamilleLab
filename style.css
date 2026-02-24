@@ -114,19 +114,18 @@ header nav ul li a.active {
 
 /* --- SECTION SERVICES : ERGONOMIQUE --- */
 .services-container {
-    display: none; 
-    opacity: 0;
+    display: none; /* Caché au début, le JS l'affichera */
+    opacity: 0;    /* Invisible pour l'animation de fondu */
     position: fixed;
-    top: 55%; /* Un peu plus bas pour laisser le titre fixe respirer */
-    left: 65%; 
+    top: 55%;
+    left: 65%;
     transform: translate(-50%, -50%);
-    width: 85%; 
+    width: 85%;
     display: flex;
     justify-content: center;
-    align-items: stretch; 
     gap: 20px;
     z-index: 600;
-    transition: opacity 0.8s ease-in-out;
+    transition: opacity 0.8s ease-in-out; /* L'animation de fondu est ici */
 }
 
 .service-card {
