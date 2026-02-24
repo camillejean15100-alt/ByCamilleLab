@@ -22,27 +22,29 @@ header {
     top: 0;
     left: 0;
     z-index: 1000;
-    padding: 30px 60px; /* Redonne l'espace extérieur */
+    padding: 30px 60px;
 }
 
 nav {
     display: flex;
-    justify-content: space-between; 
-    align-items: flex-end; /* Aligne le menu sur le bas du texte du logo */
+    justify-content: space-between;
+    align-items: flex-start; /* On part du haut pour contrôler la descente */
 }
 
 .logo img {
-    height: 105px; /* Taille fixe */
+    height: 105px; /* On verrouille la taille */
     width: auto;
     display: block;
 }
 
 header nav ul {
     display: flex;
-    align-items: center;
     margin: 0;
     padding: 0;
-    padding-bottom: 12px; /* Ajuste pour être pile en face du texte "Camille" */
+    /* AJUSTEMENT CHIRURGICAL ICI */
+    /* Augmente ce chiffre (ex: 65px) pour descendre le menu */
+    /* Diminue ce chiffre (ex: 55px) pour le remonter */
+    padding-top: 60px; 
 }
 
 header nav ul li {
@@ -58,23 +60,15 @@ header nav ul li a {
     color: #1D70B7;
     padding-bottom: 5px; 
     border-bottom: 4px solid transparent; 
-    transition: 0.3s;
+    line-height: 1; /* Aligne la base des lettres proprement */
 }
 
-/* --- EFFET AU PASSAGE ET ÉTAT ACTIF --- */
-header nav ul li a:hover,
-header nav ul li a.active {
-    color: #87B347 !important;
-    border-bottom: 4px solid #87B347 !important;
-}
-
-/* --- LES SÉPARATEURS (LA CORRECTION MAJEURE) --- */
+/* Espacement des barres comme sur ta maquette */
 header nav ul li:not(:last-child)::after {
     content: "|";
-    margin: 0 25px; /* Force l'espacement que j'avais oublié */
+    margin: 0 25px;
     color: #1D70B7;
     font-size: 20px;
-    font-weight: normal;
 }
 /* --- TITRE --- */
 .main-title {
