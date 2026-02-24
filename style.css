@@ -151,60 +151,46 @@ header nav ul li a.active {
 
 /* --- SECTION VOIR MES PROJETS --- */
 #section-projets {
-    display: none; /* Caché par défaut */
-    position: relative;
-    min-height: 100vh;
+    display: none; /* Masqué par défaut au lancement du site */
     width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 40px 0 120px 0;
     
-    /* Utilisation de ton image spécifique en fond */
+    /* Ton fond spécifique */
     background: url('voirmesprojets.jpg') no-repeat center center;
-    background-size: cover; 
-    
-    padding: 60px 0 150px 0; /* Espace pour le titre et l'herbe */
+    background-size: cover;
+    position: relative;
 }
 
-/* On ajoute les petits éléments de déco par-dessus le fond */
+/* On ajoute les décos (coccinelle, trait) en superposition */
 #section-projets::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-        url('traitcoccinelle.png'), 
-        url('coccinelle.png'),
-        url('feuille1.png'),
-        url('feuille2.png');
+    inset: 0;
+    background-image: url('traitcoccinelle.png'), url('coccinelle.png');
     background-repeat: no-repeat;
-    background-position: 
-        20px 80px,    /* Trait */
-        270px 190px,  /* Coccinelle */
-        10% 30%,      /* Feuille 1 */
-        85% 20%;      /* Feuille 2 */
-    background-size: 280px, 45px, 30px, 25px;
-    pointer-events: none; /* Pour pouvoir cliquer sur les projets dessous */
+    background-position: 20px 50px, 260px 170px;
+    background-size: 280px, 45px;
+    pointer-events: none;
 }
 
-/* L'herbe en bas (en utilisant plante.png) */
-.herbe-galerie {
+/* L'herbe tout en bas */
+.herbe-footer {
     position: absolute;
     bottom: 0;
-    left: 0;
     width: 100%;
-    height: 130px;
+    height: 140px;
     background: url('plante.png') repeat-x bottom;
     background-size: contain;
-    z-index: 10;
 }
 
-/* La grille de projets */
+/* La grille des 8 cadres */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
+    gap: 20px;
     max-width: 1100px;
-    margin: 40px auto;
-    position: relative;
-    z-index: 5; /* Passe devant le fond */
+    margin: 60px auto;
+    z-index: 2;
 }
