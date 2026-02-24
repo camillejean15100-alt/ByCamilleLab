@@ -57,9 +57,9 @@ header nav ul li a.active {
     border-bottom: 3px solid #87B347 !important;
 }
 
-/* --- TITRE FIXE (NE BOUGE JAMAIS) --- */
+/* --- TITRE FIXE --- */
 .main-title {
-    position: fixed; /* Il reste scotché en haut */
+    position: fixed;
     top: 15%;
     width: 100%;
     text-align: center;
@@ -67,15 +67,16 @@ header nav ul li a.active {
     font-size: 4.5rem;
     color: #3B505C;
     text-shadow: 2px 2px 0px #FFFFFF, -2px -2px 0px #FFFFFF, 2px -2px 0px #FFFFFF, -2px 2px 0px #FFFFFF;
-    z-index: 100; /* Derrière la bulle et les services pour ne pas gêner */
+    z-index: 100;
+    opacity: 1 !important; /* Force la visibilité */
 }
 
-/* --- TA BULLE PARFAITE (RESTAURÉE) --- */
+/* --- TA BULLE --- */
 .speech-bubble {
     position: fixed;
     top: 50%; 
     left: 48%;
-    transform: translate(100px, -50%);
+    transform: translate(100px, -50%); /* Décalage pour l'effet d'entrée */
     opacity: 0;
     background-color: #EADC9B;
     padding: 25px 45px;
@@ -97,6 +98,7 @@ header nav ul li a.active {
     border-color: transparent #EADC9B transparent transparent;
 }
 
+/* Classe activée par le JS */
 .speech-bubble.visible {
     opacity: 1;
     transform: translate(-50%, -50%);
@@ -112,20 +114,20 @@ header nav ul li a.active {
     line-height: 1.2;
 }
 
-/* --- SECTION SERVICES : ERGONOMIQUE --- */
+/* --- SECTION SERVICES (CORRIGÉE) --- */
 .services-container {
-    display: none; /* Caché au début, le JS l'affichera */
-    opacity: 0;    /* Invisible pour l'animation de fondu */
+    display: none; /* Le JS changera ça en 'flex' */
+    opacity: 0;
     position: fixed;
     top: 55%;
     left: 65%;
     transform: translate(-50%, -50%);
     width: 85%;
-    display: flex;
     justify-content: center;
+    align-items: stretch;
     gap: 20px;
     z-index: 600;
-    transition: opacity 0.8s ease-in-out; /* L'animation de fondu est ici */
+    transition: opacity 1s ease-in-out;
 }
 
 .service-card {
@@ -141,19 +143,10 @@ header nav ul li a.active {
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
-/* État initial : caché */
-.services-container, #servicesIcons {
-    display: none; 
-    opacity: 0;
-    transition: opacity 0.8s ease-in-out;
-    /* ... tes autres réglages (position, top, left) ... */
-}
-
 .service-card img {
     height: 120px;
     width: auto;
     margin-bottom: 30px;
-    display: block;
 }
 
 .service-card p {
@@ -162,6 +155,4 @@ header nav ul li a.active {
     font-size: 1.6rem;
     font-weight: bold;
     line-height: 1.3;
-    margin: 0;
-    width: 100%;
 }
