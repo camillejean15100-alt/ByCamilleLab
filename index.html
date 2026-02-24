@@ -6,7 +6,7 @@
     <title>Camille Lab</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body id="site-body">
 
     <header>
         <nav>
@@ -14,8 +14,8 @@
                 <img src="logocamille.png" alt="Logo">
             </div>
             <ul>
-                <li><a href="#" id="link-accueil" class="active" onclick="afficherPage('accueil')">Accueil</a></li>
-                <li><a href="#" id="link-projets" onclick="afficherPage('projets')">Voir mes projets</a></li>
+                <li><a href="#" id="link-accueil" class="active" onclick="basculerPage('accueil')">Accueil</a></li>
+                <li><a href="#" id="link-projets" onclick="basculerPage('projets')">Voir mes projets</a></li>
                 <li><a href="#">À Propos</a></li>
                 <li><a href="#">Tarifs</a></li>
                 <li><a href="#">Contact</a></li>
@@ -27,13 +27,12 @@
         <h1 class="main-title">LE GRAPHISME AU SERVICE DE LA TERRE</h1>
 
         <section id="section-accueil">
-            <div class="speech-bubble" id="missionBubble" onclick="transitionVersServices()">
+            <div class="speech-bubble" onclick="transitionVersServices()">
                 <p>« ma mission :<br>cultivons ensemble votre<br>image de marque »</p>
             </div>
-
-            <div class="services-container" id="servicesIcons">
+            <div class="services-container">
                 <div class="service-card">
-                    <img src="certif.png" alt="Certification">
+                    <img src="certif.png" alt="Logo">
                     <p>Un logo et une image de marque qui vous ressemblent.</p>
                 </div>
                 <div class="service-card">
@@ -49,18 +48,18 @@
 
         <section id="section-projets" style="display: none;">
             <div class="fildesigne">
-                <img src="traitcoccinelle.png" class="trait-coccinelle" alt="Trace">
-                <img src="coccinelle.png" class="coccinelle-anim" alt="Coccinelle">
+                <img src="traitcoccinelle.png" class="trait-coccinelle">
+                <img src="coccinelle.png" class="coccinelle-anim">
             </div>
 
             <div class="galerie-grid">
                 <div class="projet-item" onclick="ouvrirLightbox(0)">
-                    <img src="projet1.jpg" alt="Projet 1">
-                    <div class="projet-overlay">Titre du Projet 1</div>
+                    <img src="projet1.jpg">
+                    <div class="projet-titre">Projet 1</div>
                 </div>
                 <div class="projet-item" onclick="ouvrirLightbox(1)">
-                    <img src="projet2.jpg" alt="Projet 2">
-                    <div class="projet-overlay">Titre du Projet 2</div>
+                    <img src="projet2.jpg">
+                    <div class="projet-titre">Projet 2</div>
                 </div>
             </div>
         </section>
@@ -69,7 +68,7 @@
             <span class="fermer" onclick="fermerLightbox()">&times;</span>
             <button class="fleche prev" onclick="changerProjet(-1)">&#10094;</button>
             <div class="lightbox-container">
-                <img id="img-grand" src="" alt="">
+                <img id="img-grand" src="">
                 <div class="lightbox-info">
                     <h2 id="titre-projet">Titre</h2>
                     <p id="desc-projet">Description...</p>
