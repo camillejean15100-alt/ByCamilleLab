@@ -22,26 +22,31 @@ header {
     top: 0;
     left: 0;
     z-index: 1000;
-    padding: 35px 80px; /* Donne de l'air sur les côtés */
+    padding: 30px 60px; /* Espace identique à la maquette */
 }
 
 nav {
     display: flex;
-    justify-content: space-between; 
-    align-items: flex-end; /* Aligne le menu sur le bas du logo */
+    justify-content: space-between; /* Logo à gauche, Menu à droite */
+    align-items: center; 
+    width: 100%;
+}
+
+.logo {
+    flex-shrink: 0; /* Empêche l'image de devenir "toute petite" */
 }
 
 .logo img {
-    height: 115px; /* On impose la taille pour qu'il ne soit plus écrasé */
+    height: 100px; /* Taille verrouillée */
     width: auto;
     display: block;
 }
 
 header nav ul {
     display: flex;
+    align-items: center;
     margin: 0;
     padding: 0;
-    padding-bottom: 10px; /* Aligne la ligne de base du texte avec le logo */
 }
 
 header nav ul li {
@@ -49,59 +54,36 @@ header nav ul li {
     align-items: center;
 }
 
+/* Style des liens - Police et Couleur */
 header nav ul li a {
     text-decoration: none;
     font-family: "Californian FB", serif;
     font-weight: bold;
-    font-size: 26px; /* Taille conforme à ta maquette */
+    font-size: 24px;
     color: #1D70B7;
-    padding: 0 5px 5px 5px; /* Espace pour le trait vert */
+    padding-bottom: 8px; /* Espace pour le trait vert */
     border-bottom: 4px solid transparent; 
-    transition: 0.3s;
-}
-
-/* L'effet au passage et l'état actif (trait vert épais) */
-header nav ul li a:hover,
-header nav ul li a.active {
-    color: #87B347 !important;
-    border-bottom: 4px solid #87B347 !important;
-}
-
-/* Les barres séparatrices bien espacées */
-header nav ul li:not(:last-child)::after {
-    content: "|";
-    margin: 0 25px; /* Large espace pour éviter l'effet "tassé" */
-    color: #1D70B7;
-    font-size: 24px;
-    font-weight: normal;
-}
-/* Style des liens */
-header nav ul li a {
-    text-decoration: none;
-    font-family: "Californian FB", serif;
-    font-weight: bold;
-    font-size: 26px; /* Taille généreuse comme sur l'image */
-    color: #1D70B7;
-    padding: 0 5px 8px 5px; /* Espace pour le trait vert en dessous */
-    border-bottom: 4px solid transparent; /* Prépare le terrain pour le hover */
     transition: all 0.3s ease;
+    white-space: nowrap; /* Empêche le texte de revenir à la ligne */
 }
 
-/* --- EFFET AU PASSAGE (HOVER) ET ACTIVE --- */
+/* Effet Hover et Active (Le trait vert de la maquette) */
 header nav ul li a:hover,
 header nav ul li a.active {
     color: #87B347 !important;
     border-bottom: 4px solid #87B347 !important;
 }
 
-/* --- LES SÉPARATEURS "|" --- */
+/* Les barres séparatrices "|" bien espacées */
 header nav ul li:not(:last-child)::after {
     content: "|";
-    margin: 0 25px; /* Espace large entre les mots */
+    margin: 0 25px; /* L'espace exact pour que ça ne fasse pas "moche" */
     color: #1D70B7;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: normal;
+    opacity: 0.7;
 }
+
 /* --- TITRE --- */
 .main-title {
     position: fixed;
