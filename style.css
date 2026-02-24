@@ -15,7 +15,7 @@ body {
     overflow-x: hidden;
 }
 
-/* --- LE MENU : INTERACTIF --- */
+/* --- LE MENU --- */
 header {
     width: 100%;
     position: fixed;
@@ -57,7 +57,7 @@ header nav ul li a.active {
     border-bottom: 3px solid #87B347 !important;
 }
 
-/* --- TITRE FIXE --- */
+/* --- TITRE FIXE (IMMOBILE) --- */
 .main-title {
     position: fixed;
     top: 15%;
@@ -68,15 +68,15 @@ header nav ul li a.active {
     color: #3B505C;
     text-shadow: 2px 2px 0px #FFFFFF, -2px -2px 0px #FFFFFF, 2px -2px 0px #FFFFFF, -2px 2px 0px #FFFFFF;
     z-index: 100;
-    opacity: 1 !important; /* Force la visibilité */
+    opacity: 1 !important;
 }
 
-/* --- TA BULLE --- */
+/* --- TA BULLE (FLUIDE ET RÉACTIVE) --- */
 .speech-bubble {
     position: fixed;
     top: 50%; 
     left: 48%;
-    transform: translate(100px, -50%); /* Décalage pour l'effet d'entrée */
+    transform: translate(100px, -50%); /* Position de départ pour l'effet d'entrée */
     opacity: 0;
     background-color: #EADC9B;
     padding: 25px 45px;
@@ -84,7 +84,8 @@ header nav ul li a.active {
     box-shadow: 8px 8px 20px rgba(0,0,0,0.1);
     z-index: 500;
     cursor: pointer;
-    transition: transform 0.8s ease-out, opacity 0.6s ease-out;
+    /* Transition courte et dynamique */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease-out;
 }
 
 .speech-bubble::after {
@@ -98,7 +99,7 @@ header nav ul li a.active {
     border-color: transparent #EADC9B transparent transparent;
 }
 
-/* Classe activée par le JS */
+/* Classe d'activation (Entrée) */
 .speech-bubble.visible {
     opacity: 1;
     transform: translate(-50%, -50%);
@@ -114,20 +115,28 @@ header nav ul li a.active {
     line-height: 1.2;
 }
 
-/* --- SECTION SERVICES (CORRIGÉE) --- */
+/* --- SECTION SERVICES (OPTIMISÉE) --- */
 .services-container {
-    display: none; /* Le JS changera ça en 'flex' */
+    display: none; 
     opacity: 0;
     position: fixed;
     top: 55%;
-    left: 65%;
-    transform: translate(-50%, -50%);
-    width: 85%;
+    left: 50%;
+    transform: translate(-50%, -45%); /* Départ légèrement plus bas pour l'effet de montée */
+    width: 90%;
     justify-content: center;
     align-items: stretch;
     gap: 20px;
     z-index: 600;
-    transition: opacity 1s ease-in-out;
+    /* Transition de fondu et de montée synchronisée */
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* Classe d'activation (Apparition via JS) */
+.services-container.active {
+    display: flex !important;
+    opacity: 1;
+    transform: translate(-50%, -50%);
 }
 
 .service-card {
@@ -147,6 +156,7 @@ header nav ul li a.active {
     height: 120px;
     width: auto;
     margin-bottom: 30px;
+    display: block;
 }
 
 .service-card p {
@@ -155,4 +165,6 @@ header nav ul li a.active {
     font-size: 1.6rem;
     font-weight: bold;
     line-height: 1.3;
+    margin: 0;
+    width: 100%;
 }
