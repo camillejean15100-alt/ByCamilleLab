@@ -1,18 +1,33 @@
+window.addEventListener('DOMContentLoaded', () => {
+    const bubble = document.getElementById('missionBubble');
+    const services = document.getElementById('servicesIcons');
+
+    // 1. Apparition de la bulle (immédiat)
+    setTimeout(() => {
+        bubble.classList.add('visible');
+    }, 100);
+
+    // 2. Transition vers les cartes (après 1.6s)
+    setTimeout(() => {
+        bubble.classList.remove('visible'); 
+        
+        setTimeout(() => {
+            bubble.style.display = 'none';
+            services.classList.add('active'); // Utilise ton CSS ".services-container.active"
+        }, 600); 
+    }, 1600);
+});
+
+// Fonction pour le menu sans toucher au design
 function changerPage(pageId) {
-    const sectionAccueil = document.getElementById('section-accueil');
-    const sectionProjets = document.getElementById('section-projets');
-    const liens = document.querySelectorAll('nav ul li a');
-
-    // On retire la classe 'active' de tous les boutons du menu
-    liens.forEach(lien => lien.classList.remove('active'));
-
-    if (pageId === 'accueil') {
-        sectionProjets.style.display = 'none';
-        sectionAccueil.style.display = 'block';
-        document.getElementById('link-acc').classList.add('active');
-    } else if (pageId === 'projets') {
-        sectionAccueil.style.display = 'none';
-        sectionProjets.style.display = 'block';
-        document.getElementById('link-proj').classList.add('active');
+    const acc = document.getElementById('section-accueil');
+    const proj = document.getElementById('section-projets');
+    
+    if (pageId === 'projets') {
+        acc.style.display = 'none';
+        proj.style.display = 'block';
+    } else {
+        proj.style.display = 'none';
+        acc.style.display = 'block';
     }
 }
