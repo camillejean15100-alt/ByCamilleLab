@@ -15,7 +15,7 @@ body {
     overflow: hidden;
 }
 
-/* --- LE MENU (COULEURS OK) --- */
+/* --- LE MENU (BLEU ET VERT - RESTAURÉ) --- */
 header {
     width: 100%;
     position: fixed;
@@ -40,7 +40,7 @@ header nav ul li a {
     font-family: "Californian FB", serif;
     font-weight: bold;
     font-size: 22px;
-    color: #1D70B7;
+    color: #1D70B7; /* Bleu */
     padding-bottom: 5px;
     border-bottom: 3px solid transparent;
     transition: all 0.3s ease-in-out;
@@ -48,7 +48,7 @@ header nav ul li a {
 
 header nav ul li a:hover,
 header nav ul li a.active {
-    color: #87B347 !important;
+    color: #87B347 !important; /* Vert */
     border-bottom: 3px solid #87B347 !important;
 }
 
@@ -64,7 +64,7 @@ header nav ul li a.active {
     text-shadow: 2px 2px 0px #FFFFFF, -2px -2px 0px #FFFFFF, 2px -2px 0px #FFFFFF, -2px 2px 0px #FFFFFF;
 }
 
-/* --- LA BULLE (AVEC SA POINTE) --- */
+/* --- LA BULLE (DESIGN ORIGINAL QUE TU AIMES) --- */
 .speech-bubble {
     position: fixed;
     top: 50%; 
@@ -98,12 +98,53 @@ header nav ul li a.active {
     font-weight: bold;
     font-size: 1.8rem;
     text-align: center;
+    line-height: 1.2;
 }
 
-/* --- LES CARTES (TEST À 35% POUR ÊTRE ENTRE PERSO ET TOURNESOL) --- */
+/* --- LES CARTES (ENTRE TOI ET LE TOURNESOL) --- */
 .services-container {
     display: none; 
     opacity: 0;
     position: fixed;
     top: 55%;
-    left: 35%; /*
+    left: 32%; /* Ajusté pour ne pas être trop à droite */
+    transform: translateY(-50%); 
+    width: 65%; 
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    z-index: 600;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.services-container.active {
+    display: flex !important;
+    opacity: 1;
+}
+
+.service-card {
+    background-color: rgba(234, 220, 155, 0.85);
+    border-radius: 20px;
+    padding: 35px 25px; 
+    flex: 0 1 330px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.service-card img { 
+    height: 120px; 
+    width: auto; 
+    margin-bottom: 30px; 
+    display: block; 
+}
+
+.service-card p {
+    color: #684132;
+    font-family: "Californian FB", serif;
+    font-size: 1.6rem;
+    font-weight: bold;
+    line-height: 1.3;
+}
