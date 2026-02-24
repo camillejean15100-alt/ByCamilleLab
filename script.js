@@ -1,23 +1,3 @@
-// --- ANIMATION DE L'ACCUEIL ---
-window.addEventListener('DOMContentLoaded', () => {
-    const bubble = document.getElementById('missionBubble');
-    const services = document.getElementById('servicesIcons');
-
-    // 1. Faire apparaître la bulle au bout de 500ms
-    setTimeout(() => {
-        bubble.classList.add('visible');
-    }, 500);
-
-    // 2. Faire disparaître la bulle et afficher les cartes après 3 secondes
-    setTimeout(() => {
-        bubble.style.opacity = '0';
-        setTimeout(() => {
-            bubble.style.display = 'none';
-            services.classList.add('active');
-        }, 600); // Temps de la transition CSS
-    }, 3500);
-});
-
 function changerPage(page) {
     const accueil = document.getElementById('section-accueil');
     const projets = document.getElementById('section-projets');
@@ -25,23 +5,43 @@ function changerPage(page) {
     const linkProj = document.getElementById('link-proj');
 
     if (page === 'projets') {
+        // Affiche Projets, cache Accueil
         accueil.style.display = 'none';
         projets.style.display = 'block';
         
-        // Gestion du menu actif (Vert)
-        linkProj.classList.add('active');
-        linkAcc.classList.remove('active');
+        // Menu : "Voir mes projets" devient VERT
+        linkProj.style.color = "#8db600";
+        linkAcc.style.color = "#1a5a96"; 
         
-        // Application du fond spécifique à la galerie
+        // Change le fond d'écran
         document.body.style.backgroundImage = "url('voirmesprojets.jpg')";
     } else {
+        // Affiche Accueil, cache Projets
         accueil.style.display = 'block';
         projets.style.display = 'none';
         
-        linkAcc.classList.add('active');
-        linkProj.classList.remove('active');
+        // Menu : "Accueil" devient VERT (ou bleu selon ton choix)
+        linkAcc.style.color = "#8db600";
+        linkProj.style.color = "#1a5a96";
         
-        // Retour au fond d'accueil
+        // Remet le fond d'accueil
         document.body.style.backgroundImage = "url('fondaccueil.jpg')";
     }
 }
+
+// Garde ton animation de bulle ici en dessous...
+window.addEventListener('DOMContentLoaded', () => {
+    const bubble = document.getElementById('missionBubble');
+    const services = document.getElementById('servicesIcons');
+    if (bubble && services) {
+        setTimeout(() => { bubble.classList.add('visible'); }, 500);
+        setTimeout(() => {
+            bubble.style.opacity = '0';
+            setTimeout(() => {
+                bubble.style.display = 'none';
+                services.classList.add('active');
+                services.style.display = 'flex';
+            }, 600);
+        }, 3500);
+    }
+});
