@@ -107,6 +107,9 @@ header nav ul li a.active {
     margin: 0;
     line-height: 1.2;
 }
+
+/*bulle ce que je propose*/
+
 /* --- ALIGNEMENT HORIZONTAL STRICT --- */
 .service-card {
     background-color: rgba(234, 220, 155, 0.8);
