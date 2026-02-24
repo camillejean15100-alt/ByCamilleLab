@@ -107,93 +107,45 @@ header nav ul li a.active {
     margin: 0;
     line-height: 1.2;
 }
-
-/* --- LA BULLE CENTRÉE --- */
-.speech-bubble {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Centrage absolu */
-    background-color: #EADC9B;
-    padding: 25px 45px;
-    border-radius: 30px;
-    box-shadow: 8px 8px 20px rgba(0,0,0,0.1);
-    z-index: 500;
-    cursor: pointer;
-    opacity: 0;
-    transition: transform 0.8s ease-out, opacity 0.6s ease-out;
-}
-
-.speech-bubble.visible {
-    opacity: 1;
-    transform: translate(-50%, -50%);
-}
-
-.speech-bubble p {
-    font-size: 1.8rem;
-    font-weight: bold;
-    text-align: center;
-    line-height: 1.3;
-}
-
-/* --- FORCE LA TYPO ET LA COULEUR SUR TOUT LE SITE --- */
-body, p, span, a {
-    font-family: "Californian FB", serif !important;
-    color: #684132 !important; /* Marron exact du design */
-}
-
-/* --- LA BULLE : DESIGN ET TYPO --- */
-.speech-bubble p {
-    font-family: "Californian FB", serif !important;
-    color: #684132 !important;
-    font-size: 1.8rem;
-    font-weight: bold;
-    text-align: center;
-    line-height: 1.2;
-}
-
-/* --- ALIGNEMENT HORIZONTAL IDENTIQUE AU VISUEL --- */
-.services-container {
-    display: none; 
-    opacity: 0;
-    position: fixed;
-    top: 50%;
-    /* On pousse à 60% pour laisser Camille respirer à gauche */
-    left: 60%; 
-    transform: translate(-50%, -50%);
-    width: 70%; 
-    display: flex;
-    justify-content: center;
-    gap: 20px; /* Espace entre les 3 blocs */
-    z-index: 600;
-    transition: opacity 0.8s ease-in-out;
-}
-
+/* --- ALIGNEMENT HORIZONTAL STRICT --- */
 .service-card {
-    background-color: rgba(234, 220, 155, 0.8); /* Beige semi-transparent */
+    background-color: rgba(234, 220, 155, 0.8);
     border-radius: 15px;
     padding: 30px 20px;
     flex: 1;
     max-width: 300px;
+    
+    /* On utilise flex pour organiser l'icône et le texte */
     display: flex;
     flex-direction: column;
-    align-items: center;      /* Centre l'icône et le texte */
-    justify-content: center;
-    text-align: center;
+    align-items: center;
+    
+    /* On force une hauteur minimale pour que les cartes soient identiques */
+    min-height: 380px; 
+    
+    /* On pousse le texte vers le bas pour qu'ils s'alignent tous */
+    justify-content: flex-start; 
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
 .service-card img {
-    height: 90px; /* Taille des icônes */
+    height: 90px;
     width: auto;
-    margin-bottom: 20px;
+    /* On fixe une marge basse identique pour tout le monde */
+    margin-bottom: 40px; 
+    display: block;
 }
 
 .service-card p {
     font-family: "Californian FB", serif !important;
-    color: #684132 !important; /* Marron exact */
-    font-size: 1.3rem;
+    color: #684132 !important;
+    font-size: 1.2rem;
     font-weight: bold;
-    line-height: 1.3;
+    line-height: 1.4;
     margin: 0;
+    text-align: center;
+    
+    /* Ce paramètre assure que le début du texte est au même niveau partout */
+    display: flex;
+    align-items: flex-start; 
 }
