@@ -26,27 +26,109 @@ function lancerAnimationAccueil() {
     }, 1600);
 }
 
-function changerPage(pageId, element) {
-    // Empêcher le comportement par défaut du lien #
-    if(event) event.preventDefault();
+/* Style de la section Projets */
+#section-projets {
+    padding-top: 50px;
+    text-align: center;
+}
 
-    const sectionAccueil = document.getElementById('section-accueil');
-    const sectionProjets = document.getElementById('section-projets');
+.intro-projets {
+    margin-bottom: 30px;
+    position: relative;
+    display: inline-block;
+}
 
-    if (pageId === 'projets') {
-        sectionAccueil.style.display = 'none';
-        sectionProjets.style.display = 'block';
-    } else {
-        sectionProjets.style.display = 'none';
-        sectionAccueil.style.display = 'block';
-        
-        // Si on revient sur accueil, on s'assure que les services sont là 
-        // sans relancer la bulle pénible
-        const services = document.getElementById('servicesIcons');
-        if(services) services.classList.add('active');
-        const bubble = document.getElementById('missionBubble');
-        if(bubble) bubble.style.display = 'none';
-    }
+/* Ta coccinelle avec le bon nom de fichier */
+.ladybug {
+    width: 60px;
+    position: absolute;
+    left: -70px;
+    top: -10px;
+}
+
+.quote-projets {
+    font-family: 'Architects Daughter', cursive, sans-serif;
+    color: #2a5a9a;
+    font-size: 2rem;
+    margin: 0;
+}
+
+/* La Grille */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.project-card {
+    background: white; /* Les rectangles blancs du design */
+    aspect-ratio: 1.5;
+    border-radius: 5px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+/* Utilisation de tes fichiers feuilles */
+.leaf {
+    position: absolute;
+    width: 35px;
+}
+.leaf-1 { top: -15px; left: -10px; }
+.leaf-2 { top: -15px; right: -10px; }/* Style de la section Projets */
+#section-projets {
+    padding-top: 50px;
+    text-align: center;
+}
+
+.intro-projets {
+    margin-bottom: 30px;
+    position: relative;
+    display: inline-block;
+}
+
+/* Ta coccinelle avec le bon nom de fichier */
+.ladybug {
+    width: 60px;
+    position: absolute;
+    left: -70px;
+    top: -10px;
+}
+
+.quote-projets {
+    font-family: 'Architects Daughter', cursive, sans-serif;
+    color: #2a5a9a;
+    font-size: 2rem;
+    margin: 0;
+}
+
+/* La Grille */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.project-card {
+    background: white; /* Les rectangles blancs du design */
+    aspect-ratio: 1.5;
+    border-radius: 5px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+/* Utilisation de tes fichiers feuilles */
+.leaf {
+    position: absolute;
+    width: 35px;
+}
+.leaf-1 { top: -15px; left: -10px; }
+.leaf-2 { top: -15px; right: -10px; }
 
     // Gestion du trait vert
     document.querySelectorAll('header nav ul li a').forEach(link => {
