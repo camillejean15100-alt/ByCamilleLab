@@ -44,8 +44,42 @@
                 <p>Panneaux & supports pour rendre votre ferme visible.</p>
             </div>
         </div>
-    </main>
+        <section class="section-projets">
+    
+    <div class="fildesigne">
+        <img src="traitcoccinelle.png" class="trait-coccinelle" alt="">
+        <img src="coccinelle.png" class="coccinelle-anim" alt="Coccinelle">
+    </div>
 
+    <div class="galerie-grid">
+        <div class="projet-item" onclick="ouvrirLightbox(0)">
+            <img src="vignette1.jpg" alt="Projet 1">
+            <div class="projet-overlay"><span>Voir le projet</span></div>
+        </div>
+        <div class="projet-item" onclick="ouvrirLightbox(1)">
+            <img src="vignette2.jpg" alt="Projet 2">
+            <div class="projet-overlay"><span>Voir le projet</span></div>
+        </div>
+        </div>
+
+    <div id="visionneuse" class="lightbox">
+        <span class="fermer" onclick="fermerLightbox()">&times;</span>
+        
+        <button class="fleche prev" onclick="changerProjet(-1)">&#10094;</button>
+        
+        <div class="lightbox-container">
+            <img id="img-grand" src="" alt="">
+            <div class="lightbox-info">
+                <h2 id="titre-projet">Titre</h2>
+                <p id="desc-projet">Description...</p>
+            </div>
+        </div>
+        
+        <button class="fleche next" onclick="changerProjet(1)">&#10095;</button>
+    </div>
+</section>
+        
+    </main>
     <script src="script.js"></script>
 </body>
 </html>
