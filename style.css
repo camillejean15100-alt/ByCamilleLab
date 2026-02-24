@@ -15,7 +15,7 @@ body {
     overflow-x: hidden;
 }
 
-/* --- LE MENU : BLEU ET VERT --- */
+/* --- LE MENU : EFFET VERT AU SURVOL --- */
 header {
     width: 100%;
     position: fixed;
@@ -47,18 +47,19 @@ header nav ul li a {
     font-size: 20px;
     color: #1D70B7; /* Bleu par défaut */
     padding-bottom: 5px;
-    border-bottom: 3px solid transparent; /* Prépare le surlignement */
-    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease-in-out;
+    display: inline-block;
 }
 
-/* État survolé et page active : texte vert + surlignement vert */
+/* CORRECTIF : Effet vert au passage de la souris et page active */
 header nav ul li a:hover,
 header nav ul li a.active {
-    color: #87B347 !important; /* Vert */
-    border-bottom: 3px solid #87B347; /* Surlignement vert */
+    color: #87B347 !important; 
+    border-bottom: 3px solid #87B347 !important;
 }
 
-/* --- TITRE PRINCIPAL --- */
+/* --- TITRE --- */
 .main-title {
     position: fixed;
     top: 15%;
@@ -70,7 +71,7 @@ header nav ul li a.active {
     text-shadow: 2px 2px 0px #FFFFFF, -2px -2px 0px #FFFFFF, 2px -2px 0px #FFFFFF, -2px 2px 0px #FFFFFF;
 }
 
-/* --- TA BULLE D'ORIGINE --- */
+/* --- TA BULLE (PRÉSERVÉE) --- */
 .speech-bubble {
     position: fixed;
     top: 50%; 
@@ -86,17 +87,6 @@ header nav ul li a.active {
     transition: transform 0.8s ease-out, opacity 0.6s ease-out;
 }
 
-.speech-bubble::after {
-    content: '';
-    position: absolute;
-    left: -25px;
-    top: 50%;
-    transform: translateY(-50%);
-    border-style: solid;
-    border-width: 15px 30px 15px 0;
-    border-color: transparent #EADC9B transparent transparent;
-}
-
 .speech-bubble.visible {
     opacity: 1;
     transform: translate(-50%, -50%);
@@ -109,54 +99,51 @@ header nav ul li a.active {
     text-align: center;
     font-size: 1.8rem;
     margin: 0;
-    line-height: 1.2;
 }
 
-/* --- SECTION SERVICES : ALIGNEMENT PARFAIT --- */
+/* --- SECTION SERVICES : PLUS GRAND ET PLUS À DROITE --- */
 .services-container {
     display: none; 
     opacity: 0;
     position: fixed;
-    top: 50%;
-    left: 62%; 
+    top: 52%; /* Légèrement plus bas pour l'équilibre */
+    left: 65%; /* Poussé plus à droite pour libérer totalement Camille */
     transform: translate(-50%, -50%);
-    width: 75%; 
+    width: 80%; 
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    gap: 25px;
+    gap: 15px; /* Rapproche les cartes pour un bloc plus compact */
     z-index: 600;
     transition: opacity 0.8s ease-in-out;
 }
 
 .service-card {
-    background-color: rgba(234, 220, 155, 0.8);
-    border-radius: 15px;
-    padding: 35px 20px;
+    background-color: rgba(234, 220, 155, 0.85);
+    border-radius: 20px;
+    padding: 40px 25px;
     flex: 1;
-    max-width: 300px;
-    min-height: 420px; /* Aligne les fonds beiges */
+    max-width: 320px; /* Cartes plus larges */
+    min-height: 480px; /* Cartes beaucoup plus hautes */
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
 .service-card img {
-    height: 90px;
+    height: 110px; /* Icônes plus grandes */
     width: auto;
-    margin-bottom: 40px; /* Aligne le début du texte */
-    display: block;
+    margin-bottom: 45px; /* Aligne parfaitement les textes */
 }
 
 .service-card p {
     color: #684132;
     font-family: "Californian FB", serif !important;
-    font-size: 1.3rem;
+    font-size: 1.5rem; /* Texte plus grand pour remplir la hauteur */
     font-weight: bold;
     line-height: 1.4;
     margin: 0;
-    display: block;
     width: 100%;
 }
