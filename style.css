@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
 
-/* --- RESET & BASES --- */
+/* --- BASES --- */
 * {
     margin: 0;
     padding: 0;
@@ -41,6 +41,15 @@ header nav ul li a {
     font-weight: bold;
     font-size: 22px;
     color: #1D70B7;
+    padding-bottom: 5px;
+    border-bottom: 3px solid transparent;
+    transition: 0.3s;
+}
+
+header nav ul li a:hover,
+header nav ul li a.active {
+    color: #87B347 !important;
+    border-bottom: 3px solid #87B347 !important;
 }
 
 /* --- TITRE --- */
@@ -52,7 +61,7 @@ header nav ul li a {
     font-family: 'Gochi Hand', cursive;
     font-size: 4.5rem;
     color: #3B505C;
-    text-shadow: 2px 2px 0px #FFFFFF, -2px -2px 0px #FFFFFF, 2px -2px 0px #FFFFFF, -2px 2px 0px #FFFFFF;
+    text-shadow: 2px 2px 0px #FFFFFF, -2px -2px 0px #FFFFFF;
 }
 
 /* --- LA BULLE (AVEC SA POINTE) --- */
@@ -66,7 +75,7 @@ header nav ul li a {
     padding: 25px 45px;
     border-radius: 30px;
     z-index: 500;
-    transition: transform 0.8s ease-out, opacity 0.6s ease-out;
+    transition: transform 0.8s, opacity 0.6s;
     box-shadow: 8px 8px 20px rgba(0,0,0,0.1);
 }
 
@@ -81,7 +90,10 @@ header nav ul li a {
     border-color: transparent #EADC9B transparent transparent;
 }
 
-.speech-bubble.visible { opacity: 1; transform: translate(-50%, -50%); }
+.speech-bubble.visible { 
+    opacity: 1 !important; 
+    transform: translate(-50%, -50%) !important; 
+}
 
 .speech-bubble p {
     color: #684132;
@@ -89,36 +101,33 @@ header nav ul li a {
     font-weight: bold;
     font-size: 1.8rem;
     text-align: center;
-    line-height: 1.2;
 }
 
-/* --- LES CARTES (CALÉES POUR ÉVITER CAMILLE ET LE TOURNESOL) --- */
+/* --- LES CARTES (LEFT À 38% COMME DEMANDÉ) --- */
 .services-container {
     display: none; 
     opacity: 0;
     position: fixed;
     top: 55%;
-    /* On fixe le début du bloc à 45% de l'écran pour laisser Camille à gauche */
-    left: 45%; 
+    left: 38%; 
     transform: translateY(-50%); 
-    width: 50%; /* On réduit la zone pour qu'elle ne s'étale pas trop vers la gauche */
+    width: auto; 
     display: flex;
-    justify-content: flex-start; /* Les cartes s'alignent vers la droite à partir du point left */
     gap: 20px;
     z-index: 600;
-    transition: opacity 0.8s ease-in-out;
+    transition: opacity 0.8s;
 }
 
 .services-container.active {
     display: flex !important;
-    opacity: 1;
+    opacity: 1 !important;
 }
 
 .service-card {
     background-color: rgba(234, 220, 155, 0.85);
     border-radius: 20px;
     padding: 35px 25px; 
-    flex: 0 1 330px; /* On empêche les cartes de trop grossir */
+    width: 330px; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -128,9 +137,7 @@ header nav ul li a {
 
 .service-card img { 
     height: 120px; 
-    width: auto; 
     margin-bottom: 30px; 
-    display: block; 
 }
 
 .service-card p {
@@ -138,5 +145,4 @@ header nav ul li a {
     font-family: "Californian FB", serif;
     font-size: 1.6rem;
     font-weight: bold;
-    line-height: 1.3;
 }
