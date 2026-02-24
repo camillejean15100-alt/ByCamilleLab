@@ -18,16 +18,16 @@ window.addEventListener('DOMContentLoaded', () => {
     }, 1600);
 });
 
-// Fonction pour le menu sans toucher au design
 function changerPage(pageId) {
-    const acc = document.getElementById('section-accueil');
-    const proj = document.getElementById('section-projets');
+    // 1. Switch des sections
+    document.getElementById('section-accueil').style.display = (pageId === 'accueil') ? 'block' : 'none';
+    document.getElementById('section-projets').style.display = (pageId === 'projets') ? 'block' : 'none';
+
+    // 2. Switch de la classe active (le trait vert)
+    document.querySelectorAll('nav ul li a').forEach(link => {
+        link.classList.remove('active');
+    });
     
-    if (pageId === 'projets') {
-        acc.style.display = 'none';
-        proj.style.display = 'block';
-    } else {
-        proj.style.display = 'none';
-        acc.style.display = 'block';
-    }
+    // On cible le lien cliqué par son onclick
+    event.currentTarget.classList.add('active');
 }
