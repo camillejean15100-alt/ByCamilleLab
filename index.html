@@ -6,40 +6,30 @@
     <title>Camille Lab</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body id="home">
-
-    <section id="projets">
-        <h2 class="citation-bleue">"De la graine à l'image : mes dernières réalisations."</h2>
-        <div class="galerie-grid">
-            <div class="card-projet"></div><div class="card-projet"></div>
-            <div class="card-projet"></div><div class="card-projet"></div>
-            <div class="card-projet"></div><div class="card-projet"></div>
-            <div class="card-projet"></div><div class="card-projet"></div>
-        </div>
-    </section>
+<body id="site-body">
 
     <header>
         <nav>
             <div class="logo"><img src="logocamille.png" alt="Logo"></div>
             <ul>
-                <li><a href="#">Accueil</a></li>
-                <li><a href="#projets">Voir mes projets</a></li>
-                <li><a href="#propos">À Propos</a></li>
-                <li><a href="#tarifs">Tarifs</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#" id="link-acc" class="active" onclick="changerPage('accueil')">Accueil</a></li>
+                <li><a href="#" id="link-proj" onclick="changerPage('projets')">Voir mes projets</a></li>
+                <li><a href="#">À Propos</a></li>
+                <li><a href="#">Tarifs</a></li>
+                <li><a href="#">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <main id="wrapper-accueil">
+    <main>
         <h1 class="main-title">LE GRAPHISME AU SERVICE DE LA TERRE</h1>
-        
+
         <section id="section-accueil">
             <div class="speech-bubble" id="missionBubble">
                 <p>« ma mission :<br>cultivons ensemble votre<br>image de marque »</p>
             </div>
 
-            <div class="services-container" id="servicesIcons"> 
+            <div class="services-container" id="servicesIcons">
                 <div class="service-card">
                     <img src="certif.png" alt="Logo">
                     <p>Un logo et une image de marque qui vous ressemblent.</p>
@@ -54,6 +44,9 @@
                 </div>
             </div>
         </section>
+
+        <section id="section-projets" style="display: none;">
+            </section>
     </main>
 
     <script src="script.js"></script>
