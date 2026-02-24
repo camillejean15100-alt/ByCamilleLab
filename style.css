@@ -141,6 +141,14 @@ header nav ul li a.active {
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
+/* État initial : caché */
+.services-container, #servicesIcons {
+    display: none; 
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    /* ... tes autres réglages (position, top, left) ... */
+}
+
 .service-card img {
     height: 120px;
     width: auto;
