@@ -1,67 +1,53 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camille Lab</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body id="site-body">
+<header>
+    <nav>
+        <div class="logo"><img src="logocamille.png" alt="Logo"></div>
+        <ul>
+            <li><a href="#" id="link-acc" class="active" onclick="changerPage('accueil')">Accueil</a></li>
+            <li><a href="#" id="link-proj" onclick="changerPage('projets')">Voir mes projets</a></li>
+            <li><a href="#">À Propos</a></li>
+            <li><a href="#">Tarifs</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+</header>
 
-    <header>
-        <nav>
-            <div class="logo"><img src="logocamille.png" alt="Logo"></div>
-            <ul>
-                <li><a href="#" id="link-acc" class="active" onclick="changerPage('accueil')">Accueil</a></li>
-                <li><a href="#" onclick="changerPage('projets')">Voir mes projets</a></li>                
-                <li><a href="#">À Propos</a></li>
-                <li><a href="#">Tarifs</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
+<main>
+    <section id="section-accueil">
         <h1 class="main-title">LE GRAPHISME AU SERVICE DE LA TERRE</h1>
+        <div class="speech-bubble" id="missionBubble">
+            <p>« ma mission :<br>cultivons ensemble votre<br>image de marque »</p>
+        </div>
 
-        <section id="section-accueil">
-            <div class="speech-bubble" id="missionBubble">
-                <p>« ma mission :<br>cultivons ensemble votre<br>image de marque »</p>
+        <div class="services-container" id="servicesIcons">
+            <div class="service-card">
+                <img src="certif.png">
+                <p>Un logo et une image de marque qui vous ressemblent.</p>
             </div>
-
-            <div class="services-container" id="servicesIcons">
-                <div class="service-card">
-                    <img src="certif.png">
-                    <p>Un logo et une image de marque qui vous ressemblent.</p>
-                </div>
-                <div class="service-card">
-                    <img src="panier.png">
-                    <p>Création d'étiquettes & de packagings pour vos produits.</p>
-                </div>
-                <div class="service-card">
-                    <img src="panneaux.png">
-                    <p>Panneaux & supports pour rendre votre ferme visible.</p>
-                </div>
+            <div class="service-card">
+                <img src="panier.png">
+                <p>Création d'étiquettes & de packagings pour vos produits.</p>
             </div>
-        </section>
-
-      <section id="section-accueil">
-        <h1 class="main-title">LE GRAPHISME AU SERVICE DE LA TERRE</h1>
-        </section>
+            <div class="service-card">
+                <img src="panneaux.png">
+                <p>Panneaux & supports pour rendre votre ferme visible.</p>
+            </div>
+        </div>
+    </section>
 
     <section id="section-projets" style="display: none;">
         <div class="container">
             <h2 class="gallery-title">"De la graine à l'image : mes dernières réalisations."</h2>
             <div class="gallery-grid">
-                <div class="project-card"><img src="ton-image-1.jpg"></div>
-                </div>
+                <div class="project-card"><img src="ton-image-1.jpg" alt="Projet 1"></div>
+                <div class="project-card"></div>
+                <div class="project-card"></div>
+                <div class="project-card"></div>
+                <div class="project-card"></div>
+                <div class="project-card"></div>
+                <div class="project-card"></div>
+                <div class="project-card"></div>
+            </div>
         </div>
         <div class="herbe-galerie"></div>
     </section>
-
-        
-    </main>
-
-    <script src="script.js"></script>
-</body>
-</html>
+</main>
