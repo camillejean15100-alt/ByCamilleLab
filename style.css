@@ -44,9 +44,8 @@ header nav ul li a {
     padding-bottom: 5px;
     border-bottom: 3px solid transparent;
     transition: 0.3s;
+    
 }
-
-header nav ul li a:hover,
 header nav ul li a.active {
     color: #87B347 !important;
     border-bottom: 3px solid #87B347 !important;
@@ -251,4 +250,12 @@ header nav ul li a.active {
         text-align: left;
         line-height: 1.1;
     }
+}
+/* Responsive Projets */
+@media (max-width: 768px) {
+    .galerie-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 colonnes sur mobile */
+        padding-bottom: 100px;
+    }
+    .citation-bleue { font-size: 1.5rem; padding: 0 10px; }
 }
