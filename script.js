@@ -17,7 +17,8 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 // 2. Ta navigation (Switch de section)
-function changerPage(pageId) {
+function changerPage(pageId, element) {
+    // 1. Gestion des sections
     const sectionAccueil = document.getElementById('section-accueil');
     const sectionProjets = document.getElementById('section-projets');
 
@@ -29,9 +30,13 @@ function changerPage(pageId) {
         sectionAccueil.style.display = 'block';
     }
 
-    // Gestion de la classe active pour le trait vert
+    // 2. Gestion du trait vert (la classe active)
     document.querySelectorAll('header nav ul li a').forEach(link => {
         link.classList.remove('active');
     });
-    event.currentTarget.classList.add('active');
+
+    // On ajoute la classe au lien cliqué
+    if (element) {
+        element.classList.add('active');
+    }
 }
