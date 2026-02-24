@@ -1,19 +1,15 @@
-// Variable pour le minuteur auto
+// Variable pour le minuteur automatique
 let autoTransitionTimer;
 
 window.onload = function() {
-    // On cherche l'élément qui a la classe 'speech-bubble'
     const bulle = document.querySelector('.speech-bubble');
     
     if (bulle) {
-        // 1. On s'assure qu'elle est prête à être vue
-        bulle.style.display = "block"; 
-        
+        // 1. Apparition de la bulle au chargement
         setTimeout(() => {
-            // 2. On ajoute la classe pour l'animation d'entrée
             bulle.classList.add('visible');
             
-            // 3. Lancement du défilement auto après 7 secondes
+            // 2. LANCEMENT DU DÉFILEMENT AUTO (7 secondes)
             autoTransitionTimer = setTimeout(() => {
                 transitionVersServices();
             }, 7000); 
@@ -21,21 +17,29 @@ window.onload = function() {
     }
 };
 
-// --- ALLER VERS LES SERVICES ---
+// --- FONCTION : ALLER VERS LES SERVICES ---
 function transitionVersServices() {
     const bulle = document.querySelector('.speech-bubble');
+    // On cible le conteneur des services par sa classe CSS
     const services = document.querySelector('.services-container');
 
-    if (bulle && services && getComputedStyle(bulle).display !== 'none') {
-        // On arrête le minuteur si l'utilisateur a cliqué lui-même
+    // On vérifie que la bulle existe et qu'elle est visible avant de switcher
+    if (bulle && services && window.getComputedStyle(bulle).opacity !== "0") {
+        
+        // On annule le minuteur auto pour éviter les bugs si l'utilisateur a cliqué lui-même
         clearTimeout(autoTransitionTimer);
 
+        // Animation de sortie de la bulle
         bulle.style.opacity = "0";
         bulle.style.transform = "translate(-50%, -100%)"; 
 
         setTimeout(() => {
             bulle.style.display = "none";
-            services.style.display = "flex";
+            
+            // Affichage des cartes
+            services.style.display = "flex"; 
+            
+            // Petit délai pour déclencher la transition CSS (opacity)
             setTimeout(() => {
                 services.style.opacity = "1";
             }, 50);
@@ -43,12 +47,12 @@ function transitionVersServices() {
     }
 }
 
-// --- REVENIR À LA BULLE ---
+// --- FONCTION : RETOUR À LA BULLE ---
 function retourVersBulle() {
     const bulle = document.querySelector('.speech-bubble');
     const services = document.querySelector('.services-container');
 
-    if (services && bulle && getComputedStyle(services).display !== 'none') {
+    if (services && bulle) {
         services.style.opacity = "0";
         
         setTimeout(() => {
@@ -63,10 +67,10 @@ function retourVersBulle() {
     }
 }
 
-// Support Clavier (Espace, Droite, Gauche)
+// --- COMMANDES CLAVIER ---
 document.addEventListener('keydown', (e) => {
     if (e.code === "Space" || e.code === "ArrowRight") {
-        if (e.code === "Space") e.preventDefault();
+        if (e.code === "Space") e.preventDefault(); // Empêche le scroll avec Espace
         transitionVersServices();
     }
     if (e.code === "ArrowLeft") {
