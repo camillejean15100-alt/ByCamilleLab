@@ -11,12 +11,13 @@ window.onload = function() {
 function transitionVersServices() {
     const bulle = document.getElementById('missionBubble');
     const services = document.getElementById('servicesIcons');
-    const titre = document.querySelector('.main-title');
+    // Suppression de la variable titre ici car on ne veut plus le manipuler
 
     if (bulle && services && bulle.style.display !== 'none') {
         bulle.style.opacity = "0";
         bulle.style.transform = "translate(-50%, -100%)"; 
-        if (titre) titre.style.opacity = "0";
+        
+        // J'ai enlevé la ligne : if (titre) titre.style.opacity = "0";
 
         setTimeout(() => {
             bulle.style.display = "none";
@@ -28,38 +29,36 @@ function transitionVersServices() {
     }
 }
 
-// --- REVENIR À LA BULLE (NOUVEAU) ---
+// --- REVENIR À LA BULLE ---
 function retourVersBulle() {
     const bulle = document.getElementById('missionBubble');
     const services = document.getElementById('servicesIcons');
-    const titre = document.querySelector('.main-title');
 
     if (services && bulle && services.style.display !== 'none') {
-        // 1. Les services s'effacent
         services.style.opacity = "0";
         
         setTimeout(() => {
             services.style.display = "none";
             
-            // 2. La bulle et le titre réapparaissent
             bulle.style.display = "inline-block";
-            if (titre) titre.style.opacity = "1";
+            
+            // J'ai enlevé la ligne : if (titre) titre.style.opacity = "1";
             
             setTimeout(() => {
                 bulle.style.opacity = "1";
-                bulle.style.transform = "translate(-50%, -50%)"; // Elle revient au centre
+                bulle.style.transform = "translate(-50%, -50%)";
             }, 50);
         }, 600);
     }
 }
 
-// Support Clavier complet
+// Support Clavier
 document.addEventListener('keydown', (e) => {
-    if (e.keyCode === 32 || e.keyCode === 39) { // Espace ou Droite -> Suivant
+    if (e.keyCode === 32 || e.keyCode === 39) { 
         if (e.keyCode === 32) e.preventDefault();
         transitionVersServices();
     }
-    if (e.keyCode === 37) { // Flèche Gauche -> Retour
+    if (e.keyCode === 37) { 
         retourVersBulle();
     }
 });
