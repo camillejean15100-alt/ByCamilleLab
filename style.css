@@ -177,65 +177,66 @@ header nav ul li a.active {
 
 /* RESPONSIVE */
 
+/* --- LE MODE MOBILE QUI FONCTIONNE --- */
 @media (max-width: 768px) {
     body {
-        overflow-y: auto; /* On permet le scroll sur mobile */
+        overflow-y: auto !important; /* On autorise enfin le scroll */
+        display: block; 
     }
 
-    nav {
-        flex-direction: column;
-        padding: 15px;
-        gap: 15px;
-    }
-
-    header nav ul {
-        gap: 10px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    header nav ul li a {
-        font-size: 16px;
-    }
-
+    /* Le titre : plus petit et moins haut */
     .main-title {
-        font-size: 2.2rem;
-        position: relative; /* On le sort du fixed pour scroller */
-        padding-top: 120px;
+        position: relative; /* Il ne flotte plus, il suit le scroll */
         top: 0;
+        padding: 100px 20px 40px; /* Espace pour le menu */
+        font-size: 2.2rem;
+        width: 100%;
     }
 
+    /* La bulle : on la centre et on enlève le transform complexe */
     .speech-bubble {
-        position: relative; /* Plus de fixed sur mobile */
-        top: 50px;
-        left: auto;
+        position: relative;
+        top: 0;
+        left: 0 !important;
         transform: none !important;
-        margin: 0 auto;
+        margin: 20px auto; /* Centrage automatique */
+        width: 85%;
         opacity: 0;
-        transition: opacity 0.6s;
+        display: block;
     }
 
+    /* Animation mobile simplifiée */
     .speech-bubble.visible {
         opacity: 1 !important;
-        transform: none !important;
+        transform: translateY(0) !important;
     }
 
+    /* On enlève la pointe de la bulle sur mobile (ça gâche l'espace) */
     .speech-bubble::after {
-        display: none; /* On enlève la pointe sur mobile pour gagner de la place */
+        display: none;
     }
 
+    /* Les cartes : en colonne, bien espacées */
     .services-container {
-        position: relative; /* On permet le scroll */
-        top: 80px;
-        left: auto;
+        position: relative;
+        top: 0;
+        left: 0 !important;
         transform: none !important;
-        flex-direction: column;
+        flex-direction: column; /* Une carte par ligne */
         align-items: center;
+        width: 100%;
+        padding: 20px;
+        gap: 25px;
         margin-bottom: 50px;
     }
 
     .service-card {
-        width: 90%;
-        margin-bottom: 20px;
+        width: 100%;
+        max-width: 320px; /* Pas trop large sur les grands téléphones */
+        padding: 30px 20px;
+    }
+
+    .service-card img {
+        height: 100px;
     }
 }
