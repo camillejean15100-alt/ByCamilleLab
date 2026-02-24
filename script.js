@@ -1,34 +1,31 @@
-window.onload = function() {
-    // 1. On récupère les éléments par leurs ID du HTML
+window.addEventListener('load', function() {
     const bulle = document.getElementById('missionBubble');
     const services = document.getElementById('servicesIcons');
 
     if (bulle && services) {
-        // --- ÉTAPE 1 : Apparition de la bulle ---
+        // 1. Apparition de la bulle (rapide : 0.4s après chargement)
         setTimeout(() => {
             bulle.classList.add('visible');
             
-            // --- ÉTAPE 2 : Attente de 6 secondes puis transition AUTO ---
+            // 2. TEMPS DE LECTURE : 3.5 secondes (Rythmé mais lisible)
             setTimeout(() => {
                 
-                // Animation de sortie de la bulle (elle s'envole)
+                // Animation de sortie de la bulle
                 bulle.style.opacity = "0";
-                bulle.style.transform = "translate(-50%, -100%)"; 
+                bulle.style.transform = "translate(-50%, -120%)"; // Elle monte un peu plus haut
 
-                // --- ÉTAPE 3 : Apparition des services ---
+                // 3. APPARITION DES SERVICES
                 setTimeout(() => {
-                    bulle.style.display = "none"; // Cache la bulle
-                    
-                    // Affiche le conteneur des services
+                    bulle.style.display = "none";
                     services.style.display = "flex"; 
                     
-                    // Déclenche le fondu (opacity)
+                    // On réduit aussi le délai du fondu pour que ce soit plus nerveux
                     setTimeout(() => {
                         services.style.opacity = "1";
                     }, 50);
-                }, 800); // Temps de l'animation de sortie
+                }, 600); // Transition de sortie plus courte
 
-            }, 6000); // Temps de lecture avant le défilement auto
-        }, 500);
+            }, 3500); // <<--- C'est ici qu'on gère la vitesse globale
+        }, 400);
     }
-};
+});
