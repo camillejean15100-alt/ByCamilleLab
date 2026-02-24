@@ -3,29 +3,29 @@ window.addEventListener('load', function() {
     const services = document.getElementById('servicesIcons');
 
     if (bulle && services) {
-        // 1. Apparition de la bulle (rapide : 0.4s après chargement)
+        // 1. Apparition quasi instantanée
         setTimeout(() => {
             bulle.classList.add('visible');
             
-            // 2. TEMPS DE LECTURE : 3.5 secondes (Rythmé mais lisible)
+            // 2. TEMPS DE LECTURE ULTRA-COURT : 1.2 seconde
             setTimeout(() => {
                 
-                // Animation de sortie de la bulle
+                // Sortie percutante (plus rapide)
+                bulle.style.transition = "all 0.4s ease-in"; 
                 bulle.style.opacity = "0";
-                bulle.style.transform = "translate(-50%, -120%)"; // Elle monte un peu plus haut
+                bulle.style.transform = "translate(-50%, -150%)"; 
 
-                // 3. APPARITION DES SERVICES
+                // 3. ENCHAÎNEMENT IMMÉDIAT
                 setTimeout(() => {
                     bulle.style.display = "none";
-                    services.style.display = "flex"; 
+                    services.style.setProperty('display', 'flex', 'important');
                     
-                    // On réduit aussi le délai du fondu pour que ce soit plus nerveux
                     setTimeout(() => {
                         services.style.opacity = "1";
                     }, 50);
-                }, 600); // Transition de sortie plus courte
+                }, 400); 
 
-            }, 3500); // <<--- C'est ici qu'on gère la vitesse globale
-        }, 400);
+            }, 1200); // 1.2 seconde de présence
+        }, 200);
     }
 });
