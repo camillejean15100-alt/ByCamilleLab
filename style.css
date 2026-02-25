@@ -56,56 +56,62 @@ body {
 }
 
 /* --- CARTES : LE RÉGLAGE FINAL --- */
-/* --- LE CONTENEUR DES 3 CARTES --- */
+/* --- LE CONTENEUR --- */
 .cards-wrapper {
     position: absolute;
-    right: 5%; 
-    display: flex; 
+    right: 5%;
+    display: none; /* Caché au départ pour le JS */
     gap: 20px;
-    align-items: flex-end; 
+    align-items: flex-end;
 }
 
-/* --- LA STRUCTURE DU PANNEAU --- */
+/* --- LA CARTE (ÉTAT INITIAL POUR L'ANIME) --- */
 .card {
     background: var(--beige-bg);
     border: 3px solid var(--beige-main);
     border-radius: 25px;
-    width: 280px;  
-    height: 400px; /* On fixe la hauteur pour que tout soit aligné */
+    width: 280px;
+    height: 400px;
     padding: 30px 20px;
     display: flex;
-    flex-direction: column; /* Aligne le contenu verticalement */
+    flex-direction: column;
     text-align: center;
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    
+    /* Préparation animation */
+    opacity: 0;
+    transform: translateX(100px); /* Arrive de la droite */
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* --- L'ICÔNE : CENTRAGE VERTICAL PARFAIT --- */
+/* --- L'ICÔNE ET LE TEXTE (ALIGNEMENT RIGIDE) --- */
 .card img {
     display: block;
-    margin: auto; /* Magie du flex : occupe tout l'espace libre pour centrer l'image */
-    max-height: 180px; 
+    margin: auto; /* Centre verticalement */
+    max-height: 180px;
     width: auto;
-    object-fit: contain;
 }
 
-/* --- LE TEXTE : COLLÉ EN BAS --- */
 .card p {
     color: var(--brown-text);
-    font-family: var(--font-menu);
-    font-size: 1.2rem;
     font-weight: bold;
-    line-height: 1.4;
-    margin-top: auto; /* Pousse le texte tout en bas du panneau */
-    min-height: 80px; /* Aligne la base du texte sur les 3 cartes */
+    margin-top: auto; /* Colle au bas */
+    min-height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* --- RÉGLAGE MANUEL DES TAILLES D'IMAGES --- */
-.card:nth-child(1) img { width: 120px; } /* Sceau certif */
-.card:nth-child(2) img { width: 110px; } /* Panier */
-.card:nth-child(3) img { width: 170px; } /* Panneau bois */
+/* --- DÉCLENCHEMENT DE L'ANIMATION --- */
+.cards-wrapper.is-visible .card {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Cascade (l'un après l'autre) */
+.cards-wrapper.is-visible .card:nth-child(1) { transition-delay: 0.1s; }
+.cards-wrapper.is-visible .card:nth-child(2) { transition-delay: 0.3s; }
+.cards-wrapper.is-visible .card:nth-child(3) { transition-delay: 0.5s; }
 
 @keyframes sweepIn { to { opacity: 1; transform: translateX(0); } }
 
