@@ -75,7 +75,7 @@ header nav ul li:not(:last-child)::after {
     font-weight: normal;
 }
 
-/* --- TITRE --- */
+/* --- TITRE ACCUEIL --- */
 .main-title {
     position: fixed;
     top: 15%;
@@ -92,7 +92,7 @@ header nav ul li:not(:last-child)::after {
     position: fixed;
     top: 50%; 
     left: 48%; 
-    transform: translate(100px, -50%); /* Départ pour l'animation */
+    transform: translate(100px, -50%);
     opacity: 0;
     background-color: #EADC9B;
     padding: 25px 45px;
@@ -102,12 +102,10 @@ header nav ul li:not(:last-child)::after {
     cursor: pointer;
 }
 
-/* L'animation d'entrée de la bulle */
 .speech-bubble.visible { 
     animation: slideInQuick 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
-/* Animation de sortie pour enchaîner sur les cartes */
 .speech-bubble.fade-out {
     opacity: 0 !important;
     transform: translate(-50%, -70%) scale(0.9) !important;
@@ -133,7 +131,7 @@ header nav ul li:not(:last-child)::after {
     text-align: center;
 }
 
-/* --- LES CARTES (AVEC ANIMATION) --- */
+/* --- LES CARTES SERVICES --- */
 .services-container {
     display: none; 
     opacity: 0;
@@ -151,12 +149,10 @@ header nav ul li:not(:last-child)::after {
     opacity: 1 !important;
 }
 
-/* Animation d'apparition des cartes */
 .services-container.active .service-card {
     animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
-/* Effet cascade (décalage) */
 .services-container.active .service-card:nth-child(1) { animation-delay: 0.1s; }
 .services-container.active .service-card:nth-child(2) { animation-delay: 0.2s; }
 .services-container.active .service-card:nth-child(3) { animation-delay: 0.3s; }
@@ -171,7 +167,7 @@ header nav ul li:not(:last-child)::after {
     align-items: center;
     text-align: center;
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    opacity: 0; /* Important pour l'animation */
+    opacity: 0;
 }
 
 .service-card img { 
@@ -186,58 +182,59 @@ header nav ul li:not(:last-child)::after {
     font-weight: bold;
 }
 
-/* --- DEFINITIONS DES MOUVEMENTS (KEYFRAMES) --- */
-@keyframes slideInQuick {
-    0% { transform: translate(100px, -50%); opacity: 0; }
-    100% { transform: translate(-50%, -50%); opacity: 1; }
-}
-
-@keyframes popIn {
-    0% { opacity: 0; transform: scale(0.8) translateY(20px); }
-    100% { opacity: 1; transform: scale(1) translateY(0); }
-}
-
-/* --- SECTIONS PROJETS --- */
-:root {
-    --camille-blue: #2a5a9a;
-    --camille-green: #7da144;
-}
-
+/* --- SECTION PROJETS (MISE À JOUR) --- */
 #section-projets {
     position: relative;
     z-index: 10;
-    padding-top: 120px;
+    padding-top: 140px;
     min-height: 100vh;
+    display: none; /* Piloté par le JS */
 }
 
 .intro-projets {
     text-align: center;
     position: relative;
-    margin: 40px auto;
-    max-width: 600px;
+    margin-bottom: 50px;
 }
 
-.ladybug {
-    width: 50px;
+/* Fil conducteur Coccinelle */
+.coccinelle-container {
     position: absolute;
-    left: 10%;
+    left: 20%;
     top: -20px;
+    width: 150px;
+}
+
+.trait-coco {
+    width: 100%;
+    position: absolute;
+    top: 15px;
+    left: 0;
+}
+
+.coco-icon {
+    width: 40px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 2;
 }
 
 .quote-projets {
-    font-family: 'Architects Daughter', cursive, sans-serif;
-    color: var(--camille-blue);
-    font-size: 1.8rem;
-    line-height: 1.3;
+    font-family: 'Gochi Hand', cursive;
+    color: #1D70B7; /* Bleu spécifique */
+    font-size: 2.5rem;
+    line-height: 1.2;
 }
 
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 0 50px;
 }
 
 .project-card {
@@ -246,10 +243,31 @@ header nav ul li:not(:last-child)::after {
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     position: relative;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
 }
 
 .leaf {
     position: absolute;
     width: 40px;
     z-index: 5;
+}
+
+/* Positionnement des feuilles selon ta capture */
+.l1 { top: -10px; left: 15%; }
+.l2 { top: -10px; right: 10%; }
+.l3 { top: -15px; left: 45%; }
+
+/* --- KEYFRAMES --- */
+@keyframes slideInQuick {
+    0% { transform: translate(100px, -50%); opacity: 0; }
+    100% { transform: translate(-50%, -50%); opacity: 1; }
+}
+
+@keyframes popIn {
+    0% { opacity: 0; transform: scale(0.8) translateY(20px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
 }
