@@ -1,17 +1,13 @@
+window.onload = function() {
+    const bubble = document.getElementById('bubble');
+    const cards = document.getElementById('cards');
 
-document.addEventListener('DOMContentLoaded', () => {
-    const bubble = document.getElementById('missionBubble');
-    const cards = document.getElementById('cardsBox');
-
-    // 1. On laisse la bulle visible pendant 4 secondes
+    // Après 3 secondes, on cache la bulle et on montre les cartes
     setTimeout(() => {
-        // 2. On fait disparaître la bulle
-        bubble.classList.add('fade-out');
-        
-        // 3. Juste après la disparition, on fait apparaître les cartes
+        bubble.style.opacity = '0';
         setTimeout(() => {
-            cards.classList.add('show-cards');
-        }, 600); 
-
-    }, 4000); 
-});
+            bubble.style.display = 'none';
+            cards.style.opacity = '1';
+        }, 500);
+    }, 3000);
+};
