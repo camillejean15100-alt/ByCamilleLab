@@ -1,25 +1,34 @@
-/* --- 1. CONFIGURATION DES VARIABLES --- */
+/* --- VARIABLES ET CONFIGURATION --- */
 :root {
-    --blue-slate: #3B505C;         /* Couleur du Menu et Titre */
-    --green-leaf: #87B347;         /* Couleur Hover Menu */
-    --brown-text: #684132;         /* Couleur Texte dans les cartes/bulles */
-    --beige-main: #EADC9B;         /* Couleur Bordures */
-    --beige-bg: rgba(234, 220, 155, 0.95); /* Couleur Fond Bulle/Cartes */
+    --blue-slate: #3B505C;
+    --green-leaf: #87B347;
+    --brown-text: #684132;
+    --beige-main: #EADC9B;
+    --beige-bg: rgba(234, 220, 155, 0.95);
     --font-menu: 'Californian FB', 'Georgia', serif;
     --font-title: 'Gochi Hand', cursive;
+    --speed: 0.3s; 
 }
 
-/* --- 2. BASE & NAVIGATION (DESIGN INTACT) --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+/* --- GESTION DES FONDS (DÉPEND DE LA PAGE) --- */
 body {
     background: url('fondaccueuil.jpg') no-repeat center center fixed;
     background-size: cover;
     min-height: 100vh;
-    font-family: var(--font-menu);
     overflow-x: hidden;
+    font-family: var(--font-menu);
+    transition: background 0.5s ease;
 }
 
+/* Changement de fond automatique pour la page projets */
+body.page-projets {
+    background: url('fondprojets.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* --- NAVIGATION --- */
 .navbar { 
     display: flex; 
     justify-content: space-between; 
@@ -39,21 +48,25 @@ body {
     padding: 0 20px; 
 }
 
-.nav-links li a:hover, .nav-links li a.active { 
+/* État actif et survol */
+.nav-links li a:hover, 
+.nav-links li a.active { 
     color: var(--green-leaf); 
 }
 
 .sep { color: var(--blue-slate); font-weight: bold; font-size: 1.4rem; }
 
+/* --- TITRE --- */
 .main-title { 
     font-family: var(--font-title); 
     color: var(--blue-slate); 
     text-align: center; 
     font-size: 3.8rem; 
     margin-top: 20px; 
+    text-transform: uppercase;
 }
 
-/* --- 3. STRUCTURE ET BULLE DE MISSION --- */
+/* --- PAGE ACCUEIL : BULLE ET CARTES --- */
 .interactive-container {
     position: relative;
     height: 60vh;
@@ -62,91 +75,111 @@ body {
     align-items: center;
 }
 
-#missionBubble {
+.speech-bubble {
     position: relative;
     background: var(--beige-bg);
     border: 3px solid var(--beige-main);
     border-radius: 20px;
-    width: 320px; 
-    height: 280px;
-    display: flex; 
-    justify-content: center; 
-    align-items: center;
-    padding: 25px; 
-    text-align: center;
-    opacity: 0; 
-    transition: opacity 0.8s ease;
+    width: 320px; height: 280px;
+    display: flex; justify-content: center; align-items: center;
+    padding: 25px; text-align: center;
+    z-index: 10;
 }
 
-#missionBubble.visible { opacity: 1; }
-
-#missionBubble p { 
-    color: var(--brown-text); 
-    font-family: var(--font-title);
-    font-size: 1.8rem; 
-    font-weight: bold; 
-}
+.speech-bubble p { color: var(--brown-text); font-size: 1.8rem; font-weight: bold; }
 
 .bubble-triangle {
-    position: absolute; left: -28px; top: 50%; transform: translateY(-50%);
-    border-top: 20px solid transparent; 
+    position: absolute;
+    left: -28px; top: 50%; transform: translateY(-50%);
+    border-top: 20px solid transparent;
     border-bottom: 20px solid transparent;
     border-right: 28px solid var(--beige-main);
 }
 
-/* --- 4. LES CARTES DE SERVICES (DESIGN BEIGE IMAGE 4) --- */
-#servicesIcons {
+.cards-wrapper {
     position: absolute;
-    right: 5%;
-    bottom: 18%;
-    display: none; /* Ton JS le passe en flex après 3.5s */
+    right: 12%; 
+    display: none; /* Activé par script.js */
     gap: 20px;
-    align-items: center;
-    z-index: 100;
-}
-
-/* Déclenchement de l'animation groupée */
-#servicesIcons[style*="display: flex"] {
-    animation: sweepInGroup 0.8s ease-out forwards;
 }
 
 .card {
-    background-color: var(--beige-bg) !important;
-    border: 3px solid var(--beige-main);
+    background: var(--beige-bg);
+    border: 2.5px solid var(--beige-main);
     border-radius: 20px;
-    width: 250px;
-    height: 350px;
-    padding: 25px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     text-align: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    opacity: 0;
+    transform: translateX(20px);
 }
 
-.card img { 
-    width: 90px; 
-    height: auto; 
-    margin-bottom: 25px; 
-    object-fit: contain; 
+.card img {
+    object-fit: contain;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
-.card p { 
-    color: var(--brown-text); 
-    font-family: var(--font-title); 
-    font-size: 1.2rem; 
-    line-height: 1.2; 
+.card p {
+    color: var(--brown-text);
+    font-weight: bold;
+    line-height: 1.3;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* --- 5. ANIMATION DE BALAYAGE --- */
-@keyframes sweepInGroup {
-    0% { 
-        opacity: 0; 
-        transform: translateX(120px); 
-    }
-    100% { 
-        opacity: 1; 
-        transform: translateX(0); 
-    }
+/* --- RÉGLAGES INDIVIDUELS DES CARTES --- */
+.card:nth-child(1) { width: 250px; height: 280px; }
+.card:nth-child(1) img { width: 130px; }
+
+.card:nth-child(2) { width: 250px; height: 280px; }
+.card:nth-child(2) img { width: 110px; }
+
+.card:nth-child(3) { width: 250px; height: 280px; }
+.card:nth-child(3) img { width: 155px; }
+
+/* --- PAGE PROJETS : GRILLE --- */
+.projets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 50px 80px;
+}
+
+.projet-item {
+    background: var(--beige-bg);
+    border: 2.5px solid var(--beige-main);
+    border-radius: 20px;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.projet-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.projet-content p {
+    color: var(--brown-text);
+    font-family: var(--font-title);
+    font-size: 2rem;
+}
+
+/* --- ANIMATIONS --- */
+.is-visible .card { animation: sweepIn var(--speed) ease-out forwards; }
+.is-visible .card:nth-child(1) { animation-delay: 0.05s; }
+.is-visible .card:nth-child(2) { animation-delay: 0.1s; }
+.is-visible .card:nth-child(3) { animation-delay: 0.15s; }
+
+@keyframes sweepIn {
+    to { opacity: 1; transform: translateX(0); }
 }
