@@ -3,28 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camille Lab</title>
+    <title>Camille Lab - Studio Graphique</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body id="site-body">
 
     <header>
         <nav>
-            <div class="logo"><img src="logocamille.png" alt="Logo"></div>
+            <div class="logo">
+                <img src="logo.png" alt="Camille Lab Logo">
+            </div>
             <ul>
-                <li><a href="#" id="link-acc" class="active" onclick="event.preventDefault(); changerPage('accueil')">Accueil</a></li>
-                <li><a href="#" id="link-proj" onclick="event.preventDefault(); changerPage('projets')">Voir mes projets</a></li>
-                <li><a href="#">À Propos</a></li>
-                <li><a href="#">Tarifs</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#" id="link-acc" class="active" onclick="changerPage('accueil')">Accueil</a></li>
+                <li><a href="#" id="link-proj" onclick="changerPage('projets')">Voir mes projets</a></li>
+                <li><a href="#" onclick="changerPage('propos')">À Propos</a></li>
+                <li><a href="#" onclick="changerPage('tarifs')">Tarifs</a></li>
+                <li><a href="#" onclick="changerPage('contact')">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <h1 class="main-title">LE GRAPHISME AU SERVICE DE LA TERRE</h1>
-
         <section id="section-accueil">
+            <h1 class="main-title">LE GRAPHISME AU SERVICE DE LA TERRE</h1>
+            
             <div class="speech-bubble" id="missionBubble">
                 <p>« ma mission :<br>cultivons ensemble votre<br>image de marque »</p>
             </div>
@@ -32,36 +34,40 @@
             <div class="services-container" id="servicesIcons">
                 <div class="service-card">
                     <img src="certif.png" alt="Logo">
-                    <p>Un logo et une image de marque qui vous ressemblent.</p>
+                    <p>Un logo à votre image, unique et mémorable.</p>
                 </div>
                 <div class="service-card">
                     <img src="panier.png" alt="Packaging">
-                    <p>Création d'étiquettes & de packagings pour vos produits.</p>
+                    <p>Des packagings qui racontent votre histoire.</p>
                 </div>
                 <div class="service-card">
                     <img src="panneaux.png" alt="Supports">
-                    <p>Panneaux & supports pour rendre votre ferme visible.</p>
+                    <p>Tous vos supports de communication print.</p>
                 </div>
             </div>
         </section>
 
-       <section id="section-projets" style="display: none;">
-    <div class="intro-projets">
-        <img src="coccinelle.png" alt="Coccinelle" class="ladybug">
-        <h2 class="quote-projets">"De la graine à l'image :<br>mes dernières réalisations."</h2>
-    </div>
+        <section id="section-projets">
+            <div class="intro-projets">
+                <div class="coccinelle-container">
+                    <img src="traitcoccinelle.png" class="trait-coco" alt="">
+                    <img src="coccinelle.png" class="coco-icon" alt="">
+                </div>
+                
+                <h2 class="quote-projets">"De la graine à l'image :<br>mes dernières réalisations."</h2>
+            </div>
 
-    <div class="portfolio-grid">
-        <div class="project-card"><img src="leaf1.png" class="leaf leaf-tl" alt="deco"></div>
-        <div class="project-card"></div>
-        <div class="project-card"></div>
-        <div class="project-card"><img src="leaf2.png" class="leaf leaf-tr" alt="deco"></div>
-        <div class="project-card"></div>
-        <div class="project-card"><img src="leaf1.png" class="leaf leaf-bm" alt="deco"></div>
-        <div class="project-card"></div>
-        <div class="project-card"></div>
-    </div>
-</section>
+            <div class="portfolio-grid">
+                <div class="project-card"><img src="feuille1.png" class="leaf l1" alt=""></div>
+                <div class="project-card"></div>
+                <div class="project-card"></div>
+                <div class="project-card"><img src="feuille2.png" class="leaf l2" alt=""></div>
+                <div class="project-card"></div>
+                <div class="project-card"><img src="feuille3.png" class="leaf l3" alt=""></div>
+                <div class="project-card"></div>
+                <div class="project-card"></div>
+            </div>
+        </section>
     </main>
 
     <script src="script.js"></script>
