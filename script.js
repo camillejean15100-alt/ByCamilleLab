@@ -1,26 +1,59 @@
-window.onload = function() {
+// Variable pour savoir si l'animation a déjà eu lieu
+let animationFaite = false;
+
+window.addEventListener('DOMContentLoaded', () => {
+    lancerAnimationAccueil();
+});
+
+function lancerAnimationAccueil() {
     const bubble = document.getElementById('missionBubble');
     const services = document.getElementById('servicesIcons');
-    const title = document.querySelector('.main-title');
+    
+    // Si on n'est pas sur l'accueil ou si déjà fait, on stoppe
+    if (animationFaite || !bubble) return;
 
-    // 1. Apparition de la bulle
-    setTimeout(() => { if(bubble) bubble.classList.add('visible'); }, 500);
-
-    // 2. Bascule titre/bulle vers services après 3s
     setTimeout(() => {
-        if(bubble) bubble.style.display = 'none';
-        if(title) title.style.display = 'none';
-        if(services) services.style.display = 'flex';
-    }, 3500);
-};
+        bubble.classList.add('visible');
+    }, 100);
 
-function changerPage(page) {
-    const acc = document.getElementById('section-accueil');
-    const proj = document.getElementById('section-projets');
-    if (page === 'projets') {
-        acc.style.display = 'none';
-        proj.style.display = 'block';
-        document.body.style.backgroundImage = "url('voirmesprojets.jpg')";
-        document.body.style.overflow = "auto";
-    } else { window.location.reload(); }
+    setTimeout(() => {
+        bubble.classList.remove('visible'); 
+        setTimeout(() => {
+            bubble.style.display = 'none';
+            if(services) services.classList.add('active');
+            animationFaite = true; // On verrouille pour la suite
+        }, 600); 
+    }, 1600);
+}
+
+function changerPage(pageId, element) {
+    // Empêcher le comportement par défaut du lien #
+    if(event) event.preventDefault();
+
+    const sectionAccueil = document.getElementById('section-accueil');
+    const sectionProjets = document.getElementById('section-projets');
+
+    if (pageId === 'projets') {
+        sectionAccueil.style.display = 'none';
+        sectionProjets.style.display = 'block';
+    } else {
+        sectionProjets.style.display = 'none';
+        sectionAccueil.style.display = 'block';
+        
+        // Si on revient sur accueil, on s'assure que les services sont là 
+        // sans relancer la bulle pénible
+        const services = document.getElementById('servicesIcons');
+        if(services) services.classList.add('active');
+        const bubble = document.getElementById('missionBubble');
+        if(bubble) bubble.style.display = 'none';
+    }
+
+    // Gestion du trait vert
+    document.querySelectorAll('header nav ul li a').forEach(link => {
+        link.classList.remove('active');
+    });
+
+    if (element) {
+        element.classList.add('active');
+    }
 }
