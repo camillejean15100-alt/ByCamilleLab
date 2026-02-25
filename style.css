@@ -151,7 +151,7 @@ body {
     height: 280px; 
 }
 .card:nth-child(2) img {
-    width: 110px; /* Taille icône 2 */
+    width: 120px; /* Taille icône 2 */
 }
 
 /* CARTE 3 : PANNEAUX */
@@ -160,7 +160,7 @@ body {
     height: 280px; 
 }
 .card:nth-child(3) img {
-    width: 150px; /* Taille icône 3 */
+    width: 100px; /* Taille icône 3 */
 }
 
 /* --- ANIMATIONS --- */
