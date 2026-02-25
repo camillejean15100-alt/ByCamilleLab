@@ -7,7 +7,7 @@
     --beige-bg: rgba(234, 220, 155, 0.95);
     --font-menu: 'Californian FB', 'Georgia', serif;
     --font-title: 'Gochi Hand', cursive;
-    --speed: 0.3s; /* ANIMATION ÉCLAIR */
+    --speed: 0.3s; 
 }
 
 /* --- RESET & BASE --- */
@@ -20,7 +20,7 @@ body {
     font-family: var(--font-menu);
 }
 
-/* --- NAVIGATION (Texte 1.4rem + Vert) --- */
+/* --- NAVIGATION --- */
 .navbar { display: flex; justify-content: space-between; align-items: center; padding: 25px 80px; }
 .logo { height: 90px; width: auto; }
 .nav-links { display: flex; list-style: none; align-items: center; }
@@ -39,7 +39,7 @@ body {
     align-items: center;
 }
 
-/* BULLE (Triangle inclus) */
+/* BULLE */
 .speech-bubble {
     position: relative;
     background: var(--beige-bg);
@@ -47,7 +47,7 @@ body {
     border-radius: 20px;
     width: 320px; height: 280px;
     display: flex; justify-content: center; align-items: center;
-    padding: 25px; text-align: center; z-index: 10;
+    padding: 25px; text-align: center;
 }
 .speech-bubble p { color: var(--brown-text); font-size: 1.8rem; font-weight: bold; }
 .speech-bubble::after {
@@ -56,10 +56,10 @@ body {
     border-right: 28px solid var(--beige-main);
 }
 
-/* --- CARTES : PANNEAUX RÉDUITS & ALIGNEMENT AU MILLIMÈTRE --- */
+/* --- CARTES : PANNEAU COMPACT & ICÔNES LARGES --- */
 .cards-wrapper {
     position: absolute;
-    right: 12%; 
+    right: 10%; 
     display: none; 
     gap: 20px;
 }
@@ -69,41 +69,44 @@ body {
     border: 2.5px solid var(--beige-main);
     border-radius: 20px;
     
-    /* DIMENSIONS RÉDUITES (Panneau moins haut) */
+    /* PANNEAU ENCORE PLUS COMPACT */
     width: 250px; 
-    height: 310px; 
+    height: 280px; 
     
-    padding: 25px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     opacity: 0;
     transform: translateX(20px);
 }
 
-/* Force l'icône à descendre et à se centrer proprement */
+/* ICÔNE : CENTRÉE ET PLUS GRANDE */
 .card img {
-    width: 110px; /* Taille cohérente avec le petit panneau */
+    width: 130px; /* Taille augmentée */
     height: auto;
-    margin-top: 30px; /* DESCEND L'ICÔNE PAR RAPPORT AU HAUT */
-    margin-bottom: auto; /* POUSSE LE TEXTE VERS LE BAS */
+    margin-top: auto;    /* Pousse l'icône vers le centre vertical */
+    margin-bottom: 20px; /* Espace fixe avec le texte */
+    object-fit: contain;
 }
 
+/* TEXTE : CALÉ EN BAS */
 .card p {
     color: var(--brown-text);
     font-weight: bold;
     font-size: 1.05rem; 
     line-height: 1.3;
-    margin-top: auto; /* CALÉ TOUT EN BAS */
-    min-height: 60px; /* Assure que tous les textes commencent au même niveau */
+    margin-top: 0;       /* On enlève le margin-top auto ici car l'img s'en occupe */
+    margin-bottom: 10px; /* Petit espace avec le bord bas */
+    min-height: 50px;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
-/* --- ANIMATIONS HYPER RAPIDES --- */
+/* --- ANIMATION SPEED --- */
 .is-visible .card {
     animation: sweepIn var(--speed) ease-out forwards;
 }
