@@ -56,65 +56,63 @@ body {
 }
 
 /* --- CARTES : LE RÉGLAGE FINAL --- */
-/* --- LE CONTENEUR (servicesIcons) --- */
+/* LE CONTENEUR - Placé pile au bon endroit */
 #servicesIcons {
     position: absolute;
     right: 5%;
-    bottom: 20%; /* Position au-dessus de l'herbe */
-    display: none; /* Ton JS le passe en flex à 3.5s */
+    bottom: 18%; 
+    display: none; /* Ton JS le réveille à 3.5s */
     gap: 20px;
-    align-items: stretch; /* Les cartes auront toutes la même hauteur naturellement */
-    z-index: 10;
+    align-items: flex-start; /* Aligne le haut des cartes */
+    z-index: 100;
 }
 
-/* --- LA CARTE (Format original respecté) --- */
+/* LA CARTE - Format équilibré (plus "organique") */
 .card {
     background: #FDF9F0;
     border: 3px solid #E6D5B8;
-    border-radius: 25px;
-    width: 260px; /* Largeur fixe pour garder l'aspect panneau */
-    padding: 20px;
+    border-radius: 20px;
+    width: 270px;
+    min-height: 320px; /* Donne une base solide sans être immense */
+    padding: 25px 15px;
     display: flex;
     flex-direction: column;
+    justify-content: center; /* Centre tout le contenu dedans */
+    align-items: center;
     text-align: center;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
 
-    /* Réparation de l'animation */
+    /* L'ANIMATION : Arrivée groupée avec un léger rebond (Back out) */
     opacity: 0;
-    animation: sweepIn 0.8s ease-out forwards;
+    animation: sweepInGroup 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
-/* --- L'IMAGE (Plus de déformation) --- */
+/* L'IMAGE - L'élément central */
 .card img {
-    display: block;
-    margin: 0 auto 15px auto;
-    max-height: 120px; /* Taille raisonnable pour ne pas tout décaler */
-    width: auto;
+    width: 90px;
+    height: 90px;
     object-fit: contain;
+    margin-bottom: 20px;
 }
 
-/* --- LE TEXTE --- */
+/* LE TEXTE - Typo Gochi Hand */
 .card p {
     color: #5D4037;
     font-family: 'Gochi Hand', cursive;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     line-height: 1.3;
-    margin: auto 0 0 0; /* Pousse le texte vers le bas sans forcer de hauteur géante */
+    margin: 0;
+    padding: 0 10px;
 }
 
-/* --- L'ANIMATION DE BALAYAGE --- */
-@keyframes sweepIn {
+/* L'ANIMATION : Glisse et "pop" légèrement à la fin */
+@keyframes sweepInGroup {
     0% {
         opacity: 0;
-        transform: translateX(60px);
+        transform: translateX(150px) scale(0.9);
     }
     100% {
         opacity: 1;
-        transform: translateX(0);
+        transform: translateX(0) scale(1);
     }
 }
-
-/* Cascade temporelle */
-.card:nth-child(1) { animation-delay: 0.1s; }
-.card:nth-child(2) { animation-delay: 0.3s; }
-.card:nth-child(3) { animation-delay: 0.5s; }
