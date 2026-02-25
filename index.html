@@ -2,68 +2,55 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Camille Lab</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Graphisme - Camille Lab</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet">
 </head>
-<body id="site-body">
+<body>
 
     <header>
-        <nav>
-            <div class="logo"><img src="logo.png" alt="Camille Lab"></div>
-            <ul>
-                <li><a href="#" id="link-acc" class="active" onclick="changerPage('accueil')">Accueil</a></li>
-                <li><a href="#" id="link-proj" onclick="changerPage('projets')">Voir mes projets</a></li>
+        <nav class="navbar">
+            <div class="logo-area">
+                <img src="logocamille.png" alt="Logo Camille Lab" class="logo">
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#" class="active">Accueil</a></li>
+                <li class="sep">|</li>
+                <li><a href="#">Voir mes projets</a></li>
+                <li class="sep">|</li>
                 <li><a href="#">À Propos</a></li>
+                <li class="sep">|</li>
                 <li><a href="#">Tarifs</a></li>
+                <li class="sep">|</li>
                 <li><a href="#">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <section id="section-accueil">
-            <h1 class="main-title">LE GRAPHISME AU SERVICE DE LA TERRE</h1>
-            
-            <div class="speech-bubble" id="missionBubble">
-                <p>« ma mission :<br>cultivons ensemble votre<br>image de marque »</p>
+    <main class="container">
+        <h1 class="main-title">LE GRAPHISME AU SERVICE DE LA TERRE</h1>
+
+        <div class="hero-content">
+            <div class="mission-bubble" id="missionBubble">
+                <p>« ma mission : <br><span>cultivons ensemble votre image de marque »</span></p>
             </div>
 
-            <div class="services-container" id="servicesIcons">
-                <div class="service-card">
-                    <img src="certif.png">
+            <div class="services-grid">
+                <div class="card" id="card1">
+                    <img src="certif.png" alt="Certification">
                     <p>Un logo et une image de marque qui vous ressemblent.</p>
                 </div>
-                <div class="service-card">
-                    <img src="panier.png">
+                <div class="card" id="card2">
+                    <img src="panier.png" alt="Panier">
                     <p>Création d'étiquettes & de packagings pour vos produits.</p>
                 </div>
-                <div class="service-card">
-                    <img src="panneaux.png">
+                <div class="card" id="card3">
+                    <img src="panneaux.png" alt="Panneaux">
                     <p>Panneaux & supports pour rendre votre ferme visible.</p>
                 </div>
             </div>
-        </section>
-
-        <section id="section-projets" style="display: none;">
-            <div class="intro-projets">
-                <div class="coccinelle-container">
-                    <img src="traitcoccinelle.png" class="trait-coco">
-                    <img src="coccinelle.png" class="coco-icon">
-                </div>
-                <h2 class="quote-projets">"De la graine à l'image :<br>mes dernières réalisations."</h2>
-            </div>
-
-            <div class="portfolio-grid">
-                <div class="project-card"></div>
-                <div class="project-card"></div>
-                <div class="project-card"></div>
-                <div class="project-card"></div>
-                <div class="project-card"></div>
-                <div class="project-card"></div>
-                <div class="project-card"></div>
-                <div class="project-card"></div>
-            </div>
-        </section>
+        </div>
     </main>
 
     <script src="script.js"></script>
