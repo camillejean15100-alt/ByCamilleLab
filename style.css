@@ -1,74 +1,49 @@
-/* --- CONFIGURATION GÉNÉRALE --- */
-:root {
-    --bleu-camille: #1D70B7;
-    --vert-survol: #87B347;
-    --gris-titre: #3B505C;
-    --brun-texte: #684132;
-    --fond-beige-transp: rgba(234, 220, 155, 0.85); /* EADC9B avec transparence */
-}
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
 
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: "Californian FB", serif;
-}
+* { box-sizing: border-box; }
+body, html { margin: 0; padding: 0; height: 100%; font-family: "Californian FB", serif; }
 
-.hero-section {
-    background: url('fondaccueuil.jpg') no-repeat center center/cover;
+.wrapper {
+    background: url('fondaccueuil.jpg') no-repeat center center;
+    background-size: cover;
     height: 100vh;
+    width: 100vw;
     position: relative;
     overflow: hidden;
 }
 
-/* --- NAVIGATION --- */
+/* Navigation */
 nav {
     display: flex;
     justify-content: space-between;
+    padding: 20px 40px;
     align-items: center;
-    padding: 20px 50px;
 }
+.logo { height: 60px; }
+.links { color: #1D70B7; font-weight: bold; }
+.links a { color: #1D70B7; text-decoration: none; transition: 0.3s; }
+.links a:hover { color: #87B347; }
 
-.logo { height: 70px; }
-
-.nav-links {
-    color: var(--bleu-camille);
-    font-size: 1.1rem;
-    font-weight: bold;
-}
-
-.nav-links a {
-    color: var(--bleu-camille);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-    color: var(--vert-survol);
-}
-
-/* --- TITRES --- */
+/* Titre */
 h1 {
     font-family: 'Gochi Hand', cursive;
-    color: var(--gris-titre);
+    color: #3B505C;
     text-align: center;
     font-size: 3.5rem;
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
-/* --- BULLE DE DIALOGUE --- */
+/* La Bulle */
 .speech-bubble {
     position: absolute;
-    left: 20%;
-    bottom: 35%;
-    background: var(--fond-beige-transp);
-    color: var(--brun-texte);
-    padding: 25px;
-    border-radius: 30px;
-    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.15);
-    max-width: 320px;
-    text-align: center;
-    font-size: 1.3rem;
+    left: 30%;
+    top: 45%;
+    background: rgba(234, 220, 155, 0.9); /* EADC9B transparent */
+    color: #684132;
+    padding: 20px 30px;
+    border-radius: 25px;
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.2);
+    font-size: 1.2rem;
     z-index: 10;
 }
 
@@ -77,47 +52,31 @@ h1 {
     content: '';
     position: absolute;
     left: -15px;
-    bottom: 20px;
-    border-width: 15px 20px 15px 0;
+    top: 50%;
+    border-width: 10px 15px 10px 0;
     border-style: solid;
-    border-color: transparent var(--fond-beige-transp) transparent transparent;
+    border-color: transparent rgba(234, 220, 155, 0.9) transparent transparent;
 }
 
-/* --- CARTES DE SERVICES --- */
+/* Conteneur des cartes */
 .cards-container {
     position: absolute;
-    right: 15%; /* Positionné vers le tournesol à droite */
-    bottom: 15%;
+    right: 5%;
+    bottom: 10%;
     display: flex;
-    gap: 20px;
-    opacity: 0; /* Caché au départ */
-    transform: translateY(30px);
-    transition: all 0.8s ease-out;
+    gap: 15px;
+    opacity: 0; /* Caché au début */
+    transition: opacity 1s ease-in;
 }
 
 .card {
-    background: var(--fond-beige-transp);
-    color: var(--brun-texte);
+    background: rgba(234, 220, 155, 0.9);
+    width: 180px;
     padding: 15px;
     border-radius: 15px;
-    width: 180px;
     text-align: center;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    color: #684132;
+    box-shadow: 3px 3px 8px rgba(0,0,0,0.1);
 }
 
-.card img {
-    width: 60px;
-    margin-bottom: 10px;
-}
-
-/* --- CLASSES D'ANIMATION --- */
-.fade-out {
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    pointer-events: none;
-}
-
-.show-cards {
-    opacity: 1;
-    transform: translateY(0);
-}
+.card img { width: 60px; margin-bottom: 10px; }
