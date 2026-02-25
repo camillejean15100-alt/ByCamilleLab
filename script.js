@@ -1,141 +1,81 @@
-// Variable pour savoir si l'animation a déjà eu lieu
-let animationFaite = false;
+/**
+ * SCRIPT POUR CAMILLE LAB
+ * Gère l'animation d'accueil et la navigation
+ */
 
-window.addEventListener('DOMContentLoaded', () => {
-    lancerAnimationAccueil();
-});
-
-function lancerAnimationAccueil() {
+// On attend que tout le contenu soit chargé
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // --- 1. INITIALISATION DES ÉLÉMENTS ---
     const bubble = document.getElementById('missionBubble');
     const services = document.getElementById('servicesIcons');
+    const body = document.getElementById('site-body');
+
+    // --- 2. SÉQUENCE D'ANIMATION (ACCUEIL) ---
     
-    // Si on n'est pas sur l'accueil ou si déjà fait, on stoppe
-    if (animationFaite || !bubble) return;
-
-    setTimeout(() => {
-        bubble.classList.add('visible');
-    }, 100);
-
-    setTimeout(() => {
-        bubble.classList.remove('visible'); 
+    // Si on est sur l'accueil, on lance la séquence
+    if (bubble && services) {
+        // Étape A : On fait apparaître la bulle (le CSS gère le défilement via .visible)
         setTimeout(() => {
-            bubble.style.display = 'none';
-            if(services) services.classList.add('active');
-            animationFaite = true; // On verrouille pour la suite
-        }, 600); 
-    }, 1600);
-}
+            bubble.classList.add('visible');
+        }, 500);
 
-/* Style de la section Projets */
-#section-projets {
-    padding-top: 50px;
-    text-align: center;
-}
+        // Étape B : Après 4 secondes, on switch : bulle -> cartes
+        setTimeout(() => {
+            // On fait disparaître la bulle proprement
+            bubble.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+            bubble.style.opacity = "0";
+            bubble.style.transform = "translate(-50%, -100%)"; // Elle s'envole un peu
 
-.intro-projets {
-    margin-bottom: 30px;
-    position: relative;
-    display: inline-block;
-}
+            setTimeout(() => {
+                bubble.style.display = "none";
+                
+                // On active le container des cartes
+                services.style.display = "flex"; // On le remet en flex
+                // Un micro-délai pour que l'opacité CSS s'active bien
+                setTimeout(() => {
+                    services.classList.add('active');
+                }, 50);
+            }, 600);
 
-/* Ta coccinelle avec le bon nom de fichier */
-.ladybug {
-    width: 60px;
-    position: absolute;
-    left: -70px;
-    top: -10px;
-}
+        }, 4500); // Temps total de lecture de la bulle
+    }
+});
 
-.quote-projets {
-    font-family: 'Architects Daughter', cursive, sans-serif;
-    color: #2a5a9a;
-    font-size: 2rem;
-    margin: 0;
-}
+// --- 3. SYSTÈME DE NAVIGATION (CHANGER PAGE) ---
 
-/* La Grille */
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
-    max-width: 1100px;
-    margin: 40px auto;
-    padding: 20px;
-}
+function changerPage(page) {
+    const accueil = document.getElementById('section-accueil');
+    const projets = document.getElementById('section-projets');
+    const body = document.getElementById('site-body');
+    
+    // Liens de navigation
+    const linkAcc = document.getElementById('link-acc');
+    const linkProj = document.getElementById('link-proj');
 
-.project-card {
-    background: white; /* Les rectangles blancs du design */
-    aspect-ratio: 1.5;
-    border-radius: 5px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    position: relative;
-}
+    // On réinitialise l'état actif des liens
+    linkAcc.classList.remove('active');
+    linkProj.classList.remove('active');
 
-/* Utilisation de tes fichiers feuilles */
-.leaf {
-    position: absolute;
-    width: 35px;
-}
-.leaf-1 { top: -15px; left: -10px; }
-.leaf-2 { top: -15px; right: -10px; }/* Style de la section Projets */
-#section-projets {
-    padding-top: 50px;
-    text-align: center;
-}
-
-.intro-projets {
-    margin-bottom: 30px;
-    position: relative;
-    display: inline-block;
-}
-
-/* Ta coccinelle avec le bon nom de fichier */
-.ladybug {
-    width: 60px;
-    position: absolute;
-    left: -70px;
-    top: -10px;
-}
-
-.quote-projets {
-    font-family: 'Architects Daughter', cursive, sans-serif;
-    color: #2a5a9a;
-    font-size: 2rem;
-    margin: 0;
-}
-
-/* La Grille */
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
-    max-width: 1100px;
-    margin: 40px auto;
-    padding: 20px;
-}
-
-.project-card {
-    background: white; /* Les rectangles blancs du design */
-    aspect-ratio: 1.5;
-    border-radius: 5px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    position: relative;
-}
-
-/* Utilisation de tes fichiers feuilles */
-.leaf {
-    position: absolute;
-    width: 35px;
-}
-.leaf-1 { top: -15px; left: -10px; }
-.leaf-2 { top: -15px; right: -10px; }
-
-    // Gestion du trait vert
-    document.querySelectorAll('header nav ul li a').forEach(link => {
-        link.classList.remove('active');
-    });
-
-    if (element) {
-        element.classList.add('active');
+    if (page === 'accueil') {
+        // Pour revenir à l'accueil, le plus propre est de recharger 
+        // pour revoir l'animation, ou simplement switcher les sections :
+        accueil.style.display = 'block';
+        projets.style.display = 'none';
+        body.style.backgroundImage = "url('fondaccueuil.jpg')";
+        body.style.overflow = "hidden"; // On bloque le scroll sur l'accueil
+        linkAcc.classList.add('active');
+    } 
+    else if (page === 'projets') {
+        accueil.style.display = 'none';
+        projets.style.display = 'block';
+        
+        // On change le fond pour le fond du site
+        body.style.backgroundImage = "url('fondsite.jpg')";
+        body.style.overflow = "auto"; // On autorise le scroll pour voir les projets
+        linkProj.classList.add('active');
+        
+        // Optionnel : Scroll automatique vers le haut
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 }
