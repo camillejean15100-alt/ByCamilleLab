@@ -56,62 +56,57 @@ body {
 }
 
 /* --- CARTES : LE RÉGLAGE FINAL --- */
-/* 1. LE CONTENEUR (Caché au début par ton JS) */
+/* --- LE CONTENEUR (servicesIcons) --- */
 #servicesIcons {
     position: absolute;
     right: 5%;
-    bottom: 15%; /* Ajuste selon la hauteur de ton herbe */
-    display: none; /* Ton JS gère l'affichage */
-    gap: 25px;
-    align-items: flex-end;
+    bottom: 20%; /* Position au-dessus de l'herbe */
+    display: none; /* Ton JS le passe en flex à 3.5s */
+    gap: 20px;
+    align-items: stretch; /* Les cartes auront toutes la même hauteur naturellement */
     z-index: 10;
 }
 
-/* 2. LA CARTE (Structure fixe et robuste) */
+/* --- LA CARTE (Format original respecté) --- */
 .card {
-    background: #FDF9F0; /* Ton beige */
+    background: #FDF9F0;
     border: 3px solid #E6D5B8;
     border-radius: 25px;
-    width: 280px;
-    height: 400px;
-    padding: 30px 20px;
+    width: 260px; /* Largeur fixe pour garder l'aspect panneau */
+    padding: 20px;
     display: flex;
     flex-direction: column;
     text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 
-    /* L'ANIMATION : Elle se déclenche dès que le display change */
-    animation: sweepIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    /* Réparation de l'animation */
     opacity: 0;
+    animation: sweepIn 0.8s ease-out forwards;
 }
 
-/* 3. L'IMAGE (Centrage vertical parfait) */
+/* --- L'IMAGE (Plus de déformation) --- */
 .card img {
     display: block;
-    margin: auto; /* Centre l'image dans l'espace restant */
-    max-height: 180px;
+    margin: 0 auto 15px auto;
+    max-height: 120px; /* Taille raisonnable pour ne pas tout décaler */
     width: auto;
     object-fit: contain;
 }
 
-/* 4. LE TEXTE (Verrouillé en bas) */
+/* --- LE TEXTE --- */
 .card p {
     color: #5D4037;
     font-family: 'Gochi Hand', cursive;
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-top: auto; /* Pousse le texte au fond */
-    min-height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-size: 1.1rem;
+    line-height: 1.3;
+    margin: auto 0 0 0; /* Pousse le texte vers le bas sans forcer de hauteur géante */
 }
 
-/* 5. L'ANIMATION SWEEP-IN */
+/* --- L'ANIMATION DE BALAYAGE --- */
 @keyframes sweepIn {
     0% {
         opacity: 0;
-        transform: translateX(100px); /* Arrive de la droite */
+        transform: translateX(60px);
     }
     100% {
         opacity: 1;
@@ -119,7 +114,7 @@ body {
     }
 }
 
-/* 6. DÉCALAGE (Pour l'effet cascade) */
+/* Cascade temporelle */
 .card:nth-child(1) { animation-delay: 0.1s; }
 .card:nth-child(2) { animation-delay: 0.3s; }
 .card:nth-child(3) { animation-delay: 0.5s; }
