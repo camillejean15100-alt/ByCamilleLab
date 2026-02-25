@@ -17,6 +17,7 @@ body {
     background-size: cover;
     min-height: 100vh;
     font-family: var(--font-menu);
+    overflow-x: hidden;
 }
 
 /* --- NAVIGATION & TITRE --- */
@@ -29,16 +30,17 @@ body {
 
 .main-title { font-family: var(--font-title); color: var(--blue-slate); text-align: center; font-size: 3.8rem; margin-top: 20px; }
 
-/* --- CONTENEUR --- */
+/* --- CONTENEUR INTERACTIF --- */
 .interactive-container {
     position: relative;
     height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
-/* --- BULLE --- */
+/* --- BULLE DE TEXTE --- */
 .speech-bubble {
     position: relative;
     background: var(--beige-bg);
@@ -47,6 +49,7 @@ body {
     width: 320px; height: 280px;
     display: flex; justify-content: center; align-items: center;
     padding: 25px; text-align: center;
+    z-index: 10;
 }
 .speech-bubble p { color: var(--brown-text); font-size: 1.8rem; font-weight: bold; }
 .bubble-triangle {
@@ -55,27 +58,26 @@ body {
     border-right: 28px solid var(--beige-main);
 }
 
-/* --- CARTES : LE RÉGLAGE FINAL --- */
-/* LE CONTENEUR - Il déclenche l'arrivée du bloc complet */
+/* --- SECTION CARTES (RÉGLAGE FINAL) --- */
+
 #servicesIcons {
     position: absolute;
     right: 5%;
-    bottom: 20%;
-    display: none; /* Ton JS gère le passage en 'flex' */
+    bottom: 10%; /* Ajusté pour être sur l'herbe comme ton design */
+    display: none; /* Switché en 'flex' par le JS */
     gap: 20px;
     align-items: center;
     z-index: 100;
-
-    /* L'ANIMATION : Les 3 cartes glissent ensemble d'un coup */
+    
+    /* Animation groupée : les 3 cartes glissent ensemble */
     animation: sweepInGroup 0.8s ease-out forwards;
 }
 
-/* LA CARTE - Blanche, opaque, bords arrondis (Image 2) */
 .card {
-    background-color: #FFFFFF !important; /* Blanc pur et opaque */
+    background-color: #FFFFFF !important; /* Blanc pur opaque de l'image 2 */
     border-radius: 20px;
     width: 250px;
-    height: 350px; /* Ratio vertical de ta capture */
+    height: 350px;
     padding: 25px;
     display: flex;
     flex-direction: column;
@@ -83,9 +85,9 @@ body {
     justify-content: center;
     text-align: center;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    opacity: 1; /* L'opacité est gérée par le parent #servicesIcons */
 }
 
-/* TES ICÔNES - Centrées avec de l'espace */
 .card img {
     width: 80px;
     height: auto;
@@ -93,16 +95,15 @@ body {
     object-fit: contain;
 }
 
-/* TON TEXTE - Gochi Hand et Marron */
 .card p {
     color: #5D4037;
-    font-family: 'Gochi Hand', cursive;
-    font-size: 1.1rem;
+    font-family: var(--font-title);
+    font-size: 1.15rem;
     line-height: 1.2;
     margin: 0;
 }
 
-/* L'ANIMATION : Glissement latéral fluide */
+/* --- ANIMATION --- */
 @keyframes sweepInGroup {
     0% {
         opacity: 0;
@@ -112,4 +113,17 @@ body {
         opacity: 1;
         transform: translateX(0);
     }
+}
+
+/* --- SECTION PROJETS (PRÉPARATION) --- */
+#section-projets {
+    padding: 50px;
+    text-align: center;
+}
+.projets-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
