@@ -160,7 +160,7 @@ body {
     height: 280px; 
 }
 .card:nth-child(3) img {
-    width: 100px; /* Taille icône 3 */
+    width:px; /* Taille icône 3 */
 }
 
 /* --- ANIMATIONS --- */
