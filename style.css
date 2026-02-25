@@ -111,4 +111,3 @@ body {
 .card:nth-child(2) img { width: 100px; } /* Le panier */
 .card:nth-child(3) img { width: 160px; } /* Le panneau bois */
 
-@keyframes sweepIn { to { opacity: 1; transform: translateX(0); } }
