@@ -10,11 +10,10 @@
 
 body {
     min-height: 100vh;
-    /* Suppression du !important pour permettre le changement de page */
     background: url('fondaccueuil.jpg') no-repeat center center fixed;
     background-size: cover;
     overflow: hidden;
-    transition: background-image 0.4s ease-in-out;
+    transition: background-image 0.5s ease;
 }
 
 /* --- LE MENU --- */
@@ -22,7 +21,6 @@ header {
     width: 100%;
     position: fixed;
     top: 0;
-    left: 0;
     z-index: 1000;
     padding: 20px 60px;
 }
@@ -31,18 +29,9 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
 }
 
-.logo img {
-    height: 105px;
-    width: auto;
-}
-
-header nav ul {
-    display: flex;
-    align-items: center;
-}
+.logo img { height: 105px; }
 
 header nav ul li a {
     text-decoration: none;
@@ -50,133 +39,91 @@ header nav ul li a {
     font-weight: bold;
     font-size: 24px;
     color: #1D70B7;
-    padding-bottom: 5px;
-    border-bottom: 4px solid transparent;
-    transition: 0.3s;
+    margin: 0 10px;
 }
 
-header nav ul li a:hover,
 header nav ul li a.active {
-    color: #87B347 !important;
-    border-bottom: 4px solid #87B347 !important;
-}
-
-header nav ul li:not(:last-child)::after {
-    content: "|";
-    margin: 0 25px;
-    color: #1D70B7;
-    font-size: 22px;
+    color: #87B347;
+    border-bottom: 4px solid #87B347;
 }
 
 /* --- ACCUEIL --- */
 .main-title {
-    position: fixed;
+    position: absolute;
     top: 15%;
     width: 100%;
     text-align: center;
     font-family: 'Gochi Hand', cursive;
-    font-size: 4.5rem;
+    font-size: 4rem;
     color: #3B505C;
-    text-shadow: 2px 2px 0px #FFFFFF, -2px -2px 0px #FFFFFF;
+    text-shadow: 2px 2px 0px #FFFFFF;
 }
 
 .speech-bubble {
-    position: fixed;
-    top: 50%; 
-    left: 48%; 
-    transform: translate(100px, -50%);
+    position: absolute;
+    top: 440px; 
+    left: 440px;
+    background-color: rgba(234, 220, 155, 0.9);
+    padding: 20px 30px;
+    border-radius: 25px;
     opacity: 0;
-    background-color: #EADC9B;
-    padding: 25px 45px;
-    border-radius: 30px;
-    z-index: 500;
-    box-shadow: 8px 8px 20px rgba(0,0,0,0.1);
+    transform: scale(0.5);
+    transition: all 0.5s ease-out;
 }
 
-.speech-bubble.visible { 
-    animation: slideInQuick 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+.speech-bubble.visible { opacity: 1; transform: scale(1); }
+
+.services-container {
+    position: absolute;
+    top: 140px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    gap: 20px;
 }
 
-.speech-bubble.fade-out {
-    opacity: 0 !important;
-    transform: translate(-50%, -70%) scale(0.9) !important;
-    transition: all 0.4s ease-in;
+.service-card {
+    background-color: rgba(234, 220, 155, 0.85);
+    border-radius: 20px;
+    padding: 30px 20px;
+    width: 280px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
-/* --- PAGE PROJETS --- */
+.service-card img { height: 100px; margin-bottom: 20px; }
+
+/* --- PROJETS --- */
 #section-projets {
     padding-top: 140px;
     min-height: 100vh;
-    display: none;
-}
-
-.intro-projets {
-    text-align: center;
-    position: relative;
-    margin-bottom: 50px;
-}
-
-.coccinelle-container {
-    position: absolute;
-    left: 20%;
-    top: -20px;
-    width: 150px;
-}
-
-.trait-coco {
-    width: 100%;
-    position: absolute;
-    top: 15px;
-    left: 0;
-}
-
-.coco-icon {
-    width: 40px;
-    position: absolute;
-    right: 0;
-    top: 0;
 }
 
 .quote-projets {
     font-family: 'Gochi Hand', cursive;
     color: #1D70B7;
     font-size: 2.5rem;
-    line-height: 1.2;
+    text-align: center;
+    margin-bottom: 40px;
 }
 
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 50px;
+    padding: 0 40px;
 }
 
 .project-card {
     background: white;
     aspect-ratio: 1.5;
-    border-radius: 8px;
+    border-radius: 10px;
     position: relative;
 }
 
 .leaf { position: absolute; width: 40px; }
-.l1 { top: -10px; left: 15%; }
-.l2 { top: -10px; right: 10%; }
+.l1 { top: -15px; left: 20%; }
+.l2 { top: -15px; right: 10%; }
 .l3 { top: -15px; left: 45%; }
-
-/* --- ANIMATIONS --- */
-@keyframes slideInQuick {
-    0% { transform: translate(100px, -50%); opacity: 0; }
-    100% { transform: translate(-50%, -50%); opacity: 1; }
-}
-
-@keyframes popIn {
-    0% { opacity: 0; transform: scale(0.8) translateY(20px); }
-    100% { opacity: 1; transform: scale(1) translateY(0); }
-}
-
-.services-container.active .service-card {
-    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-}
