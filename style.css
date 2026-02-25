@@ -1,14 +1,15 @@
-/* --- CONFIGURATION --- */
+/* --- 1. CONFIGURATION DES VARIABLES --- */
 :root {
-    --blue-slate: #3B505C;
-    --green-leaf: #87B347;
-    --brown-text: #684132;
-    --beige-main: #EADC9B;
-    --beige-bg: rgba(234, 220, 155, 0.95);
+    --blue-slate: #3B505C;         /* Couleur du Menu et Titre */
+    --green-leaf: #87B347;         /* Couleur Hover Menu */
+    --brown-text: #684132;         /* Couleur Texte dans les cartes/bulles */
+    --beige-main: #EADC9B;         /* Couleur Bordures */
+    --beige-bg: rgba(234, 220, 155, 0.95); /* Couleur Fond Bulle/Cartes */
     --font-menu: 'Californian FB', 'Georgia', serif;
     --font-title: 'Gochi Hand', cursive;
 }
 
+/* --- 2. BASE & NAVIGATION (DESIGN INTACT) --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
@@ -16,9 +17,9 @@ body {
     background-size: cover;
     min-height: 100vh;
     font-family: var(--font-menu);
+    overflow-x: hidden;
 }
 
-/* --- NAVIGATION (Zéro changement) --- */
 .navbar { 
     display: flex; 
     justify-content: space-between; 
@@ -36,20 +37,14 @@ body {
     font-weight: bold; 
     font-size: 1.4rem; 
     padding: 0 20px; 
-    cursor: pointer;
 }
 
 .nav-links li a:hover, .nav-links li a.active { 
     color: var(--green-leaf); 
 }
 
-.sep { 
-    color: var(--blue-slate); 
-    font-weight: bold; 
-    font-size: 1.4rem; 
-}
+.sep { color: var(--blue-slate); font-weight: bold; font-size: 1.4rem; }
 
-/* --- TITRE --- */
 .main-title { 
     font-family: var(--font-title); 
     color: var(--blue-slate); 
@@ -58,39 +53,59 @@ body {
     margin-top: 20px; 
 }
 
-/* --- BULLE (Beige) --- */
+/* --- 3. STRUCTURE ET BULLE DE MISSION --- */
+.interactive-container {
+    position: relative;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #missionBubble {
     position: relative;
     background: var(--beige-bg);
     border: 3px solid var(--beige-main);
     border-radius: 20px;
-    width: 320px; height: 280px;
-    display: flex; justify-content: center; align-items: center;
-    padding: 25px; text-align: center;
-    opacity: 0;
+    width: 320px; 
+    height: 280px;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    padding: 25px; 
+    text-align: center;
+    opacity: 0; 
     transition: opacity 0.8s ease;
 }
+
 #missionBubble.visible { opacity: 1; }
 
-.speech-bubble p { 
+#missionBubble p { 
     color: var(--brown-text); 
+    font-family: var(--font-title);
     font-size: 1.8rem; 
     font-weight: bold; 
-    font-family: var(--font-title);
 }
 
-/* --- CARTES (Beige + Animation Groupée) --- */
+.bubble-triangle {
+    position: absolute; left: -28px; top: 50%; transform: translateY(-50%);
+    border-top: 20px solid transparent; 
+    border-bottom: 20px solid transparent;
+    border-right: 28px solid var(--beige-main);
+}
+
+/* --- 4. LES CARTES DE SERVICES (DESIGN BEIGE IMAGE 4) --- */
 #servicesIcons {
     position: absolute;
     right: 5%;
     bottom: 18%;
-    display: none; /* Switché par ton JS */
+    display: none; /* Ton JS le passe en flex après 3.5s */
     gap: 20px;
     align-items: center;
     z-index: 100;
 }
 
-/* Déclencheur animation */
+/* Déclenchement de l'animation groupée */
 #servicesIcons[style*="display: flex"] {
     animation: sweepInGroup 0.8s ease-out forwards;
 }
@@ -110,17 +125,28 @@ body {
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-.card img { width: 80px; margin-bottom: 20px; }
+.card img { 
+    width: 90px; 
+    height: auto; 
+    margin-bottom: 25px; 
+    object-fit: contain; 
+}
 
 .card p { 
     color: var(--brown-text); 
     font-family: var(--font-title); 
-    font-size: 1.15rem; 
-    line-height: 1.2;
+    font-size: 1.2rem; 
+    line-height: 1.2; 
 }
 
-/* --- ANIMATION --- */
+/* --- 5. ANIMATION DE BALAYAGE --- */
 @keyframes sweepInGroup {
-    0% { opacity: 0; transform: translateX(100px); }
-    100% { opacity: 1; transform: translateX(0); }
+    0% { 
+        opacity: 0; 
+        transform: translateX(120px); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: translateX(0); 
+    }
 }
