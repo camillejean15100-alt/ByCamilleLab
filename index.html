@@ -54,7 +54,28 @@
                 </article>
             </div>
         </div>
-        
+        <section id="section-projets" style="display: none;">
+    <h2 class="projets-title">"De la graine à l'image : mes dernières réalisations."</h2>
+    
+    <div class="projets-grid">
+        <div class="projet-card" onclick="ouvrirGalerie('projet1.jpg', 'Identité visuelle - Ferme Bio')"></div>
+        <div class="projet-card" onclick="ouvrirGalerie('projet2.jpg', 'Packaging Jus de Pomme')"></div>
+        <div class="projet-card"></div>
+        <div class="projet-card"></div>
+        <div class="projet-card"></div>
+        <div class="projet-card"></div>
+        <div class="projet-card"></div>
+        <div class="projet-card"></div>
+    </div>
+</section>
+
+<div id="gallery-overlay" class="overlay" onclick="fermerGalerie(event)">
+    <span class="close-gallery">&times;</span>
+    <div class="paper-slide">
+        <img id="gallery-img" src="" alt="Zoom Projet">
+        <p id="caption"></p>
+    </div>
+</div>
     </main>
 
     <script src="script.js"></script>
