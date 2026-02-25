@@ -1,117 +1,39 @@
-/* ==========================================================================
-   1. VARIABLES & POLICES
-   ========================================================================== */
 :root {
     --logo-blue: #2A79B1;
-    --green-leaf: #87B347;
     --brown-text: #684132;
     --beige-main: #EADC9B;
     --beige-bg: rgba(234, 220, 155, 0.95);
-    --font-text: 'Californian FB', serif;
-    --font-title: 'Gochi Hand', cursive;
 }
 
-/* ==========================================================================
-   2. RESET & BASE
-   ========================================================================== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background: url('fondaccueuil.jpg') no-repeat center center fixed;
-    background-size: cover;
-    min-height: 100vh;
-    font-family: var(--font-text);
-    overflow-x: hidden;
-}
-
-/* ==========================================================================
-   3. NAVIGATION (Strictement selon ton HTML)
-   ========================================================================== */
-header {
-    width: 100%;
-}
-
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 60px; /* Ajusté pour plus de respiration */
-}
-
-.logo {
-    height: 100px; /* Taille plus proche de ton visuel */
-    width: auto;
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    align-items: center;
-}
-
-.nav-links li a, 
-.sep {
-    text-decoration: none;
-    color: var(--logo-blue);
-    font-weight: bold;
-    font-size: 1.3rem;
-    padding: 0 12px;
-}
-
-.nav-links li a.active {
-    color: var(--green-leaf);
-}
-
-/* ==========================================================================
-   4. CONTENU PRINCIPAL
-   ========================================================================== */
-.main-title {
-    font-family: var(--font-title);
-    color: var(--logo-blue);
-    text-align: center;
-    font-size: 4rem;
-    margin: 40px 0;
-}
-
+/* On aligne le conteneur pour laisser la place à Camille à gauche */
 .interactive-container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start; /* Aligné à gauche mais avec une marge */
     align-items: center;
-    gap: 30px;
-    padding: 20px;
-    height: 50vh;
+    gap: 20px;
+    padding-left: 350px; /* PLACE POUR LE PERSO : Ajuste selon la taille de ton image */
+    height: 60vh;
 }
 
-/* --- BULLE (Étape 1) --- */
+/* --- ÉTAPE 1 : LA BULLE --- */
 #mission-bubble {
     position: relative;
     background: var(--beige-bg);
     border: 3px solid var(--beige-main);
     border-radius: 20px;
-    width: 320px;
-    height: 220px;
+    width: 300px;
+    height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
-    
-    /* Animation : arrive par la DROITE */
     opacity: 0;
+    /* Elle arrive par la DROITE (vers le perso) */
     transform: translateX(100px); 
     transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-#mission-bubble p {
-    color: var(--brown-text);
-    font-size: 1.6rem;
-    font-weight: bold;
-    text-align: center;
-}
-
+/* Le triangle pointe vers Camille (à gauche) */
 .bubble-triangle {
     position: absolute;
     left: -28px;
@@ -122,45 +44,32 @@ header {
     border-right: 28px solid var(--beige-main);
 }
 
-/* --- CARTES (Étape 2) --- */
+/* --- ÉTAPE 2 : LES CARTES (Vers le tournesol) --- */
 #cards-container {
     display: flex;
-    gap: 20px;
-    
-    /* Animation : arrive par le BAS */
+    gap: 15px;
     opacity: 0;
-    transform: translateY(50px);
+    transform: translateY(30px);
     transition: all 0.8s ease-out;
 }
 
 .card {
     background: var(--beige-bg);
     border: 3px solid var(--beige-main);
-    border-radius: 20px;
-    width: 240px;
-    height: 340px;
+    border-radius: 15px;
+    width: 200px;
+    height: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 15px;
     text-align: center;
 }
 
-.card img {
-    width: 80px;
-    margin-bottom: 20px;
-}
+.card img { width: 60px; margin-bottom: 15px; }
 
-.card p {
-    color: var(--brown-text);
-    font-size: 1.1rem;
-    font-weight: bold;
-}
-
-/* ==========================================================================
-   5. ÉTAT VISIBLE (Déclenché par le JS)
-   ========================================================================== */
+/* CLASSE ACTIVE */
 .is-visible {
     opacity: 1 !important;
     transform: translate(0, 0) !important;
