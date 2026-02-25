@@ -1,18 +1,17 @@
-/* --- VARIABLES & CONFIGURATION --- */
+/* --- VARIABLES --- */
 :root {
     --blue-slate: #3B505C;
-    --green-leaf: #87B347;
+    --green-leaf: #87B347; /* Ton vert pour le menu */
     --brown-text: #684132;
     --beige-main: #EADC9B;
-    --beige-bg: rgba(234, 220, 155, 0.92);
+    --beige-bg: rgba(234, 220, 155, 0.95);
     --font-menu: 'Californian FB', 'Georgia', serif;
     --font-title: 'Gochi Hand', cursive;
-    --transition-speed: 1.2s;
+    --transition-speed: 1s;
 }
 
-/* --- RESET --- */
+/* --- RESET & BASE --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
 body {
     background: url('fondaccueuil.jpg') no-repeat center center fixed;
     background-size: cover;
@@ -21,33 +20,46 @@ body {
     font-family: var(--font-menu);
 }
 
-/* --- NAVIGATION --- */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 80px;
+/* --- NAVIGATION : TEXTE PLUS GRAND ET VERT RESTAURÉ --- */
+.navbar { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 25px 80px; 
 }
+
 .logo { height: 90px; width: auto; }
+
 .nav-links { display: flex; list-style: none; align-items: center; }
-.nav-links li a {
-    text-decoration: none;
-    color: var(--blue-slate);
-    font-weight: bold;
-    font-size: 1.15rem;
-    padding: 0 15px;
-    transition: color 0.3s ease;
+
+.nav-links li a { 
+    text-decoration: none; 
+    color: var(--blue-slate); 
+    font-weight: bold; 
+    font-size: 1.4rem; /* TEXTE AGRANDI ICI */
+    padding: 0 20px; 
+    transition: color 0.3s ease; 
 }
-.nav-links li a:hover, .nav-links li a.active { color: var(--green-leaf); }
-.sep { color: var(--blue-slate); font-weight: bold; }
+
+/* Retour du vert ici */
+.nav-links li a:hover, 
+.nav-links li a.active { 
+    color: var(--green-leaf); 
+}
+
+.sep { 
+    color: var(--blue-slate); 
+    font-weight: bold; 
+    font-size: 1.4rem; 
+}
 
 /* --- TITRE --- */
-.main-title {
-    font-family: var(--font-title);
-    color: var(--blue-slate);
-    text-align: center;
-    font-size: 3.5rem;
-    margin-top: 20px;
+.main-title { 
+    font-family: var(--font-title); 
+    color: var(--blue-slate); 
+    text-align: center; 
+    font-size: 3.8rem; 
+    margin-top: 20px; 
 }
 
 /* --- ZONE INTERACTIVE --- */
@@ -59,7 +71,7 @@ body {
     align-items: center;
 }
 
-/* BULLE */
+/* BULLE : CARRE BEIGE AVEC TRIANGLE */
 .speech-bubble {
     position: relative;
     background: var(--beige-bg);
@@ -72,83 +84,78 @@ body {
     align-items: center;
     padding: 25px;
     text-align: center;
-    box-shadow: 4px 6px 15px rgba(0, 0, 0, 0.1);
-    transition: opacity 0.8s ease;
     z-index: 10;
-}
-.speech-bubble p {
-    color: var(--brown-text);
-    font-size: 1.8rem;
-    font-weight: bold;
-    line-height: 1.2;
-}
-.bubble-triangle {
-    position: absolute;
-    left: -24px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 0; height: 0;
-    border-top: 18px solid transparent;
-    border-bottom: 18px solid transparent;
-    border-right: 25px solid var(--beige-main);
+    transition: opacity 0.6s ease;
 }
 
-/* --- CARTES : ICÔNES XXL & ALIGNEMENT --- */
+.speech-bubble p { 
+    color: var(--brown-text); 
+    font-size: 1.8rem; 
+    font-weight: bold; 
+    line-height: 1.2; 
+}
+
+/* LE TRIANGLE */
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    left: -28px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0; 
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-right: 28px solid var(--beige-main);
+}
+
+/* --- CARTES : PANNEAUX LOGIQUES --- */
 .cards-wrapper {
     position: absolute;
-    right: 15%; /* Légèrement plus à gauche pour équilibrer les grandes cartes */
-    width: 45%; /* Augmenté de 38% à 45% pour donner de l'air aux icônes */
+    right: 18%; 
+    width: 35%;
     display: none; 
-    gap: 25px;
+    gap: 15px;
 }
 
 .card {
     background: var(--beige-bg);
-    border: 2px solid var(--beige-main); /* Rappel du contour de la bulle */
-    border-radius: 20px;
+    border: 2.5px solid var(--beige-main);
+    border-radius: 15px;
     flex: 1;
-    min-height: 400px; /* Plus haut pour accueillir les grandes icônes */
-    padding: 40px 20px;
-    
+    height: 300px; /* Panneau compact */
+    padding: 20px 15px;
     display: flex;
     flex-direction: column;
     justify-content: center; 
     align-items: center;     
     text-align: center;
-    
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
     opacity: 0;
-    transform: translateX(80px);
+    transform: translateX(50px);
 }
 
 .card img {
-    width: 160px; /* TAILLE BOOSTÉE ICI */
+    width: 120px; 
     height: auto;
-    max-height: 180px; /* Sécurité pour ne pas déborder */
-    object-fit: contain;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 }
 
 .card p {
     color: var(--brown-text);
     font-weight: bold;
-    font-size: 1.2rem; /* Texte un peu plus grand pour suivre l'icône */
+    font-size: 1.1rem; 
     line-height: 1.3;
-    max-width: 90%; /* Pour éviter que le texte touche les bords */
 }
 
-/* --- ANIMATIONS --- */
+/* --- ANIMATION --- */
 .is-visible .card {
-    animation: sweepIn var(--transition-speed) cubic-bezier(0.19, 1, 0.22, 1) forwards;
+    animation: sweepIn var(--transition-speed) cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
-
 .is-visible .card:nth-child(1) { animation-delay: 0.2s; }
-.is-visible .card:nth-child(2) { animation-delay: 0.5s; }
-.is-visible .card:nth-child(3) { animation-delay: 0.8s; }
+.is-visible .card:nth-child(2) { animation-delay: 0.4s; }
+.is-visible .card:nth-child(3) { animation-delay: 0.6s; }
 
 @keyframes sweepIn {
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+    to { opacity: 1; transform: translateX(0); }
 }
