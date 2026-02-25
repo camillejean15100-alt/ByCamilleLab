@@ -2,14 +2,11 @@
    1. VARIABLES & POLICES
    ========================================================================== */
 :root {
-    /* Couleurs */
-    --logo-blue: #2A79B1;          /* Bleu exact du logo */
-    --green-leaf: #87B347;         /* Vert pour le survol/actif */
-    --brown-text: #684132;         /* Marron pour le texte des cartes */
-    --beige-main: #EADC9B;         /* Bordures beige */
-    --beige-bg: rgba(234, 220, 155, 0.95); /* Fond des blocs */
-    
-    /* Typographies */
+    --logo-blue: #2A79B1;
+    --green-leaf: #87B347;
+    --brown-text: #684132;
+    --beige-main: #EADC9B;
+    --beige-bg: rgba(234, 220, 155, 0.95);
     --font-text: 'Californian FB', serif;
     --font-title: 'Gochi Hand', cursive;
 }
@@ -28,21 +25,25 @@ body {
     background-size: cover;
     min-height: 100vh;
     font-family: var(--font-text);
-    overflow-x: hidden; /* Évite le scroll horizontal pendant l'animation */
+    overflow-x: hidden;
 }
 
 /* ==========================================================================
-   3. NAVIGATION (HEADER)
+   3. NAVIGATION (Strictement selon ton HTML)
    ========================================================================== */
+header {
+    width: 100%;
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 25px 80px;
+    padding: 20px 60px; /* Ajusté pour plus de respiration */
 }
 
 .logo {
-    height: 90px;
+    height: 100px; /* Taille plus proche de ton visuel */
     width: auto;
 }
 
@@ -57,86 +58,76 @@ body {
     text-decoration: none;
     color: var(--logo-blue);
     font-weight: bold;
-    font-size: 1.4rem;
-    padding: 0 15px;
-    transition: color 0.3s ease;
+    font-size: 1.3rem;
+    padding: 0 12px;
 }
 
-.nav-links li a.active, 
-.nav-links li a:hover {
+.nav-links li a.active {
     color: var(--green-leaf);
 }
 
 /* ==========================================================================
-   4. TITRE PRINCIPAL
+   4. CONTENU PRINCIPAL
    ========================================================================== */
 .main-title {
     font-family: var(--font-title);
     color: var(--logo-blue);
     text-align: center;
-    font-size: 3.8rem;
-    margin: 30px 0;
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+    font-size: 4rem;
+    margin: 40px 0;
 }
 
-/* ==========================================================================
-   5. ZONE INTERACTIVE (BULLE & CARTES)
-   ========================================================================== */
 .interactive-container {
-    position: relative;
-    height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 50px;
-    padding: 0 40px;
+    gap: 30px;
+    padding: 20px;
+    height: 50vh;
 }
 
-/* --- La Bulle (Étape 1) --- */
+/* --- BULLE (Étape 1) --- */
 #mission-bubble {
     position: relative;
     background: var(--beige-bg);
     border: 3px solid var(--beige-main);
-    border-radius: 25px;
-    width: 340px;
-    height: 240px;
+    border-radius: 20px;
+    width: 320px;
+    height: 220px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 30px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 20px;
     
-    /* État initial caché à DROITE */
+    /* Animation : arrive par la DROITE */
     opacity: 0;
     transform: translateX(100px); 
-    transition: all 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 #mission-bubble p {
     color: var(--brown-text);
-    font-size: 1.7rem;
+    font-size: 1.6rem;
     font-weight: bold;
     text-align: center;
-    line-height: 1.3;
 }
 
-/* Le petit triangle de la bulle */
 .bubble-triangle {
     position: absolute;
     left: -28px;
     top: 50%;
     transform: translateY(-50%);
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
     border-right: 28px solid var(--beige-main);
 }
 
-/* --- Les Cartes (Étape 2) --- */
+/* --- CARTES (Étape 2) --- */
 #cards-container {
     display: flex;
-    gap: 25px;
+    gap: 20px;
     
-    /* État initial caché en BAS */
+    /* Animation : arrive par le BAS */
     opacity: 0;
     transform: translateY(50px);
     transition: all 0.8s ease-out;
@@ -146,33 +137,31 @@ body {
     background: var(--beige-bg);
     border: 3px solid var(--beige-main);
     border-radius: 20px;
-    width: 260px;
-    height: 360px;
+    width: 240px;
+    height: 340px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 25px;
+    padding: 20px;
     text-align: center;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
 }
 
 .card img {
-    width: 95px;
-    margin-bottom: 25px;
+    width: 80px;
+    margin-bottom: 20px;
 }
 
 .card p {
     color: var(--brown-text);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: bold;
-    line-height: 1.4;
 }
 
 /* ==========================================================================
-   6. CLASSES D'ANIMATION (Déclenchées par JS)
+   5. ÉTAT VISIBLE (Déclenché par le JS)
    ========================================================================== */
 .is-visible {
     opacity: 1 !important;
-    transform: translate(0) !important;
+    transform: translate(0, 0) !important;
 }
