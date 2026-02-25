@@ -1,15 +1,15 @@
-/* --- CONFIGURATION DES VARIABLES --- */
+/* --- VARIABLES --- */
 :root {
-    --blue-slate: #3B505C;         /* Couleur Titre et Menu */
-    --green-leaf: #87B347;         /* Couleur Hover/Actif */
-    --brown-text: #684132;         /* Texte Bulle et Cartes */
-    --beige-main: #EADC9B;         /* Bordures */
-    --beige-bg: rgba(234, 220, 155, 0.95); /* Ton Beige Opaque */
+    --blue-slate: #3B505C;
+    --green-leaf: #87B347;
+    --brown-text: #684132;
+    --beige-main: #EADC9B;
+    --beige-bg: rgba(234, 220, 155, 0.95);
     --font-menu: 'Californian FB', 'Georgia', serif;
     --font-title: 'Gochi Hand', cursive;
 }
 
-/* --- BASE --- */
+/* --- RESET & BASE --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
@@ -17,131 +17,89 @@ body {
     background-size: cover;
     min-height: 100vh;
     font-family: var(--font-menu);
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
-/* --- NAVIGATION (Design Image 2) --- */
-.navbar { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    padding: 25px 80px; 
-}
-
+/* --- TITRE & NAV (Design Image 4) --- */
+.navbar { display: flex; justify-content: space-between; align-items: center; padding: 25px 80px; }
 .logo { height: 90px; width: auto; }
-
 .nav-links { display: flex; list-style: none; align-items: center; }
-
-.nav-links li a { 
-    text-decoration: none; 
-    color: var(--blue-slate); 
-    font-weight: bold; 
-    font-size: 1.4rem; 
-    padding: 0 20px; 
-}
-
+.nav-links li a { text-decoration: none; color: var(--blue-slate); font-weight: bold; font-size: 1.4rem; padding: 0 20px; }
 .nav-links li a:hover, .nav-links li a.active { color: var(--green-leaf); }
-
 .sep { color: var(--blue-slate); font-weight: bold; font-size: 1.4rem; }
 
-/* --- TITRE --- */
-.main-title { 
-    font-family: var(--font-title); 
-    color: var(--blue-slate); 
-    text-align: center; 
-    font-size: 3.8rem; 
-    margin-top: 20px; 
-}
+.main-title { font-family: var(--font-title); color: var(--blue-slate); text-align: center; font-size: 3.8rem; margin-top: 20px; }
 
 /* --- ZONE INTERACTIVE --- */
 .interactive-container {
     position: relative;
     height: 60vh;
     display: flex;
-    justify-content: center;
     align-items: center;
+    padding: 0 5%;
 }
 
-/* BULLE DE MISSION (ID: mission-bubble) */
+/* LA BULLE (ID: mission-bubble) */
 #mission-bubble {
-    position: relative;
     background: var(--beige-bg);
     border: 3px solid var(--beige-main);
     border-radius: 20px;
-    width: 320px; 
-    height: 280px;
+    width: 300px; 
+    height: 250px;
     display: flex; 
     justify-content: center; 
     align-items: center;
-    padding: 25px; 
+    padding: 20px;
     text-align: center;
-    transition: opacity 0.8s ease;
+    position: relative;
+    opacity: 0; /* Caché au début */
+    transform: scale(0.8);
+    transition: all 0.6s ease-out;
 }
 
-#mission-bubble p { 
-    color: var(--brown-text); 
-    font-family: var(--font-title);
-    font-size: 1.8rem; 
-    font-weight: bold; 
-}
+#mission-bubble p { color: var(--brown-text); font-family: var(--font-title); font-size: 1.6rem; font-weight: bold; }
 
 .bubble-triangle {
-    position: absolute; 
-    left: -28px; 
-    top: 50%; 
-    transform: translateY(-50%);
-    border-top: 20px solid transparent; 
-    border-bottom: 20px solid transparent;
-    border-right: 28px solid var(--beige-main);
+    position: absolute; left: -25px; top: 50%; transform: translateY(-50%);
+    border-top: 15px solid transparent; border-bottom: 15px solid transparent;
+    border-right: 25px solid var(--beige-main);
 }
 
-/* --- CARTES (ID: cards-container) --- */
+/* LES CARTES (ID: cards-container) */
 #cards-container {
-    position: absolute;
-    right: 5%;
-    bottom: 15%;
-    display: none; /* Ton JS gère le passage en flex */
+    display: flex; 
     gap: 20px;
-    align-items: center;
-    z-index: 100;
-}
-
-/* L'animation groupée se lance au moment du display: flex */
-#cards-container[style*="display: flex"] {
-    animation: sweepInGroup 0.8s ease-out forwards;
+    margin-left: 50px;
+    opacity: 0; /* Caché au début */
+    transform: translateX(50px);
+    transition: all 0.8s ease-out;
 }
 
 .card {
-    background-color: var(--beige-bg);
+    background: var(--beige-bg);
     border: 3px solid var(--beige-main);
     border-radius: 20px;
-    width: 250px;
-    height: 350px;
-    padding: 25px;
+    width: 220px;
+    height: 320px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 20px;
     text-align: center;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
-.card img { 
-    width: 90px; 
-    height: auto; 
-    margin-bottom: 25px; 
-    object-fit: contain; 
+.card img { width: 80px; margin-bottom: 20px; }
+.card p { color: var(--brown-text); font-family: var(--font-title); font-size: 1.1rem; line-height: 1.2; }
+
+/* --- L'ANIMATION QUAND ON AJOUTE LA CLASSE .is-active --- */
+.interactive-container.is-active #mission-bubble {
+    opacity: 1;
+    transform: scale(1);
 }
 
-.card p { 
-    color: var(--brown-text); 
-    font-family: var(--font-title); 
-    font-size: 1.2rem; 
-    line-height: 1.2; 
-}
-
-/* --- ANIMATION --- */
-@keyframes sweepInGroup {
-    0% { opacity: 0; transform: translateX(100px); }
-    100% { opacity: 1; transform: translateX(0); }
+.interactive-container.is-active #cards-container {
+    opacity: 1;
+    transform: translateX(0);
 }
