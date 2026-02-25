@@ -1,10 +1,10 @@
 :root {
-    --logo-blue: #2A79B1;          /* LE BLEU EXACT DU LOGO */
-    --green-leaf: #87B347;         
-    --brown-text: #684132;         
-    --beige-main: #EADC9B;         
-    --beige-bg: rgba(234, 220, 155, 0.95); 
-    --font-text: 'Californian FB', serif; 
+    --logo-blue: #2A79B1;
+    --green-leaf: #87B347;
+    --brown-text: #684132;
+    --beige-main: #EADC9B;
+    --beige-bg: rgba(234, 220, 155, 0.95);
+    --font-text: 'Californian FB', serif;
     --font-title: 'Gochi Hand', cursive;
 }
 
@@ -17,12 +17,10 @@ body {
     font-family: var(--font-text);
 }
 
-/* --- NAVIGATION (COULEUR LOGO) --- */
+/* --- NAVIGATION --- */
 .navbar { display: flex; justify-content: space-between; align-items: center; padding: 25px 80px; }
 .logo { height: 90px; }
 .nav-links { display: flex; list-style: none; align-items: center; }
-
-/* Liens et séparateurs en bleu logo */
 .nav-links li a, .sep { 
     text-decoration: none; 
     color: var(--logo-blue); 
@@ -30,13 +28,12 @@ body {
     font-size: 1.4rem; 
     padding: 0 20px; 
 }
-
 .nav-links li a.active { color: var(--green-leaf); }
 
 /* --- TITRE --- */
 .main-title { 
     font-family: var(--font-title); 
-    color: var(--logo-blue); /* Titre aussi en bleu logo */
+    color: var(--logo-blue); 
     text-align: center; 
     font-size: 3.8rem; 
     margin: 20px 0; 
@@ -62,13 +59,13 @@ body {
     display: flex; justify-content: center; align-items: center;
     padding: 25px;
     opacity: 0;
-    transform: translateX(-30px);
+    /* CHANGEMENT ICI : translateX(50px) pour qu'elle arrive par la DROITE */
+    transform: translateX(50px); 
     transition: all 0.8s ease-out;
 }
 
 #mission-bubble p { 
     color: var(--brown-text); 
-    font-family: var(--font-text); /* Californian FB */
     font-size: 1.6rem; 
     font-weight: bold; 
     text-align: center; 
@@ -85,7 +82,7 @@ body {
     display: flex; 
     gap: 20px;
     opacity: 0;
-    transform: translateX(30px);
+    transform: translateY(30px); /* Elles arrivent par le bas pour pas telescoper la bulle */
     transition: all 0.8s ease-out;
 }
 
@@ -100,122 +97,14 @@ body {
 
 .card p { 
     color: var(--brown-text); 
-    font-family: var(--font-text); /* Californian FB */
     font-size: 1.15rem; 
     font-weight: bold; 
 }
 
 .card img { width: 90px; margin-bottom: 20px; }
 
-/* ANIMATION */
-.is-visible { opacity: 1 !important; transform: translate(0) !important; }:root {
-    --logo-blue: #2A79B1;          /* LE BLEU EXACT DU LOGO */
-    --green-leaf: #87B347;         
-    --brown-text: #684132;         
-    --beige-main: #EADC9B;         
-    --beige-bg: rgba(234, 220, 155, 0.95); 
-    --font-text: 'Californian FB', serif; 
-    --font-title: 'Gochi Hand', cursive;
+/* ANIMATION UNIQUE */
+.is-visible { 
+    opacity: 1 !important; 
+    transform: translate(0) !important; 
 }
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-    background: url('fondaccueuil.jpg') no-repeat center center fixed;
-    background-size: cover;
-    min-height: 100vh;
-    font-family: var(--font-text);
-}
-
-/* --- NAVIGATION (COULEUR LOGO) --- */
-.navbar { display: flex; justify-content: space-between; align-items: center; padding: 25px 80px; }
-.logo { height: 90px; }
-.nav-links { display: flex; list-style: none; align-items: center; }
-
-/* Liens et séparateurs en bleu logo */
-.nav-links li a, .sep { 
-    text-decoration: none; 
-    color: var(--logo-blue); 
-    font-weight: bold; 
-    font-size: 1.4rem; 
-    padding: 0 20px; 
-}
-
-.nav-links li a.active { color: var(--green-leaf); }
-
-/* --- TITRE --- */
-.main-title { 
-    font-family: var(--font-title); 
-    color: var(--logo-blue); /* Titre aussi en bleu logo */
-    text-align: center; 
-    font-size: 3.8rem; 
-    margin: 20px 0; 
-}
-
-/* --- ZONE INTERACTIVE --- */
-.interactive-container {
-    position: relative;
-    height: 60vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-}
-
-/* BULLE (Étape 1) */
-#mission-bubble {
-    position: relative;
-    background: var(--beige-bg);
-    border: 3px solid var(--beige-main);
-    border-radius: 20px;
-    width: 320px; height: 260px;
-    display: flex; justify-content: center; align-items: center;
-    padding: 25px;
-    opacity: 0;
-    transform: translateX(-30px);
-    transition: all 0.8s ease-out;
-}
-
-#mission-bubble p { 
-    color: var(--brown-text); 
-    font-family: var(--font-text); /* Californian FB */
-    font-size: 1.6rem; 
-    font-weight: bold; 
-    text-align: center; 
-}
-
-.bubble-triangle {
-    position: absolute; left: -28px; top: 50%; transform: translateY(-50%);
-    border-top: 20px solid transparent; border-bottom: 20px solid transparent;
-    border-right: 28px solid var(--beige-main);
-}
-
-/* CARTES (Étape 2) */
-#cards-container {
-    display: flex; 
-    gap: 20px;
-    opacity: 0;
-    transform: translateX(30px);
-    transition: all 0.8s ease-out;
-}
-
-.card {
-    background: var(--beige-bg);
-    border: 3px solid var(--beige-main);
-    border-radius: 20px;
-    width: 250px; height: 350px;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    padding: 20px; text-align: center;
-}
-
-.card p { 
-    color: var(--brown-text); 
-    font-family: var(--font-text); /* Californian FB */
-    font-size: 1.15rem; 
-    font-weight: bold; 
-}
-
-.card img { width: 90px; margin-bottom: 20px; }
-
-/* ANIMATION */
-.is-visible { opacity: 1 !important; transform: translate(0) !important; }
