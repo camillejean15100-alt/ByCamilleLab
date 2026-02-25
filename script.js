@@ -1,13 +1,13 @@
-window.onload = function() {
+window.addEventListener('load', () => {
     const bubble = document.getElementById('bubble');
     const cards = document.getElementById('cards');
 
-    // Après 3 secondes, on cache la bulle et on montre les cartes
+    // 1. La bulle reste 3 secondes
     setTimeout(() => {
-        bubble.style.opacity = '0';
-        setTimeout(() => {
-            bubble.style.display = 'none';
-            cards.style.opacity = '1';
-        }, 500);
-    }, 3000);
-};
+        // 2. On cache la bulle
+        bubble.style.display = 'none';
+        
+        // 3. On fait apparaître les cartes
+        cards.style.opacity = '1';
+    }, 3500);
+});
