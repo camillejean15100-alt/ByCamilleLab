@@ -3,18 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Studio Graphisme - Camille Lab</title>
+    <title>Camille Lab - Graphisme</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <header>
+    <header class="main-header">
         <nav class="navbar">
-            <div class="logo-area">
-                <img src="logocamille.png" alt="Logo Camille Lab" class="logo">
-            </div>
-            <ul class="nav-menu">
+            <img src="logocamille.png" alt="Logo Camille Lab" class="logo">
+            <ul class="nav-links">
                 <li><a href="#" class="active">Accueil</a></li>
                 <li class="sep">|</li>
                 <li><a href="#">Voir mes projets</a></li>
@@ -28,27 +26,28 @@
         </nav>
     </header>
 
-    <main class="container">
+    <main class="content">
         <h1 class="main-title">LE GRAPHISME AU SERVICE DE LA TERRE</h1>
 
-        <div class="hero-content">
-            <div class="mission-bubble" id="missionBubble">
-                <p>« ma mission : <br><span>cultivons ensemble votre image de marque »</span></p>
+        <div class="interactive-container">
+            <div id="mission-bubble" class="speech-bubble">
+                <p>« ma mission : <br>cultivons ensemble votre image de marque »</p>
+                <div class="bubble-triangle"></div>
             </div>
 
-            <div class="services-grid">
-                <div class="card" id="card1">
-                    <img src="certif.png" alt="Certification">
+            <div id="cards-container" class="cards-wrapper">
+                <article class="card">
+                    <img src="certif.png" alt="Logo">
                     <p>Un logo et une image de marque qui vous ressemblent.</p>
-                </div>
-                <div class="card" id="card2">
-                    <img src="panier.png" alt="Panier">
+                </article>
+                <article class="card">
+                    <img src="panier.png" alt="Packaging">
                     <p>Création d'étiquettes & de packagings pour vos produits.</p>
-                </div>
-                <div class="card" id="card3">
-                    <img src="panneaux.png" alt="Panneaux">
+                </article>
+                <article class="card">
+                    <img src="panneaux.png" alt="Supports">
                     <p>Panneaux & supports pour rendre votre ferme visible.</p>
-                </div>
+                </article>
             </div>
         </div>
     </main>
