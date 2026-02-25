@@ -1,76 +1,67 @@
-/* --- VARIABLES --- */
 :root {
     --blue-slate: #3B505C;
-    --green-leaf: #87B347;
     --brown-text: #684132;
     --beige-main: #EADC9B;
     --beige-bg: rgba(234, 220, 155, 0.95);
-    --font-menu: 'Californian FB', 'Georgia', serif;
+    --font-text: 'Californian FB', serif; /* TA TYPO */
     --font-title: 'Gochi Hand', cursive;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-    background: url('fondaccueuil.jpg') no-repeat center center fixed;
-    background-size: cover;
-    min-height: 100vh;
-    font-family: var(--font-menu);
-}
-
-/* NAVIGATION & TITRE */
-.navbar { display: flex; justify-content: space-between; align-items: center; padding: 25px 80px; }
-.logo { height: 90px; }
-.nav-links { display: flex; list-style: none; }
-.nav-links li a { text-decoration: none; color: var(--blue-slate); font-weight: bold; padding: 0 20px; font-size: 1.4rem; }
-.nav-links li a.active { color: var(--green-leaf); }
-.main-title { font-family: var(--font-title); color: var(--blue-slate); text-align: center; font-size: 3.5rem; margin-top: 20px; }
-
-/* ZONE INTERACTIVE */
-.interactive-container {
-    position: relative;
-    height: 60vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-}
-
-/* BULLE & CARTES (Cachés par défaut) */
-#mission-bubble, #cards-container {
-    opacity: 0; 
-    transform: translateY(20px);
-    transition: all 0.8s ease-out;
-}
-
-/* LA BULLE */
+/* --- BULLE --- */
 #mission-bubble {
+    position: relative;
     background: var(--beige-bg);
     border: 3px solid var(--beige-main);
     border-radius: 20px;
-    width: 300px; height: 250px;
+    width: 320px; height: 260px;
     display: flex; justify-content: center; align-items: center;
-    padding: 20px; text-align: center;
-    position: relative;
+    padding: 20px;
+    opacity: 0; /* Caché au départ */
+    font-family: var(--font-text);
 }
-#mission-bubble p { font-family: var(--font-title); color: var(--brown-text); font-size: 1.6rem; font-weight: bold; }
 
-/* LES CARTES */
-#cards-container { display: flex; gap: 20px; }
+#mission-bubble p {
+    color: var(--brown-text);
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Triangle vers le personnage (à gauche) */
+.bubble-triangle {
+    position: absolute; left: -28px; top: 50%; transform: translateY(-50%);
+    border-top: 20px solid transparent; border-bottom: 20px solid transparent;
+    border-right: 28px solid var(--beige-main);
+}
+
+/* --- CARTES --- */
+#cards-container {
+    display: flex; 
+    gap: 20px;
+    opacity: 0; /* Caché au départ */
+    margin-left: 40px;
+}
 
 .card {
     background: var(--beige-bg);
     border: 3px solid var(--beige-main);
     border-radius: 20px;
-    width: 230px; height: 320px;
+    width: 240px; height: 340px;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
-    padding: 20px; text-align: center;
+    padding: 20px;
+    font-family: var(--font-text);
+    text-align: center;
 }
-.card img { width: 80px; margin-bottom: 15px; }
-.card p { font-family: var(--font-title); color: var(--brown-text); font-size: 1.1rem; }
 
-/* CLASSE D'ANIMATION */
-.visible {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
+.card img { width: 90px; margin-bottom: 20px; }
+.card p { color: var(--brown-text); font-size: 1.1rem; font-weight: bold; }
+
+/* --- CLASSES D'ANIMATION --- */
+.show-element {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10) }
+    to { opacity: 1; transform: translateY(0); }
 }
