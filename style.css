@@ -1,10 +1,10 @@
-/* --- CONFIGURATION --- */
+/* --- VARIABLES --- */
 :root {
     --blue-slate: #3B505C;
     --green-leaf: #87B347;
     --brown-text: #684132;
     --beige-main: #EADC9B;
-    --beige-bg: rgba(234, 220, 155, 0.95); /* BEIGE OPAQUE */
+    --beige-bg: rgba(234, 220, 155, 0.95);
     --font-menu: 'Californian FB', 'Georgia', serif;
     --font-title: 'Gochi Hand', cursive;
 }
@@ -16,33 +16,17 @@ body {
     background-size: cover;
     min-height: 100vh;
     font-family: var(--font-menu);
-    overflow-x: hidden;
 }
 
-/* --- NAVIGATION (Bleu Ardoise) --- */
+/* NAVIGATION & TITRE */
 .navbar { display: flex; justify-content: space-between; align-items: center; padding: 25px 80px; }
-.logo { height: 90px; width: auto; }
-.nav-links { display: flex; list-style: none; align-items: center; }
-.nav-links li a { 
-    text-decoration: none; 
-    color: var(--blue-slate); 
-    font-weight: bold; 
-    font-size: 1.4rem; 
-    padding: 0 20px; 
-}
-.nav-links li a:hover, .nav-links li a.active { color: var(--green-leaf); }
-.sep { color: var(--blue-slate); font-weight: bold; font-size: 1.4rem; }
+.logo { height: 90px; }
+.nav-links { display: flex; list-style: none; }
+.nav-links li a { text-decoration: none; color: var(--blue-slate); font-weight: bold; padding: 0 20px; font-size: 1.4rem; }
+.nav-links li a.active { color: var(--green-leaf); }
+.main-title { font-family: var(--font-title); color: var(--blue-slate); text-align: center; font-size: 3.5rem; margin-top: 20px; }
 
-/* --- TITRE (Bleu Ardoise + Gochi Hand) --- */
-.main-title { 
-    font-family: var(--font-title); 
-    color: var(--blue-slate); 
-    text-align: center; 
-    font-size: 3.8rem; 
-    margin-top: 20px; 
-}
-
-/* --- ZONE INTERACTIVE --- */
+/* ZONE INTERACTIVE */
 .interactive-container {
     position: relative;
     height: 60vh;
@@ -52,76 +36,41 @@ body {
     gap: 30px;
 }
 
-/* LA BULLE (Beige + Gochi Hand) */
+/* BULLE & CARTES (Cachés par défaut) */
+#mission-bubble, #cards-container {
+    opacity: 0; 
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
+}
+
+/* LA BULLE */
 #mission-bubble {
-    position: relative;
     background: var(--beige-bg);
     border: 3px solid var(--beige-main);
     border-radius: 20px;
-    width: 320px;
-    height: 280px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 25px;
-    text-align: center;
-    opacity: 0; /* Pour l'animation */
-    transform: translateX(-50px);
+    width: 300px; height: 250px;
+    display: flex; justify-content: center; align-items: center;
+    padding: 20px; text-align: center;
+    position: relative;
 }
+#mission-bubble p { font-family: var(--font-title); color: var(--brown-text); font-size: 1.6rem; font-weight: bold; }
 
-#mission-bubble p { 
-    color: var(--brown-text); 
-    font-family: var(--font-title); 
-    font-size: 1.8rem; 
-    font-weight: bold; 
-}
-
-.bubble-triangle {
-    position: absolute; left: -28px; top: 50%; transform: translateY(-50%);
-    border-top: 20px solid transparent; 
-    border-bottom: 20px solid transparent;
-    border-right: 28px solid var(--beige-main);
-}
-
-/* LES CARTES (Beige + Gochi Hand) */
-#cards-container {
-    display: none; /* Switché en flex par le JS */
-    gap: 20px;
-    opacity: 0;
-    transform: translateX(50px);
-}
+/* LES CARTES */
+#cards-container { display: flex; gap: 20px; }
 
 .card {
-    background-color: var(--beige-bg);
+    background: var(--beige-bg);
     border: 3px solid var(--beige-main);
     border-radius: 20px;
-    width: 250px;
-    height: 350px;
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    width: 230px; height: 320px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 20px; text-align: center;
 }
+.card img { width: 80px; margin-bottom: 15px; }
+.card p { font-family: var(--font-title); color: var(--brown-text); font-size: 1.1rem; }
 
-.card img { width: 90px; height: auto; margin-bottom: 25px; }
-
-.card p { 
-    color: var(--brown-text); 
-    font-family: var(--font-title); 
-    font-size: 1.2rem; 
-    line-height: 1.2; 
-}
-
-/* --- ANIMATION D'APPARITION --- */
-.reveal-all #mission-bubble,
-.reveal-all #cards-container {
-    display: flex;
-    animation: slideIn 0.8s ease-out forwards;
-}
-
-@keyframes slideIn {
-    to { opacity: 1; transform: translate(0); }
+/* CLASSE D'ANIMATION */
+.visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
 }
