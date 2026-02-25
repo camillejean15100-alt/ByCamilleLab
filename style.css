@@ -1,15 +1,14 @@
-/* --- VARIABLES --- */
+/* --- CONFIGURATION --- */
 :root {
     --blue-slate: #3B505C;
     --green-leaf: #87B347;
     --brown-text: #684132;
     --beige-main: #EADC9B;
-    --beige-bg: rgba(234, 220, 155, 0.95);
+    --beige-bg: rgba(234, 220, 155, 0.95); /* BEIGE OPAQUE */
     --font-menu: 'Californian FB', 'Georgia', serif;
     --font-title: 'Gochi Hand', cursive;
 }
 
-/* --- RESET & BASE --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
@@ -17,89 +16,112 @@ body {
     background-size: cover;
     min-height: 100vh;
     font-family: var(--font-menu);
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
-/* --- TITRE & NAV (Design Image 4) --- */
+/* --- NAVIGATION (Bleu Ardoise) --- */
 .navbar { display: flex; justify-content: space-between; align-items: center; padding: 25px 80px; }
 .logo { height: 90px; width: auto; }
 .nav-links { display: flex; list-style: none; align-items: center; }
-.nav-links li a { text-decoration: none; color: var(--blue-slate); font-weight: bold; font-size: 1.4rem; padding: 0 20px; }
+.nav-links li a { 
+    text-decoration: none; 
+    color: var(--blue-slate); 
+    font-weight: bold; 
+    font-size: 1.4rem; 
+    padding: 0 20px; 
+}
 .nav-links li a:hover, .nav-links li a.active { color: var(--green-leaf); }
 .sep { color: var(--blue-slate); font-weight: bold; font-size: 1.4rem; }
 
-.main-title { font-family: var(--font-title); color: var(--blue-slate); text-align: center; font-size: 3.8rem; margin-top: 20px; }
+/* --- TITRE (Bleu Ardoise + Gochi Hand) --- */
+.main-title { 
+    font-family: var(--font-title); 
+    color: var(--blue-slate); 
+    text-align: center; 
+    font-size: 3.8rem; 
+    margin-top: 20px; 
+}
 
 /* --- ZONE INTERACTIVE --- */
 .interactive-container {
     position: relative;
     height: 60vh;
     display: flex;
+    justify-content: center;
     align-items: center;
-    padding: 0 5%;
+    gap: 30px;
 }
 
-/* LA BULLE (ID: mission-bubble) */
+/* LA BULLE (Beige + Gochi Hand) */
 #mission-bubble {
+    position: relative;
     background: var(--beige-bg);
     border: 3px solid var(--beige-main);
     border-radius: 20px;
-    width: 300px; 
-    height: 250px;
-    display: flex; 
-    justify-content: center; 
+    width: 320px;
+    height: 280px;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 25px;
     text-align: center;
-    position: relative;
-    opacity: 0; /* Caché au début */
-    transform: scale(0.8);
-    transition: all 0.6s ease-out;
+    opacity: 0; /* Pour l'animation */
+    transform: translateX(-50px);
 }
 
-#mission-bubble p { color: var(--brown-text); font-family: var(--font-title); font-size: 1.6rem; font-weight: bold; }
+#mission-bubble p { 
+    color: var(--brown-text); 
+    font-family: var(--font-title); 
+    font-size: 1.8rem; 
+    font-weight: bold; 
+}
 
 .bubble-triangle {
-    position: absolute; left: -25px; top: 50%; transform: translateY(-50%);
-    border-top: 15px solid transparent; border-bottom: 15px solid transparent;
-    border-right: 25px solid var(--beige-main);
+    position: absolute; left: -28px; top: 50%; transform: translateY(-50%);
+    border-top: 20px solid transparent; 
+    border-bottom: 20px solid transparent;
+    border-right: 28px solid var(--beige-main);
 }
 
-/* LES CARTES (ID: cards-container) */
+/* LES CARTES (Beige + Gochi Hand) */
 #cards-container {
-    display: flex; 
+    display: none; /* Switché en flex par le JS */
     gap: 20px;
-    margin-left: 50px;
-    opacity: 0; /* Caché au début */
+    opacity: 0;
     transform: translateX(50px);
-    transition: all 0.8s ease-out;
 }
 
 .card {
-    background: var(--beige-bg);
+    background-color: var(--beige-bg);
     border: 3px solid var(--beige-main);
     border-radius: 20px;
-    width: 220px;
-    height: 320px;
+    width: 250px;
+    height: 350px;
+    padding: 25px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px;
     text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-.card img { width: 80px; margin-bottom: 20px; }
-.card p { color: var(--brown-text); font-family: var(--font-title); font-size: 1.1rem; line-height: 1.2; }
+.card img { width: 90px; height: auto; margin-bottom: 25px; }
 
-/* --- L'ANIMATION QUAND ON AJOUTE LA CLASSE .is-active --- */
-.interactive-container.is-active #mission-bubble {
-    opacity: 1;
-    transform: scale(1);
+.card p { 
+    color: var(--brown-text); 
+    font-family: var(--font-title); 
+    font-size: 1.2rem; 
+    line-height: 1.2; 
 }
 
-.interactive-container.is-active #cards-container {
-    opacity: 1;
-    transform: translateX(0);
+/* --- ANIMATION D'APPARITION --- */
+.reveal-all #mission-bubble,
+.reveal-all #cards-container {
+    display: flex;
+    animation: slideIn 0.8s ease-out forwards;
+}
+
+@keyframes slideIn {
+    to { opacity: 1; transform: translate(0); }
 }
