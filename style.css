@@ -1,130 +1,115 @@
-/* Reset de base */
-* {
+:root {
+    --text-brown: #5d4037;
+    --nav-green: #3a7d44;
+    --active-green: #8da242;
+}
+
+body, html {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-body {
+    width: 100%;
+    height: 100%;
     font-family: 'Montserrat', sans-serif;
-    background-color: #f0f8ff; /* Couleur de secours ciel */
-    overflow-x: hidden;
+    overflow: hidden; /* Empêche le scroll inutile */
 }
 
-/* NAVBAR - Exactitude des couleurs */
+/* NAVBAR */
 .navbar {
+    position: absolute;
+    top: 0;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 60px;
-    background: transparent;
-    position: absolute;
-    width: 100%;
-    z-index: 10;
+    padding: 20px 5%;
+    z-index: 100;
 }
 
-.logo img {
-    height: 80px; /* Ajuste selon la taille de ton PNG */
+.logo-img { height: 70px; }
+
+nav { color: var(--nav-green); font-weight: 500; font-size: 1.1rem; }
+.nav-link { text-decoration: none; color: inherit; margin: 0 10px; cursor: pointer; }
+.active { color: var(--active-green); font-weight: 800; }
+
+/* CONTENEUR PRINCIPAL */
+.hero-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
 }
 
-nav {
-    font-size: 1.2rem;
-    color: #2b7a78; /* Le bleu-vert du menu */
-}
-
-nav a {
-    text-decoration: none;
-    color: #2b7a78;
-    margin: 0 10px;
-    font-weight: 500;
-}
-
-nav a.active {
-    color: #a3b12c; /* Le vert pomme pour 'Accueil' */
-}
-
-/* TITRE PRINCIPAL */
 .main-title {
     position: absolute;
-    top: 15%;
+    top: 22%; /* Ajusté selon ton image */
     width: 100%;
     text-align: center;
-    font-family: 'Montserrat', sans-serif; /* Ou 'Permanent Marker' pour l'effet gras */
-    font-weight: 800;
-    font-size: 2.8rem;
-    color: #4a4a4a;
-    letter-spacing: 1px;
-    z-index: 5;
-    text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+    z-index: 10;
+    font-family: 'Gochi Hand', cursive; /* Police type manuscrite épaisse */
+    font-size: 3.5rem;
+    color: #444;
+    letter-spacing: 2px;
 }
 
-/* SCENE & FOND */
-.hero {
+.visual-layer {
     position: relative;
-    height: 100vh;
-    width: 100vw;
+    width: 100%;
+    height: 100%;
 }
 
-.background-img {
+.bg-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
 }
 
-/* LA BULLE : POSITION ET ANIMATION */
-.speech-bubble-container {
+/* BULLE ANIMÉE */
+.bubble-animation-wrapper {
     position: absolute;
-    top: 45%; /* Position verticale exacte par rapport à la bouche de Camille */
-    left: 45%; /* Ajuste selon ton image de fond */
-    width: 280px;
-    z-index: 6;
-    animation: floating 3.5s ease-in-out infinite; /* L'animation demandée */
-}
-
-.bubble-bg {
-    width: 100%;
-    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
-}
-
-.bubble-text {
-    position: absolute;
-    top: 45%;
-    left: 50%;
+    top: 45%; /* Positionnée à côté du visage de Camille */
+    left: 33%;
     transform: translate(-50%, -50%);
-    width: 85%;
-    text-align: center;
-    font-family: 'Caveat', cursive; /* Typographie manuscrite pour la bulle */
-    font-size: 1.4rem;
-    line-height: 1.2;
-    color: #7d5a44; /* Marron terreux */
-    font-weight: 700;
+    animation: floating 4s ease-in-out infinite;
 }
 
-/* TRACTEUR (Si séparé) */
-.tractor {
+.speech-bubble {
+    background: rgba(255, 255, 255, 0.6); /* Transparence comme sur l'image */
+    border: 2px solid transparent;
+    padding: 20px 30px;
+    border-radius: 50px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+    position: relative;
+    backdrop-filter: blur(2px);
+}
+
+/* Le petit triangle de la bulle */
+.speech-bubble::after {
+    content: '';
     position: absolute;
-    bottom: 10%;
-    right: 15%;
-    height: 200px;
+    left: -15px;
+    top: 50%;
+    border-style: solid;
+    border-width: 15px 20px 15px 0;
+    border-color: transparent rgba(255, 255, 255, 0.6) transparent transparent;
 }
 
-/* L'ANIMATION DE LA BULLE */
+.speech-bubble p {
+    font-family: 'Gochi Hand', cursive;
+    font-size: 1.6rem;
+    color: var(--text-brown);
+    margin: 0;
+    line-height: 1.2;
+    text-align: center;
+}
+
+/* ANIMATION */
 @keyframes floating {
-    0% {
-        transform: translate(0, 0px) rotate(0deg);
-    }
-    50% {
-        transform: translate(0, -15px) rotate(1deg); /* Elle monte et tourne légèrement */
-    }
-    100% {
-        transform: translate(0, 0px) rotate(0deg);
-    }
+    0% { transform: translate(-50%, -50%) translateY(0px); }
+    50% { transform: translate(-50%, -50%) translateY(-20px); }
+    100% { transform: translate(-50%, -50%) translateY(0px); }
 }
 
-/* Responsive pour mobiles */
-@media (max-width: 768px) {
-    .main-title { font-size: 1.5rem; top: 20%; }
-    .speech-bubble-container { width: 200px; left: 30%; }
-    .bubble-text { font-size: 1rem; }
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .main-title { font-size: 2rem; top: 15%; }
+    .bubble-animation-wrapper { left: 40%; width: 250px; }
 }
