@@ -17,7 +17,6 @@ body {
     background-size: cover;
     min-height: 100vh;
     font-family: var(--font-menu);
-    overflow-x: hidden;
 }
 
 /* --- NAVIGATION & TITRE --- */
@@ -30,17 +29,16 @@ body {
 
 .main-title { font-family: var(--font-title); color: var(--blue-slate); text-align: center; font-size: 3.8rem; margin-top: 20px; }
 
-/* --- CONTENEUR INTERACTIF --- */
+/* --- CONTENEUR --- */
 .interactive-container {
     position: relative;
     height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
 }
 
-/* --- BULLE DE TEXTE --- */
+/* --- BULLE --- */
 .speech-bubble {
     position: relative;
     background: var(--beige-bg);
@@ -49,7 +47,6 @@ body {
     width: 320px; height: 280px;
     display: flex; justify-content: center; align-items: center;
     padding: 25px; text-align: center;
-    z-index: 10;
 }
 .speech-bubble p { color: var(--brown-text); font-size: 1.8rem; font-weight: bold; }
 .bubble-triangle {
@@ -58,23 +55,25 @@ body {
     border-right: 28px solid var(--beige-main);
 }
 
-/* --- SECTION CARTES (RÉGLAGE FINAL) --- */
+/* --- CARTES : LE RÉGLAGE FINAL --- */
 
+/* LE CONTENEUR - On utilise l'ID servicesIcons pour correspondre au HTML */
 #servicesIcons {
     position: absolute;
     right: 5%;
-    bottom: 10%; /* Ajusté pour être sur l'herbe comme ton design */
-    display: none; /* Switché en 'flex' par le JS */
+    bottom: 20%;
+    display: none; /* Le JS passera en flex */
     gap: 20px;
     align-items: center;
     z-index: 100;
-    
-    /* Animation groupée : les 3 cartes glissent ensemble */
+
+    /* L'ANIMATION : Le bloc entier arrive d'un coup */
     animation: sweepInGroup 0.8s ease-out forwards;
 }
 
+/* LA CARTE - On garde tes réglages Image 2 */
 .card {
-    background-color: #FFFFFF !important; /* Blanc pur opaque de l'image 2 */
+    background-color: #FFFFFF !important;
     border-radius: 20px;
     width: 250px;
     height: 350px;
@@ -85,7 +84,6 @@ body {
     justify-content: center;
     text-align: center;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    opacity: 1; /* L'opacité est gérée par le parent #servicesIcons */
 }
 
 .card img {
@@ -98,12 +96,12 @@ body {
 .card p {
     color: #5D4037;
     font-family: var(--font-title);
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     line-height: 1.2;
     margin: 0;
 }
 
-/* --- ANIMATION --- */
+/* --- L'ANIMATION DE BALAYAGE --- */
 @keyframes sweepInGroup {
     0% {
         opacity: 0;
@@ -113,17 +111,4 @@ body {
         opacity: 1;
         transform: translateX(0);
     }
-}
-
-/* --- SECTION PROJETS (PRÉPARATION) --- */
-#section-projets {
-    padding: 50px;
-    text-align: center;
-}
-.projets-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
 }
