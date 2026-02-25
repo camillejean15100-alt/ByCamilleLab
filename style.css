@@ -1,21 +1,21 @@
-/* --- VARIABLES --- */
+/* --- VARIABLES & CONFIGURATION --- */
 :root {
-    /* Couleurs */
+    /* Palette de couleurs */
     --blue-slate: #3B505C;
     --green-leaf: #87B347;
     --brown-text: #684132;
     --beige-main: #EADC9B;
-    --beige-bg: rgba(234, 220, 155, 0.85);
+    --beige-bg: rgba(234, 220, 155, 0.9); /* Un peu plus opaque pour la lisibilité */
     
-    /* Polices */
+    /* Typographies */
     --font-menu: 'Californian FB', 'Georgia', serif;
     --font-title: 'Gochi Hand', cursive;
     
     /* Animation */
-    --transition-speed: 1.2s; /* Vitesse du balayage ralentie comme demandé */
+    --transition-speed: 1.2s; /* Balayage élégant et posé */
 }
 
-/* --- RESET & BASE --- */
+/* --- RESET DE BASE --- */
 * {
     margin: 0;
     padding: 0;
@@ -23,7 +23,7 @@
 }
 
 body {
-    /* ATTENTION : vérifie bien l'orthographe "fondaccueuil.jpg" sur GitHub */
+    /* Vérifie bien l'orthographe exacte sur ton GitHub */
     background: url('fondaccueuil.jpg') no-repeat center center fixed;
     background-size: cover;
     min-height: 100vh;
@@ -69,7 +69,7 @@ body {
     font-weight: bold;
 }
 
-/* --- TITRE --- */
+/* --- TITRE PRINCIPAL --- */
 .main-title {
     font-family: var(--font-title);
     color: var(--blue-slate);
@@ -78,7 +78,7 @@ body {
     margin-top: 20px;
 }
 
-/* --- ZONE D'INTERACTION --- */
+/* --- ZONE INTERACTIVE (Bulle & Cartes) --- */
 .interactive-container {
     position: relative;
     height: 55vh;
@@ -107,7 +107,7 @@ body {
 
 .speech-bubble p {
     color: var(--brown-text);
-    font-size: 1.8rem; /* Texte agrandi */
+    font-size: 1.8rem;
     font-weight: bold;
     line-height: 1.2;
 }
@@ -124,12 +124,12 @@ body {
     border-right: 25px solid var(--beige-main);
 }
 
-/* --- CARTES & CASCADE --- */
+/* --- CARTES : Wrapper & Alignement --- */
 .cards-wrapper {
     position: absolute;
-    right: 18%; /* Ajusté pour laisser de la place à gauche */
-    width: 38%; /* Largeur imposée */
-    display: none; /* Activé par script.js */
+    right: 18%; /* Décalage vers la gauche par rapport au bord droit */
+    width: 38%; /* Largeur du bloc */
+    display: none; /* Activé par script.js en 'flex' */
     gap: 20px;
 }
 
@@ -137,38 +137,45 @@ body {
     background: var(--beige-bg);
     border-radius: 15px;
     flex: 1;
-    height: 340px;
-    padding: 20px;
+    min-height: 360px; /* Un peu plus haut pour les grandes icônes */
+    padding: 30px 20px;
+    
+    /* Centrage parfait du contenu */
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; 
+    align-items: center;     
     text-align: center;
+    
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     
-    /* État initial caché pour l'animation */
+    /* État de départ pour l'animation */
     opacity: 0;
     transform: translateX(60px);
 }
 
 .card img {
-    width: 75px;
+    width: 110px; /* Icônes agrandies */
+    height: auto;
     margin-bottom: 25px;
 }
 
 .card p {
     color: var(--brown-text);
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 1.1rem; /* Texte lisible et aligné */
     line-height: 1.4;
+    margin: 0;
 }
 
-/* Animation déclenchée par la classe 'is-visible' */
+/* --- ANIMATIONS --- */
+
+/* Lancement quand la classe 'is-visible' est ajoutée au wrapper */
 .is-visible .card {
     animation: sweepIn var(--transition-speed) cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
-/* Délais de la cascade (ensemble mais séparément) */
+/* Délais pour l'effet de cascade (ensemble mais séparément) */
 .is-visible .card:nth-child(1) { animation-delay: 0.2s; }
 .is-visible .card:nth-child(2) { animation-delay: 0.5s; }
 .is-visible .card:nth-child(3) { animation-delay: 0.8s; }
