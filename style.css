@@ -1,23 +1,23 @@
+/* --- 1. IMPORT & RESET --- */
 @import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
 
-/* --- 1. RÉGLAGES DE BASE (MENU & FOND) --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    list-style: none;
+    list-style: none !important;
 }
 
 body {
     min-height: 100vh;
     font-family: sans-serif;
-    /* On démarre avec le fond campagne */
     background: url('fondaccueuil.jpg') no-repeat center center fixed;
     background-size: cover;
     overflow: hidden;
     transition: background-image 0.5s ease;
 }
 
+/* --- 2. MENU DE NAVIGATION --- */
 header {
     width: 100%;
     position: fixed;
@@ -39,78 +39,73 @@ header nav ul { display: flex; }
 header nav ul li a {
     text-decoration: none;
     font-weight: bold;
-    font-size: 22px;
+    font-size: 24px;
     color: #1D70B7; /* Bleu Camille */
     margin-left: 20px;
 }
 
 header nav ul li a.active {
-    color: #87B347; /* Vert Camille */
-    border-bottom: 3px solid #87B347;
+    color: #87B347 !important; /* Vert Actif */
+    border-bottom: 4px solid #87B347 !important;
 }
 
-/* --- 2. PAGE D'ACCUEIL (CAMILLE & ANIMATIONS) --- */
-
+/* --- 3. SECTION ACCUEIL --- */
 .main-title {
     position: absolute;
-    top: 15%;
+    top: 18%;
     width: 100%;
     text-align: center;
     font-family: 'Gochi Hand', cursive;
-    font-size: 4rem;
+    font-size: 4.5rem;
     color: #3B505C;
     text-shadow: 2px 2px white;
 }
 
-/* La bulle qui sort de Camille */
 .speech-bubble {
     position: absolute;
-    top: 440px; 
-    left: 450px;
-    background: rgba(234, 220, 155, 0.9);
-    padding: 20px;
-    border-radius: 20px;
-    opacity: 0; /* Cachée au début */
+    top: 68%; /* Pile sur Camille */
+    left: 38%;
+    background: #EADC9B;
+    padding: 20px 30px;
+    border-radius: 30px;
+    font-family: 'Gochi Hand', cursive;
+    font-size: 1.8rem;
+    opacity: 0;
     transform: scale(0.5);
-    transition: 0.5s;
+    transition: 0.5s ease-out;
 }
 
-.speech-bubble.visible {
-    opacity: 1;
-    transform: scale(1);
-}
+.speech-bubble.visible { opacity: 1; transform: scale(1); }
 
-/* Les 3 cartes de services */
+/* Conteneur des 3 cartes (étape 2) */
 .services-container {
     position: absolute;
-    top: 140px;
+    top: 15%;
     left: 50%;
     transform: translateX(-50%);
-    display: none; /* Affichée via JS après la bulle */
-    gap: 20px;
+    display: none;
+    gap: 30px;
 }
 
 .service-card {
     background: rgba(234, 220, 155, 0.85);
-    padding: 25px;
     width: 280px;
-    text-align: center;
+    padding: 30px 20px;
     border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    text-align: center;
 }
 
-.service-card img { height: 90px; margin-bottom: 15px; }
+.service-card img { height: 110px; margin-bottom: 15px; }
 
-/* --- 3. PAGE PROJETS (HERBE & GRILLE) --- */
-
+/* --- 4. SECTION PROJETS --- */
 #section-projets {
     padding-top: 140px;
-    min-height: 100vh;
+    display: none;
 }
 
 .quote-projets {
     font-family: 'Gochi Hand', cursive;
-    color: #1D70B7; /* Bleu spécifique projets */
+    color: #1D70B7;
     font-size: 2.5rem;
     text-align: center;
     margin-bottom: 40px;
@@ -119,33 +114,32 @@ header nav ul li a.active {
 /* Grille des 8 blocs blancs */
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 40px;
+    grid-template-columns: repeat(4, 280px);
+    gap: 25px;
+    justify-content: center;
 }
 
 .project-card {
     background: white;
-    aspect-ratio: 1.5; /* Format rectangulaire */
-    border-radius: 10px;
+    aspect-ratio: 1.5;
+    border-radius: 12px;
     position: relative;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-/* Éléments de déco (Coccinelle & Feuilles) */
+/* --- 5. DÉCO (COCCINELLE) --- */
 .coccinelle-container {
     position: absolute;
-    left: 20%;
-    top: -20px;
-    width: 150px;
+    left: 45%;
+    top: 150px;
+    width: 120px;
 }
 
-.trait-coco { width: 100%; position: absolute; top: 15px; }
-.coco-icon { width: 40px; position: absolute; right: 0; }
+.trait-coco { width: 100%; }
 
-.leaf { position: absolute; width: 40px; z-index: 5; }
-.l1 { top: -15px; left: 15%; }
-.l2 { top: -15px; right: 10%; }
-.l3 { top: -15px; left: 45%; }
+.coco-icon {
+    width: 45px;
+    position: absolute;
+    right: -10px;
+    top: -10px;
+}
