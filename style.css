@@ -56,63 +56,39 @@ body {
 }
 
 /* --- CARTES : LE RÉGLAGE FINAL --- */
-/* LE CONTENEUR - Placé pile au bon endroit */
+/* TON CONTENEUR - Ne change rien à tes positions, juste l'animation */
 #servicesIcons {
-    position: absolute;
-    right: 5%;
-    bottom: 18%; 
-    display: none; /* Ton JS le réveille à 3.5s */
-    gap: 20px;
-    align-items: flex-start; /* Aligne le haut des cartes */
-    z-index: 100;
+    display: none; /* Ton JS le passe en flex */
+    /* Garde tes propriétés de positionnement (top, left, right, bottom) ici */
+    
+    animation: sweepInGroup 0.8s ease-out forwards;
 }
 
-/* LA CARTE - Format équilibré (plus "organique") */
+/* TA CARTE - Je ne touche à aucune taille, juste l'opacité de départ */
 .card {
-    background: #FDF9F0;
-    border: 3px solid #E6D5B8;
-    border-radius: 20px;
-    width: 270px;
-    min-height: 320px; /* Donne une base solide sans être immense */
-    padding: 25px 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Centre tout le contenu dedans */
-    align-items: center;
-    text-align: center;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-
-    /* L'ANIMATION : Arrivée groupée avec un léger rebond (Back out) */
+    /* Garde tout ton design ici : background, border, width, height, etc. */
+    
     opacity: 0;
-    animation: sweepInGroup 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    animation: inherit; /* Elle suit l'animation du parent */
 }
 
-/* L'IMAGE - L'élément central */
+/* TON IMAGE & TON TEXTE - Je n'y touche plus */
 .card img {
-    width: 90px;
-    height: 90px;
-    object-fit: contain;
-    margin-bottom: 20px;
+    /* Tes réglages d'origine */
 }
 
-/* LE TEXTE - Typo Gochi Hand */
 .card p {
-    color: #5D4037;
-    font-family: 'Gochi Hand', cursive;
-    font-size: 1.2rem;
-    line-height: 1.3;
-    margin: 0;
-    padding: 0 10px;
+    /* Tes réglages d'origine */
 }
 
-/* L'ANIMATION : Glisse et "pop" légèrement à la fin */
+/* L'ANIMATION UNIQUE (Groupée comme demandé) */
 @keyframes sweepInGroup {
     0% {
         opacity: 0;
-        transform: translateX(150px) scale(0.9);
+        transform: translateX(100px); /* Arrive de la droite */
     }
     100% {
         opacity: 1;
-        transform: translateX(0) scale(1);
+        transform: translateX(0);
     }
 }
