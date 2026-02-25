@@ -56,58 +56,53 @@ body {
 }
 
 /* --- CARTES : LE RÉGLAGE FINAL --- */
-/* --- LES PANNEAUX (CARDS) --- */
+/* --- LE CONTENEUR DES 3 CARTES --- */
 .cards-wrapper {
     position: absolute;
-    right: 5%; /* Ajuste selon ton besoin pour l'espace à droite */
+    right: 5%; 
     display: flex; 
-    gap: 25px;
-    align-items: center;
+    gap: 20px;
+    align-items: flex-end; 
 }
 
+/* --- LA STRUCTURE DU PANNEAU --- */
 .card {
     background: var(--beige-bg);
     border: 3px solid var(--beige-main);
     border-radius: 25px;
-    width: 280px;  /* Largeur fixe pour l'unité */
-    height: 380px; /* Hauteur fixe pour l'unité */
+    width: 280px;  
+    height: 400px; /* On fixe la hauteur pour que tout soit aligné */
     padding: 30px 20px;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Force l'icône au centre et le texte en bas */
-    align-items: center;
+    flex-direction: column; /* Aligne le contenu verticalement */
     text-align: center;
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
-/* CONTENEUR IMAGE : Pour centrer l'icône dans l'espace restant */
+/* --- L'ICÔNE : CENTRAGE VERTICAL PARFAIT --- */
 .card img {
-    max-width: 100%;
-    height: auto;
-    flex-grow: 1; /* Prend tout l'espace libre au centre */
-    object-fit: contain; /* Garde les proportions sans déformer */
     display: block;
-    margin: 0 auto;
+    margin: auto; /* Magie du flex : occupe tout l'espace libre pour centrer l'image */
+    max-height: 180px; 
+    width: auto;
+    object-fit: contain;
 }
 
-/* LE TEXTE : Toujours collé en bas */
+/* --- LE TEXTE : COLLÉ EN BAS --- */
 .card p {
     color: var(--brown-text);
     font-family: var(--font-menu);
     font-size: 1.2rem;
     font-weight: bold;
     line-height: 1.4;
-    margin-top: 20px; /* Espace minimum entre l'image et le texte */
-    min-height: 60px; /* Aligne la hauteur de texte sur les 3 panneaux */
+    margin-top: auto; /* Pousse le texte tout en bas du panneau */
+    min-height: 80px; /* Aligne la base du texte sur les 3 cartes */
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* --- RÉGLAGES SPÉCIFIQUES DES TAILLES D'ICÔNES --- */
-/* Pour que le visuel soit harmonieux malgré les formes différentes */
-
-.card:nth-child(1) img { width: 110px; } /* Le sceau */
-.card:nth-child(2) img { width: 100px; } /* Le panier */
-.card:nth-child(3) img { width: 160px; } /* Le panneau bois */
-
+/* --- RÉGLAGE MANUEL DES TAILLES D'IMAGES --- */
+.card:nth-child(1) img { width: 120px; } /* Sceau certif */
+.card:nth-child(2) img { width: 110px; } /* Panier */
+.card:nth-child(3) img { width: 170px; } /* Panneau bois */
