@@ -1,26 +1,23 @@
 window.addEventListener('load', () => {
-    // On récupère tes éléments par leurs IDs actuels
     const bubble = document.getElementById('mission-bubble');
     const cards = document.getElementById('cards-container');
 
-    // ÉTAPE 1 : Faire apparaître la bulle à côté du perso
+    // 1. D'abord la bulle à côté du perso (après 0.5s)
     setTimeout(() => {
         if (bubble) {
-            bubble.style.opacity = "1";
-            bubble.style.transform = "translateX(0)";
-            // Si tu utilises une classe pour l'animation, on l'ajoute ici :
-            bubble.classList.add('visible'); 
+            // On s'assure que l'élément est affiché et on lance l'animation
+            bubble.style.display = 'flex'; 
+            // On utilise la classe que tu as définie dans ton CSS pour l'animation
+            bubble.classList.add('is-visible'); 
         }
-    }, 500); // 0.5 seconde après le chargement
+    }, 500);
 
-    // ÉTAPE 2 : Faire apparaître les cartes après la bulle
+    // 2. Ensuite les cartes (après 1.8s)
     setTimeout(() => {
         if (cards) {
-            cards.style.display = "flex"; // On force le passage en flex si besoin
-            cards.style.opacity = "1";
-            cards.style.transform = "translateX(0)";
-            // Si tu utilises une classe pour l'animation, on l'ajoute ici :
-            cards.classList.add('visible');
+            // On passe en flex et on lance l'animation
+            cards.style.display = 'flex';
+            cards.classList.add('is-visible');
         }
-    }, 2000); // 2 secondes après le chargement pour bien marquer le décalage
+    }, 1800);
 });
