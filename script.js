@@ -1,11 +1,14 @@
 window.addEventListener('load', () => {
-    // 1. Apparition de la bulle (0.5s)
+    const bubble = document.getElementById('mission-bubble');
+    const cards = document.getElementById('cards-container');
+
+    // 1. Apparition de la bulle vers le perso
     setTimeout(() => {
-        document.getElementById('mission-bubble').classList.add('is-visible');
+        if(bubble) bubble.classList.add('is-visible');
     }, 500);
 
-    // 2. Apparition des cartes (1.8s)
+    // 2. Apparition des cartes vers le tournesol
     setTimeout(() => {
-        document.getElementById('cards-container').classList.add('is-visible');
-    }, 1800);
+        if(cards) cards.classList.add('is-visible');
+    }, 1500);
 });
