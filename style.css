@@ -1,238 +1,151 @@
 @import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
 
-/* --- BASES --- */
+/* --- 1. RÉGLAGES DE BASE (MENU & FOND) --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    list-style: none !important;
+    list-style: none;
 }
 
 body {
     min-height: 100vh;
-    background: url('fondaccueuil.jpg') no-repeat center center fixed !important;
-    background-size: cover !important;
+    font-family: sans-serif;
+    /* On démarre avec le fond campagne */
+    background: url('fondaccueuil.jpg') no-repeat center center fixed;
+    background-size: cover;
     overflow: hidden;
+    transition: background-image 0.5s ease;
 }
 
-/* --- LE MENU --- */
 header {
     width: 100%;
     position: fixed;
     top: 0;
-    left: 0;
-    z-index: 1000;
     padding: 20px 60px;
+    z-index: 1000;
 }
 
 nav {
     display: flex;
     justify-content: space-between;
-    align-items: center; /* ALIGNEMENT VERTICAL AU CENTRE DU LOGO */
-    width: 100%;
-}
-
-.logo img {
-    height: 105px; /* Ta taille de logo bloquée */
-    width: auto;
-    display: block;
-}
-
-header nav ul {
-    display: flex;
-    align-items: center; /* Aligne les liens et les barres au centre */
-    margin: 0;
-    padding: 0;
-}
-
-header nav ul li {
-    display: flex;
     align-items: center;
 }
 
+.logo img { height: 105px; }
+
+header nav ul { display: flex; }
+
 header nav ul li a {
     text-decoration: none;
-    font-family: "Californian FB", serif;
     font-weight: bold;
-    font-size: 24px;
-    color: #1D70B7; /* RETOUR AU BLEU */
-    padding-bottom: 5px;
-    border-bottom: 4px solid transparent;
-    transition: 0.3s;
-}
-
-/* Hover et Active : Trait vert */
-header nav ul li a:hover,
-header nav ul li a.active {
-    color: #87B347 !important;
-    border-bottom: 4px solid #87B347 !important;
-}
-
-/* Séparateurs | bleus et centrés */
-header nav ul li:not(:last-child)::after {
-    content: "|";
-    margin: 0 25px;
-    color: #1D70B7; /* BLEU */
     font-size: 22px;
-    font-weight: normal;
+    color: #1D70B7; /* Bleu Camille */
+    margin-left: 20px;
 }
-/* --- TITRE --- */
+
+header nav ul li a.active {
+    color: #87B347; /* Vert Camille */
+    border-bottom: 3px solid #87B347;
+}
+
+/* --- 2. PAGE D'ACCUEIL (CAMILLE & ANIMATIONS) --- */
+
 .main-title {
-    position: fixed;
+    position: absolute;
     top: 15%;
     width: 100%;
     text-align: center;
     font-family: 'Gochi Hand', cursive;
-    font-size: 4.5rem;
+    font-size: 4rem;
     color: #3B505C;
-    text-shadow: 2px 2px 0px #FFFFFF, -2px -2px 0px #FFFFFF;
+    text-shadow: 2px 2px white;
 }
 
-/* --- LA BULLE (AVEC SA POINTE) --- */
+/* La bulle qui sort de Camille */
 .speech-bubble {
-    position: fixed;
-    top: 50%; 
-    left: 48%; 
-    transform: translate(100px, -50%);
-    opacity: 0;
-    background-color: #EADC9B;
-    padding: 25px 45px;
-    border-radius: 30px;
-    z-index: 500;
-    transition: transform 0.8s, opacity 0.6s;
-    box-shadow: 8px 8px 20px rgba(0,0,0,0.1);
-    cursor: pointer;
-}
-
-.speech-bubble::after {
-    content: '';
     position: absolute;
-    left: -25px; 
-    top: 50%;
-    transform: translateY(-50%);
-    border-style: solid;
-    border-width: 15px 30px 15px 0;
-    border-color: transparent #EADC9B transparent transparent;
-}
-
-.speech-bubble.visible { 
-    opacity: 1 !important; 
-    transform: translate(-50%, -50%) !important; 
-}
-
-.speech-bubble p {
-    color: #684132;
-    font-family: "Californian FB", serif;
-    font-weight: bold;
-    font-size: 1.8rem;
-    text-align: center;
-}
-
-/* --- LES CARTES --- */
-/* --- TON CODE POUR LES CARTES --- */
-.services-container {
-    display: none; /* Garde le none ici pour cacher au départ */
-    opacity: 0;
-    position: fixed;
-    top: 55%;
-    left: 38%; 
-    transform: translateY(-50%); 
-    width: auto; 
-    /* display: flex;  <-- On enlève cette ligne d'ici */
-    gap: 20px;
-    z-index: 600;
-    transition: opacity 0.8s;
-}
-
-/* Ton bloc active qui déclenche tout */
-.services-container.active {
-    display: flex !important;
-    opacity: 1 !important;
-}
-
-/* Le reste de ton design (service-card, etc.) reste identique à ton message */
-.service-card {
-    background-color: rgba(234, 220, 155, 0.85);
+    top: 440px; 
+    left: 450px;
+    background: rgba(234, 220, 155, 0.9);
+    padding: 20px;
     border-radius: 20px;
-    padding: 35px 25px; 
-    width: 330px; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    color-text:684132;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    opacity: 0; /* Cachée au début */
+    transform: scale(0.5);
+    transition: 0.5s;
 }
 
-.service-card img { 
-    height: 120px; 
-    margin-bottom: 30px; 
+.speech-bubble.visible {
+    opacity: 1;
+    transform: scale(1);
 }
 
-.service-card p {
-    color: #684132;
-    font-family: "Californian FB", serif;
-    font-size: 1.6rem;
-    font-weight: bold;
-}
-
-/* Couleurs du design */
-:root {
-    --camille-blue: #2a5a9a;
-    --camille-green: #7da144;
-}
-
-/* Intro Projets */
-.intro-projets {
-    text-align: center;
-    position: relative;
-    margin: 40px auto;
-    max-width: 600px;
-}
-
-.ladybug {
-    width: 50px;
+/* Les 3 cartes de services */
+.services-container {
     position: absolute;
-    left: 10%;
-    top: -20px;
+    top: 140px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none; /* Affichée via JS après la bulle */
+    gap: 20px;
 }
 
-.quote-projets {
-    font-family: 'Architects Daughter', cursive, sans-serif; /* Police manuscrite conseillée */
-    color: var(--camille-blue);
-    font-size: 1.8rem;
-    line-height: 1.3;
+.service-card {
+    background: rgba(234, 220, 155, 0.85);
+    padding: 25px;
+    width: 280px;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-/* Grille Portfolio */
-/* Nettoyage de la section Projets */
+.service-card img { height: 90px; margin-bottom: 15px; }
+
+/* --- 3. PAGE PROJETS (HERBE & GRILLE) --- */
+
 #section-projets {
-    position: relative;
-    z-index: 10;
-    padding-top: 120px; /* Pour pas que ça colle au menu */
+    padding-top: 140px;
     min-height: 100vh;
 }
 
+.quote-projets {
+    font-family: 'Gochi Hand', cursive;
+    color: #1D70B7; /* Bleu spécifique projets */
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Grille des 8 blocs blancs */
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 0 40px;
 }
 
 .project-card {
-    background: white; /* Les carrés blancs du design */
-    aspect-ratio: 1.5;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    background: white;
+    aspect-ratio: 1.5; /* Format rectangulaire */
+    border-radius: 10px;
     position: relative;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-/* Fix pour tes images de feuilles qui affichent "deco" */
-.leaf {
+/* Éléments de déco (Coccinelle & Feuilles) */
+.coccinelle-container {
     position: absolute;
-    width: 40px;
-    z-index: 5;
+    left: 20%;
+    top: -20px;
+    width: 150px;
 }
+
+.trait-coco { width: 100%; position: absolute; top: 15px; }
+.coco-icon { width: 40px; position: absolute; right: 0; }
+
+.leaf { position: absolute; width: 40px; z-index: 5; }
+.l1 { top: -15px; left: 15%; }
+.l2 { top: -15px; right: 10%; }
+.l3 { top: -15px; left: 45%; }
