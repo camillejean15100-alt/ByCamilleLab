@@ -1,23 +1,23 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const bubble = document.getElementById('mission-bubble');
-    const cards = document.getElementById('cards-container');
+window.onload = function() {
+    const bubble = document.getElementById('missionBubble');
+    const services = document.getElementById('servicesIcons');
+    
+    // Étape 1 : Faire apparaître la bulle
+    setTimeout(() => bubble.classList.add('visible'), 500);
 
-    // Délai avant transition
+    // Étape 2 : Switch vers les cartes après 3s
     setTimeout(() => {
-        // Effacement bulle
-        bubble.style.opacity = '0';
-        
-        setTimeout(() => {
-            bubble.style.display = 'none';
-            
-            // Affichage cartes
-            cards.style.display = 'flex';
-            // Petit timeout pour laisser au navigateur le temps de rendre le flex
-            setTimeout(() => {
-                cards.classList.add('is-visible');
-            }, 50);
-            
-        }, 600);
-        
-    }, 3000);
-});
+        bubble.style.display = 'none';
+        services.style.display = 'flex';
+    }, 3500);
+};
+
+function changerPage(page) {
+    if (page === 'projets') {
+        document.getElementById('section-accueil').style.display = 'none';
+        document.getElementById('section-projets').style.display = 'block';
+        document.body.style.backgroundImage = "url('voirmesprojets.jpg')";
+    } else {
+        window.location.reload();
+    }
+}
