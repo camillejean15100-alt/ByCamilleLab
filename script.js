@@ -1,58 +1,37 @@
-// Fonction pour gérer l'affichage des sections
-function changerPage(page) {
-    const accueil = document.getElementById('section-accueil');
-    const projets = document.getElementById('section-projets');
-    const body = document.getElementById('site-body');
-    
-    if (page === 'accueil') {
-        accueil.style.display = 'block';
-        projets.style.display = 'none';
-        body.style.backgroundImage = "url('fondaccueuil.jpg')";
-        body.style.overflow = "hidden";
-        lancerSequenceAccueil(); // On relance l'anim
-    } else {
-        accueil.style.display = 'none';
-        projets.style.display = 'block';
-        body.style.backgroundImage = "url('fondsite.jpg')";
-        body.style.overflow = "auto";
-    }
-}
-
-// La séquence d'animation isolée
 function lancerSequenceAccueil() {
     const bubble = document.getElementById('missionBubble');
     const services = document.getElementById('servicesIcons');
 
     if (!bubble || !services) return;
 
-    // Reset complet au début
+    // Reset immédiat
     bubble.style.display = "block";
     bubble.style.opacity = "0";
-    bubble.classList.remove('visible');
     services.style.display = "none";
     services.classList.remove('active');
 
-    // 1. Apparition de la bulle
+    // 1. La bulle arrive très vite (0.2s après le chargement)
     setTimeout(() => {
         bubble.classList.add('visible');
         bubble.style.opacity = "1";
-    }, 100);
+    }, 200);
 
-    // 2. Disparition bulle -> Apparition services
+    // 2. On switch après seulement 2.5 secondes (plus dynamique)
     setTimeout(() => {
-        bubble.style.transition = "opacity 0.5s ease";
+        bubble.style.transition = "all 0.4s ease";
         bubble.style.opacity = "0";
-        
+        bubble.style.transform = "translate(-50%, -70%) scale(0.9)"; // Effet de retrait
+
         setTimeout(() => {
             bubble.style.display = "none";
-            services.style.display = "flex"; // Force l'affichage
+            services.style.display = "flex";
+            
+            // Apparition des cartes en cascade immédiate
             setTimeout(() => {
                 services.classList.add('active');
-                services.style.opacity = "1"; // Force l'opacité
             }, 50);
-        }, 500);
-    }, 4000);
+        }, 400);
+    }, 2500); 
 }
 
-// Lancement au démarrage
 window.onload = lancerSequenceAccueil;
