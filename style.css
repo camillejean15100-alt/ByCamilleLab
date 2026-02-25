@@ -1,18 +1,29 @@
-/* --- Variables & Reset --- */
+/* --- VARIABLES --- */
 :root {
+    /* Couleurs */
     --blue-slate: #3B505C;
     --green-leaf: #87B347;
     --brown-text: #684132;
     --beige-main: #EADC9B;
     --beige-bg: rgba(234, 220, 155, 0.85);
-    --font-menu: 'Californian FB', serif;
+    
+    /* Polices */
+    --font-menu: 'Californian FB', 'Georgia', serif;
     --font-title: 'Gochi Hand', cursive;
-    --transition-speed: 0.8s;
+    
+    /* Animation */
+    --transition-speed: 1.2s; /* Vitesse du balayage ralentie comme demandé */
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* --- RESET & BASE --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
+    /* ATTENTION : vérifie bien l'orthographe "fondaccueuil.jpg" sur GitHub */
     background: url('fondaccueuil.jpg') no-repeat center center fixed;
     background-size: cover;
     min-height: 100vh;
@@ -20,7 +31,7 @@ body {
     font-family: var(--font-menu);
 }
 
-/* --- Header & Nav --- */
+/* --- NAVIGATION --- */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -28,7 +39,10 @@ body {
     padding: 20px 80px;
 }
 
-.logo { height: 90px; width: auto; }
+.logo {
+    height: 90px;
+    width: auto;
+}
 
 .nav-links {
     display: flex;
@@ -45,13 +59,17 @@ body {
     transition: color 0.3s ease;
 }
 
-.nav-links li a:hover, .nav-links li a.active {
+.nav-links li a:hover, 
+.nav-links li a.active {
     color: var(--green-leaf);
 }
 
-.sep { color: var(--blue-slate); font-weight: bold; }
+.sep {
+    color: var(--blue-slate);
+    font-weight: bold;
+}
 
-/* --- Titre --- */
+/* --- TITRE --- */
 .main-title {
     font-family: var(--font-title);
     color: var(--blue-slate);
@@ -60,7 +78,7 @@ body {
     margin-top: 20px;
 }
 
-/* --- Zone Interactive --- */
+/* --- ZONE D'INTERACTION --- */
 .interactive-container {
     position: relative;
     height: 55vh;
@@ -69,7 +87,7 @@ body {
     align-items: center;
 }
 
-/* Bulle */
+/* BULLE : Format Carré & Compact */
 .speech-bubble {
     position: relative;
     background: var(--beige-bg);
@@ -83,13 +101,13 @@ body {
     padding: 25px;
     text-align: center;
     box-shadow: 4px 6px 15px rgba(0, 0, 0, 0.1);
-    transition: opacity 0.6s ease;
+    transition: opacity 0.8s ease;
     z-index: 10;
 }
 
 .speech-bubble p {
     color: var(--brown-text);
-    font-size: 1.8rem;
+    font-size: 1.8rem; /* Texte agrandi */
     font-weight: bold;
     line-height: 1.2;
 }
@@ -99,18 +117,19 @@ body {
     left: -24px;
     top: 50%;
     transform: translateY(-50%);
-    width: 0; height: 0;
+    width: 0;
+    height: 0;
     border-top: 18px solid transparent;
     border-bottom: 18px solid transparent;
     border-right: 25px solid var(--beige-main);
 }
 
-/* --- Cartes & Animation Cascade --- */
+/* --- CARTES & CASCADE --- */
 .cards-wrapper {
     position: absolute;
-    right: 18%; /* Position décalée à gauche du bord droit */
-    width: 38%;
-    display: none; /* Activé par le JS */
+    right: 18%; /* Ajusté pour laisser de la place à gauche */
+    width: 38%; /* Largeur imposée */
+    display: none; /* Activé par script.js */
     gap: 20px;
 }
 
@@ -127,28 +146,32 @@ body {
     text-align: center;
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     
-    /* État initial pour l'animation */
+    /* État initial caché pour l'animation */
     opacity: 0;
     transform: translateX(60px);
 }
 
-.card img { width: 75px; margin-bottom: 25px; }
-.card p { 
-    color: var(--brown-text); 
-    font-weight: bold; 
-    font-size: 1rem; 
+.card img {
+    width: 75px;
+    margin-bottom: 25px;
+}
+
+.card p {
+    color: var(--brown-text);
+    font-weight: bold;
+    font-size: 1rem;
     line-height: 1.4;
 }
 
-/* Lancement de la cascade */
+/* Animation déclenchée par la classe 'is-visible' */
 .is-visible .card {
     animation: sweepIn var(--transition-speed) cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
-/* Délais successifs */
-.is-visible .card:nth-child(1) { animation-delay: 0.1s; }
-.is-visible .card:nth-child(2) { animation-delay: 0.3s; }
-.is-visible .card:nth-child(3) { animation-delay: 0.5s; }
+/* Délais de la cascade (ensemble mais séparément) */
+.is-visible .card:nth-child(1) { animation-delay: 0.2s; }
+.is-visible .card:nth-child(2) { animation-delay: 0.5s; }
+.is-visible .card:nth-child(3) { animation-delay: 0.8s; }
 
 @keyframes sweepIn {
     to {
