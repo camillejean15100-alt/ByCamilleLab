@@ -1,23 +1,26 @@
 window.onload = function() {
     const bubble = document.getElementById('missionBubble');
     const services = document.getElementById('servicesIcons');
-    
-    // Étape 1 : Faire apparaître la bulle
-    setTimeout(() => bubble.classList.add('visible'), 500);
+    const title = document.querySelector('.main-title');
 
-    // Étape 2 : Switch vers les cartes après 3s
+    // 1. Apparition de la bulle
+    setTimeout(() => { if(bubble) bubble.classList.add('visible'); }, 500);
+
+    // 2. Bascule titre/bulle vers services après 3s
     setTimeout(() => {
-        bubble.style.display = 'none';
-        services.style.display = 'flex';
+        if(bubble) bubble.style.display = 'none';
+        if(title) title.style.display = 'none';
+        if(services) services.style.display = 'flex';
     }, 3500);
 };
 
 function changerPage(page) {
+    const acc = document.getElementById('section-accueil');
+    const proj = document.getElementById('section-projets');
     if (page === 'projets') {
-        document.getElementById('section-accueil').style.display = 'none';
-        document.getElementById('section-projets').style.display = 'block';
+        acc.style.display = 'none';
+        proj.style.display = 'block';
         document.body.style.backgroundImage = "url('voirmesprojets.jpg')";
-    } else {
-        window.location.reload();
-    }
+        document.body.style.overflow = "auto";
+    } else { window.location.reload(); }
 }
