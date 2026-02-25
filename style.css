@@ -1,82 +1,92 @@
-@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Playfair+Display&display=swap');
 
 * { box-sizing: border-box; }
-body, html { margin: 0; padding: 0; height: 100%; font-family: "Californian FB", serif; }
+body, html { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; }
 
-.wrapper {
-    background: url('fondaccueuil.jpg') no-repeat center center;
+.screen-wrapper {
+    /* L'IMAGE DE FOND : assurez-vous du nom du fichier ici */
+    background: url('./fondaccueuil.jpg') no-repeat center center;
     background-size: cover;
     height: 100vh;
     width: 100vw;
     position: relative;
-    overflow: hidden;
 }
 
-/* Navigation */
 nav {
     display: flex;
     justify-content: space-between;
-    padding: 20px 40px;
+    padding: 20px 50px;
     align-items: center;
 }
-.logo { height: 60px; }
-.links { color: #1D70B7; font-weight: bold; }
-.links a { color: #1D70B7; text-decoration: none; transition: 0.3s; }
-.links a:hover { color: #87B347; }
 
-/* Titre */
+.logo-top { height: 70px; }
+.nav-links { color: #1D70B7; font-weight: bold; font-family: "Californian FB", serif; }
+.nav-links a { color: #1D70B7; text-decoration: none; }
+.nav-links a:hover { color: #87B347; }
+
 h1 {
     font-family: 'Gochi Hand', cursive;
     color: #3B505C;
     text-align: center;
-    font-size: 3.5rem;
-    margin-top: 20px;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin: 10px 0;
 }
 
-/* La Bulle */
+/* LA BULLE : Correction des proportions */
 .speech-bubble {
     position: absolute;
-    left: 30%;
-    top: 45%;
-    background: rgba(234, 220, 155, 0.9); /* EADC9B transparent */
+    left: 28%;
+    top: 40%;
+    background: rgba(234, 220, 155, 0.9);
     color: #684132;
-    padding: 20px 30px;
-    border-radius: 25px;
-    box-shadow: 4px 4px 10px rgba(0,0,0,0.2);
-    font-size: 1.2rem;
+    font-family: "Californian FB", serif;
+    padding: 30px;
+    border-radius: 40px;
+    box-shadow: 4px 4px 15px rgba(0,0,0,0.15);
+    
+    /* Dimensions forcées */
+    width: 280px; 
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.4;
+    font-size: 1.1rem;
     z-index: 10;
 }
 
-/* Le petit triangle de la bulle */
 .speech-bubble::after {
     content: '';
     position: absolute;
-    left: -15px;
+    left: -20px;
     top: 50%;
-    border-width: 10px 15px 10px 0;
+    transform: translateY(-50%);
+    border-width: 15px 20px 15px 0;
     border-style: solid;
     border-color: transparent rgba(234, 220, 155, 0.9) transparent transparent;
 }
 
-/* Conteneur des cartes */
-.cards-container {
+/* CARTES */
+.cards-layout {
     position: absolute;
-    right: 5%;
-    bottom: 10%;
+    right: 10%;
+    bottom: 12%;
     display: flex;
-    gap: 15px;
-    opacity: 0; /* Caché au début */
-    transition: opacity 1s ease-in;
+    gap: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-in-out;
 }
 
-.card {
-    background: rgba(234, 220, 155, 0.9);
-    width: 180px;
+.service-card {
+    background: rgba(234, 220, 155, 0.95);
+    width: 170px;
     padding: 15px;
-    border-radius: 15px;
+    border-radius: 20px;
     text-align: center;
     color: #684132;
-    box-shadow: 3px 3px 8px rgba(0,0,0,0.1);
+    box-shadow: 3px 3px 12px rgba(0,0,0,0.1);
 }
 
-.card img { width: 60px; margin-bottom: 10px; }
+.service-card img { width: 55px; margin-bottom: 10px; }
