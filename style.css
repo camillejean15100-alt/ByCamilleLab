@@ -7,7 +7,6 @@
     --beige-bg: rgba(234, 220, 155, 0.95);
     --font-menu: 'Californian FB', 'Georgia', serif;
     --font-title: 'Gochi Hand', cursive;
-    --speed: 0.3s; 
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -19,27 +18,48 @@ body {
     font-family: var(--font-menu);
 }
 
-/* --- NAVIGATION & TITRE --- */
-.navbar { display: flex; justify-content: space-between; align-items: center; padding: 25px 80px; }
-.logo { height: 90px; width: auto; }
-.nav-links { display: flex; list-style: none; align-items: center; }
-.nav-links li a { text-decoration: none; color: var(--blue-slate); font-weight: bold; font-size: 1.4rem; padding: 0 20px; }
-.nav-links li a:hover, .nav-links li a.active { color: var(--green-leaf); }
-.sep { color: var(--blue-slate); font-weight: bold; font-size: 1.4rem; }
-
-.main-title { font-family: var(--font-title); color: var(--blue-slate); text-align: center; font-size: 3.8rem; margin-top: 20px; }
-
-/* --- CONTENEUR --- */
-.interactive-container {
-    position: relative;
-    height: 60vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* --- NAVIGATION (Zéro changement) --- */
+.navbar { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 25px 80px; 
 }
 
-/* --- BULLE --- */
-.speech-bubble {
+.logo { height: 90px; width: auto; }
+
+.nav-links { display: flex; list-style: none; align-items: center; }
+
+.nav-links li a { 
+    text-decoration: none; 
+    color: var(--blue-slate); 
+    font-weight: bold; 
+    font-size: 1.4rem; 
+    padding: 0 20px; 
+    cursor: pointer;
+}
+
+.nav-links li a:hover, .nav-links li a.active { 
+    color: var(--green-leaf); 
+}
+
+.sep { 
+    color: var(--blue-slate); 
+    font-weight: bold; 
+    font-size: 1.4rem; 
+}
+
+/* --- TITRE --- */
+.main-title { 
+    font-family: var(--font-title); 
+    color: var(--blue-slate); 
+    text-align: center; 
+    font-size: 3.8rem; 
+    margin-top: 20px; 
+}
+
+/* --- BULLE (Beige) --- */
+#missionBubble {
     position: relative;
     background: var(--beige-bg);
     border: 3px solid var(--beige-main);
@@ -47,33 +67,37 @@ body {
     width: 320px; height: 280px;
     display: flex; justify-content: center; align-items: center;
     padding: 25px; text-align: center;
+    opacity: 0;
+    transition: opacity 0.8s ease;
 }
-.speech-bubble p { color: var(--brown-text); font-size: 1.8rem; font-weight: bold; }
-.bubble-triangle {
-    position: absolute; left: -28px; top: 50%; transform: translateY(-50%);
-    border-top: 20px solid transparent; border-bottom: 20px solid transparent;
-    border-right: 28px solid var(--beige-main);
+#missionBubble.visible { opacity: 1; }
+
+.speech-bubble p { 
+    color: var(--brown-text); 
+    font-size: 1.8rem; 
+    font-weight: bold; 
+    font-family: var(--font-title);
 }
 
-/* --- CARTES : LE RÉGLAGE FINAL --- */
-
-/* LE CONTENEUR - On utilise l'ID servicesIcons pour correspondre au HTML */
+/* --- CARTES (Beige + Animation Groupée) --- */
 #servicesIcons {
     position: absolute;
     right: 5%;
-    bottom: 20%;
-    display: none; /* Le JS passera en flex */
+    bottom: 18%;
+    display: none; /* Switché par ton JS */
     gap: 20px;
     align-items: center;
     z-index: 100;
+}
 
-    /* L'ANIMATION : Le bloc entier arrive d'un coup */
+/* Déclencheur animation */
+#servicesIcons[style*="display: flex"] {
     animation: sweepInGroup 0.8s ease-out forwards;
 }
 
-/* LA CARTE - On garde tes réglages Image 2 */
 .card {
-    background-color: #FFFFFF !important;
+    background-color: var(--beige-bg) !important;
+    border: 3px solid var(--beige-main);
     border-radius: 20px;
     width: 250px;
     height: 350px;
@@ -86,29 +110,17 @@ body {
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-.card img {
-    width: 80px;
-    height: auto;
-    margin-bottom: 20px;
-    object-fit: contain;
-}
+.card img { width: 80px; margin-bottom: 20px; }
 
-.card p {
-    color: #5D4037;
-    font-family: var(--font-title);
-    font-size: 1.1rem;
+.card p { 
+    color: var(--brown-text); 
+    font-family: var(--font-title); 
+    font-size: 1.15rem; 
     line-height: 1.2;
-    margin: 0;
 }
 
-/* --- L'ANIMATION DE BALAYAGE --- */
+/* --- ANIMATION --- */
 @keyframes sweepInGroup {
-    0% {
-        opacity: 0;
-        transform: translateX(100px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
+    0% { opacity: 0; transform: translateX(100px); }
+    100% { opacity: 1; transform: translateX(0); }
 }
