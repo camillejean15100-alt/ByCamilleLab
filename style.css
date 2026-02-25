@@ -16,7 +16,7 @@ body {
     background: url('fondaccueuil.jpg') no-repeat center center fixed;
     background-size: cover;
     min-height: 100vh;
-    overflow: hidden;
+    overflow-x: hidden;
     font-family: var(--font-menu);
 }
 
@@ -39,7 +39,6 @@ body {
     align-items: center;
 }
 
-/* BULLE */
 .speech-bubble {
     position: relative;
     background: var(--beige-bg);
@@ -56,10 +55,10 @@ body {
     border-right: 28px solid var(--beige-main);
 }
 
-/* --- CARTES : PANNEAU COMPACT & ICÔNES LARGES --- */
+/* --- CARTES : STRUCTURE FIXE --- */
 .cards-wrapper {
     position: absolute;
-    right: 10%; 
+    right: 12%; 
     display: none; 
     gap: 20px;
 }
@@ -68,11 +67,8 @@ body {
     background: var(--beige-bg);
     border: 2.5px solid var(--beige-main);
     border-radius: 20px;
-    
-    /* PANNEAU ENCORE PLUS COMPACT */
     width: 250px; 
-    height: 280px; 
-    
+    height: 280px; /* TAILLE DU PANNEAU (Modifie ici si encore trop grand) */
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -83,37 +79,48 @@ body {
     transform: translateX(20px);
 }
 
-/* ICÔNE : CENTRÉE ET PLUS GRANDE */
+/* Base commune icônes */
 .card img {
-    width: 130px; /* Taille augmentée */
     height: auto;
-    margin-top: auto;    /* Pousse l'icône vers le centre vertical */
-    margin-bottom: 20px; /* Espace fixe avec le texte */
     object-fit: contain;
 }
 
-/* TEXTE : CALÉ EN BAS */
+/* Base commune texte (Calé en bas) */
 .card p {
     color: var(--brown-text);
     font-weight: bold;
     font-size: 1.05rem; 
     line-height: 1.3;
-    margin-top: 0;       /* On enlève le margin-top auto ici car l'img s'en occupe */
-    margin-bottom: 10px; /* Petit espace avec le bord bas */
+    margin-top: auto; /* Force le texte au plancher */
     min-height: 50px;
     display: flex;
     align-items: center;
-    justify-content: center;
 }
 
-/* --- ANIMATION SPEED --- */
-.is-visible .card {
-    animation: sweepIn var(--speed) ease-out forwards;
-}
+/* --- RÉGLAGES MANUELS DES ICÔNES --- */
+
+/* Carte 1 */
+.card:nth-child(1) img { 
+    width: 130px;      /* Largeur */
+    margin-top: 40px;  /* Descendre l'icône (augmente le chiffre) */
+} 
+
+/* Carte 2 */
+.card:nth-child(2) img { 
+    width: 110px; 
+    margin-top: 45px; 
+} 
+
+/* Carte 3 */
+.card:nth-child(3) img { 
+    width: 140px; 
+    margin-top: 35px; 
+} 
+
+/* --- ANIMATIONS --- */
+.is-visible .card { animation: sweepIn var(--speed) ease-out forwards; }
 .is-visible .card:nth-child(1) { animation-delay: 0.05s; }
 .is-visible .card:nth-child(2) { animation-delay: 0.1s; }
 .is-visible .card:nth-child(3) { animation-delay: 0.15s; }
 
-@keyframes sweepIn {
-    to { opacity: 1; transform: translateX(0); }
-}
+@keyframes sweepIn { to { opacity: 1; transform: translateX(0); } }
