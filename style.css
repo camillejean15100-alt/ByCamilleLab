@@ -56,36 +56,57 @@ body {
 }
 
 /* --- CARTES : LE RÉGLAGE FINAL --- */
-/* TON CONTENEUR - Ne change rien à tes positions, juste l'animation */
+/* LE CONTENEUR - Il déclenche l'arrivée du bloc complet */
 #servicesIcons {
-    display: none; /* Ton JS le passe en flex */
-    /* Garde tes propriétés de positionnement (top, left, right, bottom) ici */
-    
+    position: absolute;
+    right: 5%;
+    bottom: 20%;
+    display: none; /* Ton JS gère le passage en 'flex' */
+    gap: 20px;
+    align-items: center;
+    z-index: 100;
+
+    /* L'ANIMATION : Les 3 cartes glissent ensemble d'un coup */
     animation: sweepInGroup 0.8s ease-out forwards;
 }
 
-/* TA CARTE - Je ne touche à aucune taille, juste l'opacité de départ */
+/* LA CARTE - Blanche, opaque, bords arrondis (Image 2) */
 .card {
-    /* Garde tout ton design ici : background, border, width, height, etc. */
-    
-    opacity: 0;
-    animation: inherit; /* Elle suit l'animation du parent */
+    background-color: #FFFFFF !important; /* Blanc pur et opaque */
+    border-radius: 20px;
+    width: 250px;
+    height: 350px; /* Ratio vertical de ta capture */
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-/* TON IMAGE & TON TEXTE - Je n'y touche plus */
+/* TES ICÔNES - Centrées avec de l'espace */
 .card img {
-    /* Tes réglages d'origine */
+    width: 80px;
+    height: auto;
+    margin-bottom: 20px;
+    object-fit: contain;
 }
 
+/* TON TEXTE - Gochi Hand et Marron */
 .card p {
-    /* Tes réglages d'origine */
+    color: #5D4037;
+    font-family: 'Gochi Hand', cursive;
+    font-size: 1.1rem;
+    line-height: 1.2;
+    margin: 0;
 }
 
-/* L'ANIMATION UNIQUE (Groupée comme demandé) */
+/* L'ANIMATION : Glissement latéral fluide */
 @keyframes sweepInGroup {
     0% {
         opacity: 0;
-        transform: translateX(100px); /* Arrive de la droite */
+        transform: translateX(100px);
     }
     100% {
         opacity: 1;
