@@ -1,123 +1,57 @@
-/* --- CONFIGURATION GÉNÉRALE --- */
-:root {
-    --bleu-camille: #1D70B7;
-    --vert-survol: #87B347;
-    --gris-titre: #3B505C;
-    --brun-texte: #684132;
-    --fond-beige-transp: rgba(234, 220, 155, 0.85); /* EADC9B avec transparence */
-}
+/* Import de la typo Gochi Hand si possible, sinon Comic Sans pour le style manuscrit */
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
 
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: "Californian FB", serif;
-}
+body, html { margin: 0; padding: 0; height: 100%; font-family: "Californian FB", serif; }
 
-.hero-section {
-    background: url('fondaccueuil.jpg') no-repeat center center/cover;
+.main-container {
+    background: url('fondaccueuil.jpg') no-repeat center center;
+    background-size: cover;
     height: 100vh;
     position: relative;
-    overflow: hidden;
 }
 
-/* --- NAVIGATION --- */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 50px;
-}
+nav { display: flex; justify-content: space-between; padding: 20px; align-items: center; }
+.logo { height: 80px; }
+.menu { color: #1D70B7; font-weight: bold; }
+.menu a { color: #1D70B7; text-decoration: none; }
+.menu a:hover { color: #87B347; }
 
-.logo { height: 70px; }
-
-.nav-links {
-    color: var(--bleu-camille);
-    font-size: 1.1rem;
-    font-weight: bold;
-}
-
-.nav-links a {
-    color: var(--bleu-camille);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-    color: var(--vert-survol);
-}
-
-/* --- TITRES --- */
 h1 {
     font-family: 'Gochi Hand', cursive;
-    color: var(--gris-titre);
+    color: #3B505C;
     text-align: center;
-    font-size: 3.5rem;
-    margin-top: 40px;
+    font-size: 3rem;
+    margin-top: 20px;
 }
 
-/* --- BULLE DE DIALOGUE --- */
 .speech-bubble {
     position: absolute;
-    left: 20%;
-    bottom: 35%;
-    background: var(--fond-beige-transp);
-    color: var(--brun-texte);
-    padding: 25px;
-    border-radius: 30px;
-    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.15);
-    max-width: 320px;
-    text-align: center;
-    font-size: 1.3rem;
-    z-index: 10;
+    left: 25%; top: 40%;
+    background: rgba(234, 220, 155, 0.9);
+    color: #684132;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    transition: opacity 0.5s;
 }
 
-/* Le petit triangle de la bulle */
-.speech-bubble::after {
-    content: '';
-    position: absolute;
-    left: -15px;
-    bottom: 20px;
-    border-width: 15px 20px 15px 0;
-    border-style: solid;
-    border-color: transparent var(--fond-beige-transp) transparent transparent;
-}
-
-/* --- CARTES DE SERVICES --- */
 .cards-container {
     position: absolute;
-    right: 15%; /* Positionné vers le tournesol à droite */
-    bottom: 15%;
+    right: 10%; bottom: 15%;
     display: flex;
-    gap: 20px;
-    opacity: 0; /* Caché au départ */
-    transform: translateY(30px);
-    transition: all 0.8s ease-out;
+    gap: 15px;
+    opacity: 0; /* Caché au début */
+    transition: opacity 1s;
 }
 
 .card {
-    background: var(--fond-beige-transp);
-    color: var(--brun-texte);
+    background: rgba(234, 220, 155, 0.9);
     padding: 15px;
-    border-radius: 15px;
-    width: 180px;
+    border-radius: 10px;
+    width: 150px;
     text-align: center;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    color: #684132;
+    font-size: 0.9rem;
 }
 
-.card img {
-    width: 60px;
-    margin-bottom: 10px;
-}
-
-/* --- CLASSES D'ANIMATION --- */
-.fade-out {
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    pointer-events: none;
-}
-
-.show-cards {
-    opacity: 1;
-    transform: translateY(0);
-}
+.card img { width: 50px; height: auto; }
