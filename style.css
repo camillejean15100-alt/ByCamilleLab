@@ -8,7 +8,7 @@
 body, html {
     width: 100%;
     height: 100%;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'CalifornianFB', sans-serif;
     background-image: url("fondacceuil.jpg");
 }
 
@@ -58,6 +58,7 @@ body, html {
 h1 {
     font-size: 2.5rem;
     color: #4A4A4A;
+    text:Gochi Hand;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
