@@ -31,12 +31,12 @@ body, html {
 
 .logo {
     height: 60px;
+    align-items: center;
 }
 
 .menu {
-    font-family: 'californianFB';
-    font-weight: bold;
-    color: #1D70B7; /* Bleu initial */
+  font:"califonianfb";
+  color: #1D70B7; /* Bleu initial */
 }
 
 .menu a {
@@ -57,7 +57,7 @@ body, html {
 }
 
 h1 {
-    font-size: 2.5rem;
+    font-size: 60px;
     color: #4A4A4A;
     font-family: "Gochi Hand", cursive;
     text-transform: uppercase;
