@@ -1,9 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // On cible la bulle par son ID
     const bubble = document.getElementById('bubble');
-    // On récupère toutes les cartes d'un coup
+    
+    // On cible TOUTES les cartes (les 3 que tu as dans ton HTML)
     const cards = document.querySelectorAll('.card');
 
-    // 1. Apparition de la bulle (0.5s)
+    // 1. Affichage de la bulle après 500ms
     setTimeout(() => {
         if (bubble) {
             bubble.classList.remove('hidden');
@@ -11,11 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, 500);
 
-    // 2. Apparition des cartes une par une (cascade)
+    // 2. Affichage des cartes avec un léger décalage (cascade)
     cards.forEach((card, index) => {
         setTimeout(() => {
-            card.classList.remove('hidden');
-            card.classList.add('show');
-        }, 1000 + (index * 300)); // Elles arrivent l'une après l'autre
+            if (card) {
+                card.classList.remove('hidden');
+                card.classList.add('show');
+            }
+        }, 1000 + (index * 250)); // La 1ère à 1s, la 2ème à 1.25s, la 3ème à 1.5s
     });
 });
