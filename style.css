@@ -14,7 +14,7 @@ body {
     position: relative;
 }
 
-/* --- 2. NAVBAR (LOGO BAS & MENU) --- */
+/* --- 2. NAVBAR (LOGO BAS & MENU AVEC SURVOL VERT) --- */
 .navbar { 
     display: flex; 
     justify-content: space-between; 
@@ -26,12 +26,21 @@ body {
 
 .menu { 
     margin-top: 25px; 
-    color: #1D70B7 !important; 
     font-weight: bold;
     font-size: 1.3rem; 
 }
 
-.menu a { color: #1D70B7 !important; text-decoration: none; margin: 0 12px; }
+.menu a { 
+    color: #1D70B7 !important; 
+    text-decoration: none; 
+    margin: 0 12px; 
+    transition: color 0.3s ease; 
+}
+
+/* LE VERT AU SURVOL RÉTABLI */
+.menu a:hover { 
+    color: #87B347 !important; 
+}
 
 /* --- 3. LE TITRE (RÉTABLI : BLEU MARINE + OMBRE BLANCHE) --- */
 h1 { 
@@ -41,8 +50,8 @@ h1 {
     text-align: center; 
     font-family: 'Gochi Hand', cursive; 
     font-size: 52px; 
-    color: #214F63 !important; /* TON BLEU MARINE */
-    text-shadow: 2px 2px 0px #FFFFFF, 4px 4px 0px #FFFFFF; /* TON OMBRE BLANCHE */
+    color: #214F63 !important; 
+    text-shadow: 2px 2px 0px #FFFFFF, 4px 4px 0px #FFFFFF; 
     z-index: 10;
 }
 
