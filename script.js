@@ -1,24 +1,23 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const bubble = document.querySelector('.speech-bubble');
-    const cards = document.querySelectorAll('.card');
+document.addEventListener('DOMContentLoaded', () => {
+    const bubble = document.getElementById('js-bubble');
+    const services = document.getElementById('js-services');
 
-    // 1. Entrée de la bulle
+    // 1. Faire apparaître la bulle après un court délai
     setTimeout(() => {
-        bubble.classList.remove('hidden');
-        bubble.classList.add('show');
+        bubble.classList.add('bubble--active');
     }, 500);
 
-    // 2. Switch bulle -> cartes après 4s
+    // 2. Après 3 secondes, on cache la bulle et on montre les cartes
     setTimeout(() => {
-        bubble.classList.replace('show', 'hidden');
-
+        // Disparition de la bulle
+        bubble.classList.remove('bubble--active');
+        
+        // Petit délai pour attendre la fin de l'anim de la bulle
         setTimeout(() => {
-            cards.forEach((card, index) => {
-                setTimeout(() => {
-                    card.classList.remove('hidden');
-                    card.classList.add('show');
-                }, index * 300);
-            });
-        }, 600);
-    }, 4000);
+            bubble.style.display = 'none';
+            // Apparition des cartes décalées à droite
+            services.classList.add('services--visible');
+        }, 500);
+
+    }, 3500);
 });
