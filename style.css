@@ -9,25 +9,21 @@ html, body {
     width: 100%;
     height: 100%;
     margin: 0;
-    font-family: 'Californian FB', serif; 
-    overflow-x: hidden;
-    background-color: #214F63; /* Couleur de secours si l'image ne charge pas */
+    font-family: 'Californian FB', serif;
+    background-color: #214F63; /* Couleur de secours */
 }
 
-/* --- 2. CONTENEUR PRINCIPAL & FOND --- */
+/* --- 2. LE FOND (CORRIGÉ) --- */
 .main-container {
     width: 100%;
     min-height: 100vh;
     position: relative;
-    display: block;
-    
-    /* On force l'image avec des chemins relatifs propres */
-    background-image: url('fondaccueil.jpg') !important;
+    /* On utilise l'URL exacte vue sur ton GitHub */
+    background-image: url("fondaccueil.jpg") !important; 
     background-position: center center !important;
     background-repeat: no-repeat !important;
     background-attachment: fixed !important;
     background-size: cover !important;
-    z-index: 1;
 }
 
 /* --- 3. NAVIGATION --- */
@@ -37,12 +33,12 @@ html, body {
     align-items: center; 
     padding: 20px 80px; 
     position: relative;
-    z-index: 1000; /* Toujours au-dessus */
+    z-index: 1000;
 }
 
 .logo { height: 75px; width: auto; }
 
-.menu { font-weight: bold; font-size: 1.2rem; }
+.menu { font-weight: bold; font-size: 1.2rem; color: #1D70B7; }
 
 .menu a { 
     color: #1D70B7; 
@@ -66,12 +62,11 @@ h1 {
     z-index: 10;
 }
 
-/* --- 5. BULLE ET CARTES (CENTRAGE PARFAIT) --- */
+/* --- 5. BULLE ET CARTES (CENTRAGE FIXE) --- */
 .speech-bubble, .cards-container {
     position: absolute;
     top: 320px;       
     left: 50%; 
-    /* Le transform est géré dans .hidden et .show pour l'animation */
 }
 
 .speech-bubble {
@@ -95,6 +90,7 @@ h1 {
     line-height: 1.3;
 }
 
+/* Triangle de la bulle */
 .speech-bubble::after {
     content: '';
     position: absolute;
@@ -134,13 +130,13 @@ h1 {
 .hidden { 
     opacity: 0 !important; 
     visibility: hidden !important; 
-    transform: translate(-50%, 30px); /* Centré X, décalé Y */
+    transform: translate(-50%, 30px); 
     transition: all 0.6s ease-in-out;
 }
 
 .show { 
     opacity: 1 !important; 
     visibility: visible !important; 
-    transform: translate(-50%, 0); /* Centré X, place finale */
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translate(-50%, 0); 
+    transition: all 0.8s ease-out;
 }
