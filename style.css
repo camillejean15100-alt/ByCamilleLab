@@ -15,7 +15,113 @@ nav { display: flex; justify-content: space-between; padding: 20px; align-items:
 .menu { color: #1D70B7; font-weight: bold; }
 .menu a { color: #1D70B7; text-decoration: none; }
 .menu a:hover { color: #87B347; }
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Montserrat:wght@400;700&display=swap');
 
+body, html { 
+    margin: 0; 
+    padding: 0; 
+    height: 100%; 
+    font-family: "Montserrat", sans-serif; /* Plus moderne pour la lecture */
+}
+
+.main-container {
+    background: url('fondaccueuil.jpg') no-repeat center center;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* NAVIGATION : Logo plus à droite et Menu plus grand */
+nav { 
+    display: flex; 
+    justify-content: space-between; 
+    padding: 30px 60px; /* Plus d'espace sur les côtés */
+    align-items: center; 
+}
+
+.logo { 
+    height: 100px; /* Logo agrandi */
+    transition: 0.3s;
+}
+
+.menu { 
+    font-size: 1.2rem; /* Menu plus grand */
+    font-weight: bold; 
+    letter-spacing: 1px;
+}
+
+.menu a { 
+    color: #1D70B7; 
+    text-decoration: none; 
+    margin: 0 10px;
+}
+
+.menu a:hover { color: #87B347; }
+
+h1 {
+    font-family: 'Gochi Hand', cursive;
+    color: #3B505C;
+    text-align: center;
+    font-size: 4rem; /* Titre plus imposant */
+    margin: 40px 0;
+    text-shadow: 2px 2px 0px white;
+}
+
+/* ZONE CONTENU */
+.content-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-grow: 1;
+    padding: 0 5%;
+}
+
+/* BULLE */
+.speech-bubble {
+    background: rgba(234, 220, 155, 0.95);
+    color: #684132;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+    font-size: 1.5rem;
+    max-width: 300px;
+    border: 2px solid #87B347;
+}
+
+/* CARTES : Redimensionnées et alignées proprement */
+.cards-container {
+    display: flex;
+    flex-direction: column; /* Alignées verticalement pour la clarté */
+    gap: 20px;
+    opacity: 1; /* Mis à 1 pour voir le résultat immédiatement */
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 15px;
+    width: 350px; /* Largeur augmentée pour éviter l'effet "long et étroit" */
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: #684132;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
+    border-left: 8px solid #87B347;
+}
+
+.card img { 
+    width: 60px; 
+    height: 60px; 
+    object-fit: contain;
+}
+
+.card p { 
+    margin: 0; 
+    font-weight: 600; 
+    font-size: 1rem;
+    text-align: left;
+}
 h1 {
     font-family: 'Gochi Hand', cursive;
     color: #3B505C;
