@@ -5,28 +5,21 @@
     box-sizing: border-box; 
 }
 
-html, body { 
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
+body { 
     font-family: 'Californian FB', serif; 
-    overflow-x: hidden; /* Évite le bug du scroll horizontal */
+    overflow-x: hidden; 
+    width: 100%;
 }
 
 .main-container {
-    /* Ajout d'une couleur de secours si l'image met du temps à charger */
-    background-color: #214F63; 
-    
-    /* Correction du chemin pour GitHub et fixation du background */
-    background-image: url('fondaccueil.jpg');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    background-size: cover; 
-    
-    min-height: 100vh;
     width: 100%;
+    min-height: 100vh;
+    /* Correction du background pour GitHub */
+    background-image: url('fondaccueil.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover !important;
     position: relative;
 }
 
@@ -35,20 +28,14 @@ html, body {
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
-    padding: 20px 5%; /* Utilisation de % pour plus de souplesse */
-    position: relative;
+    padding: 20px 80px; 
     z-index: 1000;
+    position: relative;
 }
 
-.logo { 
-    height: 75px; 
-    width: auto;
-}
+.logo { height: 75px; }
 
-.menu { 
-    font-weight: bold; 
-    font-size: 1.2rem; 
-}
+.menu { font-weight: bold; font-size: 1.2rem; color: #1D70B7; }
 
 .menu a { 
     color: #1D70B7; 
@@ -57,9 +44,7 @@ html, body {
     transition: 0.3s; 
 }
 
-.menu a:hover, .menu a.active { 
-    color: #87B347 !important; 
-}
+.menu a:hover, .menu a.active { color: #87B347 !important; }
 
 /* --- 3. TITRE --- */
 h1 { 
@@ -68,10 +53,9 @@ h1 {
     top: 160px; 
     text-align: center; 
     font-family: 'Gochi Hand', cursive; 
-    font-size: clamp(32px, 5vw, 52px); /* Taille adaptative */
+    font-size: 52px; 
     color: #214F63; 
-    text-shadow: 2px 2px 0px #FFFFFF, -2px -2px 0px #FFFFFF, 2px -2px 0px #FFFFFF, -2px 2px 0px #FFFFFF; 
-    z-index: 10;
+    text-shadow: 2px 2px 0px #FFFFFF, 4px 4px 0px #FFFFFF; 
 }
 
 /* --- 4. BULLE --- */
@@ -96,14 +80,12 @@ h1 {
     color: #214F63; 
     font-size: 1.5rem;
     font-weight: bold;
-    line-height: 1.3;
 }
 
 .speech-bubble::after {
     content: '';
     position: absolute;
-    left: -28px; 
-    top: 45px;        
+    left: -28px; top: 45px;        
     border-top: 15px solid transparent;
     border-bottom: 15px solid transparent;
     border-right: 30px solid rgba(234, 220, 155, 0.95); 
@@ -130,30 +112,21 @@ h1 {
     flex-direction: column; 
     align-items: center; 
     justify-content: center;
-    transition: transform 0.3s;
 }
-
-.card:hover { transform: translateY(-10px); }
 
 .card img { height: 65px; margin-bottom: 15px; object-fit: contain; }
+.card p { color: #214F63; font-weight: bold; font-size: 0.95rem; text-align: center; }
 
-.card p { 
-    color: #214F63; 
-    font-weight: bold; 
-    font-size: 0.95rem; 
-    text-align: center; 
-}
-
-/* --- 6. ANIMATIONS --- */
+/* --- 6. ANIMATIONS (IMPORTANT) --- */
 .hidden { 
-    opacity: 0 !important; 
-    visibility: hidden !important; 
+    opacity: 0; 
+    visibility: hidden; 
     transform: translateY(20px);
+    transition: all 0.8s ease-out;
 }
 
 .show { 
     opacity: 1 !important; 
     visibility: visible !important; 
     transform: translateY(0);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
 }
