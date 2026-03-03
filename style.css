@@ -79,7 +79,7 @@ h1 {
 .speech-bubble, .cards-container {
     position: absolute;
     top: 340px;
-    left: 50%;
+    left: 75%;
 }
 
 .speech-bubble {
