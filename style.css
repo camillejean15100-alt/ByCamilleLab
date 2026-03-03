@@ -26,15 +26,15 @@ body {
     flex-direction: column;
 }
 
-/* --- Header & Navigation --- */
+/* --- Navigation centrée avec le Logo --- */
 .header {
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Aligne bien le logo et le menu sur la même ligne */
+    align-items: center; 
     padding: 30px 80px;
 }
 
-.header__logo img { height: 110px; width: auto; }
+.header__logo img { height: 110px; width: auto; display: block; }
 
 .nav-list { display: flex; list-style: none; align-items: center; }
 
@@ -46,32 +46,24 @@ body {
     transition: color 0.3s ease;
 }
 
-/* LE HOVER VERT QUE TU VOULAIS */
 .nav-list__link:hover, 
-.nav-list__link--active { 
-    color: var(--color-secondary); 
-}
+.nav-list__link--active { color: var(--color-secondary); }
 
 .nav-list__sep { color: var(--color-primary); margin: 0 15px; font-weight: bold; }
 
-/* --- Hero Section --- */
-.hero { 
-    flex: 1; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    position: relative; 
-}
+/* --- Section Hero --- */
+.hero { flex: 1; position: relative; width: 100%; }
 
 .hero__title {
+    text-align: center;
     font-family: var(--font-accent);
     font-size: 60px;
     color: var(--color-dark);
     text-shadow: 2px 2px 0 white;
-    margin-top: 10px; /* Remonté un peu pour coller au menu */
+    margin-top: 10px;
 }
 
-/* --- Bubble (Ta version originale calée sur Camille) --- */
+/* --- Bulle calée sur Camille --- */
 .bubble {
     background: var(--color-beige);
     width: 450px;
@@ -82,21 +74,16 @@ body {
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 35%; /* Ajusté pour le visage */
+    top: 35%; 
     left: 32%;
     z-index: 10;
-    
     opacity: 0;
     transform: scale(0.6);
     visibility: hidden;
     transition: all var(--transition-speed) cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.bubble--active {
-    opacity: 1;
-    transform: scale(1);
-    visibility: visible;
-}
+.bubble--active { opacity: 1; transform: scale(1); visibility: visible; }
 
 .bubble::after {
     content: '';
@@ -116,28 +103,24 @@ body {
     text-align: center;
 }
 
-/* --- SERVICES (CARTES DÉCALÉES À DROITE) --- */
+/* --- Cartes décalées sur le tracteur --- */
 .services {
     display: flex;
     gap: 30px;
     position: absolute;
-    bottom: 10%; /* Posées en bas */
-    right: 10%;  /* Poussées vers la droite sur le chemin du tracteur */
+    bottom: 12%; 
+    right: 8%;  
     z-index: 5;
-    
     opacity: 0;
     transform: translateY(50px);
     transition: all 0.8s ease-out;
 }
 
-.services--visible {
-    opacity: 1;
-    transform: translateY(0);
-}
+.services--visible { opacity: 1; transform: translateY(0); }
 
 .service-card {
     background: var(--color-beige);
-    border: none; /* AUCUN CONTOUR */
+    border: none; 
     width: 250px;
     height: 330px;
     border-radius: 40px;
@@ -149,14 +132,9 @@ body {
     box-shadow: 0 15px 35px rgba(0,0,0,0.1);
 }
 
-.service-card__icon { 
-    height: 90px; 
-    width: auto;
-    margin-bottom: 25px; 
-}
-
+.service-card__icon { height: 90px; margin-bottom: 25px; }
 .service-card__text {
-    color: var(--color-dark); /* Plus lisible en foncé comme la bulle */
+    color: var(--color-dark);
     font-weight: bold;
     font-size: 1.15rem;
     text-align: center;
