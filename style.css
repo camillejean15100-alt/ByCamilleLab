@@ -9,12 +9,13 @@ body {
     font-family: 'Californian FB', serif; 
     overflow-x: hidden; 
     width: 100%;
+    height: 100vh;
 }
 
 .main-container {
     width: 100%;
-    min-height: 100vh;
-    /* Correction du background pour GitHub */
+    height: 100vh;
+    /* Correction du fond pour GitHub */
     background-image: url('fondaccueil.jpg');
     background-position: center center;
     background-repeat: no-repeat;
@@ -29,13 +30,13 @@ body {
     justify-content: space-between; 
     align-items: center; 
     padding: 20px 80px; 
-    z-index: 1000;
     position: relative;
+    z-index: 1000;
 }
 
 .logo { height: 75px; }
 
-.menu { font-weight: bold; font-size: 1.2rem; color: #1D70B7; }
+.menu { font-weight: bold; font-size: 1.2rem; }
 
 .menu a { 
     color: #1D70B7; 
@@ -50,21 +51,26 @@ body {
 h1 { 
     position: absolute;
     width: 100%;
-    top: 160px; 
+    top: 140px; 
     text-align: center; 
     font-family: 'Gochi Hand', cursive; 
     font-size: 52px; 
     color: #214F63; 
     text-shadow: 2px 2px 0px #FFFFFF, 4px 4px 0px #FFFFFF; 
+    z-index: 10;
 }
 
-/* --- 4. BULLE --- */
-.speech-bubble {
+/* --- 4. BULLE ET CARTES (CENTRAGE COMMUN) --- */
+.speech-bubble, .cards-container {
     position: absolute;
     top: 320px;       
-    left: 42%; 
+    left: 50%; 
+    /* Le transform est géré dans les classes hidden/show pour l'animation */
+}
+
+.speech-bubble {
     background-color: rgba(234, 220, 155, 0.95); 
-    width: 420px;      
+    width: 450px;      
     min-height: 160px; 
     padding: 20px 30px;
     border-radius: 60px;
@@ -80,53 +86,56 @@ h1 {
     color: #214F63; 
     font-size: 1.5rem;
     font-weight: bold;
+    line-height: 1.3;
 }
 
+/* Le petit triangle de la bulle */
 .speech-bubble::after {
     content: '';
     position: absolute;
-    left: -28px; top: 45px;        
+    left: -25px; 
+    top: 50%;
+    transform: translateY(-50%);
     border-top: 15px solid transparent;
     border-bottom: 15px solid transparent;
     border-right: 30px solid rgba(234, 220, 155, 0.95); 
 }
 
-/* --- 5. CARTES --- */
 .cards-container {
-    position: absolute;
-    top: 320px;       
-    left: 63%; 
     display: flex; 
-    gap: 15px; 
+    gap: 20px; 
     z-index: 50;
+    width: max-content;
 }
 
 .card {
-    background: rgba(234, 220, 155, 0.75); 
+    background: rgba(234, 220, 155, 0.85); 
     backdrop-filter: blur(5px);
-    width: 200px; 
-    height: 310px; 
-    padding: 15px; 
+    width: 220px; 
+    height: 320px; 
+    padding: 20px; 
     border-radius: 20px;
     display: flex; 
     flex-direction: column; 
     align-items: center; 
     justify-content: center;
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.1);
 }
 
-.card img { height: 65px; margin-bottom: 15px; object-fit: contain; }
-.card p { color: #214F63; font-weight: bold; font-size: 0.95rem; text-align: center; }
+.card img { height: 70px; margin-bottom: 20px; object-fit: contain; }
+.card p { color: #214F63; font-weight: bold; font-size: 1rem; text-align: center; }
 
-/* --- 6. ANIMATIONS (IMPORTANT) --- */
+/* --- 5. ANIMATIONS --- */
 .hidden { 
-    opacity: 0; 
-    visibility: hidden; 
-    transform: translateY(20px);
-    transition: all 0.8s ease-out;
+    opacity: 0 !important; 
+    visibility: hidden !important; 
+    transform: translate(-50%, 30px); /* Centré X, décalé de 30px vers le bas */
+    transition: all 0.6s ease-in-out;
 }
 
 .show { 
     opacity: 1 !important; 
     visibility: visible !important; 
-    transform: translateY(0);
+    transform: translate(-50%, 0); /* Centré X, à sa place */
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
