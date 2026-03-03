@@ -15,15 +15,13 @@ html, body {
 /* --- 2. CONTENEUR PRINCIPAL (IMAGE DE FOND) --- */
 .main-container {
     width: 100%;
-    min-height: 100vh;
+    min-height: 100vh; /* Force le conteneur à prendre toute la hauteur de l'écran */
     position: relative;
-    background-image: url("fondaccueil.jpg") !important;
-    background-position: center center !important;
-    background-repeat: no-repeat !important;
-    background-attachment: fixed !important;
+    
+    /* LE FIX : On utilise la propriété raccourcie 'background' plus puissante */
+    background: url("fondaccueil.jpg") no-repeat center center fixed !important;
     background-size: cover !important;
 }
-
 /* --- 3. NAVIGATION (LOGO ET MENU ALIGNÉS) --- */
 .navbar {
     display: flex;
