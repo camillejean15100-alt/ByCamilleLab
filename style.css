@@ -1,161 +1,124 @@
-/* RESET & BASE */
+/* 1. Reset & Setup */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
+body, html {
+    width: 100%;
+    height: 100%;
     font-family: 'Montserrat', sans-serif;
-    color: #333;
-    overflow-x: hidden;
 }
 
-/* CONTAINER PRINCIPAL AVEC FOND */
+/* 2. Fond de page - C'est l'image qui fait tout le décor */
 .main-container {
-    background: url('fondaccueil.jpg') no-repeat center bottom;
+    background: url('fondaccueil.jpg') no-repeat center center;
     background-size: cover;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-/* HEADER & NAVIGATION */
-header {
-    padding: 20px 50px;
-    width: 100%;
-}
-
+/* 3. Navigation */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 30px 60px;
 }
 
 .logo {
-    height: 80px; /* Ajuster selon le fichier logocamille.png */
-    object-fit: contain;
+    height: 60px;
 }
 
 .menu {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    color: #1D70B7; /* Couleur demandée */
-    font-size: 22px;
+    font-weight: bold;
+    color: #1D70B7; /* Bleu initial */
 }
 
 .menu a {
     text-decoration: none;
     color: #1D70B7;
     margin: 0 10px;
-    transition: color 0.3s ease;
+    transition: 0.3s;
 }
 
 .menu a:hover {
-    color: #87B347; /* Couleur de survol demandée */
+    color: #87B347; /* Vert au survol */
 }
 
-/* SECTION HERO */
+/* 4. Titre */
 .hero {
     text-align: center;
-    padding-top: 50px;
+    margin-top: 50px;
 }
 
 h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 3rem;
-    color: #4A4A4A; /* Couleur grise foncée du texte principal */
+    font-size: 2.5rem;
+    color: #4A4A4A;
+    text-transform: uppercase;
     letter-spacing: 2px;
-    text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
 }
 
-/* ZONE DU PERSONNAGE ET BULLE */
+/* 5. Bulle de dialogue (Positionnée pour la fille sur l'image) */
 .character-area {
+    flex-grow: 1;
     position: relative;
-    height: 400px; /* Espace pour le personnage qui est dans le fondaccueil.jpg */
-    margin-top: 20px;
+    min-height: 300px;
 }
 
 .speech-bubble {
     position: absolute;
-    top: 50px;
-    left: 48%;
-    transform: translateX(-50%);
-    background-color: rgba(234, 220, 155, 0.85); /* Fond EADC9B avec transparence */
-    border-radius: 15px;
-    padding: 15px 30px;
+    top: 10%;
+    left: 45%; /* Ajuste selon la tête du perso sur ton écran */
+    background-color: rgba(234, 220, 155, 0.9); /* #EADC9B avec transparence */
+    color: #684132; /* Marron texte */
+    padding: 20px 30px;
+    border-radius: 20px;
     font-family: 'Playfair Display', serif;
     font-style: italic;
-    font-weight: 700;
-    font-size: 1.8rem;
-    color: #684132; /* Couleur texte demandée */
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
-    max-width: 450px;
+    font-size: 1.4rem;
+    max-width: 350px;
     text-align: center;
-    line-height: 1.3;
+    box-shadow: 3px 3px 15px rgba(0,0,0,0.1); /* Ombre portée légère */
 }
 
 /* Petit triangle de la bulle */
 .speech-bubble::after {
     content: '';
     position: absolute;
-    left: -20px;
+    left: -15px;
     top: 50%;
-    transform: translateY(-50%);
-    border-width: 15px 25px 15px 0;
+    border-width: 10px 15px 10px 0;
     border-style: solid;
-    border-color: transparent rgba(234, 220, 155, 0.85) transparent transparent;
+    border-color: transparent rgba(234, 220, 155, 0.9) transparent transparent;
 }
 
-/* SECTION CARTES (Bas de page) */
+/* 6. Les Cartes */
 .cards-container {
     display: flex;
     justify-content: center;
     gap: 30px;
-    padding: 50px 20px;
-    background-color: rgba(255, 255, 255, 0.2); /* Léger voile pour la lisibilité */
+    padding: 40px;
 }
 
 .card {
-    background-color: rgba(234, 220, 155, 0.9); /* Fond EADC9B avec transparence */
-    border-radius: 20px;
-    padding: 30px 20px;
+    background-color: rgba(234, 220, 155, 0.9); /* #EADC9B avec transparence */
+    border-radius: 15px;
+    padding: 25px;
     width: 280px;
     text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Ombre portée légère */
-    transition: transform 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-}
-
-.icon-wrapper {
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Ombre portée légère */
+    color: #684132;
 }
 
 .icon-wrapper img {
-    max-height: 80px;
-    object-fit: contain;
+    height: 70px;
+    margin-bottom: 15px;
 }
 
 .card p {
-    font-family: 'Montserrat', sans-serif;
-    color: #684132; /* Couleur texte demandée */
-    font-weight: 500;
+    font-size: 0.95rem;
     line-height: 1.4;
-    font-size: 1.1rem;
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    .menu { font-size: 16px; }
-    h1 { font-size: 1.8rem; }
-    .speech-bubble { font-size: 1.2rem; width: 90%; left: 50%; }
-    .cards-container { flex-direction: column; align-items: center; }
 }
