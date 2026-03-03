@@ -9,16 +9,13 @@ body {
     font-family: 'Californian FB', serif; 
     overflow: hidden; 
 }
-.container{
-    background: url('fondaccueil.jpg') no-repeat center center fixed;
-
-}
-
 .main-container {
     background-size: cover;
     height: 100vh;
     position: relative;
     width: 100%;
+    background: url('fondaccueil.jpg') no-repeat center center fixed;
+
 }
 
 /* --- 2. NAVIGATION --- */
