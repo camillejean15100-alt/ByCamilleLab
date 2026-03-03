@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
 
-/* Configuration structurelle */
+/* RESET COMPLET */
 body, html { 
     margin: 0; 
     padding: 0; 
@@ -10,124 +10,133 @@ body, html {
     overflow: hidden; 
 }
 
+/* CONTAINER PRINCIPAL */
 .main-container {
     background: url('fondaccueuil.jpg') no-repeat center center;
     background-size: cover;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
+    width: 100vw;
+    position: relative;
 }
 
-/* NAVBAR : 100% Transparent, Logo à gauche, Liens à droite */
+/* NAVBAR : Transparence totale forcée */
 .navbar { 
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
-    padding: 20px 4vw; 
-    background: transparent !important;
+    padding: 20px 60px; 
+    background: transparent !important; 
+    position: absolute;
+    top: 0;
+    width: calc(100% - 120px);
+    z-index: 1000;
 }
 
-.logo { height: 75px; }
+.logo { height: 80px; }
 
+/* MENU : Taille augmentée pour lisibilité */
 .menu { 
     font-weight: bold; 
-    font-size: 1.2rem; 
-    color: #1D70B7;
+    font-size: 1.4rem; 
 }
 
-/* On respecte tes liens avec les séparateurs | */
 .menu a { 
     color: #1D70B7; 
     text-decoration: none; 
+    margin-left: 15px;
 }
 
-.menu a:hover { color: #87B347; }
+.btn-contact {
+    background: #1D70B7;
+    color: white !important;
+    padding: 8px 20px;
+    border-radius: 25px;
+}
 
-/* TITRE : Positionné en haut au centre */
+/* TITRE : Centré en haut */
 h1 {
     font-family: 'Gochi Hand', cursive;
     color: #3B505C;
     text-align: center;
-    font-size: 3.5rem;
-    margin-top: 5vh;
-    line-height: 1;
-    text-transform: uppercase;
+    font-size: 3.8rem;
+    margin: 0;
+    padding-top: 80px;
+    line-height: 1.1;
 }
 
-.highlight { color: #3B505C; display: block; }
-
-/* BULLE DE DIALOGUE : Calée sur le personnage */
+/* BULLE : Calée sur le personnage de gauche */
 .character-area {
     position: absolute;
-    left: 23%; /* Calage précis sur l'illustration */
-    top: 58%;
+    left: 24%; 
+    top: 55%;
 }
 
 .speech-bubble {
-    background: rgba(234, 220, 155, 0.9);
+    background: rgba(234, 220, 155, 0.95);
     color: #684132;
-    padding: 15px 25px;
+    padding: 20px;
     border-radius: 15px;
     font-family: 'Gochi Hand', cursive;
-    font-size: 1.4rem;
-    max-width: 280px;
+    font-size: 1.35rem;
+    max-width: 250px;
     position: relative;
-    box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
 }
 
-/* Triangle qui pointe vers le visage (gauche) */
+/* TRIANGLE BULLE (Pointe vers le perso) */
 .speech-bubble::after {
     content: "";
     position: absolute;
     left: -15px;
-    top: 20px;
+    top: 25px;
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
-    border-right: 15px solid rgba(234, 220, 155, 0.9);
+    border-right: 15px solid rgba(234, 220, 155, 0.95);
 }
 
-/* CARTES : Format Portrait, alignées en bas à droite */
+/* CARTES : Format Portrait & Animation cascade */
 .cards-container {
     position: absolute;
-    right: 5%;
+    right: 5%; 
     bottom: 5%;
     display: flex;
     gap: 15px;
 }
 
 .card {
-    background: rgba(234, 220, 155, 0.9);
-    padding: 20px 10px;
-    border-radius: 12px;
-    width: 140px; /* Largeur étroite */
-    height: 200px; /* Hauteur allongée */
+    background: rgba(234, 220, 155, 0.95);
+    padding: 25px 15px;
+    border-radius: 15px;
+    width: 150px;  /* Format Hauteur > Largeur */
+    height: 230px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: #684132;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 3px 3px 15px rgba(0,0,0,0.1);
     
-    /* Animation Cascade */
+    /* Animation settings */
     opacity: 0;
     transform: translateX(100px);
-    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
+/* Classe ajoutée par le JS */
 .card.visible {
     opacity: 1;
     transform: translateX(0);
 }
 
 .icon-wrapper img { 
-    width: 50px; 
-    margin-bottom: 15px; 
+    width: 60px; 
+    margin-bottom: 20px; 
 }
 
 .card p { 
     margin: 0; 
-    font-size: 0.9rem; 
+    font-size: 0.95rem; 
     font-weight: bold; 
-    line-height: 1.2; 
+    line-height: 1.3; 
 }
