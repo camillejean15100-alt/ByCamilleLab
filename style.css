@@ -30,13 +30,14 @@ body {
 .header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center; /* Aligne bien le logo et le menu sur la même ligne */
     padding: 30px 80px;
 }
 
 .header__logo img { height: 110px; width: auto; }
 
 .nav-list { display: flex; list-style: none; align-items: center; }
+
 .nav-list__link {
     text-decoration: none;
     color: var(--color-primary);
@@ -44,20 +45,33 @@ body {
     font-size: 1.2rem;
     transition: color 0.3s ease;
 }
-.nav-list__link:hover, .nav-list__link--active { color: var(--color-secondary); }
+
+/* LE HOVER VERT QUE TU VOULAIS */
+.nav-list__link:hover, 
+.nav-list__link--active { 
+    color: var(--color-secondary); 
+}
+
 .nav-list__sep { color: var(--color-primary); margin: 0 15px; font-weight: bold; }
 
 /* --- Hero Section --- */
-.hero { flex: 1; display: flex; flex-direction: column; align-items: center; position: relative; }
+.hero { 
+    flex: 1; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    position: relative; 
+}
+
 .hero__title {
     font-family: var(--font-accent);
     font-size: 60px;
     color: var(--color-dark);
     text-shadow: 2px 2px 0 white;
-    margin-top: 20px;
+    margin-top: 10px; /* Remonté un peu pour coller au menu */
 }
 
-/* --- Bubble (Ta version originale) --- */
+/* --- Bubble (Ta version originale calée sur Camille) --- */
 .bubble {
     background: var(--color-beige);
     width: 450px;
@@ -68,11 +82,10 @@ body {
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 38%;
+    top: 35%; /* Ajusté pour le visage */
     left: 32%;
     z-index: 10;
     
-    /* Animation state */
     opacity: 0;
     transform: scale(0.6);
     visibility: hidden;
@@ -103,11 +116,15 @@ body {
     text-align: center;
 }
 
-/* --- Services (Cartes sans contour) --- */
+/* --- SERVICES (CARTES DÉCALÉES À DROITE) --- */
 .services {
     display: flex;
-    gap: 40px;
-    margin-top: 100px;
+    gap: 30px;
+    position: absolute;
+    bottom: 10%; /* Posées en bas */
+    right: 10%;  /* Poussées vers la droite sur le chemin du tracteur */
+    z-index: 5;
+    
     opacity: 0;
     transform: translateY(50px);
     transition: all 0.8s ease-out;
@@ -120,10 +137,10 @@ body {
 
 .service-card {
     background: var(--color-beige);
-    border: none;
-    width: 260px;
-    height: 340px;
-    border-radius: 45px;
+    border: none; /* AUCUN CONTOUR */
+    width: 250px;
+    height: 330px;
+    border-radius: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -132,11 +149,16 @@ body {
     box-shadow: 0 15px 35px rgba(0,0,0,0.1);
 }
 
-.service-card__icon { height: 95px; margin-bottom: 25px; }
+.service-card__icon { 
+    height: 90px; 
+    width: auto;
+    margin-bottom: 25px; 
+}
+
 .service-card__text {
-    color: var(--color-primary);
+    color: var(--color-dark); /* Plus lisible en foncé comme la bulle */
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     text-align: center;
-    line-height: 1.4;
+    line-height: 1.3;
 }
