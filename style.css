@@ -1,75 +1,91 @@
-/* --- 1. RESET --- */
+:root {
+    --color-primary: #1D70B7;
+    --color-secondary: #87B347;
+    --color-dark: #214F63;
+    --color-beige: rgba(234, 220, 155, 0.95);
+    --font-main: 'Californian FB', serif;
+    --font-accent: 'Gochi Hand', cursive;
+    --transition-speed: 0.5s;
+}
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-body, html {
+body {
     width: 100%;
-    height: 100%;
-    font-family: 'Californian FB', serif;
-    background-color: white;
+    height: 100vh;
+    font-family: var(--font-main);
+    overflow: hidden;
 }
 
-/* --- 2. LE FOND (FORCÉ) --- */
-.main-container {
+.app-container {
     width: 100%;
-    min-height: 100vh;
-    position: relative;
-    /* !important est là pour empêcher le blanc de gagner sur ton image */
-    background: url("fondaccueil.jpg") no-repeat center center fixed !important;
-    background-size: cover !important;
+    height: 100vh;
+    background: url("fondaccueil.jpg") no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
 }
 
-/* --- 3. NAVIGATION (ALIGNÉE AU LOGO) --- */
-.navbar {
+/* --- Header & Navigation --- */
+.header {
     display: flex;
     justify-content: space-between;
-    align-items: center; 
-    padding: 60px 80px 20px 80px; 
+    align-items: center;
+    padding: 30px 80px;
 }
 
-.logo { height: 80px; width: auto; }
+.header__logo img { height: 110px; width: auto; }
 
-.menu { display: flex; align-items: center; font-weight: bold; font-size: 1.2rem; }
-.menu a { color: #1D70B7; text-decoration: none; margin: 0 10px; }
-.menu span { color: #1D70B7; } 
-.menu a:hover, .menu a.active { color: #87B347 !important; }
+.nav-list { display: flex; list-style: none; align-items: center; }
+.nav-list__link {
+    text-decoration: none;
+    color: var(--color-primary);
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+.nav-list__link:hover, .nav-list__link--active { color: var(--color-secondary); }
+.nav-list__sep { color: var(--color-primary); margin: 0 15px; font-weight: bold; }
 
-/* --- 4. TITRE --- */
-h1 {
-    position: absolute;
-    width: 100%;
-    top: 170px;
-    text-align: center;
-    font-family: 'Gochi Hand', cursive;
-    font-size: 52px;
-    color: #214F63;
-    text-shadow: 2px 2px 0 white, 4px 4px 0 white;
+/* --- Hero Section --- */
+.hero { flex: 1; display: flex; flex-direction: column; align-items: center; position: relative; }
+.hero__title {
+    font-family: var(--font-accent);
+    font-size: 60px;
+    color: var(--color-dark);
+    text-shadow: 2px 2px 0 white;
+    margin-top: 20px;
 }
 
-/* --- 5. BULLE ET CARTES (CENTRAGE MILIEU) --- */
-.speech-bubble, .cards-container {
-    position: absolute;
-    top: 340px;
-    left: 50%; /* On part du milieu exact */
-}
-
-/* TA BULLE (DESIGN ORIGINAL RE-VERROUILLÉ) */
-.speech-bubble {
-    background: rgba(234, 220, 155, 0.95);
+/* --- Bubble (Ta version originale) --- */
+.bubble {
+    background: var(--color-beige);
     width: 450px;
     min-height: 160px;
-    padding: 20px 30px;
+    padding: 20px 40px;
     border-radius: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    z-index: 100;
+    position: absolute;
+    top: 38%;
+    left: 32%;
+    z-index: 10;
+    
+    /* Animation state */
+    opacity: 0;
+    transform: scale(0.6);
+    visibility: hidden;
+    transition: all var(--transition-speed) cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.speech-bubble p { color: #214F63; font-size: 1.5rem; font-weight: bold; }
+.bubble--active {
+    opacity: 1;
+    transform: scale(1);
+    visibility: visible;
+}
 
-/* TON TRIANGLE DE BULLE */
-.speech-bubble::after {
+.bubble::after {
     content: '';
     position: absolute;
     left: -25px;
@@ -77,52 +93,50 @@ h1 {
     transform: translateY(-50%);
     border-top: 15px solid transparent;
     border-bottom: 15px solid transparent;
-    border-right: 30px solid rgba(234, 220, 155, 0.95);
+    border-right: 30px solid var(--color-beige);
 }
 
-/* TES CARTES */
-.cards-container { 
-    display: flex; 
-    gap: 20px; 
-    width: max-content; 
+.bubble__text {
+    color: var(--color-dark);
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-align: center;
 }
 
-.card {
-    background: rgba(234, 220, 155, 0.85);
-    backdrop-filter: blur(5px);
-    width: 230px;
-    height: 330px;
-    padding: 20px;
-    border-radius: 20px;
+/* --- Services (Cartes sans contour) --- */
+.services {
+    display: flex;
+    gap: 40px;
+    margin-top: 100px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+}
+
+.services--visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.service-card {
+    background: var(--color-beige);
+    border: none;
+    width: 260px;
+    height: 340px;
+    border-radius: 45px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 25px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+.service-card__icon { height: 95px; margin-bottom: 25px; }
+.service-card__text {
+    color: var(--color-primary);
+    font-weight: bold;
+    font-size: 1.1rem;
     text-align: center;
-}
-
-.card img { height: 80px; margin-bottom: 20px; }
-
-/* TEXTE BLEU SUR LES CARTES */
-.card p { 
-    color: #1D70B7; 
-    font-weight: bold; 
-    font-size: 1rem; 
-}
-
-/* --- 6. ANIMATIONS (LE SECRET DU MILIEU) --- */
-.hidden {
-    opacity: 0 !important;
-    visibility: hidden !important;
-    /* On garde le -50% pour le centrage horizontal impérativement */
-    transform: translate(-50%, 30px) !important; 
-    transition: all 0.6s ease;
-}
-
-.show {
-    opacity: 1 !important;
-    visibility: visible !important;
-    /* ON RESTE À -50% : c'est ça qui empêche de partir à droite */
-    transform: translate(-50%, 0) !important; 
-    transition: all 0.8s ease-out;
+    line-height: 1.4;
 }
