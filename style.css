@@ -8,13 +8,12 @@
 body, html {
     width: 100%;
     height: 100%;
-    font-family: 'californianFB';
-    background-image: url("fondaccueil.jpg");
+    font-family: 'Californian FB', serif; 
 }
 
-/* 2. Fond de page - C'est l'image qui fait tout le décor */
+/* 2. Fond de page */
 .main-container {
-    background: url('fondaccueil.jpg') no-repeat center center;
+    background: url('fondaccueil.jpg') no-repeat center center fixed;
     background-size: cover;
     min-height: 100vh;
     display: flex;
@@ -26,102 +25,100 @@ body, html {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 60px;
+    padding: 20px 60px;
 }
 
 .logo {
-    height: 60px;
-    align-items: center;
-}
-
-.menu {
-  font:"califonianfb";
-  color: #1D70B7; /* Bleu initial */
+    height: 80px; /* Légèrement plus grand */
+    object-fit: contain;
 }
 
 .menu a {
     text-decoration: none;
     color: #1D70B7;
-    margin: 0 10px;
+    margin: 0 15px;
+    font-weight: bold;
     transition: 0.3s;
+    font-size: 1.1rem;
 }
 
 .menu a:hover {
-    color: #87B347; /* Vert au survol */
+    color: #87B347;
 }
 
 /* 4. Titre */
 .hero {
     text-align: center;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 h1 {
-    font-size: 60px;
+    font-size: clamp(30px, 5vw, 60px); /* Taille adaptative */
     color: #4A4A4A;
     font-family: "Gochi Hand", cursive;
     text-transform: uppercase;
     letter-spacing: 2px;
-  
 }
 
-/* 5. Bulle de dialogue (Positionnée pour la fille sur l'image) */
+/* 5. Bulle de dialogue */
 .character-area {
-    flex-grow: 1;
     position: relative;
-    min-height: 300px;
+    min-height: 250px;
+    margin-top: 20px;
 }
 
 .speech-bubble {
     position: absolute;
-    top: 10%;
-    left: 45%; /* Ajuste selon la tête du perso sur ton écran */
-    background-color: rgba(234, 220, 155, 0.9); /* #EADC9B avec transparence */
-    color: #684132; /* Marron texte */
-    padding: 20px 30px;
-    border-radius: 20px;
-    font-family: 'CalifornianFB', serif;
-    font-size: 1.4rem;
-    max-width: 350px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centre la bulle par défaut */
+    background-color: rgba(234, 220, 155, 0.95);
+    color: #684132;
+    padding: 25px;
+    border-radius: 30px;
+    font-size: 1.3rem;
+    max-width: 400px;
     text-align: center;
-    box-shadow: 3px 3px 15px rgba(0,0,0,0.1); /* Ombre portée légère */
+    box-shadow: 5px 5px 20px rgba(0,0,0,0.1);
 }
 
-/* Petit triangle de la bulle */
+/* Triangle de la bulle */
 .speech-bubble::after {
     content: '';
     position: absolute;
-    left: -15px;
-    top: 50%;
-    border-width: 10px 15px 10px 0;
+    bottom: -15px;
+    left: 50%;
+    margin-left: -15px;
+    border-width: 15px 15px 0;
     border-style: solid;
-    border-color: transparent rgba(234, 220, 155, 0.9) transparent transparent;
+    border-color: rgba(234, 220, 155, 0.95) transparent transparent transparent;
 }
 
 /* 6. Les Cartes */
 .cards-container {
     display: flex;
     justify-content: center;
-    gap: 30px;
-    padding: 40px;
+    flex-wrap: wrap; /* Important pour le mobile */
+    gap: 20px;
+    padding: 40px 20px;
+    margin-top: auto; /* Pousse les cartes vers le bas */
 }
 
 .card {
-    background-color: rgba(234, 220, 155, 0.9); /* #EADC9B avec transparence */
-    border-radius: 15px;
-    padding: 25px;
-    width: 280px;
+    background-color: rgba(234, 220, 155, 0.9);
+    border-radius: 20px;
+    padding: 20px;
+    width: 260px;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Ombre portée légère */
+    transition: transform 0.3s ease;
     color: #684132;
 }
 
-.icon-wrapper img {
-    height: 70px;
-    margin-bottom: 15px;
+.card:hover {
+    transform: translateY(-10px);
 }
 
-.card p {
-    font-size: 0.95rem;
-    line-height: 1.4;
+.icon-wrapper img {
+    height: 60px;
+    margin-bottom: 10px;
 }
