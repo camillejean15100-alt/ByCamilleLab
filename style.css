@@ -10,18 +10,20 @@ body {
     overflow-x: hidden; 
     width: 100%;
     height: 100vh;
+    background-color: #214F63; /* Couleur de sécurité si l'image saute */
 }
 
 .main-container {
     width: 100%;
     height: 100vh;
-    /* Correction du fond pour GitHub */
-    background-image: url('fondaccueil.jpg');
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover !important;
     position: relative;
+    
+    /* MODIFICATION DU FOND ICI */
+    background-image: url('fondaccueil.jpg') !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+    background-size: cover !important;
 }
 
 /* --- 2. NAVIGATION --- */
@@ -60,7 +62,7 @@ h1 {
     z-index: 10;
 }
 
-/* --- 4. BULLE ET CARTES (CENTRAGE COMMUN) --- */
+/* --- 4. BULLE ET CARTES (CENTRAGE FIXE) --- */
 .speech-bubble, .cards-container {
     position: absolute;
     top: 320px;       
@@ -89,7 +91,6 @@ h1 {
     line-height: 1.3;
 }
 
-/* Le petit triangle de la bulle */
 .speech-bubble::after {
     content: '';
     position: absolute;
@@ -129,13 +130,13 @@ h1 {
 .hidden { 
     opacity: 0 !important; 
     visibility: hidden !important; 
-    transform: translate(-50%, 30px); /* Centré X, décalé de 30px vers le bas */
+    transform: translate(-50%, 30px); /* Garde le centrage X horizontal */
     transition: all 0.6s ease-in-out;
 }
 
 .show { 
     opacity: 1 !important; 
     visibility: visible !important; 
-    transform: translate(-50%, 0); /* Centré X, à sa place */
+    transform: translate(-50%, 0); /* Garde le centrage X horizontal */
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
