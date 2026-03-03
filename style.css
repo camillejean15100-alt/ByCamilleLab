@@ -1,18 +1,17 @@
-/* 1. Reset & Setup */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* 1. RESET & BASE */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
 }
 
-body, html {
-    width: 100%;
-    height: 100%;
-    /* Correction de l'orthographe pour la police */
+body, html { 
+    width: 100%; 
+    height: 100%; 
     font-family: 'Californian FB', serif; 
+    overflow: hidden; 
 }
 
-/* 2. Fond de page - Appliqué au conteneur principal */
 .main-container {
     background: url('fondaccueil.jpg') no-repeat center center fixed;
     background-size: cover;
@@ -21,116 +20,134 @@ body, html {
     flex-direction: column;
 }
 
-/* 3. Navigation */
+/* 2. MENU : FIN ET BLEU */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 60px;
+    padding: 20px 80px;
 }
 
-.logo {
-    height: 60px;
-    width: auto;
-}
+.logo { height: 65px; width: auto; }
 
-.menu {
-    color: #1D70B7; /* Bleu initial pour les séparateurs | */
-    font-family: 'Californian FB', serif;
-    font-weight: bold;
+.menu { 
+    color: #1D70B7; 
+    font-size: 1.1rem; 
+    font-weight: 300 !important; 
 }
 
 .menu a {
     text-decoration: none;
-    color: #1D70B7; /* Bleu initial */
+    color: #1D70B7;
     margin: 0 10px;
-    transition: 0.3s;
 }
 
-.menu a:hover {
-    color: #87B347; /* Vert au survol */
-}
-
-/* 4. Titre */
-.hero {
-    text-align: center;
-    margin-top: 50px;
-}
-
+/* 3. TITRE : ON LUI LAISSE DE LA PLACE */
 h1 {
-    font-size: 60px;
+    text-align: center;
+    font-family: 'Gochi Hand', cursive;
+    font-size: 50px;
     color: #4A4A4A;
-    font-family: "Gochi Hand", cursive;
+    margin-top: 40px;
     text-transform: uppercase;
-    letter-spacing: 2px;
 }
 
-/* 5. Bulle de dialogue (Positionnée pour la fille sur l'image) */
-.character-area {
-    flex-grow: 1;
-    position: relative;
-    min-height: 300px;
-}
-
+/* 4. LA BULLE : POSITIONNÉE SUR LA BOUCHE */
 .speech-bubble {
     position: absolute;
-    top: 10%;
-    left: 45%; /* Ajuste selon la position du personnage sur ton image */
-    background-color: rgba(234, 220, 155, 0.9); /* #EADC9B avec transparence */
-    color: #684132; /* Marron texte */
-    padding: 20px 30px;
-    border-radius: 20px;
-    font-family: 'Californian FB', serif;
-    font-size: 1.4rem;
-    max-width: 350px;
+    /* DESCENDUE POUR NE PAS COLLER AU TITRE */
+    top: 280px; 
+    left: 42%; 
+    background-color: rgba(234, 220, 155, 0.95);
+    width: 400px;      /* Format BD large */
+    min-height: 150px; 
+    padding: 30px 40px;
+    border-radius: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    box-shadow: 3px 3px 15px rgba(0,0,0,0.1);
+    box-shadow: 4px 4px 15px rgba(0,0,0,0.1);
+    z-index: 50;
 }
 
-/* Petit triangle de la bulle sur le côté GAUCHE */
+.speech-bubble p {
+    color: #684132;
+    font-size: 1.4rem;
+    line-height: 1.4;
+}
+
+/* LE TRIANGLE VERS LA BOUCHE */
 .speech-bubble::after {
     content: '';
     position: absolute;
-    left: -15px;
-    top: 50%;
-    transform: translateY(-50%);
-    border-width: 10px 15px 10px 0;
-    border-style: solid;
-    border-color: transparent rgba(234, 220, 155, 0.9) transparent transparent;
+    left: -28px;   
+    top: 45px; 
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-right: 30px solid rgba(234, 220, 155, 0.95); 
 }
 
-/* 6. Les Cartes */
+/* 5. LES CARTES : PLUS BASSES ET VERS LE TOURNESOL */
 .cards-container {
+    position: absolute;
+    /* ALIGNÉES AVEC LA ZONE DE LA BULLE */
+    top: 300px; 
+    /* RAMENÉES VERS LE CENTRE (TOURNESOL) */
+    right: 12%; 
     display: flex;
-    justify-content: center;
-    gap: 30px;
-    padding: 40px;
-    flex-wrap: wrap; /* Pour que ça reste propre sur mobile */
+    gap: 25px;
+    z-index: 40;
 }
 
 .card {
-    background-color: rgba(234, 220, 155, 0.9); 
-    border-radius: 15px;
-    padding: 25px;
-    width: 280px;
+    background: rgba(234, 220, 155, 0.85); 
+    backdrop-filter: blur(8px); 
+    
+    /* TAILLE ÉQUILIBRÉE : PAS DE POTEAUX GÉANTS */
+    width: 250px; 
+    height: 380px; 
+    
+    padding: 30px 20px;
+    border-radius: 25px;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     color: #684132;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
 }
 
-/* Petit effet au survol des cartes */
-.card:hover {
-    transform: translateY(-5px);
+.card:hover { transform: translateY(-10px); }
+
+.card img { 
+    height: 60px; 
+    margin-bottom: 25px; 
 }
 
-.icon-wrapper img {
-    height: 70px;
-    margin-bottom: 15px;
-    object-fit: contain;
+.card p { 
+    font-size: 1.05rem; 
+    line-height: 1.5; 
+    font-weight: 300; 
 }
 
-.card p {
-    font-size: 0.95rem;
-    line-height: 1.4;
+/* 6. CLASSES D'ANIMATION */
+.hidden { 
+    opacity: 0; 
+    transform: translateY(30px); 
+    transition: all 0.8s ease-out; 
+}
+
+.show { 
+    opacity: 1; 
+    transform: translateY(0); 
+}
+
+.fade-out { 
+    opacity: 0 !important; 
+    transform: translateY(-20px) !important; 
+    transition: all 0.5s ease-in; 
 }
