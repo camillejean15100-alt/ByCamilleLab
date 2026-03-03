@@ -1,25 +1,14 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // On cible la bulle par son ID
-    const bubble = document.getElementById('bubble');
-    
-    // On cible TOUTES les cartes (les 3 que tu as dans ton HTML)
-    const cards = document.querySelectorAll('.card');
+window.onload = () => {
+    const bulle = document.getElementById('bubble');
+    const cartes = document.getElementById('cards-wrapper');
 
-    // 1. Affichage de la bulle après 500ms
+    // On affiche la bulle après 0.5s
     setTimeout(() => {
-        if (bubble) {
-            bubble.classList.remove('hidden');
-            bubble.classList.add('show');
-        }
+        if (bulle) bulle.classList.add('show');
     }, 500);
 
-    // 2. Affichage des cartes avec un léger décalage (cascade)
-    cards.forEach((card, index) => {
-        setTimeout(() => {
-            if (card) {
-                card.classList.remove('hidden');
-                card.classList.add('show');
-            }
-        }, 1000 + (index * 250)); // La 1ère à 1s, la 2ème à 1.25s, la 3ème à 1.5s
-    });
-});
+    // On affiche tout le bloc des cartes après 1s
+    setTimeout(() => {
+        if (cartes) cartes.classList.add('show');
+    }, 1000);
+};
