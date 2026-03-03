@@ -1,4 +1,4 @@
-/* --- 1. RESET COMPLET --- */
+/* --- 1. RESET & CONFIGURATION DE BASE --- */
 * { 
     margin: 0; 
     padding: 0; 
@@ -12,22 +12,22 @@ html, body {
     overflow-x: hidden;
 }
 
-/* --- 2. CONTENEUR PRINCIPAL (IMAGE DE FOND) --- */
+/* --- 2. LE FOND (FORCÉ) --- */
 .main-container {
     width: 100%;
-    min-height: 100vh; /* Force le conteneur à prendre toute la hauteur de l'écran */
+    min-height: 100vh;
     position: relative;
-    
-    /* LE FIX : On utilise la propriété raccourcie 'background' plus puissante */
+    /* Vérifie que le nom du fichier est exactement fondaccueil.jpg */
     background: url("fondaccueil.jpg") no-repeat center center fixed !important;
     background-size: cover !important;
 }
-/* --- 3. NAVIGATION (LOGO ET MENU ALIGNÉS) --- */
+
+/* --- 3. NAVIGATION (ALIGNEMENT LOGO / MENU) --- */
 .navbar {
     display: flex;
     justify-content: space-between;
-    align-items: center; /* ALIGNEMENT HORIZONTAL STRICT SUR LE MÊME RAIL */
-    padding: 60px 80px 20px 80px; 
+    align-items: center; /* Aligne verticalement le logo et le menu sur le même rail */
+    padding: 50px 80px 20px 80px;
 }
 
 .logo {
@@ -38,21 +38,20 @@ html, body {
 
 .menu {
     display: flex;
-    align-items: center; /* CENTRE LE TEXTE PAR RAPPORT À LA HAUTEUR DU LOGO */
+    align-items: center;
     font-weight: bold;
     font-size: 1.2rem;
+    color: #1D70B7;
 }
 
 .menu a {
     color: #1D70B7;
     text-decoration: none;
     margin: 0 10px;
-    transition: 0.3s;
 }
 
 .menu span {
     color: #1D70B7;
-    font-size: 1.2rem;
     user-select: none;
 }
 
@@ -64,7 +63,7 @@ html, body {
 h1 {
     position: absolute;
     width: 100%;
-    top: 170px;
+    top: 160px;
     text-align: center;
     font-family: 'Gochi Hand', cursive;
     font-size: 52px;
@@ -73,11 +72,13 @@ h1 {
     z-index: 10;
 }
 
-/* --- 5. BULLE ET CARTES (TON DESIGN ORIGINAL) --- */
-.speech-bubble, .cards-container {
+/* --- 5. BULLE ET CARTES (CENTRAGE PARFAIT) --- */
+.speech-bubble, 
+.cards-container {
     position: absolute;
     top: 340px;
-    left: 75%;
+    left: 50%; /* Positionne le bord gauche au milieu */
+    /* Le transform translateX(-50%) est géré dans les classes hidden/show ci-dessous */
 }
 
 .speech-bubble {
@@ -147,17 +148,19 @@ h1 {
     text-align: center;
 }
 
-/* --- 6. ANIMATIONS (OPACITY + CENTRAGE) --- */
+/* --- 6. ANIMATIONS (CENTRAGE VERROUILLÉ) --- */
 .hidden {
     opacity: 0 !important;
     visibility: hidden !important;
-    transform: translate(-50%, 30px);
+    /* On force le -50% horizontal pour que ça ne parte pas à droite */
+    transform: translate(-50%, 30px) !important; 
     transition: all 0.6s ease-in-out;
 }
 
 .show {
     opacity: 1 !important;
     visibility: visible !important;
-    transform: translate(-50%, 0);
+    /* On maintient le -50% horizontal pour le centrage parfait */
+    transform: translate(-50%, 0) !important; 
     transition: all 0.8s ease-out;
 }
