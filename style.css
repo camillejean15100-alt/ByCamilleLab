@@ -1,16 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
 
-/* RESET COMPLET */
+/* 1. RESET COMPLET POUR VIRER LE BLANC */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body, html { 
-    margin: 0; 
-    padding: 0; 
     height: 100%; 
     width: 100%;
     font-family: "Californian FB", serif; 
     overflow: hidden; 
 }
 
-/* CONTAINER PRINCIPAL */
+/* 2. IMAGE DE FOND SUR LE CONTENEUR PRINCIPAL */
 .main-container {
     background: url('fondaccueuil.jpg') no-repeat center center;
     background-size: cover;
@@ -19,52 +23,53 @@ body, html {
     position: relative;
 }
 
-/* NAVBAR : Transparence totale forcée */
+/* 3. NAVBAR STRICTEMENT TRANSPARENTE */
+header {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 1000;
+}
+
 .navbar { 
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
-    padding: 20px 60px; 
+    padding: 30px 80px; /* Logo bien décalé */
     background: transparent !important; 
-    position: absolute;
-    top: 0;
-    width: calc(100% - 120px);
-    z-index: 1000;
 }
 
-.logo { height: 80px; }
+.logo { height: 90px; width: auto; }
 
-/* MENU : Taille augmentée pour lisibilité */
 .menu { 
     font-weight: bold; 
-    font-size: 1.4rem; 
+    font-size: 1.3rem; 
 }
 
 .menu a { 
     color: #1D70B7; 
     text-decoration: none; 
-    margin-left: 15px;
+    margin-left: 20px;
 }
 
 .btn-contact {
     background: #1D70B7;
     color: white !important;
     padding: 8px 20px;
-    border-radius: 25px;
+    border-radius: 20px;
 }
 
-/* TITRE : Centré en haut */
+/* 4. TITRE */
 h1 {
     font-family: 'Gochi Hand', cursive;
     color: #3B505C;
     text-align: center;
     font-size: 3.8rem;
-    margin: 0;
-    padding-top: 80px;
+    padding-top: 120px;
     line-height: 1.1;
 }
 
-/* BULLE : Calée sur le personnage de gauche */
+/* 5. BULLE : TAILLE ET TRIANGLE CORRIGÉS */
 .character-area {
     position: absolute;
     left: 24%; 
@@ -77,13 +82,13 @@ h1 {
     padding: 20px;
     border-radius: 15px;
     font-family: 'Gochi Hand', cursive;
-    font-size: 1.35rem;
-    max-width: 250px;
+    font-size: 1.4rem;
+    max-width: 260px;
     position: relative;
     box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
 }
 
-/* TRIANGLE BULLE (Pointe vers le perso) */
+/* LE TRIANGLE (Pointer vers la gauche vers le perso) */
 .speech-bubble::after {
     content: "";
     position: absolute;
@@ -94,7 +99,7 @@ h1 {
     border-right: 15px solid rgba(234, 220, 155, 0.95);
 }
 
-/* CARTES : Format Portrait & Animation cascade */
+/* 6. CARTES : FORMAT PORTRAIT (HAUTEUR) + ANIMATION DROITE */
 .cards-container {
     position: absolute;
     right: 5%; 
@@ -105,10 +110,10 @@ h1 {
 
 .card {
     background: rgba(234, 220, 155, 0.95);
-    padding: 25px 15px;
+    padding: 30px 15px;
     border-radius: 15px;
-    width: 150px;  /* Format Hauteur > Largeur */
-    height: 230px;
+    width: 160px;   /* Moins large */
+    height: 240px;  /* Plus haut */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -117,13 +122,13 @@ h1 {
     color: #684132;
     box-shadow: 3px 3px 15px rgba(0,0,0,0.1);
     
-    /* Animation settings */
+    /* Animation de départ */
     opacity: 0;
     transform: translateX(100px);
-    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: all 0.6s ease-out;
 }
 
-/* Classe ajoutée par le JS */
+/* Classe de déclenchement JS */
 .card.visible {
     opacity: 1;
     transform: translateX(0);
@@ -131,12 +136,13 @@ h1 {
 
 .icon-wrapper img { 
     width: 60px; 
+    height: auto; 
     margin-bottom: 20px; 
 }
 
 .card p { 
     margin: 0; 
-    font-size: 0.95rem; 
+    font-size: 0.9rem; 
     font-weight: bold; 
     line-height: 1.3; 
 }
