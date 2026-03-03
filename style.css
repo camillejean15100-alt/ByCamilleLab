@@ -1,163 +1,89 @@
-/* Import de la typo Gochi Hand si possible, sinon Comic Sans pour le style manuscrit */
 @import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
 
-body, html { margin: 0; padding: 0; height: 100%; font-family: "Californian FB", serif; }
+body, html { margin: 0; padding: 0; height: 100%; font-family: "Californian FB", serif; overflow: hidden; }
 
 .main-container {
     background: url('fondaccueuil.jpg') no-repeat center center;
     background-size: cover;
     height: 100vh;
     position: relative;
+    width: 100%;
 }
 
-nav { display: flex; justify-content: space-between; padding: 20px; align-items: center; }
-.logo { height: 80px; }
-.menu { color: #1D70B7; font-weight: bold; }
-.menu a { color: #1D70B7; text-decoration: none; }
-.menu a:hover { color: #87B347; }
-@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Montserrat:wght@400;700&display=swap');
-
-body, html { 
-    margin: 0; 
-    padding: 0; 
-    height: 100%; 
-    font-family: "Montserrat", sans-serif; /* Plus moderne pour la lecture */
-}
-
-.main-container {
-    background: url('fondaccueuil.jpg') no-repeat center center;
-    background-size: cover;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-/* NAVIGATION : Logo plus à droite et Menu plus grand */
+/* NAV : Plus de bande blanche, logo espacé */
 nav { 
     display: flex; 
     justify-content: space-between; 
-    padding: 30px 60px; /* Plus d'espace sur les côtés */
+    padding: 30px 60px; /* Logo décollé du bord gauche */
     align-items: center; 
+    background: transparent; /* Suppression de toute couleur de fond */
 }
 
-.logo { 
-    height: 100px; /* Logo agrandi */
-    transition: 0.3s;
-}
+.logo { height: 100px; } /* Logo plus grand */
 
 .menu { 
-    font-size: 1.2rem; /* Menu plus grand */
-    font-weight: bold; 
-    letter-spacing: 1px;
-}
-
-.menu a { 
     color: #1D70B7; 
-    text-decoration: none; 
-    margin: 0 10px;
+    font-weight: bold; 
+    font-size: 1.3rem; /* Menu plus grand */
 }
 
+.menu a { color: #1D70B7; text-decoration: none; }
 .menu a:hover { color: #87B347; }
 
 h1 {
     font-family: 'Gochi Hand', cursive;
     color: #3B505C;
     text-align: center;
-    font-size: 4rem; /* Titre plus imposant */
-    margin: 40px 0;
-    text-shadow: 2px 2px 0px white;
-}
-
-/* ZONE CONTENU */
-.content-wrapper {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-grow: 1;
-    padding: 0 5%;
-}
-
-/* BULLE */
-.speech-bubble {
-    background: rgba(234, 220, 155, 0.95);
-    color: #684132;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
-    font-size: 1.5rem;
-    max-width: 300px;
-    border: 2px solid #87B347;
-}
-
-/* CARTES : Redimensionnées et alignées proprement */
-.cards-container {
-    display: flex;
-    flex-direction: column; /* Alignées verticalement pour la clarté */
-    gap: 20px;
-    opacity: 1; /* Mis à 1 pour voir le résultat immédiatement */
-}
-
-.card {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 20px;
-    border-radius: 15px;
-    width: 350px; /* Largeur augmentée pour éviter l'effet "long et étroit" */
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    color: #684132;
-    box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
-    border-left: 8px solid #87B347;
-}
-
-.card img { 
-    width: 60px; 
-    height: 60px; 
-    object-fit: contain;
-}
-
-.card p { 
-    margin: 0; 
-    font-weight: 600; 
-    font-size: 1rem;
-    text-align: left;
-}
-h1 {
-    font-family: 'Gochi Hand', cursive;
-    color: #3B505C;
-    text-align: center;
-    font-size: 3rem;
+    font-size: 3.5rem;
     margin-top: 20px;
 }
 
+/* BULLE : Position corrigée et triangle ajouté */
 .speech-bubble {
     position: absolute;
-    left: 25%; top: 40%;
-    background: rgba(234, 220, 155, 0.9);
+    left: 20%; 
+    top: 35%; /* Hauteur remontée */
+    background: rgba(234, 220, 155, 0.95);
     color: #684132;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-    transition: opacity 0.5s;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 4px 4px 15px rgba(0,0,0,0.2);
+    font-size: 1.4rem;
+    max-width: 350px;
 }
 
+/* Le triangle de la bulle */
+.bubble-tail {
+    position: absolute;
+    bottom: -20px; /* Positionné en bas de la bulle */
+    left: 40px;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid rgba(234, 220, 155, 0.95);
+}
+
+/* CARTES : Taille augmentée pour la lisibilité */
 .cards-container {
     position: absolute;
-    right: 10%; bottom: 15%;
+    right: 5%; 
+    bottom: 10%;
     display: flex;
-    gap: 15px;
-    opacity: 0; /* Caché au début */
+    gap: 20px;
+    opacity: 0; 
     transition: opacity 1s;
 }
 
 .card {
-    background: rgba(234, 220, 155, 0.9);
-    padding: 15px;
-    border-radius: 10px;
-    width: 150px;
+    background: rgba(234, 220, 155, 0.95);
+    padding: 25px;
+    border-radius: 15px;
+    width: 200px; /* Plus large pour ne pas faire "de la merde" */
     text-align: center;
     color: #684132;
-    font-size: 0.9rem;
+    box-shadow: 3px 3px 12px rgba(0,0,0,0.15);
 }
 
-.card img { width: 50px; height: auto; }
+.card img { width: 70px; height: auto; margin-bottom: 10px; }
+.card p { margin: 0; font-size: 1rem; line-height: 1.2; font-weight: bold; }
