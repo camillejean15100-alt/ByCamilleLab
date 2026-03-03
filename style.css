@@ -78,8 +78,7 @@ h1 {
     color: #684132; /* Marron texte */
     padding: 20px 30px;
     border-radius: 20px;
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
+    font-family: 'CalifornianFB', serif;
     font-size: 1.4rem;
     max-width: 350px;
     text-align: center;
