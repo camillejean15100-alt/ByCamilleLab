@@ -2,13 +2,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const bubble = document.querySelector('.speech-bubble');
     const cards = document.querySelectorAll('.card');
 
-    // 1. Apparition de la bulle
+    // 1. Entrée de la bulle
     setTimeout(() => {
         bubble.classList.remove('hidden');
         bubble.classList.add('show');
     }, 500);
 
-    // 2. Transition vers les cartes après 4 secondes
+    // 2. Switch bulle -> cartes après 4s
     setTimeout(() => {
         bubble.classList.replace('show', 'hidden');
 
