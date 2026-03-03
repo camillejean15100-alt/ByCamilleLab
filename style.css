@@ -34,7 +34,7 @@ body, html {
 }
 
 .menu {
-  font:"califonianfb";
+    font-family: 'californianFB';
     font-weight: bold;
     color: #1D70B7; /* Bleu initial */
 }
