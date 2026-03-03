@@ -52,7 +52,10 @@ h1 {
     color: #214F63; 
     text-shadow: 2px 2px 0px #FFFFFF, 4px 4px 0px #FFFFFF; 
 }
+hero {
 
+    background-img:'fondacceuil.jpg';
+}
 /* --- 4. BULLE --- */
 .speech-bubble {
     position: absolute;
