@@ -3,48 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camille Lab | Accueil</title>
+    <title>Camille Lab | Studio Graphique</title>
     <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <div class="main-container" style="background-image: url('fondaccueil.jpg'); background-size: cover; background-position: center; background-attachment: fixed; background-repeat: no-repeat;">
-        
-        <header class="navbar">
-            <img src="logocamille.png" class="logo" alt="Camille Lab">
-            <nav class="menu">
-                <a href="index.html" class="active">Accueil</a> <span>|</span>
-                <a href="projets.html">Projets</a> <span>|</span>
-                <a href="propos.html">À Propos</a> <span>|</span>
-                <a href="tarifs.html">Tarifs</a> <span>|</span>
-                <a href="contact.html">Contact</a>
+    <div class="app-container">
+        <header class="header">
+            <div class="header__logo">
+                <img src="logocamille.png" alt="Camille Lab Logo">
+            </div>
+            <nav class="header__nav">
+                <ul class="nav-list">
+                    <li class="nav-list__item"><a href="index.html" class="nav-list__link nav-list__link--active">Accueil</a></li>
+                    <li class="nav-list__sep">|</li>
+                    <li class="nav-list__item"><a href="projets.html" class="nav-list__link">Voir mes projets</a></li>
+                    <li class="nav-list__sep">|</li>
+                    <li class="nav-list__item"><a href="propos.html" class="nav-list__link">À Propos</a></li>
+                    <li class="nav-list__sep">|</li>
+                    <li class="nav-list__item"><a href="tarifs.html" class="nav-list__link">Tarifs</a></li>
+                    <li class="nav-list__sep">|</li>
+                    <li class="nav-list__item"><a href="contact.html" class="nav-list__link">Contact</a></li>
+                </ul>
             </nav>
         </header>
 
-        <h1>LE GRAPHISME AU SERVICE DE LA TERRE</h1>
+        <main class="hero">
+            <h1 class="hero__title">LE GRAPHISME AU SERVICE DE LA TERRE</h1>
 
-        <div class="speech-bubble hidden">
-            <p>« Ma mission : cultivons ensemble votre image de marque »</p>
-        </div>
+            <div id="js-bubble" class="bubble">
+                <p class="bubble__text">« ma mission : cultivons ensemble votre image de marque »</p>
+            </div>
 
-        <div class="cards-container">
-            <div class="card hidden">
-                <img src="certif.png" alt="Identité">
-                <p>Un logo et une image de marque qui vous ressemblent.</p>
-            </div>
-            <div class="card hidden">
-                <img src="panier.png" alt="Packaging">
-                <p>Création d'étiquettes & de packaging pour vos produits.</p>
-            </div>
-            <div class="card hidden">
-                <img src="panneaux.png" alt="Signalétique">
-                <p>Panneaux & supports pour rendre votre ferme visible.</p>
-            </div>
-        </div>
-
+            <section id="js-services" class="services">
+                <article class="service-card">
+                    <img src="certif.png" alt="Identité" class="service-card__icon">
+                    <p class="service-card__text">Un logo et une image de marque qui vous ressemblent.</p>
+                </article>
+                <article class="service-card">
+                    <img src="panier.png" alt="Packaging" class="service-card__icon">
+                    <p class="service-card__text">Création d'étiquettes & de packagings pour vos produits.</p>
+                </article>
+                <article class="service-card">
+                    <img src="panneaux.png" alt="Signalétique" class="service-card__icon">
+                    <p class="service-card__text">Panneaux & supports pour rendre votre ferme visible.</p>
+                </article>
+            </section>
+        </main>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
