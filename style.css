@@ -1,136 +1,134 @@
 @import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
 
-/* RESET ET BASE - TYPO CALIFORNIAN FB */
+/* Configuration de base */
 body, html { 
     margin: 0; 
     padding: 0; 
     height: 100%; 
     width: 100%;
     font-family: "Californian FB", serif; 
-    overflow: hidden;
+    overflow: hidden; 
 }
 
-body {
+.main-container {
     background: url('fondaccueuil.jpg') no-repeat center center;
     background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-/* NAVBAR : TRANSPARENCE TOTALE & LOGO DÉCALÉ */
+/* NAVBAR : Transparence et espacement logique */
 .navbar { 
     display: flex; 
     justify-content: space-between; 
-    padding: 30px 60px; /* Logo bien décollé du bord gauche */
     align-items: center; 
-    background: transparent !important; /* AUCUNE BANDE BLANCHE */
+    padding: 20px 5vw; /* 5% de la largeur pour décoller du bord */
+    background: transparent !important;
 }
 
-.logo { height: 80px; }
+.logo { height: clamp(60px, 8vh, 100px); } /* Taille adaptative */
 
-/* MENU LISIBLE AVEC SÉPARATEURS SI TU LES AS DANS LE HTML */
 .menu { 
     font-weight: bold; 
-    font-size: 1.3rem; 
+    font-size: 1.4rem; 
     color: #1D70B7;
 }
 
 .menu a { 
     color: #1D70B7; 
     text-decoration: none; 
-    padding: 0 5px;
+    margin: 0 10px;
 }
 
 .menu a:hover { color: #87B347; }
 
-.btn-contact {
-    background: #1D70B7;
-    color: white !important;
-    padding: 8px 15px;
-    border-radius: 5px;
-}
-
-/* TITRE CENTRAL */
+/* TITRE : Centré avec marge haute calculée */
 h1 {
     font-family: 'Gochi Hand', cursive;
     color: #3B505C;
     text-align: center;
-    font-size: 3.2rem;
-    margin-top: 20px;
+    font-size: clamp(2rem, 5vw, 4rem);
+    margin: 2vh 0; /* Petit espace sous la nav */
     line-height: 1.1;
+    z-index: 5;
 }
 
-.highlight { color: #3B505C; font-style: normal; }
-
-/* BULLE DE DIALOGUE AVEC TRIANGLE */
+/* BULLE : Placée par rapport à la zone du perso */
 .character-area {
     position: absolute;
-    left: 25%; 
-    top: 50%;
+    left: 22vw; /* Aligné sur le visage du perso */
+    top: 52vh;
+    z-index: 10;
 }
 
 .speech-bubble {
     background: rgba(234, 220, 155, 0.95);
     color: #684132;
-    padding: 20px;
-    border-radius: 15px;
+    padding: 1.5rem;
+    border-radius: 20px;
     font-family: 'Gochi Hand', cursive;
-    font-size: 1.4rem;
-    max-width: 280px;
+    font-size: 1.3rem;
+    max-width: 250px;
     position: relative;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 4px 4px 15px rgba(0,0,0,0.1);
 }
 
-/* LE TRIANGLE (Pointer vers le perso à gauche) */
+/* Triangle qui pointe vers la GAUCHE (visage) */
 .speech-bubble::after {
     content: "";
     position: absolute;
     left: -15px;
-    top: 30px;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-    border-right: 15px solid rgba(234, 220, 155, 0.95);
+    top: 50%;
+    transform: translateY(-50%);
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-right: 18px solid rgba(234, 220, 155, 0.95);
 }
 
-/* CARTES : FORMAT PORTRAIT & ANIMATION PAR LA DROITE */
+/* CARTES : Alignées en bas à droite, format portrait */
 .cards-container {
     position: absolute;
-    right: 5%; 
-    bottom: 5%;
+    right: 3vw;
+    bottom: 5vh;
     display: flex;
-    gap: 15px;
+    gap: 20px;
 }
 
 .card {
     background: rgba(234, 220, 155, 0.95);
-    padding: 20px 10px;
-    border-radius: 12px;
-    width: 150px; /* Largeur pour le format hauteur */
-    height: 220px; /* Hauteur pour le format portrait */
+    padding: 20px 15px;
+    border-radius: 15px;
+    width: 160px; /* Largeur fixe pour l'aspect portrait */
+    height: 240px; /* Hauteur supérieure à la largeur */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: #684132;
-    font-weight: bold;
-    font-size: 0.9rem;
-    box-shadow: 3px 3px 12px rgba(0,0,0,0.1);
+    box-shadow: 5px 5px 20px rgba(0,0,0,0.15);
     
     /* Animation settings */
     opacity: 0;
     transform: translateX(100px);
-    transition: all 0.6s ease-out;
+    transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* La classe .visible est ajoutée par le JS pour l'effet cascade */
 .card.visible {
     opacity: 1;
     transform: translateX(0);
 }
 
 .icon-wrapper img { 
-    width: 60px; 
+    width: 70px; 
     height: auto; 
-    margin-bottom: 15px; 
+    margin-bottom: 20px; 
 }
 
-.card p { margin: 0; line-height: 1.2; }
+.card p { 
+    margin: 0; 
+    font-size: 0.95rem; 
+    font-weight: 700; 
+    line-height: 1.3; 
+}
