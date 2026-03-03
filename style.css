@@ -1,153 +1,165 @@
-@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
-
-/* Reset radical pour supprimer toute marge ou fond blanc parasite */
+/* RESET & BASE */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body, html { 
-    height: 100%; 
-    width: 100%;
-    font-family: "Californian FB", serif; 
-    overflow: hidden; 
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #fdfdfb; /* Blanc cassé pour le confort visuel */
+    color: #333;
+    line-height: 1.6;
 }
 
-/* Le conteneur prend tout l'écran avec l'image de fond */
-.main-container {
-    background: url('fondaccueuil.jpg') no-repeat center center;
-    background-size: cover;
-    height: 100vh;
-    width: 100vw;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-}
-
-/* NAVBAR : Transparence totale, texte bleu, alignée comme sur la capture */
+/* NAVBAR */
 header {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    z-index: 100;
+    padding: 20px 5%;
 }
 
-.navbar { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    padding: 20px 50px; 
-    background: transparent !important; 
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.logo { height: 70px; }
-
-.menu { 
-    font-weight: bold; 
-    font-size: 1.2rem; 
-    color: #1D70B7;
+.logo {
+    height: 60px; /* Ajustable selon votre fichier image */
+    width: auto;
 }
 
-.menu a { 
-    color: #1D70B7; 
-    text-decoration: none; 
-    margin: 0 5px;
+.menu a {
+    text-decoration: none;
+    color: #2d4a22; /* Vert forêt profond */
+    font-weight: 700;
+    margin-left: 30px;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
 }
 
-.menu a:hover { color: #87B347; }
-
-/* Styles spécifiques pour le bouton contact si nécessaire */
-.btn-contact {
-    padding: 5px 15px;
+.menu a:hover {
+    color: #6b8e23; /* Vert olive au survol */
 }
 
-/* TITRE : Centré et haut */
-h1 {
-    font-family: 'Gochi Hand', cursive;
-    color: #3B505C;
+.menu .btn-contact {
+    background-color: #2d4a22;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+}
+
+.menu .btn-contact:hover {
+    background-color: #3e6330;
+    color: white;
+}
+
+/* MAIN CONTAINER */
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* HERO SECTION */
+.hero {
     text-align: center;
-    font-size: 3.5rem;
-    margin-top: 100px;
-    line-height: 1.1;
-    text-transform: uppercase;
+    padding: 60px 0;
 }
 
-.highlight { color: #3B505C; }
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    line-height: 1.1;
+    color: #2d4a22;
+    margin-bottom: 40px;
+}
 
-/* BULLE : Positionnée sur le visage avec la pointe à gauche */
+.highlight {
+    font-style: italic;
+    color: #6b8e23;
+}
+
+/* CHARACTER & BUBBLE */
 .character-area {
-    position: absolute;
-    left: 23%; 
-    top: 50%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }
 
 .speech-bubble {
-    background: rgba(234, 220, 155, 0.9);
-    color: #684132;
-    padding: 15px 20px;
-    border-radius: 15px;
-    font-family: 'Gochi Hand', cursive;
-    font-size: 1.4rem;
-    max-width: 250px;
     position: relative;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
-    text-align: center;
+    background: #ffffff;
+    border: 2px solid #2d4a22;
+    border-radius: 20px;
+    padding: 15px 30px;
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    box-shadow: 4px 4px 15px rgba(0,0,0,0.05);
 }
 
-/* La pointe de la bulle vers la gauche */
+/* Flèche de la bulle */
 .speech-bubble::after {
-    content: "";
+    content: '';
     position: absolute;
-    left: -15px;
-    top: 20px;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-    border-right: 15px solid rgba(234, 220, 155, 0.9);
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 10px 10px 0;
+    border-style: solid;
+    border-color: #2d4a22 transparent transparent;
 }
 
-/* CARTES : En bas à droite, format PORTRAIT */
+/* CARDS SECTION */
 .cards-container {
-    position: absolute;
-    right: 5%; 
-    bottom: 5%;
     display: flex;
-    gap: 15px;
+    justify-content: space-around;
+    gap: 30px;
+    margin-top: 80px;
+    flex-wrap: wrap;
 }
 
 .card {
-    background: rgba(234, 220, 155, 0.9);
-    padding: 20px 10px;
-    border-radius: 12px;
-    width: 150px;  /* Largeur fixe */
-    height: 220px; /* Hauteur fixe pour le portrait */
+    flex: 1;
+    min-width: 250px;
+    background: white;
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.icon-wrapper {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    background-color: #f0f4ef;
+    border-radius: 50%;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    color: #684132;
-    box-shadow: 3px 3px 12px rgba(0,0,0,0.1);
-    
-    /* Animation par la droite */
-    opacity: 0;
-    transform: translateX(150px);
-    transition: all 0.6s ease-out;
 }
 
-/* Déclencheur animation */
-.card.visible {
-    opacity: 1;
-    transform: translateX(0);
+.icon-wrapper img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
 }
 
-.icon-wrapper img { 
-    width: 50px; 
-    margin-bottom: 15px; 
+.card p {
+    font-size: 1rem;
+    color: #555;
+    font-weight: 400;
 }
 
-.card p { 
-    font-size: 0.85rem; 
-    font-weight: bold; 
-    line-height: 1.2; 
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    h1 { font-size: 2.2rem; }
+    .menu { display: none; } /* En général, on utilise un menu burger ici */
+    .cards-container { flex-direction: column; }
 }
