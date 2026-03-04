@@ -56,7 +56,38 @@
         </main>
     </div>
 
+        <section id="view-projets" class="projects-view">
+            <h2 class="projects__title">"De la graine à l'image : mes dernières réalisations."</h2>
+            <div class="portfolio-grid">
+                <div class="project-card"></div>
+                <div class="project-card"></div>
+                <div class="project-card"></div>
+                <div class="project-card"></div>
+                <div class="project-card"></div>
+                <div class="project-card"></div>
+                <div class="project-card"></div>
+                <div class="project-card"></div>
+            </div>
+        </section>
 
+        <div id="js-gallery-overlay" class="gallery-overlay">
+            <button id="js-close-gallery" class="gallery__close">×</button>
+            <div class="gallery__wrapper">
+                <button id="js-prev-btn" class="nav-arrow prev"><span class="arrow-icon">‹</span></button>
+                <div class="gallery__window">
+                    <div class="gallery__img-container">
+                        <img src="profil-photo.png" id="gallery-img" alt="Projet"> 
+                    </div>
+                    <div class="gallery__text-container">
+                        <h3 id="gallery-title">TITRE PROJET</h3>
+                        <div class="gallery__line"></div>
+                        <p id="gallery-desc">Description détaillée de la réalisation...</p>
+                    </div>
+                </div>
+                <button id="js-next-btn" class="nav-arrow next"><span class="arrow-icon">›</span></button>
+            </div>
+        </div>
+    </div>
     <script src="script.js"></script>
 
 </body>
