@@ -1,15 +1,13 @@
-/* --- VARIABLES ET POLICES --- */
+/* --- 1. CONFIGURATION GÉNÉRALE --- */
 :root {
-    --color-primary: #1D70B7;
-    --color-secondary: #87B347;
+    --color-primary: #1D70B7;   /* Bleu Camille */
+    --color-secondary: #87B347; /* Vert herbe */
     --color-dark: #214F63;
     --color-beige: rgba(234, 220, 155, 0.95);
     --font-main: 'Californian FB', serif;
     --font-accent: 'Gochi Hand', cursive;
-    --transition-speed: 0.5s;
 }
 
-/* --- RESET DE BASE --- */
 * {
     margin: 0;
     padding: 0;
@@ -20,178 +18,124 @@ body {
     width: 100%;
     height: 100vh;
     font-family: var(--font-main);
-    overflow: hidden; /* Empêche le scroll sauvage entre les vues */
+    overflow: hidden; /* Évite les barres de scroll inutiles */
 }
 
-/* --- STRUCTURE PRINCIPALE --- */
-.app-container {
-    width: 100%;
-    height: 100vh;
-    background: url("fondaccueil.jpg") no-repeat center center fixed;
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-}
-
-/* --- NAVIGATION --- */
+/* --- 2. MENU DE NAVIGATION (PERSISTANT) --- */
 .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 80px;
-    z-index: 100;
+    padding: 20px 60px;
+    z-index: 5000; /* Toujours au-dessus de tout */
 }
 
 .header__logo img {
-    height: 110px;
-    width: auto;
+    height: 90px;
 }
 
 .nav-list {
     display: flex;
     list-style: none;
-    align-items: center;
+    font-family: var(--font-accent);
 }
 
 .nav-list__link {
     text-decoration: none;
     color: var(--color-primary);
-    font-weight: bold;
     font-size: 1.2rem;
-    transition: color 0.3s ease;
-}
-
-.nav-list__link:hover {
-    color: var(--color-secondary);
+    transition: 0.3s;
 }
 
 .nav-list__sep {
+    margin: 0 12px;
     color: var(--color-primary);
-    margin: 0 15px;
-    font-weight: bold;
 }
 
-/* --- SECTION ACCUEIL (HERO) --- */
-.hero {
-    flex: 1;
-    position: relative;
+/* --- 3. SECTION ACCUEIL --- */
+.app-container {
     width: 100%;
+    height: 100vh;
+    background: url("fondaccueil.jpg") no-repeat center center;
+    background-size: cover;
 }
 
 .hero__title {
     text-align: center;
     font-family: var(--font-accent);
-    font-size: 60px;
+    font-size: 55px;
     color: var(--color-dark);
-    text-shadow: 2px 2px 0 white;
-    margin-top: 10px;
+    padding-top: 130px;
+    text-shadow: 1px 1px 0 white;
 }
 
-/* Bulle d'intro */
 .bubble {
     background: var(--color-beige);
-    width: 450px;
-    padding: 20px 40px;
-    border-radius: 60px;
+    width: 380px;
+    padding: 25px;
+    border-radius: 50px;
     position: absolute;
     top: 35%;
-    left: 32%;
-    z-index: 10;
+    left: 30%;
     opacity: 0;
-    transform: scale(0.6);
-    visibility: hidden;
-    transition: all var(--transition-speed) cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: opacity 0.5s ease;
 }
 
 .bubble--active {
     opacity: 1;
-    transform: scale(1);
-    visibility: visible;
 }
 
-.bubble::after {
-    content: '';
-    position: absolute;
-    left: -25px;
-    top: 50%;
-    transform: translateY(-50%);
-    border-top: 15px solid transparent;
-    border-bottom: 15px solid transparent;
-    border-right: 30px solid var(--color-beige);
-}
-
-.bubble__text {
-    color: var(--color-dark);
-    font-size: 1.6rem;
-    font-weight: bold;
-    text-align: center;
-}
-
-/* Cartes de services */
 .services {
     display: flex;
-    gap: 30px;
+    gap: 25px;
     position: absolute;
-    bottom: 25%;
-    right: 12%;
-    z-index: 5;
+    bottom: 22%;
+    right: 8%;
     opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.8s ease-out;
+    transition: 0.8s ease-out;
 }
 
 .services--visible {
     opacity: 1;
-    transform: translateY(0);
 }
 
 .service-card {
     background: var(--color-beige);
-    width: 250px;
-    height: 330px;
-    border-radius: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 25px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-}
-
-.service-card__icon { height: 90px; margin-bottom: 25px; }
-.service-card__text {
-    color: var(--color-dark);
-    font-weight: bold;
-    font-size: 1.15rem;
+    width: 230px;
+    padding: 30px;
+    border-radius: 35px;
     text-align: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
 }
 
-/* --- SECTION PROJETS (Plein écran par-dessus) --- */
+/* --- 4. SECTION PROJETS (CALAGE image_e860df.jpg) --- */
 .projects-view {
-    display: none; /* Affiché par le JS */
+    display: none; /* Affiché par JS */
     position: fixed;
     inset: 0;
     background: url("voirmesprojets.jpg") no-repeat center center;
     background-size: cover;
     z-index: 2000;
-    padding-top: 100px;
-    text-align: center;
+    padding-top: 150px;
 }
 
 .projects__title {
     font-family: var(--font-accent);
     color: var(--color-primary);
-    font-size: 40px;
-    text-shadow: 2px 2px 0 white;
+    font-size: 42px;
+    text-align: center;
     margin-bottom: 40px;
 }
 
-/* Grille de 8 rectangles blancs (4 colonnes x 2 lignes) */
+/* Grille 4x2 pour les 8 rectangles blancs */
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(4, 250px);
-    grid-template-rows: repeat(2, 170px);
+    grid-template-columns: repeat(4, 260px);
+    grid-template-rows: repeat(2, 180px);
     gap: 30px;
     justify-content: center;
     margin: 0 auto;
@@ -200,41 +144,39 @@ body {
 .project-card {
     background: white;
     border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
     transition: transform 0.3s ease;
 }
 
 .project-card:hover {
     transform: translateY(-8px);
-    background: #fdfdfd;
 }
 
-/* --- GALERIE OVERLAY (La fenêtre bleue) --- */
+/* --- 5. GALERIE BLEUE (DESIGN image_e8619b.png) --- */
 .gallery-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(29, 112, 183, 0.98); /* Ton bleu profond */
-    z-index: 9999;
-    display: none; /* Affiché par JS */
+    background: rgba(29, 112, 183, 0.98); /* Bleu profond */
+    z-index: 4000;
+    display: none;
     align-items: center;
     justify-content: center;
 }
 
 .gallery__window {
-    background: #2a7ebc; /* Bleu plus clair du cadre */
-    border-radius: 40px;
-    padding: 50px;
-    display: flex;
-    align-items: center;
-    gap: 45px;
+    background: #2a7ebc; /* Bleu fenêtre */
     width: 950px;
+    padding: 50px;
+    border-radius: 45px;
+    display: flex;
+    gap: 50px;
+    align-items: center;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
 }
 
 .gallery__img-container {
-    flex: 1.2;
+    flex: 1.3;
     background: white;
     border-radius: 20px;
     aspect-ratio: 1.4;
@@ -250,13 +192,10 @@ body {
 .gallery__text-container {
     flex: 1;
     color: white;
-    text-align: left;
 }
 
 .gallery__text-container h3 {
     font-size: 3rem;
-    font-family: var(--font-main);
-    text-transform: uppercase;
     margin-bottom: 10px;
 }
 
@@ -267,24 +206,24 @@ body {
     margin-bottom: 20px;
 }
 
-/* Boutons de navigation et fermeture */
+/* Boutons Navigation & Fermeture */
 .nav-arrow {
     background: none;
     border: none;
     color: white;
-    font-size: 100px;
+    font-size: 90px;
     cursor: pointer;
-    font-family: serif;
-    padding: 0 20px;
+    padding: 0 30px;
 }
 
-.gallery__close {
+.gallery__close-btn {
     position: absolute;
-    top: 40px;
-    right: 60px;
+    top: 30px;
+    right: 50px;
+    font-size: 60px;
     color: white;
-    font-size: 80px;
     background: none;
     border: none;
     cursor: pointer;
+    display: none; /* Affiché via JS uniquement sur la galerie */
 }
