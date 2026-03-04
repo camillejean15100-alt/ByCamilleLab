@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. SÉLECTION DES ÉLÉMENTS (Vérifie que les IDs correspondent à ton HTML)
     const bubble = document.getElementById('js-bubble');
     const services = document.getElementById('js-services');
     const projectsSection = document.getElementById('js-projects-section');
@@ -9,12 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const linkAccueil = document.getElementById('link-accueil');
     const closeBtn = document.getElementById('js-close-gallery');
 
-    // --- A. ANIMATION D'ACCUEIL (Lancement automatique) ---
+    // --- A. ANIMATION D'ACCUEIL ---
     function startIntroAnimation() {
         if (bubble) {
             bubble.style.display = 'block';
-            bubble.style.opacity = '0';
-            // Petit délai pour l'effet de fade-in via CSS
             setTimeout(() => {
                 bubble.classList.add('bubble--active');
             }, 100);
@@ -31,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 4000);
     }
 
-    // Lancement au chargement
     startIntroAnimation();
 
     // --- B. CLIC "VOIR MES PROJETS" ---
@@ -39,11 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
         linkProjets.addEventListener('click', (e) => {
             e.preventDefault();
             
-            // On s'assure que la section est bien affichée
+            // On affiche la section des projets (ton fond voirmesprojets.jpg)
             projectsSection.style.display = 'block';
-            if (galleryOverlay) galleryOverlay.style.display = 'flex';
+            
+            // IMPORTANT : On s'assure que la galerie bleue reste CACHÉE au scroll
+            if (galleryOverlay) galleryOverlay.style.display = 'none';
 
-            // Scroll fluide vers les projets
             projectsSection.scrollIntoView({ 
                 behavior: 'smooth',
                 block: 'start'
@@ -51,25 +48,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- C. CLIC "ACCUEIL" (Retour en haut) ---
+    // --- C. CLIC "ACCUEIL" ---
     if (linkAccueil) {
         linkAccueil.addEventListener('click', (e) => {
             e.preventDefault();
             
-            // Remonter en haut
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            // Ferme tout avant de remonter
+            if (projectsSection) projectsSection.style.display = 'none';
+            if (galleryOverlay) galleryOverlay.style.display = 'none';
 
-            // Optionnel : Si tu veux que l'animation recommence au retour
-            // (Supprime les lignes ci-dessous si tu veux que l'accueil reste fixe)
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Relance l'intro propre
             if (services) services.classList.remove('services--visible');
             startIntroAnimation();
         });
     }
 
-    // --- D. FERMER LA GALERIE ---
+    // --- D. OUVERTURE DE LA GALERIE (Clic sur les rectangles blancs) ---
+    // On écoute le clic sur n'importe quelle carte projet dans la grille
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('click', () => {
+            if (galleryOverlay) {
+                galleryOverlay.style.display = 'flex';
+                // Ici tu pourras plus tard charger l'image spécifique au projet
+            }
+        });
+    });
+
+    // --- E. FERMER LA GALERIE ---
     if (closeBtn && galleryOverlay) {
         closeBtn.addEventListener('click', () => {
             galleryOverlay.style.display = 'none';
