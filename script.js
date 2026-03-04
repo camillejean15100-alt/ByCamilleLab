@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Sélection avec vérification
     const bubble = document.getElementById('js-bubble');
     const services = document.getElementById('js-services');
     const projectsSection = document.getElementById('js-projects-section');
@@ -10,21 +11,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- A. ANIMATION D'ACCUEIL ---
     function startIntroAnimation() {
-        if (bubble) {
-            bubble.style.display = 'block';
-            setTimeout(() => {
-                bubble.classList.add('bubble--active');
-            }, 100);
-        }
+        if (!bubble) return; // Si la bulle n'est pas là, on stoppe l'erreur
+        
+        bubble.style.display = 'block';
+        bubble.style.opacity = '0';
+        
+        setTimeout(() => {
+            bubble.classList.add('bubble--active');
+        }, 100);
 
         setTimeout(() => {
-            if (bubble) {
-                bubble.classList.remove('bubble--active');
-                setTimeout(() => {
-                    bubble.style.display = 'none';
-                    if (services) services.classList.add('services--visible');
-                }, 500);
-            }
+            bubble.classList.remove('bubble--active');
+            setTimeout(() => {
+                bubble.style.display = 'none';
+                if (services) services.classList.add('services--visible');
+            }, 500);
         }, 4000);
     }
 
@@ -34,17 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (linkProjets && projectsSection) {
         linkProjets.addEventListener('click', (e) => {
             e.preventDefault();
-            
-            // On affiche la section des projets (ton fond voirmesprojets.jpg)
             projectsSection.style.display = 'block';
             
-            // IMPORTANT : On s'assure que la galerie bleue reste CACHÉE au scroll
+            // On s'assure que la galerie bleue ne s'ouvre pas tout de suite
             if (galleryOverlay) galleryOverlay.style.display = 'none';
 
-            projectsSection.scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'start'
-            });
+            projectsSection.scrollIntoView({ behavior: 'smooth' });
         });
     }
 
@@ -52,31 +48,27 @@ document.addEventListener('DOMContentLoaded', () => {
     if (linkAccueil) {
         linkAccueil.addEventListener('click', (e) => {
             e.preventDefault();
-            
-            // Ferme tout avant de remonter
-            if (projectsSection) projectsSection.style.display = 'none';
-            if (galleryOverlay) galleryOverlay.style.display = 'none';
-
             window.scrollTo({ top: 0, behavior: 'smooth' });
-
-            // Relance l'intro propre
+            
+            // On cache les projets pour revenir au propre
+            if (projectsSection) projectsSection.style.display = 'none';
             if (services) services.classList.remove('services--visible');
+            
             startIntroAnimation();
         });
     }
 
-    // --- D. OUVERTURE DE LA GALERIE (Clic sur les rectangles blancs) ---
-    // On écoute le clic sur n'importe quelle carte projet dans la grille
-    document.querySelectorAll('.project-card').forEach(card => {
-        card.addEventListener('click', () => {
+    // --- D. OUVERTURE GALERIE (Clic sur les 8 rectangles blancs) ---
+    // On utilise la délégation d'événement pour éviter les bugs de sélection
+    document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('project-card')) {
             if (galleryOverlay) {
-                galleryOverlay.style.display = 'flex';
-                // Ici tu pourras plus tard charger l'image spécifique au projet
+                galleryOverlay.style.display = 'flex'; // Ouvre la galerie bleue
             }
-        });
+        }
     });
 
-    // --- E. FERMER LA GALERIE ---
+    // --- E. FERMETURE ---
     if (closeBtn && galleryOverlay) {
         closeBtn.addEventListener('click', () => {
             galleryOverlay.style.display = 'none';
