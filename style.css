@@ -1,72 +1,247 @@
+/* --- 1. CONFIGURATION ET TYPOGRAPHIE --- */
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
+
 :root {
-    --color-primary: #1D70B7;
+    --color-primary: #1D70B7;   /* Bleu logo */
+    --color-secondary: #87B347; /* Vert herbe */
     --color-dark: #214F63;
-    --color-beige: rgba(234, 220, 155, 0.98);
-    --font-accent: 'Gochi Hand', cursive;
+    --color-beige: rgba(234, 220, 155, 0.98); /* Fond bulle et cartes */
+    --font-accent: 'Gochi Hand', cursive; /* Typo manuscrite */
+    --font-main: 'Californian FB', serif;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { width: 100%; height: 100vh; font-family: sans-serif; overflow: hidden; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-/* HEADER */
+body {
+    width: 100%;
+    height: 100vh;
+    font-family: var(--font-main);
+    overflow: hidden; /* Empêche le scroll entre les vues fixes */
+}
+
+/* --- 2. NAVIGATION (HEADER) --- */
 .header {
-    position: fixed; top: 0; width: 100%; display: flex; 
-    justify-content: space-between; align-items: center; 
-    padding: 25px 60px; z-index: 5000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 80px;
+    z-index: 5000; /* Toujours au-dessus de tout */
 }
-.header__logo img { height: 90px; }
-.nav-list { display: flex; list-style: none; font-family: var(--font-accent); }
-.nav-list__link { text-decoration: none; color: var(--color-primary); font-size: 1.3rem; margin-left: 20px; }
-.nav-list__sep { color: var(--color-primary); margin-left: 20px; }
 
-/* ACCUEIL & BULLE BD */
-.app-container { width: 100%; height: 100vh; background: url("fondaccueil.jpg") center/cover; position: relative; }
-.hero { width: 100%; height: 100%; position: relative; }
-.hero__title { text-align: center; font-family: var(--font-accent); font-size: 55px; color: var(--color-dark); padding-top: 130px; }
+.header__logo img {
+    height: 100px;
+}
 
+.nav-list {
+    display: flex;
+    list-style: none;
+    font-family: var(--font-accent);
+}
+
+.nav-list__link {
+    text-decoration: none;
+    color: var(--color-primary);
+    font-size: 1.4rem;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.nav-list__link:hover {
+    color: var(--color-secondary);
+}
+
+.nav-list__sep {
+    margin: 0 15px;
+    color: var(--color-primary);
+}
+
+/* --- 3. ACCUEIL ET BULLE DE BD --- */
+.app-container {
+    width: 100%;
+    height: 100vh;
+    background: url("fondaccueil.jpg") no-repeat center center;
+    background-size: cover;
+    position: relative;
+}
+
+.hero__title {
+    text-align: center;
+    font-family: var(--font-accent);
+    font-size: 60px;
+    color: var(--color-dark);
+    padding-top: 140px;
+    text-shadow: 1px 1px 0 white;
+}
+
+/* Bulle pointant vers Camille */
 .bubble {
-    background: var(--color-beige); width: 400px; padding: 25px; border-radius: 50px;
-    position: absolute; top: 35%; left: 28%; opacity: 0; transition: 0.5s; z-index: 10;
+    background: var(--color-beige);
+    width: 420px;
+    padding: 30px;
+    border-radius: 60px;
+    position: absolute;
+    top: 35%;
+    left: 28%;
+    z-index: 10;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-.bubble--active { opacity: 1; }
-.bubble::after { /* Le bec de la bulle */
-    content: ''; position: absolute; bottom: 20px; left: -25px;
-    border-top: 15px solid transparent; border-bottom: 15px solid transparent;
-    border-right: 30px solid var(--color-beige);
+
+.bubble--active {
+    opacity: 1;
+    transform: scale(1);
 }
-.bubble__text { font-family: var(--font-accent); font-size: 1.6rem; color: var(--color-dark); text-align: center; }
 
-.services { display: flex; gap: 20px; position: absolute; bottom: 15%; right: 10%; opacity: 0; transition: 0.8s; }
-.services--visible { opacity: 1; }
-.service-card { background: var(--color-beige); padding: 25px; border-radius: 35px; width: 220px; text-align: center; }
-.service-card__icon { height: 70px; margin-bottom: 15px; }
+/* Le "bec" de la bulle BD */
+.bubble::after {
+    content: '';
+    position: absolute;
+    bottom: 30px;
+    left: -30px;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-right: 40px solid var(--color-beige);
+}
 
-/* PROJETS */
+.bubble__text {
+    font-family: var(--font-accent);
+    font-size: 1.8rem;
+    color: var(--color-dark);
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* Cartes Services sur le tracteur */
+.services {
+    display: flex;
+    gap: 30px;
+    position: absolute;
+    bottom: 18%;
+    right: 10%;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.services--visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.service-card {
+    background: var(--color-beige);
+    width: 240px;
+    padding: 35px 25px;
+    border-radius: 40px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.service-card__icon { height: 80px; margin-bottom: 20px; }
+.service-card__text { font-weight: bold; color: var(--color-dark); }
+
+/* --- 4. VUE PROJETS ET GRILLE --- */
 .projects-view {
-    display: none; position: fixed; inset: 0; background: url("voirmesprojets.jpg") center/cover; 
-    z-index: 2000; padding-top: 140px; text-align: center;
+    display: none; 
+    position: fixed;
+    inset: 0;
+    background: url("voirmesprojets.jpg") no-repeat center center;
+    background-size: cover;
+    z-index: 2000;
+    padding-top: 160px;
 }
-.projects__title { font-family: var(--font-accent); color: var(--color-primary); font-size: 42px; margin-bottom: 40px; }
-.portfolio-grid {
-    display: grid; grid-template-columns: repeat(4, 250px); grid-template-rows: repeat(2, 170px);
-    gap: 25px; justify-content: center;
-}
-.project-card { background: white; border-radius: 12px; cursor: pointer; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-.project-card:hover { transform: translateY(-5px); }
 
-/* GALERIE */
+.projects__title {
+    font-family: var(--font-accent);
+    color: var(--color-primary);
+    font-size: 45px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+/* La Grille 4x2 centrée */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 260px);
+    grid-template-rows: repeat(2, 180px);
+    gap: 35px;
+    justify-content: center;
+}
+
+.project-card {
+    background: white;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease, background 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    background: #f9fbfd;
+}
+
+/* --- 5. GALERIE OVERLAY BLEU --- */
 .gallery-overlay {
-    position: fixed; inset: 0; background: rgba(29, 112, 183, 0.98); 
-    display: none; align-items: center; justify-content: center; z-index: 6000;
+    position: fixed;
+    inset: 0;
+    background: rgba(29, 112, 183, 0.98); /* Bleu profond */
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 6000;
 }
+
 .gallery__window {
-    background: #2a7ebc; width: 900px; padding: 45px; border-radius: 45px; 
-    display: flex; gap: 40px; align-items: center; color: white; position: relative;
+    background: #2a7ebc; /* Bleu clair de la fenêtre */
+    width: 950px;
+    padding: 50px;
+    border-radius: 50px;
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.3);
 }
-.gallery__img-container { flex: 1.2; background: white; border-radius: 15px; aspect-ratio: 1.5; overflow: hidden; }
+
+.gallery__img-container {
+    flex: 1.3;
+    background: white;
+    border-radius: 25px;
+    aspect-ratio: 1.4;
+    overflow: hidden;
+}
+
 .gallery__img-container img { width: 100%; height: 100%; object-fit: cover; }
-.gallery__text-container h3 { font-size: 3rem; margin-bottom: 10px; }
-.gallery__line { width: 100%; height: 2px; background: white; margin-bottom: 15px; }
-.nav-arrow { background: none; border: none; color: white; font-size: 100px; cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%); }
-.prev { left: -80px; } .next { right: -80px; }
-.gallery__close { position: absolute; top: 20px; right: 40px; color: white; font-size: 60px; background: none; border: none; cursor: pointer; }
+
+.gallery__text-container { flex: 1; color: white; }
+.gallery__text-container h3 { font-size: 3.5rem; margin-bottom: 15px; }
+.gallery__line { width: 100%; height: 2px; background: white; margin-bottom: 20px; }
+
+.nav-arrow {
+    background: none; border: none; color: white; font-size: 110px; cursor: pointer;
+    position: absolute; top: 50%; transform: translateY(-50%);
+}
+.prev { left: -100px; } /* Flèches déportées */
+.next { right: -100px; }
+
+.gallery__close {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    font-size: 70px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
