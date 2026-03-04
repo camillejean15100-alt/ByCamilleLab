@@ -11,7 +11,7 @@
 
     <header class="header">
         <div class="header__logo">
-            <img src="logocamille.png" alt="Logo Camille Lab">
+            <img src="logocamille.png" alt="Logo">
         </div>
         <nav class="header__nav">
             <ul class="nav-list">
@@ -29,19 +29,30 @@
     </header>
 
     <div class="app-container">
-        <main class="hero">
+        <main id="js-home-view" class="hero">
             <h1 class="hero__title">LE GRAPHISME AU SERVICE DE LA TERRE</h1>
+            
             <div id="js-bubble" class="bubble">
                 <p class="bubble__text">« Ma mission : cultivons ensemble votre image de marque »</p>
             </div>
+
             <section id="js-services" class="services">
-                <div class="service-card"><img src="certif.png" class="service-card__icon"><p>Un logo unique.</p></div>
-                <div class="service-card"><img src="panier.png" class="service-card__icon"><p>Packagings éco.</p></div>
-                <div class="service-card"><img src="panneaux.png" class="service-card__icon"><p>Signalétique ferme.</p></div>
+                <div class="service-card">
+                    <img src="certif.png" class="service-card__icon" alt="Certif">
+                    <p class="service-card__text">Un logo et une image de marque qui vous ressemblent.</p>
+                </div>
+                <div class="service-card">
+                    <img src="panier.png" class="service-card__icon" alt="Panier">
+                    <p class="service-card__text">Création d'étiquettes & de packagings pour vos produits.</p>
+                </div>
+                <div class="service-card">
+                    <img src="panneaux.png" class="service-card__icon" alt="Panneaux">
+                    <p class="service-card__text">Panneaux & supports pour rendre votre ferme visible.</p>
+                </div>
             </section>
         </main>
 
-        <section id="js-projects-section" class="projects-view">
+        <section id="js-projects-view" class="projects-view">
             <div class="projects-content">
                 <div class="projects__intro">
                     <h2 class="projects__title">"De la graine à l'image : mes dernières réalisations."</h2>
@@ -58,7 +69,7 @@
         <div id="js-gallery-overlay" class="gallery-overlay">
             <button id="js-close-gallery" class="gallery__close">&times;</button>
             <div class="gallery__wrapper">
-                <button class="nav-arrow">‹</button>
+                <button class="nav-arrow prev">‹</button>
                 <div class="gallery__window">
                     <div class="gallery__img-container">
                         <img src="profil-photo.png" id="gallery-img" alt="Projet">
@@ -66,10 +77,10 @@
                     <div class="gallery__text-container">
                         <h3 id="gallery-title">TITRE PROJET</h3>
                         <div class="gallery__line"></div>
-                        <p id="gallery-desc">Description de la réalisation...</p>
+                        <p id="gallery-desc">Détails de la réalisation...</p>
                     </div>
                 </div>
-                <button class="nav-arrow">›</button>
+                <button class="nav-arrow next">›</button>
             </div>
         </div>
     </div>
