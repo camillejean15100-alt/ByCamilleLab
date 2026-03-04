@@ -9,33 +9,32 @@
 </head>
 <body>
 
-    <div class="app-container">
-        <header class="header">
-            <div class="header__logo">
-                <img src="logocamille.png" alt="Logo Camille Lab">
-            </div>
-            <nav class="header__nav">
-                <ul class="nav-list">
-                    <li><a href="#" id="link-accueil" class="nav-list__link">Accueil</a></li>
-                    <li class="nav-list__sep">|</li>
-                    <li><a href="#" id="link-projets" class="nav-list__link">Voir mes projets</a></li>
-                    <li class="nav-list__sep">|</li>
-                    <li><a href="#" class="nav-list__link">À Propos</a></li>
-                    <li class="nav-list__sep">|</li>
-                    <li><a href="#" class="nav-list__link">Tarifs</a></li>
-                    <li class="nav-list__sep">|</li>
-                    <li><a href="#" class="nav-list__link">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
+    <header class="header">
+        <div class="header__logo">
+            <img src="logocamille.png" alt="Logo Camille Lab">
+        </div>
+        <nav class="header__nav">
+            <ul class="nav-list">
+                <li><a href="#" id="link-accueil" class="nav-list__link">Accueil</a></li>
+                <li class="nav-list__sep">|</li>
+                <li><a href="#" id="link-projets" class="nav-list__link">Voir mes projets</a></li>
+                <li class="nav-list__sep">|</li>
+                <li><a href="#" class="nav-list__link">À Propos</a></li>
+                <li class="nav-list__sep">|</li>
+                <li><a href="#" class="nav-list__link">Tarifs</a></li>
+                <li class="nav-list__sep">|</li>
+                <li><a href="#" class="nav-list__link">Contact</a></li>
+            </ul>
+        </nav>
+        <button id="js-close-gallery" class="gallery__close-btn">&times;</button>
+    </header>
 
+    <div class="app-container">
         <main class="hero">
             <h1 class="hero__title">LE GRAPHISME AU SERVICE DE LA TERRE</h1>
-
             <div id="js-bubble" class="bubble">
                 <p class="bubble__text">« Ma mission : cultivons ensemble votre image de marque »</p>
             </div>
-
             <section id="js-services" class="services">
                 <div class="service-card">
                     <img src="certif.png" class="service-card__icon" alt="Identité">
@@ -50,48 +49,43 @@
                     <p class="service-card__text">Panneaux & supports pour rendre votre ferme visible.</p>
                 </div>
             </section>
-
-            <section id="js-projects-section" class="projects-view">
-                <div class="projects-content">
-                    <div class="projects__intro">
-                        <div class="ladybug-container">
-                            <img src="traitcoccinelle.png" class="ladybug-trail" alt="">
-                            <img src="coccinelle.png" class="ladybug-icon" alt="Coccinelle">
-                        </div>
-                        <h2 class="projects__title">"De la graine à l'image : mes dernières réalisations."</h2>
-                    </div>
-
-                    <div class="portfolio-grid">
-                        <div class="project-card"></div>
-                        <div class="project-card"></div>
-                        <div class="project-card"></div>
-                        <div class="project-card"></div>
-                        <div class="project-card"></div>
-                        <div class="project-card"></div>
-                        <div class="project-card"></div>
-                        <div class="project-card"></div>
-                    </div>
-                </div>
-
-                <div id="js-gallery-overlay" class="gallery-overlay">
-                    <button id="js-close-gallery" class="gallery__close">&times;</button>
-                    <div class="gallery__wrapper">
-                        <button id="js-prev-btn" class="nav-arrow">‹</button>
-                        <div class="gallery__window">
-                            <div class="gallery__img-container">
-                                <img src="profil-photo.png" id="gallery-img" alt="Projet">
-                            </div>
-                            <div class="gallery__text-container">
-                                <h3 id="gallery-title">TITRE PROJET</h3>
-                                <div class="gallery__line"></div>
-                                <p id="gallery-desc">Détails de la réalisation...</p>
-                            </div>
-                        </div>
-                        <button id="js-next-btn" class="nav-arrow">›</button>
-                    </div>
-                </div>
-            </section>
         </main>
+
+        <section id="js-projects-section" class="projects-view">
+            <div class="projects-content">
+                <div class="projects__intro">
+                    <img src="coccinelle.png" class="ladybug-icon" alt="Coccinelle">
+                    <h2 class="projects__title">"De la graine à l'image : mes dernières réalisations."</h2>
+                </div>
+                <div class="portfolio-grid">
+                    <div class="project-card" data-id="1"></div>
+                    <div class="project-card" data-id="2"></div>
+                    <div class="project-card" data-id="3"></div>
+                    <div class="project-card" data-id="4"></div>
+                    <div class="project-card" data-id="5"></div>
+                    <div class="project-card" data-id="6"></div>
+                    <div class="project-card" data-id="7"></div>
+                    <div class="project-card" data-id="8"></div>
+                </div>
+            </div>
+        </section>
+
+        <div id="js-gallery-overlay" class="gallery-overlay">
+            <div class="gallery__wrapper">
+                <button id="js-prev-btn" class="nav-arrow">‹</button>
+                <div class="gallery__window">
+                    <div class="gallery__img-container">
+                        <img src="profil-photo.png" id="gallery-img" alt="Projet">
+                    </div>
+                    <div class="gallery__text-container">
+                        <h3 id="gallery-title">TITRE PROJET</h3>
+                        <div class="gallery__line"></div>
+                        <p id="gallery-desc">Description de la réalisation...</p>
+                    </div>
+                </div>
+                <button id="js-next-btn" class="nav-arrow">›</button>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
