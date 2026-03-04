@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camille Lab | Graphisme éco-responsable</title>
+    <title>Camille Lab | Graphisme</title>
     <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -13,75 +13,53 @@
         <div class="header__logo">
             <img src="logocamille.png" alt="Logo">
         </div>
-        <nav class="header__nav">
+        <nav>
             <ul class="nav-list">
-                <li><a href="#" id="link-accueil" class="nav-list__link">Accueil</a></li>
-                <li class="nav-list__sep">|</li>
-                <li><a href="#" id="link-projets" class="nav-list__link">Voir mes projets</a></li>
-                <li class="nav-list__sep">|</li>
-                <li><a href="#" class="nav-list__link">À Propos</a></li>
-                <li class="nav-list__sep">|</li>
-                <li><a href="#" class="nav-list__link">Tarifs</a></li>
-                <li class="nav-list__sep">|</li>
-                <li><a href="#" class="nav-list__link">Contact</a></li>
+                <li><a href="#" id="link-accueil" class="nav-link">Accueil</a></li>
+                <li class="nav-sep">|</li>
+                <li><a href="#" id="link-projets" class="nav-link">Voir mes projets</a></li>
+                <li class="nav-sep">|</li>
+                <li><a href="#" class="nav-link">À Propos</a></li>
+                <li class="nav-sep">|</li>
+                <li><a href="#" class="nav-link">Tarifs</a></li>
+                <li class="nav-sep">|</li>
+                <li><a href="#" class="nav-link">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <div class="app-container">
-        <main id="js-home-view" class="hero">
-            <h1 class="hero__title">LE GRAPHISME AU SERVICE DE LA TERRE</h1>
-            
-            <div id="js-bubble" class="bubble">
-                <p class="bubble__text">« Ma mission : cultivons ensemble votre image de marque »</p>
-            </div>
-
-            <section id="js-services" class="services">
-                <div class="service-card">
-                    <img src="certif.png" class="service-card__icon" alt="Certif">
-                    <p class="service-card__text">Un logo et une image de marque qui vous ressemblent.</p>
-                </div>
-                <div class="service-card">
-                    <img src="panier.png" class="service-card__icon" alt="Panier">
-                    <p class="service-card__text">Création d'étiquettes & de packagings pour vos produits.</p>
-                </div>
-                <div class="service-card">
-                    <img src="panneaux.png" class="service-card__icon" alt="Panneaux">
-                    <p class="service-card__text">Panneaux & supports pour rendre votre ferme visible.</p>
-                </div>
-            </section>
-        </main>
-
-        <section id="js-projects-view" class="projects-view">
-            <div class="projects-content">
-                <div class="projects__intro">
-                    <h2 class="projects__title">"De la graine à l'image : mes dernières réalisations."</h2>
-                </div>
-                <div class="portfolio-grid">
-                    <div class="project-card"></div><div class="project-card"></div>
-                    <div class="project-card"></div><div class="project-card"></div>
-                    <div class="project-card"></div><div class="project-card"></div>
-                    <div class="project-card"></div><div class="project-card"></div>
-                </div>
+    <div class="main-wrapper">
+        <section id="view-home" class="page-view">
+            <h1 class="hero-title">LE GRAPHISME AU SERVICE DE LA TERRE</h1>
+            <div class="bubble">
+                <p>« Ma mission : cultivons ensemble votre image de marque »</p>
             </div>
         </section>
 
-        <div id="js-gallery-overlay" class="gallery-overlay">
-            <button id="js-close-gallery" class="gallery__close">&times;</button>
-            <div class="gallery__wrapper">
-                <button class="nav-arrow prev">‹</button>
-                <div class="gallery__window">
-                    <div class="gallery__img-container">
-                        <img src="profil-photo.png" id="gallery-img" alt="Projet">
-                    </div>
-                    <div class="gallery__text-container">
-                        <h3 id="gallery-title">TITRE PROJET</h3>
-                        <div class="gallery__line"></div>
-                        <p id="gallery-desc">Détails de la réalisation...</p>
-                    </div>
-                </div>
-                <button class="nav-arrow next">›</button>
+        <section id="view-projects" class="page-view projects-bg">
+            <img src="feuille1.png" class="leaf leaf-left">
+            <img src="feuille2.png" class="leaf leaf-right">
+            
+            <h2 class="projects-title">"De la graine à l'image : mes dernières réalisations."</h2>
+            
+            <div class="portfolio-grid">
+                <div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div>
+                <div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div>
             </div>
+        </section>
+
+        <div id="gallery-overlay" class="overlay">
+            <button class="close-btn">&times;</button>
+            <button class="arrow arrow-prev">‹</button>
+            <div class="gallery-card">
+                <div class="img-box"><img src="projet1.jpg" id="gallery-img"></div>
+                <div class="text-box">
+                    <h3 id="gallery-title">TITRE PROJET</h3>
+                    <div class="divider"></div>
+                    <p id="gallery-desc">Détails de la réalisation...</p>
+                </div>
+            </div>
+            <button class="arrow arrow-next">›</button>
         </div>
     </div>
 
