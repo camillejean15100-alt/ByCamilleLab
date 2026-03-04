@@ -1,21 +1,34 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     const bubble = document.getElementById('js-bubble');
     const services = document.getElementById('js-services');
+    const projectsView = document.getElementById('js-projects-view');
+    const gallery = document.getElementById('js-gallery-overlay');
 
-    // Apparition de la bulle
+    // Séquence d'accueil
+    setTimeout(() => bubble?.classList.add('bubble--active'), 800);
     setTimeout(() => {
-        bubble.classList.add('bubble--active');
-    }, 500);
+        bubble?.classList.remove('bubble--active');
+        services?.classList.add('services--visible');
+    }, 4500);
 
-    // Transition vers les services
-    setTimeout(() => {
-        bubble.classList.remove('bubble--active');
-        
-        setTimeout(() => {
-            bubble.style.display = 'none';
-            services.classList.add('services--visible');
-        }, 500);
+    // Navigation entre Accueil et Projets
+    document.getElementById('link-projets').addEventListener('click', (e) => {
+        e.preventDefault();
+        projectsView.style.display = 'block';
+    });
 
-    }, 3500);
+    document.getElementById('link-accueil').addEventListener('click', (e) => {
+        e.preventDefault();
+        projectsView.style.display = 'none';
+        gallery.style.display = 'none';
+    });
+
+    // Ouverture Galerie
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('click', () => gallery.style.display = 'flex');
+    });
+
+    document.getElementById('js-close-gallery').addEventListener('click', () => {
+        gallery.style.display = 'none';
+    });
 });
