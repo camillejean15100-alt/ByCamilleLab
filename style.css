@@ -1,103 +1,161 @@
-/* --- 1. TYPO & VARIABLES --- */
-@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
-
+/* --- VARIABLES --- */
 :root {
-    --color-primary: #1D70B7;
-    --color-hover: #87B347; /* Ton vert */
-    --font-main: 'Californian FB', serif; /* Appliqué au menu */
-    --font-accent: 'Gochi Hand', cursive; /* Appliqué aux titres */
+    --blue-slate: #3B505C;
+    --green-leaf: #87B347; /* Ton vert pour le menu */
+    --brown-text: #684132;
+    --beige-main: #EADC9B;
+    --beige-bg: rgba(234, 220, 155, 0.95);
+    --font-menu: 'Californian FB', 'Georgia', serif;
+    --font-title: 'Gochi Hand', cursive;
+    --transition-speed: 1s;
 }
 
-/* --- 2. MENU (CALIFORNIAN FB + HOVER VERT) --- */
-.nav-link { 
+/* --- RESET & BASE --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    background: url('fondaccueuil.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: var(--font-menu);
+}
+
+/* --- NAVIGATION : TEXTE PLUS GRAND ET VERT RESTAURÉ --- */
+.navbar { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 25px 80px; 
+}
+
+.logo { height: 90px; width: auto; }
+
+.nav-links { display: flex; list-style: none; align-items: center; }
+
+.nav-links li a { 
     text-decoration: none; 
-    color: var(--color-primary); 
-    font-family: var(--font-main); 
+    color: var(--blue-slate); 
     font-weight: bold; 
-    transition: 0.3s; 
+    font-size: 1.4rem; /* TEXTE AGRANDI ICI */
+    padding: 0 20px; 
+    transition: color 0.3s ease; 
 }
-.nav-link:hover { color: var(--color-hover); }
 
-/* --- 3. SECTION PROJETS (HERBE & FEUILLES) --- */
-.projects-view {
-    position: fixed;
-    inset: 0;
-    background: #FDF9F0; /* Beige */
-    padding-top: 140px;
-    z-index: 2000;
+/* Retour du vert ici */
+.nav-links li a:hover, 
+.nav-links li a.active { 
+    color: var(--green-leaf); 
+}
+
+.sep { 
+    color: var(--blue-slate); 
+    font-weight: bold; 
+    font-size: 1.4rem; 
+}
+
+/* --- TITRE --- */
+.main-title { 
+    font-family: var(--font-title); 
+    color: var(--blue-slate); 
+    text-align: center; 
+    font-size: 3.8rem; 
+    margin-top: 20px; 
+}
+
+/* --- ZONE INTERACTIVE --- */
+.interactive-container {
+    position: relative;
+    height: 55vh;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* On descend le portfolio par rapport au H2 */
-.projects-title {
-    font-family: var(--font-accent);
-    color: var(--color-primary);
-    font-size: 40px;
-    margin-bottom: 100px; /* Espace pour les feuilles */
-}
-
-/* L'HERBE EN BAS DE PAGE */
-.projects-view::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 180px; /* Hauteur augmentée pour qu'on la voie bien */
-    background: url('herbe.png') repeat-x bottom;
-    background-size: contain;
-    z-index: 5; /* Derrière les cartes mais devant le fond */
-    pointer-events: none;
-}
-
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 250px);
-    grid-template-rows: repeat(2, 170px);
-    gap: 30px;
-    z-index: 10; /* Devant l'herbe pour être cliquable */
-}
-
-/* --- 4. GALERIE (FLÈCHES & CROIX) --- */
-.gallery-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(29, 112, 183, 0.98); /* Bleu */
-    display: none;
-    align-items: center;
     justify-content: center;
-    z-index: 9999;
+    align-items: center;
 }
 
-/* Croix et Flèches positionnées comme sur image_e7ffe5.jpg */
-.gallery-close {
-    position: absolute;
-    top: 40px;
-    right: 40px;
-    color: white;
-    font-size: 60px;
-    background: none;
-    border: none;
-    cursor: pointer;
+/* BULLE : CARRE BEIGE AVEC TRIANGLE */
+.speech-bubble {
+    position: relative;
+    background: var(--beige-bg);
+    border: 3px solid var(--beige-main);
+    border-radius: 20px;
+    width: 320px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    text-align: center;
+    z-index: 10;
+    transition: opacity 0.6s ease;
 }
 
-.arrow {
+.speech-bubble p { 
+    color: var(--brown-text); 
+    font-size: 1.8rem; 
+    font-weight: bold; 
+    line-height: 1.2; 
+}
+
+/* LE TRIANGLE */
+.speech-bubble::after {
+    content: '';
     position: absolute;
+    left: -28px;
     top: 50%;
     transform: translateY(-50%);
-    color: white;
-    font-size: 100px;
-    background: none;
-    border: none;
-    cursor: pointer;
+    width: 0; 
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-right: 28px solid var(--beige-main);
 }
-.arrow-prev { left: 8%; }
-.arrow-next { right: 8%; }
 
-.gallery-card h3 {
-    font-family: var(--font-main); /* Californian FB */
-    font-size: 3rem;
-    color: white;
+/* --- CARTES : PANNEAUX LOGIQUES --- */
+.cards-wrapper {
+    position: absolute;
+    right: 18%; 
+    width: 35%;
+    display: none; 
+    gap: 15px;
+}
+
+.card {
+    background: var(--beige-bg);
+    border: 2.5px solid var(--beige-main);
+    border-radius: 15px;
+    flex: 1;
+    height: 300px; /* Panneau compact */
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;     
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    opacity: 0;
+    transform: translateX(50px);
+}
+
+.card img {
+    width: 120px; 
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.card p {
+    color: var(--brown-text);
+    font-weight: bold;
+    font-size: 1.1rem; 
+    line-height: 1.3;
+}
+
+/* --- ANIMATION --- */
+.is-visible .card {
+    animation: sweepIn var(--transition-speed) cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+.is-visible .card:nth-child(1) { animation-delay: 0.2s; }
+.is-visible .card:nth-child(2) { animation-delay: 0.4s; }
+.is-visible .card:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes sweepIn {
+    to { opacity: 1; transform: translateX(0); }
 }
