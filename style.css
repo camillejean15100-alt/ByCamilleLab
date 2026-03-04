@@ -1,15 +1,17 @@
-/* --- 1. CONFIGURATION ET TYPOGRAPHIE --- */
+/* --- 1. POLICES ET VARIABLES --- */
+/* Import de Gochi Hand pour les titres manuscrits */
 @import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
 
 :root {
-    --color-primary: #1D70B7;   /* Bleu logo */
-    --color-secondary: #87B347; /* Vert herbe */
+    --color-primary: #1D70B7;   /* Ton bleu de référence */
+    --color-hover: #87B347;     /* Ton vert pour le hover */
     --color-dark: #214F63;
-    --color-beige: rgba(234, 220, 155, 0.98); /* Fond bulle et cartes */
+    --color-beige: rgba(234, 220, 155, 0.98);
+    --font-main: 'Californian FB', 'Georgia', serif; /* Ta typo demandée */
     --font-accent: 'Gochi Hand', cursive; /* Typo manuscrite */
-    --font-main: 'Californian FB', serif;
 }
 
+/* --- 2. RESET ET BASE --- */
 * {
     margin: 0;
     padding: 0;
@@ -20,10 +22,10 @@ body {
     width: 100%;
     height: 100vh;
     font-family: var(--font-main);
-    overflow: hidden; /* Empêche le scroll entre les vues fixes */
+    overflow: hidden; /* Empêche les décalages de scroll indésirables */
 }
 
-/* --- 2. NAVIGATION (HEADER) --- */
+/* --- 3. MENU DE NAVIGATION (VERROUILLÉ EN HAUT) --- */
 .header {
     position: fixed;
     top: 0;
@@ -32,38 +34,41 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 80px;
-    z-index: 5000; /* Toujours au-dessus de tout */
+    padding: 25px 60px;
+    z-index: 9999; /* Priorité maximale pour rester accessible */
+    background: transparent;
 }
 
 .header__logo img {
-    height: 100px;
+    height: 90px;
 }
 
 .nav-list {
     display: flex;
     list-style: none;
-    font-family: var(--font-accent);
+    align-items: center;
 }
 
 .nav-list__link {
     text-decoration: none;
     color: var(--color-primary);
-    font-size: 1.4rem;
+    font-family: var(--font-main); /* Californian FB sur le menu */
+    font-size: 1.1rem;
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
+/* Ton vert sur le hover */
 .nav-list__link:hover {
-    color: var(--color-secondary);
+    color: var(--color-hover);
 }
 
 .nav-list__sep {
-    margin: 0 15px;
     color: var(--color-primary);
+    margin: 0 12px;
 }
 
-/* --- 3. ACCUEIL ET BULLE DE BD --- */
+/* --- 4. ACCUEIL ET BULLE DE BD --- */
 .app-container {
     width: 100%;
     height: 100vh;
@@ -74,173 +79,134 @@ body {
 
 .hero__title {
     text-align: center;
-    font-family: var(--font-accent);
-    font-size: 60px;
+    font-family: var(--font-accent); /* Gochi Hand pour le titre */
+    font-size: 55px;
     color: var(--color-dark);
-    padding-top: 140px;
-    text-shadow: 1px 1px 0 white;
+    padding-top: 130px;
 }
 
-/* Bulle pointant vers Camille */
+/* Ta bulle BD pointant vers Camille */
 .bubble {
     background: var(--color-beige);
-    width: 420px;
-    padding: 30px;
-    border-radius: 60px;
+    width: 400px;
+    padding: 25px;
+    border-radius: 50px;
     position: absolute;
     top: 35%;
     left: 28%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     z-index: 10;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-    opacity: 0;
-    transform: scale(0.8);
-    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.bubble--active {
-    opacity: 1;
-    transform: scale(1);
-}
-
-/* Le "bec" de la bulle BD */
 .bubble::after {
     content: '';
     position: absolute;
-    bottom: 30px;
-    left: -30px;
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
-    border-right: 40px solid var(--color-beige);
+    bottom: 25px;
+    left: -25px;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-right: 30px solid var(--color-beige);
 }
 
 .bubble__text {
     font-family: var(--font-accent);
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     color: var(--color-dark);
     text-align: center;
-    line-height: 1.2;
 }
 
-/* Cartes Services sur le tracteur */
-.services {
-    display: flex;
-    gap: 30px;
-    position: absolute;
-    bottom: 18%;
-    right: 10%;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease-out;
-}
-
-.services--visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.service-card {
-    background: var(--color-beige);
-    width: 240px;
-    padding: 35px 25px;
-    border-radius: 40px;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-}
-
-.service-card__icon { height: 80px; margin-bottom: 20px; }
-.service-card__text { font-weight: bold; color: var(--color-dark); }
-
-/* --- 4. VUE PROJETS ET GRILLE --- */
+/* --- 5. GRILLE DE PROJETS (8 RECTANGLES) --- */
 .projects-view {
-    display: none; 
+    display: none; /* Affiché via JS */
     position: fixed;
     inset: 0;
-    background: url("voirmesprojets.jpg") no-repeat center center;
-    background-size: cover;
+    background: #FDF9F0; /* Fond beige */
     z-index: 2000;
-    padding-top: 160px;
+    padding-top: 140px;
 }
 
-.projects__title {
-    font-family: var(--font-accent);
-    color: var(--color-primary);
-    font-size: 45px;
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-/* La Grille 4x2 centrée */
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(4, 260px);
-    grid-template-rows: repeat(2, 180px);
-    gap: 35px;
+    grid-template-columns: repeat(4, 250px); /* 4 colonnes */
+    grid-template-rows: repeat(2, 170px);   /* 2 lignes */
+    gap: 25px;
     justify-content: center;
+    margin-top: 50px;
 }
 
 .project-card {
     background: white;
-    border-radius: 15px;
+    border-radius: 12px;
     cursor: pointer;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-    transition: transform 0.3s ease, background 0.3s;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-10px);
-    background: #f9fbfd;
+    transform: translateY(-8px);
 }
 
-/* --- 5. GALERIE OVERLAY BLEU --- */
+/* --- 6. GALERIE BLEUE --- */
 .gallery-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(29, 112, 183, 0.98); /* Bleu profond */
+    background: rgba(29, 112, 183, 0.98); /* Ton bleu profond */
     display: none;
     align-items: center;
     justify-content: center;
-    z-index: 6000;
+    z-index: 8000;
 }
 
 .gallery__window {
-    background: #2a7ebc; /* Bleu clair de la fenêtre */
-    width: 950px;
-    padding: 50px;
-    border-radius: 50px;
+    background: #2a7ebc; /* Fenêtre bleue */
+    width: 900px;
+    padding: 40px;
+    border-radius: 40px;
     display: flex;
-    gap: 50px;
+    gap: 40px;
     align-items: center;
     position: relative;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.3);
 }
 
 .gallery__img-container {
-    flex: 1.3;
+    flex: 1.2;
     background: white;
-    border-radius: 25px;
-    aspect-ratio: 1.4;
+    border-radius: 20px;
     overflow: hidden;
+    aspect-ratio: 1.5;
 }
 
-.gallery__img-container img { width: 100%; height: 100%; object-fit: cover; }
-
-.gallery__text-container { flex: 1; color: white; }
-.gallery__text-container h3 { font-size: 3.5rem; margin-bottom: 15px; }
-.gallery__line { width: 100%; height: 2px; background: white; margin-bottom: 20px; }
-
-.nav-arrow {
-    background: none; border: none; color: white; font-size: 110px; cursor: pointer;
-    position: absolute; top: 50%; transform: translateY(-50%);
+.gallery__img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
-.prev { left: -100px; } /* Flèches déportées */
-.next { right: -100px; }
 
+.gallery__text-container {
+    flex: 1;
+    color: white;
+}
+
+.gallery__text-container h3 {
+    font-family: var(--font-main); /* Californian FB pour le titre projet */
+    font-size: 2.8rem;
+    text-transform: uppercase;
+}
+
+.gallery__line {
+    width: 100%;
+    height: 2px;
+    background: white;
+    margin: 15px 0;
+}
+
+/* Croix de fermeture */
 .gallery__close {
     position: absolute;
-    top: 30px;
-    right: 50px;
-    font-size: 70px;
+    top: 20px;
+    right: 40px;
     color: white;
+    font-size: 60px;
     background: none;
     border: none;
     cursor: pointer;
