@@ -1,25 +1,52 @@
 document.addEventListener('DOMContentLoaded', () => {
     const bubble = document.getElementById('js-bubble');
     const services = document.getElementById('js-services');
+    const projectsSection = document.getElementById('js-projects-section');
+    const linkProjets = document.getElementById('link-projets');
+    const linkAccueil = document.getElementById('link-accueil');
 
-    // 1. Apparition de la bulle (0.8s après le chargement pour laisser respirer)
+    // --- ANIMATION D'ACCUEIL (Ton code existant) ---
     setTimeout(() => {
-        bubble.classList.add('bubble--active');
+        if(bubble) bubble.classList.add('bubble--active');
     }, 800);
 
-    // 2. Disparition de la bulle après 3.5 secondes
     setTimeout(() => {
-        bubble.classList.remove('bubble--active');
-        
-        // On attend la fin de la transition de fermeture (0.5s) avant d'afficher les services
-        setTimeout(() => {
-            // On cache physiquement la bulle pour qu'elle ne gêne pas les clics
-            bubble.style.pointerEvents = 'none'; 
-            bubble.style.display = 'none';
-            
-            // 3. Apparition fluide des services
-            services.classList.add('services--visible');
-        }, 500);
+        if(bubble) {
+            bubble.classList.remove('bubble--active');
+            setTimeout(() => {
+                bubble.style.pointerEvents = 'none'; 
+                bubble.style.display = 'none';
+                if(services) services.classList.add('services--visible');
+            }, 500);
+        }
+    }, 4000);
 
-    }, 4000); // 4000ms total pour laisser le temps de lire le texte
+    // --- GESTION DES CLICS (La partie manquante) ---
+
+    // Clic sur "Voir mes projets"
+    if (linkProjets) {
+        linkProjets.addEventListener('click', (e) => {
+            e.preventDefault(); // Empêche le rechargement de la page
+            
+            // On s'assure que la section est visible (au cas où elle serait en display:none)
+            projectsSection.style.display = 'block';
+            
+            // On scrolle doucement vers la section
+            projectsSection.scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start' 
+            });
+        });
+    }
+
+    // Clic sur "Accueil" (pour remonter en haut)
+    if (linkAccueil) {
+        linkAccueil.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
 });
