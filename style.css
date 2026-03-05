@@ -1,144 +1,140 @@
-/* RESET DE BASE */
+/* --- RESET --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Montserrat', sans-serif;
-    overflow-x: hidden;
+html {
+    scroll-behavior: smooth;
 }
 
-/* HEADER EN OVERLAY SUR L'IMAGE */
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* --- NAVIGATION (Overlay) --- */
 .header {
     position: absolute;
     top: 0;
-    left: 0;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 5%;
-    z-index: 10;
+    padding: 20px 5%;
+    z-index: 100;
 }
 
 .header__logo img {
-    height: 80px; /* Ajuste selon ton logo */
+    height: 70px;
 }
 
 .nav-list {
     display: flex;
     list-style: none;
-    gap: 10px;
-    align-items: center;
+    gap: 15px;
 }
 
-.nav-list__link {
+.nav-link {
     text-decoration: none;
-    color: #005d8f; /* Bleu du texte original */
-    font-weight: bold;
+    color: #005d8f; /* Bleu comme sur l'image */
+    font-weight: 700;
     font-size: 1.1rem;
 }
 
-.nav-list__link:hover {
-    color: #7fb432; /* Vert au survol */
+.nav-sep {
+    color: #7fb432; /* Vert de l'image */
+    font-weight: bold;
 }
 
-.nav-list__sep {
-    color: #005d8f;
-}
-
-/* SECTION ACCUEIL */
+/* --- SECTION HERO --- */
 .hero {
-    position: relative;
     height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* Aligné vers le haut pour le titre */
-    align-items: center;
-    padding-top: 15vh;
-    text-align: center;
     background: url('fondaccueil.jpg') no-repeat center center;
     background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.hero__content {
+    text-align: center;
+    width: 90%;
+    max-width: 1200px;
+    margin-top: -50px; /* Remonte un peu le contenu */
 }
 
 .hero__title {
     font-family: 'Gochi Hand', cursive;
-    font-size: 3.5rem;
+    font-size: clamp(2rem, 5vw, 4rem);
     color: #444;
-    letter-spacing: 2px;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
-/* LA BULLE ET SON ANIMATION */
+/* --- BULLE ANIMÉE --- */
 .bubble {
-    background: rgba(255, 255, 255, 0.7);
+    display: inline-block;
+    background: rgba(228, 215, 172, 0.8); /* Couleur beige/jaune sable de l'image */
     border: 2px solid #fff;
     padding: 20px 40px;
-    border-radius: 20px;
-    max-width: 500px;
-    position: relative;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-radius: 25px;
+    margin-bottom: 50px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     
-    /* Animation de la bulle au chargement */
-    animation: popBubble 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    /* Animation Pop */
+    transform: scale(0);
+    animation: popIn 0.6s cubic-bezier(0.17, 0.89, 0.32, 1.49) forwards;
 }
 
 .bubble__text {
     font-family: 'Gochi Hand', cursive;
     font-size: 1.8rem;
-    color: #6d4c41;
+    color: #5d4037;
     margin: 0;
 }
 
-/* ANIMATION DES SERVICES (APPARAISSENT APRÈS LA BULLE) */
+/* --- SERVICES ANIMÉS --- */
 .services {
     display: flex;
-    gap: 30px;
-    margin-top: 50px;
-    opacity: 0; /* Cachés au début */
-    animation: fadeInServices 1s ease forwards;
-    animation-delay: 1s; /* Attend que la bulle finisse */
+    justify-content: center;
+    gap: 20px;
+    
+    /* Animation apparition différée */
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideUp 0.8s ease forwards;
+    animation-delay: 0.8s; /* Attend que la bulle pop */
 }
 
 .service-card {
     background: rgba(255, 255, 255, 0.9);
     padding: 20px;
     border-radius: 15px;
-    width: 250px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    width: 260px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-.service-card__icon {
+.service-icon {
     width: 50px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
-.service-card__text {
-    font-size: 0.9rem;
-    color: #333;
-    line-height: 1.4;
+/* --- KEYFRAMES --- */
+@keyframes popIn {
+    to { transform: scale(1); }
 }
 
-/* KEYFRAMES */
-
-/* La bulle surgit et rebondit */
-@keyframes popBubble {
-    0% { transform: scale(0); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* Les services apparaissent en fondu vers le haut */
-@keyframes fadeInServices {
-    0% { opacity: 0; transform: translateY(20px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    .hero__title { font-size: 2rem; }
-    .services { flex-direction: column; }
-    .header { flex-direction: column; gap: 10px; }
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+    .services { flex-direction: column; align-items: center; }
+    .hero__title { font-size: 2.5rem; }
+    .header { flex-direction: column; padding: 10px; }
 }
