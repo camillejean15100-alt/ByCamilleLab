@@ -5,59 +5,85 @@
     --color-beige: rgba(234, 220, 155, 0.95);
     --font-main: 'Californian FB', serif;
     --font-accent: 'Gochi Hand', cursive;
+    --transition-speed: 0.5s;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
 
 body {
     width: 100%;
     height: 100vh;
     font-family: var(--font-main);
-    overflow: hidden;
+    overflow: hidden; /* Garde l'aspect application fixe */
 }
 
-/* --- NAVIGATION --- */
+/* --- NAVIGATION (Header fixe pour rester au-dessus) --- */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center; 
     padding: 30px 80px;
-    position: fixed; /* Fixé en haut pour ne jamais bouger */
-    width: 100%;
+    position: fixed; /* Indispensable pour être accessible sur toutes les sections */
     top: 0;
     left: 0;
+    width: 100%;
     z-index: 5000; /* Priorité absolue sur tout le reste */
     background: transparent;
 }
 
-.header__logo img { height: 110px; width: auto; }
+.header__logo img { 
+    height: 110px; 
+    width: auto; 
+    display: block; 
+}
 
-.nav-list { display: flex; list-style: none; align-items: center; }
+.nav-list { 
+    display: flex; 
+    list-style: none; 
+    align-items: center; 
+}
 
 .nav-list__link {
     text-decoration: none;
     color: var(--color-primary);
     font-weight: bold;
     font-size: 1.2rem;
+    transition: color 0.3s ease;
     cursor: pointer;
-    transition: 0.3s;
 }
 
-.nav-list__link--active { color: var(--color-secondary); }
+.nav-list__link:hover, 
+.nav-list__link--active { 
+    color: var(--color-secondary); 
+}
 
-.nav-list__sep { color: var(--color-primary); margin: 0 15px; font-weight: bold; }
+.nav-list__sep { 
+    color: var(--color-primary); 
+    margin: 0 15px; 
+    font-weight: bold; 
+}
 
-/* --- ACCUEIL --- */
+/* --- SECTION ACCUEIL --- */
 .app-container {
     width: 100%;
     height: 100vh;
     background: url("fondaccueil.jpg") no-repeat center center fixed;
     background-size: cover;
-    display: flex; /* Toujours visible au départ */
+    display: flex;
     flex-direction: column;
+    position: relative;
+    z-index: 10;
 }
 
-.hero { flex: 1; position: relative; }
+.hero { 
+    flex: 1; 
+    position: relative; 
+    width: 100%; 
+}
 
 .hero__title {
     text-align: center;
@@ -65,49 +91,178 @@ body {
     font-size: 60px;
     color: var(--color-dark);
     text-shadow: 2px 2px 0 white;
-    margin-top: 140px; /* Espace pour le header */
+    margin-top: 140px; /* Espace pour le header fixe */
 }
 
-/* Bulles et Services (Ton design d'origine) */
+/* Bulle calée */
 .bubble {
     background: var(--color-beige);
-    width: 450px; min-height: 160px; padding: 20px 40px;
-    border-radius: 60px; display: flex; align-items: center;
-    position: absolute; top: 35%; left: 32%; z-index: 10;
-    opacity: 0; transform: scale(0.6); visibility: hidden;
-    transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    width: 450px;
+    min-height: 160px;
+    padding: 20px 40px;
+    border-radius: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 35%; 
+    left: 32%;
+    z-index: 20;
+    opacity: 0;
+    transform: scale(0.6);
+    visibility: hidden;
+    transition: all var(--transition-speed) cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-.bubble--active { opacity: 1; transform: scale(1); visibility: visible; }
 
-.services {
-    display: flex; gap: 30px; position: absolute;
-    bottom: 30%; right: 15%; z-index: 5;
-    opacity: 0; transform: translateY(50px);
-    transition: 0.8s ease-out;
+.bubble--active { 
+    opacity: 1; 
+    transform: scale(1); 
+    visibility: visible; 
 }
-.services--visible { opacity: 1; transform: translateY(0); }
+
+.bubble::after {
+    content: '';
+    position: absolute;
+    left: -25px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-right: 30px solid var(--color-beige);
+}
+
+.bubble__text {
+    color: var(--color-dark);
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Services */
+.services {
+    display: flex;
+    gap: 30px;
+    position: absolute;
+    bottom: 30%; 
+    right: 15%;  
+    z-index: 15;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+}
+
+.services--visible { 
+    opacity: 1; 
+    transform: translateY(0); 
+}
 
 .service-card {
-    background: var(--color-beige); width: 250px; height: 330px;
-    border-radius: 40px; display: flex; flex-direction: column;
-    align-items: center; justify-content: center; padding: 25px;
+    background: var(--color-beige);
+    width: 250px;
+    height: 330px;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
 }
-.service-card__icon { height: 90px; margin-bottom: 25px; }
 
-/* --- PAGE PROJETS --- */
+.service-card__icon { 
+    height: 90px; 
+    margin-bottom: 25px; 
+}
+
+.service-card__text {
+    color: var(--color-dark);
+    font-weight: bold;
+    font-size: 1.15rem;
+    text-align: center;
+    line-height: 1.3;
+}
+
+/* --- VUE PROJETS (Activée par JS) --- */
 .projects-view {
-    display: none; /* Masqué par défaut */
-    position: fixed;
+    display: none; /* Piloté par le JS */
+    position: fixed; 
     inset: 0;
     background: url("voirmesprojets.jpg") no-repeat center center fixed;
-    background-size: cover;
-    z-index: 4000; /* Juste en dessous du header */
-    padding-top: 180px;
+    background-size: cover; 
+    z-index: 4000; /* Entre l'accueil et le menu */
+    padding-top: 185px; 
+    text-align: center;
     overflow-y: auto;
 }
 
-.portfolio-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
-    max-width: 1100px; margin: 0 auto; padding-bottom: 50px;
+.projects__title {
+    font-family: var(--font-accent); 
+    color: var(--color-primary);
+    font-size: 40px; 
+    text-shadow: 2px 2px 0 white; 
+    margin-bottom: 30px;
 }
-.project-card { background: white; aspect-ratio: 1.5; border-radius: 12px; cursor: pointer; }
+
+.portfolio-grid {
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 20px;
+    max-width: 1100px; 
+    margin: 0 auto; 
+    padding: 0 40px 40px 40px;
+}
+
+.project-card {
+    background: white; 
+    aspect-ratio: 1.5; 
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1); 
+    cursor: pointer;
+}
+
+/* --- GALERIE --- */
+.gallery-overlay {
+    position: fixed; 
+    inset: 0; 
+    background: rgba(29, 112, 183, 0.95);
+    z-index: 6000; 
+    display: none; 
+    align-items: center; 
+    justify-content: center;
+}
+
+.gallery--active { 
+    display: flex !important; 
+}
+
+.gallery__window {
+    background: #2a7ebc; 
+    border-radius: 40px; 
+    padding: 60px;
+    display: flex; 
+    gap: 50px; 
+    width: 950px; 
+    align-items: center;
+}
+
+.gallery__close { 
+    position: absolute; 
+    top: 40px; 
+    right: 60px; 
+    color: white; 
+    font-size: 80px; 
+    background: none; 
+    border: none; 
+    cursor: pointer; 
+}
+
+.arrow-icon { 
+    font-size: 120px; 
+    color: white; 
+    cursor: pointer; 
+}
+
+.nav-arrow { 
+    background: none; 
+    border: none; 
+}
