@@ -341,37 +341,40 @@ html, body {
 }
 
 /* ==========================================================================
-   DÉCORATION : COCCINELLE ET TRAIT (À GAUCHE - HORS ACCUEIL)
+   DÉCORATION : COCCINELLE (PLACÉE PRÈS DU TITRE)
    ========================================================================== */
 
-/* 1. Le conteneur positionné à gauche */
-.decoration-coccinelle {
-    display: none;            /* Caché par défaut */
-    position: fixed;
-    top: 0;
-    left: 0;                 /* ON PASSE À GAUCHE */
-    width: 350px;
-    height: 250px;
-    z-index: 4500;           /* Sous le menu pour ne pas gêner */
-    pointer-events: none;    /* Pour pouvoir cliquer sur ce qui est dessous */
+/* 1. On s'assure que le parent (la vue projets) permet le placement absolu */
+.projects-view {
+    position: relative; /* Indispensable pour que la coccinelle se cale dessus */
 }
 
-/* 2. Affichage automatique si le body n'est pas l'accueil */
+/* 2. Positionnement de la coccinelle par rapport au titre */
+.decoration-coccinelle {
+    display: none; 
+    position: absolute;
+    
+    /* AJUSTEMENTS POUR ÊTRE VERS LE TITRE À GAUCHE */
+    top: 130px;         /* Ajuste cette valeur pour monter/descendre vers le titre */
+    left: 15%;          /* Aligné avec le début de ton texte ou ton logo */
+    
+    width: 200px;       /* Taille adaptée pour ne pas écraser le titre */
+    height: 120px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* 3. Affichage (sauf accueil) */
 body:not(.page-accueil) .decoration-coccinelle {
     display: block !important;
 }
 
-/* 3. L'image calée en haut à gauche */
+/* 4. L'image avec le bon chemin GitHub */
 body:not(.page-accueil) .decoration-coccinelle::after {
     content: '';
     display: block;
     width: 100%;
     height: 100%;
-    /* Utilisation du chemin relatif sécurisé pour GitHub */
-    background: url("./traitcoccinelle.png") no-repeat top left; 
+    background: url("./traitcoccinelle.png") no-repeat center left;
     background-size: contain;
 }
-
-/* ==========================================================================
-   FIN DE SECTION : COCCINELLE
-   ========================================================================== */
