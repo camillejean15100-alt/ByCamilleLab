@@ -386,7 +386,7 @@ html, body {
 }
 
 .about__title {
-    font-family: 'Gochi Hand', cursive;
+    font-family: 'Gochi Hand';
     color: #1D70B8;            /* BLEU CALIFORNIAN FB */
     font-size: 3.5rem;
     margin-bottom: 35px;
@@ -394,7 +394,7 @@ html, body {
 }
 
 .about__description {
-    font-family: 'Gochi Hand', cursive;
+    font-family: 'CalifornianFB';
     color: #1D70B8;            /* TOUT EN BLEU */
     font-size: 1.8rem;
     line-height: 1.5;
