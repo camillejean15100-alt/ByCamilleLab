@@ -1,85 +1,163 @@
-/* --- POLICES ET RESET --- */
+/* --- 1. POLICES ET RESET --- */
 @import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
 
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body { 
-    height: 100vh; 
-    overflow: hidden; 
-    background-color: #f3eed7; 
-    font-family: "Californian FB", serif; 
-    /* Ajout du fond si tu veux l'utiliser */
-    background-image: url('fondsite.jpg');
-    background-size: cover;
+body {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    font-family: "Californian FB", serif;
+    background-color: #93d5e6; /* Bleu ciel de secours */
 }
 
-/* --- HEADER --- */
+/* --- 2. HEADER (Navigation de la maquette) --- */
 .main-header {
-    position: fixed; 
-    top: 0; width: 100%; height: 80px;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 0 50px; z-index: 1000;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 60px;
+    z-index: 1000;
 }
-.logo { width: 110px; }
-.navigation { color: #1D70B7; font-weight: bold; font-size: 1.1rem; }
-.navigation a { text-decoration: none; color: inherit; margin-left: 20px; }
 
-/* --- LOGIQUE DE NAVIGATION --- */
-.view { 
+.logo {
+    width: 130px;
+    height: auto;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: #1D70B7;
+    font-weight: bold;
+    margin-left: 20px;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+.navigation a:hover {
+    color: #82b541; /* Vert herbe au survol */
+}
+
+/* --- 3. LOGIQUE DE NAVIGATION (PAGES) --- */
+.view {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     display: none; /* Cache tout par défaut */
-    position: fixed; 
-    top: 0; left: 0; 
-    width: 100vw; height: 100vh; 
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: center; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Force l'affichage de l'accueil si aucun lien n'est cliqué */
-#accueil { display: flex; } 
-
-/* Affiche la section ciblée par le menu */
-:target { display: flex !important; }
-
-/* Cache l'accueil si une autre section est ciblée */
-:target ~ #accueil { display: none !important; }
-
-/* --- CONTENU --- */
-h1 { 
-    font-family: 'Gochi Hand'; font-size: 4rem; color: #333366; 
-    -webkit-text-stroke: 1px #fff; text-align: center; margin-bottom: 10px;
-}
-.mission { 
-    color: #333366; font-size: 1.6rem; margin-bottom: 40px; text-align: center; 
+/* Affiche l'accueil par défaut OU la section cliquée (#) */
+body:not(:has(:target)) #accueil, :target {
+    display: flex !important;
 }
 
-/* --- SERVICES (DÉCALÉS À DROITE) --- */
-.services-grid { 
-    display: flex; gap: 30px; width: 100%;
-    justify-content: flex-end; 
-    padding-right: 15%; /* Ajuste ici pour décaler plus ou moins */
+/* --- 4. SECTION ACCUEIL (Style Maquette) --- */
+#accueil {
+    justify-content: flex-start;
+    padding-top: 140px;
 }
 
-.card {
-    background: #e9e2c5; width: 220px; height: 250px; 
-    border-radius: 30px; padding: 25px; 
-    display: flex; flex-direction: column; 
-    justify-content: center; align-items: center; gap: 15px;
-    text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-    transition: 0.3s;
+/* L'image de fond qui contient la fille et le paysage */
+.full-bg-img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
 }
-.card:hover { transform: translateY(-10px); }
-.card img { height: 70px; width: auto; object-fit: contain; }
-.card p { color: #1D70B7; font-weight: 900; font-size: 1.1rem; }
 
-/* --- PORTFOLIO --- */
-.port-title { font-family: 'Gochi Hand'; color: #1D70B7; font-size: 2.5rem; margin-bottom: 30px; }
+h1 {
+    font-family: 'Gochi Hand';
+    font-size: 3.8rem;
+    color: #333366;
+    text-align: center;
+    margin-bottom: 40px;
+    -webkit-text-stroke: 1px #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+/* LES 3 BULLES D'INFO (Placées à droite de la fille) */
+.services-row {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    width: 100%;
+    padding-left: 25%; /* Pousse les bulles pour ne pas cacher la fille */
+}
+
+.info-bubble {
+    background: rgba(233, 226, 197, 0.85); /* Beige transparent */
+    width: 220px;
+    min-height: 250px;
+    padding: 25px;
+    border-radius: 25px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.info-bubble img {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+}
+
+.info-bubble p {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.3;
+    font-weight: 500;
+}
+
+/* --- 5. SECTION PORTFOLIO (Carrés blancs épurés) --- */
+.section-title {
+    font-family: 'Gochi Hand';
+    font-size: 3rem;
+    color: #1D70B7;
+    margin-bottom: 30px;
+}
+
 .grid-portfolio {
-    display: grid; grid-template-columns: repeat(4, 220px); 
-    gap: 25px; justify-content: center; 
+    display: grid;
+    grid-template-columns: repeat(4, 200px);
+    gap: 25px;
+    justify-content: center;
 }
-.box { background: white; height: 170px; border-radius: 15px; overflow: hidden; }
+
+.box {
+    background: white;
+    height: 200px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s, border 0.3s;
+    cursor: pointer;
+}
+
+.box:hover {
+    transform: scale(1.05);
+    border: 3px solid #82b541;
+}
+
+/* --- 6. AUTRES SECTIONS (Propos, Tarifs, Contact) --- */
+#propos, #tarifs, #contact {
+    background-color: #f3eed7; /* Fond beige uni pour la clarté */
+}
