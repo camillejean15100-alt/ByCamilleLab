@@ -340,49 +340,62 @@ html, body {
     line-height: 1.6; 
 }
 
-/* --- SECTION À PROPOS : IMAGE GRANDE ET TEXTE CENTRÉ --- */
+/* --- SECTION À PROPOS : AVEC LE FOND IMAGE --- */
 
 .about-section {
-    background-color: #F1EBD8; /* Même fond beige que les projets */
+    /* ON REMET LE FOND IMAGE COMME DANS PROJETS */
+    background: url("./voirmesprojets.jpg") no-repeat center center;
+    background-size: cover;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 80px 0;
+    padding: 60px 0;
+    position: relative;
 }
 
 .about-container {
-    max-width: 1200px;
-    width: 90%;
     display: flex;
-    align-items: center;      /* Aligne photo et texte verticalement */
+    align-items: center;
     justify-content: center;
-    gap: 100px;               /* Gros espace entre les deux blocs */
+    max-width: 1400px;
+    width: 90%;
+    gap: 80px; /* Espace entre l'image et le texte */
 }
 
-/* 1. L'IMAGE : Plus grande à gauche */
-.about__profile-photo {
-    width: 550px;             /* IMAGE PLUS GRANDE */
-    height: auto;
-    border-radius: 40px;      /* Coins arrondis comme sur ton design */
-    display: block;
-}
-
-/* 2. LE TEXTE : Centré et en bleu Californian FB */
-.about__content {
+/* L'IMAGE : Grande, ronde, bordure blanche épaisse */
+.about__image-side {
     flex: 1;
-    text-align: center;       /* TEXTE CENTRÉ DANS SON BLOC */
-    color: #1D70B8;            /* BLEU CALIFORNIAN FB */
-    font-family: 'Gochi Hand', cursive; /* TOUT EN GOCHI HAND */
+    display: flex;
+    justify-content: flex-end;
+}
+
+.about__profile-photo {
+    width: 550px;             /* IMAGE MASSIVE */
+    height: 550px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 15px solid white; /* BORDURE BLANCHE DU MODÈLE */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* LE TEXTE : Centré et bleu Californian FB */
+.about__text-side {
+    flex: 1;
+    text-align: center;       /* TEXTE BIEN CENTRÉ */
 }
 
 .about__title {
-    font-size: 3.5rem;        /* Titre imposant */
-    margin-bottom: 40px;      /* Espace sous le titre */
+    font-family: 'Gochi Hand', cursive;
+    color: #1D70B8;            /* BLEU CALIFORNIAN FB */
+    font-size: 3.5rem;
+    margin-bottom: 35px;
     line-height: 1.1;
 }
 
 .about__description {
-    font-size: 1.8rem;        /* Texte bien lisible */
-    line-height: 1.6;
+    font-family: 'Gochi Hand', cursive;
+    color: #1D70B8;            /* TOUT EN BLEU */
+    font-size: 1.8rem;
+    line-height: 1.5;
 }
