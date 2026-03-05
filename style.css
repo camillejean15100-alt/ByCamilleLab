@@ -244,46 +244,151 @@ body {
 }
 
 /* ==========================================================================
-   GALERIE OVERLAY (CONTRÔLE TOTAL)
+   GALERIE OVERLAY (L'ARRIÈRE-PLAN SOMBRE)
    ========================================================================== */
-
 .gallery-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(29, 112, 183, 0.96);
+    inset: 0;
+    background: rgba(29, 112, 183, 0.96); /* Bleu marine très opaque */
     z-index: 9999;
-    display: none;
+    display: none; /* Piloté par le JS via .gallery--active */
     align-items: center;
     justify-content: center;
+    backdrop-filter: blur(5px);
 }
 
 .gallery--active {
     display: flex !important;
 }
 
-/* La fenêtre bleue qui s'affiche au milieu */
-.gallery__window {
-    background: #2a7ebc;
-    border-radius: 50px;
-    padding: 50px;
+/* Conteneur pour aligner flèches + fenêtre */
+.gallery__wrapper {
     display: flex;
     align-items: center;
-    gap: 40px;
-    width: 90%;
-    max-width: 1050px;
+    justify-content: center;
+    width: 95%;
+    max-width: 1300px;
+    gap: 30px;
     position: relative;
 }
 
+/* ==========================================================================
+   LA FENÊTRE CENTRALE (RECTANGLE BLEU CLAIR)
+   ========================================================================== */
+.gallery__window {
+    background: #2a7ebc; /* Bleu plus clair comme sur ta capture */
+    border-radius: 40px;
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    width: 1000px;
+    min-height: 500px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+    position: relative;
+}
+
+/* --- PARTIE IMAGE (GAUCHE) --- */
+.gallery__img-container {
+    flex: 1.2; /* L'image prend un peu plus de place */
+}
+
+.gallery__img-container img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1.5; /* Force le format rectangulaire */
+    object-fit: cover;
+    border-radius: 15px;
+    display: block;
+    background: white; /* Fond blanc si l'image est absente */
+}
+
+/* --- PARTIE TEXTE (DROITE) --- */
+.gallery__text-container {
+    flex: 1;
+    color: white;
+    text-align: left;
+}
+
+#gallery-title {
+    font-family: 'Californian FB', serif; /* Ta police demandée */
+    font-size: 3.5rem;
+    line-height: 1;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.gallery__line {
+    width: 150px; /* Ligne plus longue comme sur ton image */
+    height: 3px;
+    background-color: white;
+    margin-bottom: 30px;
+}
+
+#gallery-desc {
+    font-family: 'Californian FB', serif;
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   COMMANDES (CROIX ET FLÈCHES)
+   ========================================================================== */
+
+/* BOUTON FERMER (X) */
 .gallery__close {
     position: absolute;
-    top: -70px; /* Sortie de la boîte bleue */
-    right: 0;
+    top: 40px;
+    right: 50px;
     color: white;
-    font-size: 80px;
+    font-size: 90px; /* Très grand */
     background: none;
     border: none;
     cursor: pointer;
+    line-height: 0.5;
+    z-index: 10001;
+    transition: opacity 0.2s;
+}
+
+.gallery__close:hover {
+    opacity: 0.7;
+}
+
+/* FLÈCHES (‹ et ›) */
+.nav-arrow {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    transition: transform 0.2s;
+}
+
+.nav-arrow:hover {
+    transform: scale(1.2);
+}
+
+.arrow-icon {
+    font-size: 120px; /* Taille immense pour le style */
+    color: white;
+    font-weight: 100; /* Finesse des traits */
+    line-height: 1;
+}
+
+/* Responsive pour tablettes */
+@media (max-width: 1100px) {
+    .gallery__window {
+        flex-direction: column;
+        width: 90%;
+        padding: 40px;
+        text-align: center;
+    }
+    .gallery__text-container {
+        text-align: center;
+    }
+    .gallery__line {
+        margin: 0 auto 20px;
+    }
+    .gallery__img-container {
+        max-width: 100%;
+    }
 }
