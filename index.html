@@ -9,16 +9,21 @@
 </head>
 
 <body>
+    <input type="radio" name="gallery-ctrl" id="close" checked>
+    <input type="radio" name="gallery-ctrl" id="proj-1">
+    <input type="radio" name="gallery-ctrl" id="proj-2">
+    <input type="radio" name="gallery-ctrl" id="proj-3">
+
     <div class="app-container">
         <header class="header">
-         <div class="header__logo">
+            <div class="header__logo">
                 <img src="logocamille.png" alt="Camille Lab">
             </div>
             <nav class="header__nav">
                 <ul class="nav-list">
                     <li><a href="#" class="nav-list__link">Accueil</a></li>
                     <span class="nav-list__sep">|</span>
-                    <li><a href="#" class="nav-list__link">Voir mes projets</a></li>
+                    <li><a href="#view-projets" class="nav-list__link">Voir mes projets</a></li>
                     <span class="nav-list__sep">|</span>
                     <li><a href="#" class="nav-list__link">À Propos</a></li>
                     <span class="nav-list__sep">|</span>
@@ -29,68 +34,66 @@
             </nav>
         </header>
 
-
-
-        <main class="hero" style="background: url('fondaccueil.jpg') no-repeat center center fixed; background-size: cover;" >
+        <main class="hero" style="background: url('fondaccueil.jpg') no-repeat center center fixed; background-size: cover;">
             <h1 class="hero__title">LE GRAPHISME AU SERVICE DE LA TERRE</h1>
-
-            <div id="js-bubble" class="bubble">
-              <p class="bubble__text">« ma mission : cultivons ensemble votre image de marque »</p>
+            <div class="bubble">
+                <p class="bubble__text">« ma mission : cultivons ensemble votre image de marque »</p>
             </div>
-
-
-            <div id="js-services" class="services">
+            <div class="services">
                 <div class="service-card">
                     <img src="certif.png" class="service-card__icon" alt="Identité">
                     <p class="service-card__text">Un logo et une image de marque qui vous ressemblent.</p>
                 </div>
-                <div class="service-card">
-                    <img src="panier.png" class="service-card__icon" alt="Packaging">
-                    <p class="service-card__text">Création d'étiquettes & de packagings pour vos produits.</p>
-               </div>
-                <div class="service-card">
-                    <img src="panneaux.png" class="service-card__icon" alt="Signalétique">
-                   <p class="service-card__text">Panneaux & supports pour rendre votre ferme visible.</p>
                 </div>
-            </div>
         </main>
-    </div>
 
-        <section id="view-projets" class="projects-view" style="background: url('voirmesprojets.jpg') no-repeat center center fixed; background-size: cover;" >
+        <section id="view-projets" class="projects-view" style="background: url('voirmesprojets.jpg') no-repeat center center fixed; background-size: cover;">
             <h2 class="projects__title">"De la graine à l'image : mes dernières réalisations."</h2>
+            
             <div class="portfolio-grid">
-                <div class="project-card"></div>
-                <div class="project-card"></div>
-                <div class="project-card"></div>
-                <div class="project-card"></div>
-                <div class="project-card"></div>
-                <div class="project-card"></div>
-                <div class="project-card"></div>
-                <div class="project-card"></div>
+                <label for="proj-1" class="project-card">
+                    <img src="vignette1.jpg" alt="Projet 1">
+                </label>
+                <label for="proj-2" class="project-card">
+                    <img src="vignette2.jpg" alt="Projet 2">
+                </label>
+                <label for="proj-3" class="project-card">
+                    <img src="vignette3.jpg" alt="Projet 3">
+                </label>
             </div>
         </section>
+    </div>
 
-        <div id="js-gallery-overlay" class="gallery-overlay">
-            <button id="js-close-gallery" class="gallery__close">×</button>
-            <div class="gallery__wrapper">
-                <button id="js-prev-btn" class="nav-arrow prev"><span class="arrow-icon">‹</span></button>
+    <div class="gallery-overlay">
+        <label for="close" class="gallery__close">×</label>
+        
+        <div class="gallery__wrapper">
+            <div class="gallery__content content-1">
                 <div class="gallery__window">
                     <div class="gallery__img-container">
-                        <img src="profil-photo.png" id="gallery-img" alt="Projet"> 
+                        <img src="grand-projet1.jpg" alt="Projet 1">
                     </div>
                     <div class="gallery__text-container">
-                        <h3 id="gallery-title">TITRE PROJET</h3>
+                        <h3>NOM DU PROJET 1</h3>
                         <div class="gallery__line"></div>
-                        <p id="gallery-desc">Description détaillée de la réalisation...</p>
+                        <p>Description de votre superbe travail pour la terre.</p>
                     </div>
                 </div>
-                <button id="js-next-btn" class="nav-arrow next"><span class="arrow-icon">›</span></button>
+            </div>
+
+            <div class="gallery__content content-2">
+                <div class="gallery__window">
+                    <div class="gallery__img-container">
+                        <img src="grand-projet2.jpg" alt="Projet 2">
+                    </div>
+                    <div class="gallery__text-container">
+                        <h3>NOM DU PROJET 2</h3>
+                        <div class="gallery__line"></div>
+                        <p>Une autre réalisation écologique et graphique.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
-
 </body>
-
 </html>
-
