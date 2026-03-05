@@ -354,9 +354,7 @@ html, body {
     position: absolute;
     
     /* POSITIONNEMENT PRÉCIS AUTOUR DU TITRE */
-    top: -20px;       /* Ajuste pour qu'elle survole le texte */
-    left: 10%;        /* Ajuste pour qu'elle commence à gauche du titre */
-    
+    top: -20px;       /* Ajuste pour qu'elle survole le texte */    
     width: 450px;     /* On l'agrandit pour que le trait soit long */
     height: 250px;
     z-index: 10;
