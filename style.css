@@ -341,39 +341,42 @@ html, body {
 }
 
 /* ==========================================================================
-   DÉCORATION : COCCINELLE ET TRAIT (VERS LE TITRE)
+   LA COCCINELLE PRÈS DU TITRE (ENFIN !)
    ========================================================================== */
 
-/* 1. Le conteneur doit être flexible pour suivre le titre */
+/* On cible la section qui contient ton titre "De la graine à l'image..." */
+.projects-section { 
+    position: relative; /* Indispensable pour caler la coccinelle */
+}
+
 .decoration-coccinelle {
     display: none;
-    position: absolute; /* Absolute pour bouger avec le titre */
+    position: absolute;
     
-    /* POSITIONNEMENT PRÈS DU TITRE */
-    top: 110px;        /* Ajuste pour monter/descendre vers ton titre bleu */
-    left: 20%;         /* Ajuste pour coller au début de ta phrase */
+    /* POSITIONNEMENT PRÉCIS AUTOUR DU TITRE */
+    top: -20px;       /* Ajuste pour qu'elle survole le texte */
+    left: 10%;        /* Ajuste pour qu'elle commence à gauche du titre */
     
-    width: 300px;      /* Largeur pour voir le trait + la coccinelle */
-    height: 180px;
-    z-index: 100;
+    width: 450px;     /* On l'agrandit pour que le trait soit long */
+    height: 250px;
+    z-index: 10;
     pointer-events: none;
 }
 
-/* 2. Affichage sur toutes les pages sauf l'accueil */
+/* Affichage uniquement hors accueil */
 body:not(.page-accueil) .decoration-coccinelle {
     display: block !important;
 }
 
-/* 3. L'image complète (Trait + Coccinelle) */
-body:not(.page-accueil) .decoration-coccinelle::after {
+/* L'image complète avec le trait */
+.decoration-coccinelle::after {
     content: '';
     display: block;
     width: 100%;
     height: 100%;
-    /* Chemin relatif pour GitHub */
     background: url("./traitcoccinelle.png") no-repeat center left;
     background-size: contain;
     
-    /* SI L'IMAGE EST TROP PETITE, ON PEUT L'AGRANDIR ICI */
-    transform: scale(1.2); 
+    /* ON AGRANDIT L'IMAGE ELLE-MÊME */
+    transform: scale(1.4); 
 }
