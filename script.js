@@ -1,15 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // --- 1. ÉLÉMENTS ---
     const bubble = document.getElementById('js-bubble');
     const services = document.getElementById('js-services');
     const gallery = document.getElementById('js-gallery-overlay');
-    const navLinks = document.querySelectorAll('.nav-list__link');
+    const closeBtn = document.getElementById('js-close-gallery');
+    const projectCards = document.querySelectorAll('.project-card');
 
-    // 1. ANIMATION D'ENTRÉE (Bulle puis Services)
-    // On garde cette partie, elle est très bien pour le côté visuel
+    // --- 2. TON ANIMATION D'ACCUEIL (INCHANGÉE) ---
+    // La bulle apparaît après 0.8s
     setTimeout(() => { 
         if(bubble) bubble.classList.add('bubble--active'); 
     }, 800);
 
+    // La bulle disparaît et les services arrivent après 4s
     setTimeout(() => {
         if(bubble) {
             bubble.classList.remove('bubble--active');
@@ -20,35 +23,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, 4000);
 
-    // 2. GESTION DU MENU ACTIF (SANS BUG)
-    // Au lieu de cacher des sections, on se contente de souligner le lien cliqué
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            // On retire la classe active de tous les liens
-            navLinks.forEach(l => l.classList.remove('nav-list__link--active'));
-            // On l'ajoute au lien cliqué
-            this.classList.add('nav-list__link--active');
-        });
-    });
-
-    // 3. GALERIE (OUVERTURE / FERMETURE)
-    document.querySelectorAll('.project-card').forEach(card => {
+    // --- 3. GALERIE (FIXE ET INSTANTANÉE) ---
+    // On active la galerie au clic sur les cartes blanches
+    projectCards.forEach(card => {
         card.addEventListener('click', () => {
-            if(gallery) gallery.classList.add('gallery--active');
+            if(gallery) {
+                gallery.classList.add('gallery--active');
+                // Bloque le scroll du fond quand la galerie est ouverte
+                document.body.style.overflow = 'hidden';
+            }
         });
     });
 
-    const closeBtn = document.getElementById('js-close-gallery');
+    // Fermeture de la galerie
     if(closeBtn) {
         closeBtn.addEventListener('click', () => {
             gallery.classList.remove('gallery--active');
+            document.body.style.overflow = 'auto';
         });
     }
 
     // Fermeture avec la touche Échap
     window.addEventListener('keydown', (e) => {
-        if (gallery && gallery.classList.contains('gallery--active')) {
-            if (e.key === "Escape") gallery.classList.remove('gallery--active');
+        if (e.key === "Escape" && gallery.classList.contains('gallery--active')) {
+            gallery.classList.remove('gallery--active');
+            document.body.style.overflow = 'auto';
         }
     });
 });
