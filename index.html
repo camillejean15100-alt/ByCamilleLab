@@ -3,44 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camille Lab</title>
-    <link rel="stylesheet" href="style.css?v=1">
+    <title>Camille Lab | Le graphisme au service de la terre</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <main class="site-wrapper">
-        <header>
-            <img src="logocamille.png" class="logo" alt="Logo">
-            <nav>
-                <a href="index.html">Accueil</a> |
-                <a href="projets.html">Voir mes projets</a> |
-                <a href="a-propos.html">À Propos</a> |
-                <a href="tarifs.html">Tarifs</a> |
-                <a href="contact.html">Contact</a>
-            </nav>
-        </header>
 
-        <h1>LE GRAPHISME AU SERVICE DE LA TERRE</h1>
-        
-        <div class="mission-bar">
-            « ma mission : cultivons ensemble votre image de marque »
+    <header class="main-header">
+        <img src="logocamille.png" alt="Logo Camille Lab" class="logo">
+        <nav class="navigation">
+            <a href="#">Accueil</a>
+            <a href="#portfolio">Voir mes projets</a>
+            <a href="#a-propos">À Propos</a>
+            <a href="#tarifs">Tarifs</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section id="accueil" class="view">
+        <div class="hero">
+            <h1>LE GRAPHISME AU SERVICE DE LA TERRE</h1>
+            <p class="mission">« ma mission : cultivons ensemble votre image de marque »</p>
         </div>
 
-        <section class="services-container">
-            <div class="card">
-                <img src="certif.png" alt="Icon">
+        <div class="services-grid">
+            <article class="card">
+                <img src="certif.png" alt="Icône Identité de marque">
                 <p>Un logo et une image de marque qui vous ressemblent.</p>
-            </div>
-            
-            <div class="card">
-                <img src="panier.png" alt="Icon">
+            </article>
+            <article class="card">
+                <img src="panier.png" alt="Icône Packaging">
                 <p>Création d'étiquettes & de packagings pour vos produits.</p>
-            </div>
-            
-            <div class="card">
-                <img src="panneaux.png" alt="Icon">
+            </article>
+            <article class="card">
+                <img src="panneaux.png" alt="Icône Signalétique">
                 <p>Panneaux & supports pour rendre votre ferme visible.</p>
-            </div>
-        </section>
-    </main>
+            </article>
+        </div>
+    </section>
+
+    <section id="portfolio" class="view">
+        <h2 class="port-title">"De la graine à l'image : mes dernières réalisations."</h2>
+        <div class="grid-portfolio">
+            <a href="#details" class="box"></a>
+            <a href="#details" class="box"></a>
+            <a href="#details" class="box"></a>
+            <a href="#details" class="box"></a>
+            <a href="#details" class="box"></a>
+            <a href="#details" class="box"></a>
+            <a href="#details" class="box"></a>
+            <a href="#details" class="box"></a>
+        </div>
+    </section>
+
+    <section id="a-propos" class="view">
+        <h2>À Propos</h2>
+    </section>
+    <section id="tarifs" class="view">
+        <h2>Tarifs</h2>
+    </section>
+    <section id="contact" class="view">
+        <h2>Contact</h2>
+    </section>
+
 </body>
 </html>
