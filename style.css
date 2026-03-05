@@ -68,7 +68,7 @@ h1 {
 
 /* MISSION BAR */
 .mission-bar {
-    font-family: 'Californian FB', serif;
+    font-family: 'Californian FB', bold;
     color: #333366;
     font-size: 1.8rem;
     padding: 10px 40px;
