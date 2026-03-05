@@ -17,7 +17,6 @@ body {
     height: 100%;
 }
 
-/* Header & Nav */
 header {
     width: 100%;
     display: flex;
@@ -25,34 +24,30 @@ header {
     padding: 20px 60px;
 }
 
-.logo { 
-    width: 140px; 
-}
+.logo { width: 140px; }
 
 nav { 
     font-weight: bold; 
     font-size: 1.2rem; 
+    color: #1D70B7;
 }
 
-/* Menu en Bleu #1D70B7 */
 nav a { 
     text-decoration: none; 
     color: #1D70B7; 
-    transition: color 0.3s;
+    transition: 0.3s;
 }
 
-/* Hover vert pour le menu */
-nav a:hover, nav a.active { 
-    color: #8fb43e; 
-}
+nav a:hover { color: #8fb43e; }
 
-/* Titre Principal */
 h1 {
     font-family: 'Gochi Hand', cursive;
     font-size: 4.5rem;
     color: #1D70B7;
     margin-top: 10px;
     text-transform: uppercase;
+    /* Voici ton contour blanc soutenu */
+    -webkit-text-stroke: 2px #FFFFFF;
 }
 
 .mission-bar {
@@ -63,15 +58,15 @@ h1 {
     margin: 15px 0 40px 0;
 }
 
-/* Services repositionnés vers le tournesol */
 .services-container {
     display: flex;
     gap: 20px;
-    margin-top: 60px; /* Plus d'espace sous le titre */
-    margin-left: 280px; /* Décalage vers la droite (tournesol) */
+    margin-top: 60px;
+    margin-left: 280px;
 }
 
 .card {
+    text-decoration: none;
     background: rgba(243, 238, 215, 0.9);
     width: 230px;
     height: 250px;
@@ -85,20 +80,15 @@ h1 {
     transition: all 0.3s ease;
 }
 
-/* Texte des services en Bleu #1D70B7 */
 .card p {
     color: #1D70B7;
     font-size: 1.1rem;
     line-height: 1.3;
 }
 
-/* Hover vert sur les services */
 .card:hover {
-    border: 2px solid #8fb43e;
+    box-shadow: 0 0 15px #8fb43e;
     transform: translateY(-5px);
 }
 
-.card img { 
-    height: 70px; 
-    margin-bottom: 15px; 
-}
+.card img { height: 70px; margin-bottom: 15px; }
