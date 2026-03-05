@@ -341,40 +341,30 @@ html, body {
 }
 
 /* ==========================================================================
-   DÉCORATION : COCCINELLE (PLACÉE PRÈS DU TITRE)
+   DÉCORATION : TRAIT EN BAS (CORRECTIF GITHUB)
    ========================================================================== */
 
-/* 1. On s'assure que le parent (la vue projets) permet le placement absolu */
-.projects-view {
-    position: relative; /* Indispensable pour que la coccinelle se cale dessus */
-}
-
-/* 2. Positionnement de la coccinelle par rapport au titre */
-.decoration-coccinelle {
-    display: none; 
-    position: absolute;
-    
-    /* AJUSTEMENTS POUR ÊTRE VERS LE TITRE À GAUCHE */
-    top: 130px;         /* Ajuste cette valeur pour monter/descendre vers le titre */
-    left: 15%;          /* Aligné avec le début de ton texte ou ton logo */
-    
-    width: 200px;       /* Taille adaptée pour ne pas écraser le titre */
-    height: 120px;
-    z-index: 10;
-    pointer-events: none;
-}
-
-/* 3. Affichage (sauf accueil) */
 body:not(.page-accueil) .decoration-coccinelle {
-    display: block !important;
+    display: block !important; /* Force l'affichage */
+    position: fixed;
+    bottom: 0;                /* ON PASSE EN BAS */
+    right: 0;                 /* ON RESTE À DROITE */
+    width: 350px;
+    height: 150px;            /* Hauteur ajustée pour ne voir que le trait */
+    z-index: 4500;
+    pointer-events: none;
+    overflow: hidden;         /* Cache tout ce qui dépasse du bloc (la coccinelle) */
 }
 
-/* 4. L'image avec le bon chemin GitHub */
 body:not(.page-accueil) .decoration-coccinelle::after {
     content: '';
     display: block;
     width: 100%;
     height: 100%;
-    background: url("./traitcoccinelle.png") no-repeat center left;
+    /* Utilisation du chemin relatif sécurisé pour GitHub */
+    background: url("./traitcoccinelle.png") no-repeat bottom right;
     background-size: contain;
+    
+    /* REMONTE L'IMAGE POUR CACHER LA COCCINELLE EN HAUT */
+    transform: translateY(-50px); /* Ajuste ce chiffre selon ton image originale */
 }
