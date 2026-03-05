@@ -9,26 +9,26 @@
 </head>
 
 <body>
-    <div class="app-container" id="view-accueil">
-        <header class="header">
-            <div class="header__logo">
-                <img src="logocamille.png" alt="Camille Lab">
-            </div>
-            <nav class="header__nav">
-                <ul class="nav-list">
-                    <li><a href="#" id="link-accueil" class="nav-list__link nav-list__link--active">Accueil</a></li>
-                    <span class="nav-list__sep">|</span>
-                    <li><a href="#" id="link-projets" class="nav-list__link">Voir mes projets</a></li>
-                    <span class="nav-list__sep">|</span>
-                    <li><a href="#" class="nav-list__link">À Propos</a></li>
-                    <span class="nav-list__sep">|</span>
-                    <li><a href="#" class="nav-list__link">Tarifs</a></li>
-                    <span class="nav-list__sep">|</span>
-                    <li><a href="#" class="nav-list__link">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
+    <header class="header">
+        <div class="header__logo">
+            <img src="logocamille.png" alt="Camille Lab">
+        </div>
+        <nav class="header__nav">
+            <ul class="nav-list">
+                <li><a href="#" id="link-accueil" class="nav-list__link nav-list__link--active">Accueil</a></li>
+                <span class="nav-list__sep">|</span>
+                <li><a href="#" id="link-projets" class="nav-list__link">Voir mes projets</a></li>
+                <span class="nav-list__sep">|</span>
+                <li><a href="#" class="nav-list__link">À Propos</a></li>
+                <span class="nav-list__sep">|</span>
+                <li><a href="#" class="nav-list__link">Tarifs</a></li>
+                <span class="nav-list__sep">|</span>
+                <li><a href="#" class="nav-list__link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
+    <div id="view-accueil" class="app-container">
         <main class="hero">
             <h1 class="hero__title">LE GRAPHISME AU SERVICE DE LA TERRE</h1>
 
@@ -76,9 +76,8 @@
                     <img src="profil-photo.png" id="gallery-img" alt="Projet"> 
                 </div>
                 <div class="gallery__text-container">
-                    <h3 id="gallery-title" style="color: white; font-family: var(--font-accent);">TITRE PROJET</h3>
-                    <div class="gallery__line" style="height: 2px; background: white; margin: 15px 0;"></div>
-                    <p id="gallery-desc" style="color: white;">Description détaillée de la réalisation...</p>
+                    <h3 id="gallery-title" style="color:white;">TITRE PROJET</h3>
+                    <p id="gallery-desc" style="color:white;">Description détaillée...</p>
                 </div>
             </div>
             <button id="js-next-btn" class="nav-arrow next"><span class="arrow-icon">›</span></button>
