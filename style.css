@@ -340,56 +340,62 @@ html, body {
     line-height: 1.6; 
 }
 
-/* --- SECTION À PROPOS --- */
+/* --- SECTION À PROPOS : TYPOS ET CENTRAGE EXACTS --- */
 
-/* Applique fondsite.jpg en fond */
 .about-section {
-    background-image: url("./fondsite.jpg"); /* Utilise fondsite.jpg */
-    background-size: cover;                  /* Adapte l'image à la section */
-    background-position: center;              /* Centre l'image de fond */
-    padding: 100px 0;                         /* Espacement pour aérer */
-    position: relative;
-    overflow: hidden;                        /* Pour le style */
-}
-
-/* Container centré et utilisant flexbox */
-.about-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    background: url("./fondsite.jpg") no-repeat center bottom;
+    background-size: cover;
+    min-height: 100vh;
     display: flex;
-    align-items: center;      /* Centre verticalement photo et texte */
-    justify-content: center;   /* Centre l'ensemble horizontalement */
-    gap: 60px;                /* Espace entre la photo et le texte */
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0 120px 0; /* Garde l'herbe visible en bas */
+    position: relative;
 }
 
-/* Style pour l'image (plus petite et à gauche) */
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1300px;
+    width: 90%;
+    gap: 70px;
+}
+
+/* IMAGE SANS BORDURE */
+.about__image-side {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
 .about__profile-photo {
-    width: 350px;             /* Taille réduite de la photo */
+    width: 500px;
     height: auto;
-    border-radius: 50%;       /* Forme circulaire */
-    border: 10px solid white; /* Bordure blanche */
+    border-radius: 50%;
+    border: none;
     display: block;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
 }
 
-/* Style pour le bloc texte (écrit en bleu) */
-.about__content {
-    flex: 1;                  /* Prend l'espace restant */
-    max-width: 600px;         /* Limite la largeur du texte */
-    color: #1D70B8;            /* Bleu Californian FB */
-    font-family: 'Gochi Hand', cursive; /* Gochi Hand pour tout le texte */
+/* TEXTE : BLEU CALIFORNIAN FB ET CENTRAGE */
+.about__text-side {
+    flex: 1;
+    text-align: center; /* CENTRE TOUT LE BLOC */
 }
 
-/* Titre en bleu et Gochi Hand */
+/* TITRE : GOCHI HAND */
 .about__title {
-    font-size: 2.8rem;
-    margin-bottom: 30px;
-    line-height: 1.2;
+    font-family: 'Gochi Hand', cursive;
+    color: #1D70B8;
+    font-size: 3.5rem;
+    margin-bottom: 25px;
+    line-height: 1.1;
 }
 
-/* Description en bleu et Gochi Hand */
+/* DESCRIPTION : CALIFORNIAN FB */
 .about__description {
-    font-size: 1.5rem;
-    line-height: 1.6;
+    font-family: 'Californian FB', serif; /* LA TYPO SÉRIF DU DESIGN */
+    color: #1D70B8;
+    font-size: 1.6rem;
+    line-height: 1.5;
 }
