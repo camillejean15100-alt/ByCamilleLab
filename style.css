@@ -344,7 +344,7 @@ html, body {
 
 .about-section {
     /* ON REMET LE FOND IMAGE COMME DANS PROJETS */
-    background: url("./voirmesprojets.jpg") no-repeat center center;
+    background: url("fondsite.jpg") no-repeat center center;
     background-size: cover;
     min-height: 100vh;
     display: flex;
