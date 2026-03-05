@@ -66,6 +66,8 @@ html, body {
 /* ==========================================================================
     LOGIQUE D'AFFICHAGE FIXE (ACCUEIL VS PROJETS)
    ========================================================================== */
+
+/* L'accueil est visible par défaut */
 .app-container {
     width: 100%;
     height: 100vh;
@@ -76,7 +78,9 @@ html, body {
     position: relative;
 }
 
+/* La vue projet est cachée par défaut */
 .projects-view {
+    display: none; 
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -86,13 +90,17 @@ html, body {
     z-index: 20;
     flex-direction: column;
     align-items: center;
-    justify-content: center; 
+    justify-content: center; /* CENTRE LA GRILLE AU MILIEU DE LA FEUILLE */
     overflow: hidden;
 }
 
+/* QUAND ON CLIQUE SUR PROJETS : On affiche projets et on cache accueil */
+#view-projets:target { display: flex; }
+#view-projets:target ~ .app-container { display: none; }
+
 
 /* ==========================================================================
-    CONTENU ACCUEIL (ANIMATIONS & BULLE BD)
+    CONTENU ACCUEIL (ANIMATIONS)
    ========================================================================== */
 .hero { flex: 1; position: relative; width: 100%; }
 
@@ -105,77 +113,59 @@ html, body {
     margin-top: 150px;
 }
 
-/* --- LA BULLE QUI PARLE (DESIGN BD) --- */
+/* --- BULLE DE BD CORRIGÉE --- */
 .bubble {
-    background: #2a7ebc; /* Bleu galerie */
-    width: 420px;
-    min-height: 140px;
-    padding: 25px 35px;
-    border-radius: 50px; 
+    background: #2a7ebc; /* Retour au bleu comme la galerie */
+    width: 400px;
+    min-height: 120px;
+    padding: 20px 30px;
+    border-radius: 40px; /* Forme plus "bulle de BD" */
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
     
     /* Positionnement vers la bouche */
-    top: 25%; 
-    left: 30%; 
+    top: 28%; 
+    left: 35%; 
     
     z-index: 10;
     opacity: 0;
     transform: scale(0.6);
     visibility: hidden;
     transition: all var(--transition-speed) cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    
+    /* Ombre pour la faire ressortir du fond */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
-.bubble--active { opacity: 1; transform: scale(1); visibility: visible; }
-
-/* --- LA BULLE (RETOUR AU BEIGE) --- */
-.bubble {
-    background: var(--color-beige); 
-    width: 420px;
-    min-height: 140px;
-    padding: 25px 35px;
-    border-radius: 50px; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 25%; 
-    left: 30%; 
-    z-index: 10;
-    opacity: 0;
-    transform: scale(0.6);
-    visibility: hidden;
-    transition: all var(--transition-speed) cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+.bubble--active { 
+    opacity: 1; 
+    transform: scale(1); 
+    visibility: visible; 
 }
 
-.bubble--active { opacity: 1; transform: scale(1); visibility: visible; }
-
-/* La pointe qui pointe vers la bouche */
+/* LA POINTE DE LA BULLE (L'effet BD qui parle) */
 .bubble::after {
     content: '';
     position: absolute;
-    bottom: -25px; 
-    left: 50px;    
+    bottom: -20px; /* Pointe vers le bas */
+    left: 40px;    /* Ajuste ce chiffre pour aligner la pointe avec la bouche */
     border-left: 20px solid transparent;
     border-right: 20px solid transparent;
-    border-top: 35px solid var(--color-beige); /* Beige aussi */
-    transform: rotate(20deg);
+    border-top: 30px solid #2a7ebc; /* Même bleu que la bulle */
+    transform: rotate(15deg); /* Incline la pointe vers le visage */
 }
 
 .bubble__text {
-    color: var(--color-primary); /* TEXTE EN BLEU */
+    color: white; /* Texte blanc sur fond bleu */
     font-family: var(--font-main);
-    font-size: 1.5rem; 
+    font-size: 1.4rem; /* Taille de texte ajustée */
     font-weight: bold;
     text-align: center;
     line-height: 1.2;
 }
 
-/* --- SERVICES (TEXTE EN BLEU) --- */
 .services {
     display: flex;
     gap: 30px;
@@ -199,33 +189,25 @@ html, body {
     box-shadow: 0 15px 35px rgba(0,0,0,0.1);
 }
 
-.service-card__text {
-    color: var(--color-primary); /* TEXTE EN BLEU CORRIGÉ */
-    font-weight: bold;
-    font-size: 1.15rem;
-    text-align: center;
-    line-height: 1.3;
-}
-
 /* ==========================================================================
-    PORTFOLIO & GALERIE (RESTE DU CODE)
+    SECTION PORTFOLIO (GRILLE)
    ========================================================================== */
 .projects__title {
     font-family: var(--font-accent);
     color: var(--color-primary);
     font-size: 42px;
-    margin-bottom: 80px;
+    margin-bottom: 80px; /* Écart avec les cartes */
     text-shadow: 2px 2px 0 white;
 }
 
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 100px 60px; 
+    gap: 100px 60px; /* ÉCARTEMENT MASSIF DEMANDÉ */
     max-width: 1400px;
     width: 90%;
     margin: 0 auto;
-    padding-bottom: 60px; 
+    padding-bottom: 60px; /* Dégage l'herbe en bas */
 }
 
 .project-card {
@@ -239,6 +221,9 @@ html, body {
 
 .project-card:hover { transform: translateY(-10px); }
 
+/* ==========================================================================
+   GALERIE OVERLAY (L'ARRIÈRE-PLAN SOMBRE)
+   ========================================================================== */
 .gallery-overlay {
     position: fixed;
     inset: 0;
@@ -250,74 +235,101 @@ html, body {
     backdrop-filter: blur(5px);
 }
 
-.gallery--active { display: flex !important; }
+.gallery--active {
+    display: flex !important;
+}
 
+/* --- BOUTON FERMER (CROIX X) --- */
 .gallery__close {
     position: absolute;
-    top: 40px; right: 50px;
-    color: white; font-size: 90px;
-    background: none; border: none; cursor: pointer;
-    line-height: 0.5; z-index: 10001;
+    top: 40px;
+    right: 50px;
+    color: white;
+    font-size: 90px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 0.5;
+    z-index: 10001;
 }
 
+/* ==========================================================================
+   STRUCTURE : FLÈCHES + FENÊTRE
+   ========================================================================== */
 .gallery__wrapper {
-    display: flex; align-items: center; justify-content: center;
-    width: 95%; max-width: 1400px; gap: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    max-width: 1400px;
+    gap: 40px; /* Espace entre les flèches et la fenêtre */
 }
 
-.nav-arrow { background: none; border: none; cursor: pointer; flex-shrink: 0; }
-.arrow-icon { font-size: 130px; color: white; font-weight: 100; line-height: 1; }
+/* --- FLÈCHES (‹ et ›) --- */
+.nav-arrow {
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-shrink: 0;
+}
 
-/* --- FENÊTRE DE GALERIE CORRIGÉE --- */
+.arrow-icon {
+    font-size: 130px; 
+    color: white;
+    font-weight: 100;
+    line-height: 1;
+}
+
+/* --- LA FENÊTRE CENTRALE --- */
 .gallery__window {
     background: #2a7ebc; 
-    border-radius: 40px; 
+    border-radius: 40px;
     padding: 60px;
     display: flex; 
-    align-items: center; 
+    align-items: center;
     gap: 60px;
-    width: 1100px; 
+    width: 1100px;
     min-height: 550px;
     box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
 }
 
-.gallery__img-container { 
-    flex: 1.2; /* Ajusté pour laisser de la place au texte à droite */
+/* --- IMAGE --- */
+.gallery__img-container {
+    flex: 1.4;
 }
 
-.gallery__img-container img { 
-    width: 100%; 
-    aspect-ratio: 1.5; /* Format rectangle constant */
-    object-fit: cover; 
-    border-radius: 20px; 
-    display: block; 
+.gallery__img-container img {
+    width: 100%;
+    aspect-ratio: 1.5;
+    object-fit: cover;
+    border-radius: 20px;
+    display: block;
 }
 
-.gallery__text-container { 
-    flex: 1; 
-    color: white; 
-    display: flex;
-    flex-direction: column;
+/* --- TEXTE (CALIFORNIAN FB) --- */
+.gallery__text-container {
+    flex: 1;
+    color: white;
 }
 
-#gallery-title { 
-    font-family: 'Californian FB', serif; 
-    font-size: 3.5rem; /* Ajusté pour garantir la tenue sur une ligne */
-    line-height: 1.1; 
-    margin-bottom: 5px; 
+#gallery-title {
+    font-family: 'Californian FB', serif;
+    font-size: 3.8rem;
+    line-height: 1.1;
+    margin-bottom: 5px;
     text-transform: uppercase;
-    white-space: nowrap; /* FORCE LE TITRE SUR UNE SEULE LIGNE */
 }
 
-.gallery__line { 
-    width: 100%; /* Souligne toute la largeur disponible sous le titre */
-    height: 3px; 
-    background-color: white; 
-    margin-bottom: 30px; 
+/* LE FILET : Occupe tout le titre */
+.gallery__line {
+    width: 100%; 
+    height: 3px;
+    background-color: white;
+    margin-bottom: 35px;
 }
 
-#gallery-desc { 
-    font-family: 'Californian FB', serif; 
-    font-size: 1.2rem; 
-    line-height: 1.6; 
+#gallery-desc {
+    font-family: 'Californian FB', serif;
+    font-size: 1.3rem;
+    line-height: 1.7;
 }
