@@ -15,56 +15,70 @@
         </div>
         <nav class="header__nav">
             <ul class="nav-list">
-                <li><a href="#" class="nav-link">Accueil</a></li>
-                <li class="nav-sep">|</li>
-                <li><a href="#view-projets" class="nav-link">Voir mes projets</a></li>
-                <li class="nav-sep">|</li>
-                <li><a href="#" class="nav-link">À Propos</a></li>
-                <li class="nav-sep">|</li>
-                <li><a href="#" class="nav-link">Tarifs</a></li>
-                <li class="nav-sep">|</li>
-                <li><a href="#" class="nav-link">Contact</a></li>
+                <li><a href="#" class="nav-list__link">Accueil</a></li>
+                <li class="nav-list__sep">|</li>
+                <li><a href="#view-projets" class="nav-list__link">Voir mes projets</a></li>
+                <li class="nav-list__sep">|</li>
+                <li><a href="#" class="nav-list__link">À Propos</a></li>
+                <li class="nav-list__sep">|</li>
+                <li><a href="#" class="nav-list__link">Tarifs</a></li>
+                <li class="nav-list__sep">|</li>
+                <li><a href="#" class="nav-list__link">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <main class="hero">
-        <div class="hero__content">
-            <h1 class="hero__title">LE GRAPHISME AU SERVICE DE LA TERRE</h1>
-            <div class="bubble">
-                <p class="bubble__text">« ma mission : cultivons ensemble votre image de marque »</p>
+    <main>
+
+        <section class="hero" id="accueil">
+            <div class="hero__content">
+                <h1 class="hero__title">LE GRAPHISME AU SERVICE DE LA TERRE</h1>
+                
+                <div class="bubble">
+                    <p class="bubble__text">« ma mission : cultivons ensemble votre image de marque »</p>
+                </div>
+
+                <div class="services">
+                    <div class="service-card">
+                        <img src="certif.png" alt="Identité" class="service-card__icon">
+                        <p class="service-card__text">Un logo et une image de marque qui vous ressemblent.</p>
+                    </div>
+                    <div class="service-card">
+                        <img src="panier.png" alt="Packaging" class="service-card__icon">
+                        <p class="service-card__text">Création d'étiquettes & de packagings pour vos produits.</p>
+                    </div>
+                    <div class="service-card">
+                        <img src="panneaux.png" alt="Signalétique" class="service-card__icon">
+                        <p class="service-card__text">Panneaux & supports pour rendre votre ferme visible.</p>
+                    </div>
+                </div>
             </div>
+        </section>
+
+        <section class="projects" id="view-projets">
+            <h2 class="projects__title">"De la graine à l'image : mes dernières réalisations."</h2>
             
-            <div class="services">
-                <div class="service-card">
-                    <img src="certif.png" alt="Identité" class="service-icon">
-                    <p>Un logo et une image de marque qui vous ressemblent.</p>
+            <div class="portfolio-grid">
+                <div class="project-card" style="background-image: url('projet1.jpg');">
+                    <div class="project-card__overlay">
+                        <span>Voir le projet</span>
+                    </div>
                 </div>
-                <div class="service-card">
-                    <img src="panier.png" alt="Packaging" class="service-icon">
-                    <p>Création d'étiquettes & de packagings pour vos produits.</p>
-                </div>
-                <div class="service-card">
-                    <img src="panneaux.png" alt="Signalétique" class="service-icon">
-                    <p>Panneaux & supports pour rendre votre ferme visible.</p>
-                </div>
+                <div class="project-card"></div>
+                <div class="project-card"></div>
+                <div class="project-card"></div>
+                <div class="project-card"></div>
+                <div class="project-card"></div>
+                <div class="project-card"></div>
+                <div class="project-card"></div>
             </div>
-        </div>
+        </section>
+
     </main>
 
-    <section id="view-projets" class="projects">
-        <h2 class="projects__title">"De la graine à l'image : mes dernières réalisations."</h2>
-        <div class="portfolio-grid">
-            <div class="project-card"><div class="project-overlay">Projet 01</div></div>
-            <div class="project-card"><div class="project-overlay">Projet 02</div></div>
-            <div class="project-card"><div class="project-overlay">Projet 03</div></div>
-            <div class="project-card"><div class="project-overlay">Projet 04</div></div>
-            <div class="project-card"><div class="project-overlay">Projet 05</div></div>
-            <div class="project-card"><div class="project-overlay">Projet 06</div></div>
-            <div class="project-card"><div class="project-overlay">Projet 07</div></div>
-            <div class="project-card"><div class="project-overlay">Projet 08</div></div>
-        </div>
-    </section>
+    <footer class="footer">
+        <p>&copy; 2024 Camille Lab - Graphisme Éco-responsable</p>
+    </footer>
 
 </body>
 </html>
