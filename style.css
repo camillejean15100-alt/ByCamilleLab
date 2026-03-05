@@ -341,26 +341,19 @@ html, body {
 }
 
 /* ==========================================================================
-   LA COCCINELLE SUR LE TITRE (VERSION FINALE ET PRÉCISE)
+   LA COCCINELLE : TRAIT COLLÉ À GAUCHE (ENFIN !)
    ========================================================================== */
-
-/* On centre le titre pour avoir un point d'ancrage fixe */
-.projects-section {
-    position: relative;
-    padding-top: 100px;
-}
 
 .decoration-coccinelle {
     display: none;
-    position: absolute;
+    position: absolute; /* Reste lié au titre au scroll */
     
-    /* POSITIONNEMENT : On la cale par rapport au haut de la section */
-    top: 50px; 
-    left: 50%;
-    transform: translateX(-110%); /* La pousse à gauche du centre pour viser le titre */
+    /* ON COLLE LE TRAIT AU BORD GAUCHE */
+    top: 50px;         /* Ajuste pour la hauteur par rapport au titre */
+    left: 0;           /* COLLÉ AU BORD GAUCHE DE L'ÉCRAN */
     
-    width: 400px;  /* Largeur du trait + coccinelle */
-    height: 200px;
+    width: 600px;      /* Largeur augmentée pour que le trait soit bien long */
+    height: 250px;
     z-index: 5;
     pointer-events: none;
 }
@@ -376,6 +369,12 @@ body:not(.page-accueil) .decoration-coccinelle {
     display: block;
     width: 100%;
     height: 100%;
+    
+    /* Aligné à gauche pour que le trait commence au bord */
     background: url("./traitcoccinelle.png") no-repeat center left;
     background-size: contain;
+    
+    /* On l'agrandit pour qu'elle rejoigne bien le titre */
+    transform: scale(1.5);
+    transform-origin: left center;
 }
