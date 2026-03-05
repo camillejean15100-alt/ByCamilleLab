@@ -340,62 +340,66 @@ html, body {
     line-height: 1.6; 
 }
 
-/* --- SECTION À PROPOS : TYPOS ET CENTRAGE EXACTS --- */
+/* --- SECTION À PROPOS --- */
 
 .about-section {
+    /* Fond avec l'herbe calée tout en bas */
     background: url("./fondsite.jpg") no-repeat center bottom;
     background-size: cover;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 40px 0 120px 0; /* Garde l'herbe visible en bas */
+    /* On pousse le padding bas pour que l'herbe ne soit pas bouffée par le texte */
+    padding: 60px 0 160px 0; 
     position: relative;
+    margin: 0;
 }
 
 .about-container {
     display: flex;
-    align-items: center;
+    align-items: center;      /* Aligne le milieu de l'image avec le milieu du texte */
     justify-content: center;
-    max-width: 1300px;
+    max-width: 1400px;
     width: 90%;
-    gap: 70px;
+    gap: 80px;                /* Espace entre ta photo et ton bloc texte */
 }
 
-/* IMAGE SANS BORDURE */
-.about__image-side {
+/* TA PHOTO : Grande et sans bordure */
+.about__profile-wrapper {
     flex: 1;
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-end; /* Colle la photo vers le milieu */
 }
 
 .about__profile-photo {
-    width: 500px;
+    width: 550px;             /* TAILLE MASSIVE conforme au design */
     height: auto;
-    border-radius: 50%;
-    border: none;
+    border-radius: 50%;       /* Bien ronde */
+    border: none !important;  /* AUCUNE BORDURE */
     display: block;
 }
 
-/* TEXTE : BLEU CALIFORNIAN FB ET CENTRAGE */
-.about__text-side {
+/* TON BLOC TEXTE : Tout en bleu Californian FB */
+.about__content {
     flex: 1;
-    text-align: center; /* CENTRE TOUT LE BLOC */
+    text-align: center;       /* CENTRE TOUT LE CONTENU (Titre + Desc) */
 }
 
 /* TITRE : GOCHI HAND */
 .about__title {
-    font-family: 'Gochi Hand', cursive;
-    color: #1D70B8;
+    font-family: 'Gochi Hand';
+    color: #1D70B8;            /* BLEU CALIFORNIAN FB */
     font-size: 3.5rem;
     margin-bottom: 25px;
     line-height: 1.1;
 }
 
-/* DESCRIPTION : CALIFORNIAN FB */
+/* DESCRIPTION : CALIFORNIAN FB CENTRÉE */
 .about__description {
-    font-family: 'Californian FB', serif; /* LA TYPO SÉRIF DU DESIGN */
-    color: #1D70B8;
-    font-size: 1.6rem;
+    font-family: 'Californian FB', serif; /* LA TYPO DU DESIGN */
+    color: #1D70B8;            /* BLEU CALIFORNIAN FB */
+    font-size: 1.7rem;
     line-height: 1.5;
+    margin: 0 auto;
 }
