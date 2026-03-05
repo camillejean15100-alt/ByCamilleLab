@@ -109,27 +109,3 @@ h1 {
     color: #444;
 }
 
-/* DÉCOR ET PERSONNAGE */
-.perso {
-    position: absolute;
-    bottom: 0;
-    left: 5%;
-    width: 420px; /* profil-photo.png */
-    z-index: 4;
-}
-
-.deco-l {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 250px; /* plante.png */
-    z-index: 3;
-}
-
-.deco-r {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 300px;
-    z-index: 3;
-}
