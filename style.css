@@ -1,22 +1,22 @@
-/* Importation Gochi Hand */
+/* Importation Gochi Hand pour le titre */
 @import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
 
-:root {
-    --bleu-titre: #3e3e3e; /* Ajusté selon le rendu visuel sombre/bleuté du titre */
-    --bleu-menu: #0076a3;
-    --beige-cards: #f3eed7; /* Le beige exact de la maquette */
-    --vert-menu: #8fb43e;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    margin: 0;
     font-family: "Californian FB", serif;
-    background-color: #f0f0f0;
+    overflow: hidden; /* Empêche le scroll pour garder la mise en page fixe */
 }
 
+/* SECTION PRINCIPALE */
 .hero-section {
-    background: url('fondaccueil.jpg') no-repeat center bottom;
+    background-image: url('fondaccueil.jpg');
     background-size: cover;
+    background-position: center;
     height: 100vh;
     position: relative;
     display: flex;
@@ -24,87 +24,112 @@ body {
     align-items: center;
 }
 
-/* NAVIGATION - Plus discrète en haut à droite */
-nav {
-    align-self: flex-end;
-    padding: 30px 50px;
+/* HEADER : LOGO ET NAV */
+header {
+    width: 100%;
     display: flex;
-    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    position: absolute;
+    top: 0;
 }
 
-nav a {
+.logo { width: 120px; }
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+nav ul li a {
     text-decoration: none;
-    font-family: "Californian FB", serif;
-    color: var(--bleu-menu);
+    color: #0076a3;
     font-weight: bold;
     font-size: 1.2rem;
 }
 
-nav a.active { color: var(--vert-menu); }
+nav ul li a.active { color: #8fb43e; }
 
-/* TITRE - Plus gros, mieux placé, typo Gochi Hand */
-h1 {
-    font-family: 'Gochi Hand', cursive;
-    color: var(--bleu-titre);
-    font-size: 4.5rem; /* Augmenté pour l'impact */
-    text-transform: uppercase;
-    margin: 20px 0 10px 0;
-    text-shadow: 1px 1px 0px rgba(255,255,255,0.5);
+/* TITRES */
+.headline {
+    margin-top: 80px;
+    text-align: center;
     z-index: 10;
 }
 
-/* BANDEAU MISSION (le petit bloc arrondi au dessus des 3 carrés) */
-.mission-tag {
-    background-color: var(--beige-cards);
+h1 {
     font-family: 'Gochi Hand', cursive;
-    padding: 10px 40px;
-    border-radius: 20px;
-    font-size: 1.8rem;
-    color: var(--bleu-titre);
-    margin-bottom: 30px;
-    border: 1px solid rgba(0,0,0,0.1);
+    font-size: 4rem;
+    color: #444;
+    text-transform: uppercase;
 }
 
-/* GRILLE DES SERVICES - Fond Beige, pas de blanc */
-.services-container {
+.mission-bar {
+    background-color: rgba(243, 238, 215, 0.8);
+    font-family: 'Gochi Hand', cursive;
+    font-size: 1.8rem;
+    padding: 10px 40px;
+    border-radius: 30px;
+    display: inline-block;
+    margin-top: 10px;
+    color: #333;
+}
+
+/* BLOCS DE SERVICES */
+.services {
     display: flex;
-    gap: 25px;
+    gap: 20px;
+    margin-top: 50px;
     z-index: 5;
 }
 
-.card-service {
-    background-color: var(--beige-cards);
-    width: 240px;
-    height: 220px;
+.card {
+    background-color: rgba(243, 238, 215, 0.8);
+    width: 220px;
+    height: 250px;
     border-radius: 15px;
+    padding: 20px;
+    text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-.card-service img {
+.card img {
     height: 60px;
     margin-bottom: 15px;
 }
 
-.card-service p {
-    font-family: "Californian FB", serif;
-    font-size: 1.1rem;
-    color: #444;
+.card p {
+    font-size: 1rem;
     line-height: 1.2;
+    color: #444;
 }
 
-/* POSITIONNEMENT DES ILLUSTRATIONS */
-.camille-illustr {
+/* DÉCOR ET PERSONNAGE */
+.perso {
     position: absolute;
     bottom: 0;
-    left: 10%;
-    width: 480px; /* profil-photo.png */
+    left: 5%;
+    width: 420px; /* profil-photo.png */
+    z-index: 4;
 }
 
-.plante-l { position: absolute; left: 0; bottom: 0; width: 300px; }
-.plante-r { position: absolute; right: 0; bottom: 0; width: 350px; }
+.deco-l {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 250px; /* plante.png */
+    z-index: 3;
+}
+
+.deco-r {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 300px;
+    z-index: 3;
+}
