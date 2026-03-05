@@ -184,80 +184,190 @@ body {
     line-height: 1.3;
 }
 
-/* --- VUE PROJETS (FOND INDÉPENDANT) --- */
+/* ==========================================================================
+   SECTION PROJETS (VUE PROJETS)
+   ========================================================================== */
+
 .projects-view {
-    display: block; /* Toujours là pour que l'ancre fonctionne */
+    display: block;
     width: 100%;
     min-height: 100vh;
-    background: url("voirmesprojets.jpg") no-repeat center center fixed;
+    /* On utilise un dégradé léger par-dessus l'image pour éclaircir le centre 
+       et laisser l'herbe du bas bien visible et colorée */
+    background: linear-gradient(to bottom, 
+                rgba(255, 255, 255, 0.4) 0%, 
+                rgba(255, 255, 255, 0.2) 70%, 
+                transparent 100%),
+                url("voirmesprojets.jpg") no-repeat center center fixed;
     background-size: cover; 
-    padding-top: 185px; 
+    padding: 160px 0 100px 0; /* Espace pour le header et l'herbe en bas */
     text-align: center;
+    position: relative;
 }
 
 .projects__title {
-    font-family: var(--font-accent); 
+    font-family: var(--font-accent);
     color: var(--color-primary);
-    font-size: 40px; 
-    text-shadow: 2px 2px 0 white; 
-    margin-bottom: 30px;
+    font-size: 45px;
+    text-shadow: 2px 2px 0 white;
+    margin-bottom: 50px;
+    padding: 0 20px;
 }
 
+/* Grille centrée avec respect des marges pour les feuilles */
 .portfolio-grid {
-    display: grid; 
-    grid-template-columns: repeat(4, 1fr); 
-    gap: 20px;
-    max-width: 1100px; 
-    margin: 0 auto; 
-    padding: 0 40px 60px 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 60px;
 }
 
 .project-card {
-    background: white; 
-    aspect-ratio: 1.5; 
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1); 
+    background: white;
+    aspect-ratio: 1.5;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
     cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* --- GALERIE --- */
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* ==========================================================================
+   GALERIE OVERLAY (MODALE)
+   ========================================================================== */
+
 .gallery-overlay {
-    position: fixed; 
-    inset: 0; 
-    background: rgba(29, 112, 183, 0.95);
-    z-index: 9999; 
-    display: none; 
-    align-items: center; 
-    justify-content: center;
-}
-
-.gallery--active { 
-    display: flex !important; 
-}
-
-.gallery__window {
-    background: #2a7ebc; 
-    border-radius: 40px; 
-    padding: 60px;
-    display: flex; 
-    gap: 50px; 
-    width: 950px; 
+    position: fixed;
+    inset: 0;
+    background: rgba(29, 112, 183, 0.92); /* Bleu foncé transparent */
+    z-index: 9999;
+    display: none; /* Piloté par le JS via .gallery--active */
     align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
 }
 
-.gallery__close { 
-    position: absolute; 
-    top: 40px; 
-    right: 60px; 
-    color: white; 
-    font-size: 80px; 
-    background: none; 
-    border: none; 
-    cursor: pointer; 
+.gallery--active {
+    display: flex !important;
 }
 
-.arrow-icon { 
-    font-size: 120px; 
-    color: white; 
-    cursor: pointer; 
+/* Wrapper pour les flèches + la fenêtre */
+.gallery__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    max-width: 1300px;
+    gap: 20px;
+    position: relative;
+}
+
+/* FENÊTRE BLEUE CENTRALE */
+.gallery__window {
+    background: #2a7ebc; /* Ton bleu clair de fenêtre */
+    border-radius: 50px;
+    padding: 60px;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    width: 1000px;
+    min-height: 500px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+    position: relative;
+}
+
+/* Conteneur Image à gauche */
+.gallery__img-container {
+    flex: 1.2;
+}
+
+.gallery__img-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    display: block;
+    background: white; /* Fond blanc si l'image est transparente */
+}
+
+/* Conteneur Texte à droite */
+.gallery__text-container {
+    flex: 1;
+    color: white;
+    text-align: left;
+}
+
+#gallery-title {
+    font-family: var(--font-accent);
+    font-size: 3.5rem;
+    line-height: 1;
+    margin-bottom: 15px;
+}
+
+.gallery__line {
+    width: 120px;
+    height: 4px;
+    background-color: white;
+    margin-bottom: 30px;
+}
+
+#gallery-desc {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    font-family: var(--font-main);
+}
+
+/* BOUTONS NAVIGATION */
+.nav-arrow {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 20px;
+    transition: transform 0.2s;
+}
+
+.nav-arrow:hover {
+    transform: scale(1.2);
+}
+
+.arrow-icon {
+    font-size: 100px;
+    color: white;
+    font-weight: 100;
+}
+
+/* BOUTON FERMER (X) */
+.gallery__close {
+    position: absolute;
+    top: 40px;
+    right: 60px;
+    color: white;
+    font-size: 90px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 0.5;
+    z-index: 10000;
+    transition: opacity 0.2s;
+}
+
+.gallery__close:hover {
+    opacity: 0.7;
+}
+
+/* Responsive rapide */
+@media (max-width: 1100px) {
+    .gallery__window {
+        flex-direction: column;
+        width: 90%;
+        padding: 40px;
+        gap: 30px;
+    }
+    .gallery__img-container { max-width: 80%; }
+    .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
 }
