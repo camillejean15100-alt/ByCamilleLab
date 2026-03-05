@@ -1,1 +1,144 @@
+/* RESET DE BASE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body {
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+/* HEADER EN OVERLAY SUR L'IMAGE */
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 5%;
+    z-index: 10;
+}
+
+.header__logo img {
+    height: 80px; /* Ajuste selon ton logo */
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 10px;
+    align-items: center;
+}
+
+.nav-list__link {
+    text-decoration: none;
+    color: #005d8f; /* Bleu du texte original */
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.nav-list__link:hover {
+    color: #7fb432; /* Vert au survol */
+}
+
+.nav-list__sep {
+    color: #005d8f;
+}
+
+/* SECTION ACCUEIL */
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Aligné vers le haut pour le titre */
+    align-items: center;
+    padding-top: 15vh;
+    text-align: center;
+    background: url('fondaccueil.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.hero__title {
+    font-family: 'Gochi Hand', cursive;
+    font-size: 3.5rem;
+    color: #444;
+    letter-spacing: 2px;
+    margin-bottom: 50px;
+}
+
+/* LA BULLE ET SON ANIMATION */
+.bubble {
+    background: rgba(255, 255, 255, 0.7);
+    border: 2px solid #fff;
+    padding: 20px 40px;
+    border-radius: 20px;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    
+    /* Animation de la bulle au chargement */
+    animation: popBubble 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.bubble__text {
+    font-family: 'Gochi Hand', cursive;
+    font-size: 1.8rem;
+    color: #6d4c41;
+    margin: 0;
+}
+
+/* ANIMATION DES SERVICES (APPARAISSENT APRÈS LA BULLE) */
+.services {
+    display: flex;
+    gap: 30px;
+    margin-top: 50px;
+    opacity: 0; /* Cachés au début */
+    animation: fadeInServices 1s ease forwards;
+    animation-delay: 1s; /* Attend que la bulle finisse */
+}
+
+.service-card {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 15px;
+    width: 250px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.service-card__icon {
+    width: 50px;
+    margin-bottom: 10px;
+}
+
+.service-card__text {
+    font-size: 0.9rem;
+    color: #333;
+    line-height: 1.4;
+}
+
+/* KEYFRAMES */
+
+/* La bulle surgit et rebondit */
+@keyframes popBubble {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Les services apparaissent en fondu vers le haut */
+@keyframes fadeInServices {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .hero__title { font-size: 2rem; }
+    .services { flex-direction: column; }
+    .header { flex-direction: column; gap: 10px; }
+}
