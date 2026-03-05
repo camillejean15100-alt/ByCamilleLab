@@ -251,7 +251,7 @@ html, body {
 .gallery-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(29, 112, 183, 0.98); /* Bleu profond */
+    background: rgba(29, 112, 183, 0.98); 
     z-index: 9999;
     display: none; 
     align-items: center;
@@ -261,7 +261,7 @@ html, body {
 
 .gallery--active { display: flex !important; }
 
-/* 2. LES BOUTONS (FIXÉS POUR NE PAS BOUGER) */
+/* 2. LES BOUTONS (FIXÉS) */
 .gallery__close {
     position: absolute;
     top: 30px; right: 40px;
@@ -275,75 +275,69 @@ html, body {
     align-items: center; 
     justify-content: center;
     width: 100%; 
-    max-width: 1300px; 
-    gap: 20px;
+    max-width: 1400px; 
+    gap: 30px; /* Espace pour les flèches */
 }
 
-.nav-arrow { background: none; border: none; cursor: pointer; padding: 0 20px; }
-.arrow-icon { font-size: 100px; color: white; font-weight: 100; opacity: 0.8; }
-.nav-arrow:hover .arrow-icon { opacity: 1; }
+.nav-arrow { background: none; border: none; cursor: pointer; }
+.arrow-icon { font-size: 100px; color: white; font-weight: 100; }
 
-/* 3. LA FENÊTRE CENTRALE (D'APRÈS TES IMAGES) */
+/* 3. LA FENÊTRE CENTRALE (DESIGN RECTIFIÉ) */
 .gallery__window {
-    background: #2a7ebc; /* Ton bleu de fenêtre */
+    background: #2a7ebc; 
     border-radius: 40px; 
-    padding: 50px;
-    display: flex;       /* ALIGNEMENT HORIZONTAL IMAGE / TEXTE */
+    padding: 60px;
+    display: flex;       /* ALIGNE L'IMAGE ET LE TEXTE CÔTE À CÔTE */
     align-items: center; 
-    justify-content: space-between;
-    width: 1000px;       /* Largeur fixe pour ne pas déformer */
-    min-height: 500px;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
-    position: relative;
+    gap: 50px;           /* Espace entre l'image et le bloc texte */
+    width: 1100px; 
+    min-height: 550px;
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
 }
 
-/* 4. L'IMAGE À GAUCHE */
+/* 4. L'IMAGE (À GAUCHE - ENFIN GRANDE) */
 .gallery__img-container { 
-    flex: 1; 
-    display: flex;
-    justify-content: center;
+    flex: 1.5; /* Prend plus de place que le texte */
 }
 
 .gallery__img-container img { 
     width: 100%; 
-    max-width: 450px;     /* Taille max de l'image */
-    aspect-ratio: 1.5;   /* Rectangle propre */
+    height: auto;
+    aspect-ratio: 1.5;   /* Format rectangle horizontal parfait */
     object-fit: cover; 
-    border-radius: 15px; 
-    background: white;   /* Pour voir le cadre si l'image charge mal */
+    border-radius: 20px; 
+    display: block;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
-/* 5. LE BLOC TEXTE À DROITE */
+/* 5. LE BLOC TEXTE (À DROITE) */
 .gallery__text-container { 
     flex: 1; 
-    padding-left: 50px;  /* Espace entre l'image et le texte */
     color: white; 
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 
 #gallery-title { 
     font-family: 'Californian FB', serif; 
-    font-size: 3.2rem; 
+    font-size: 4rem;     /* Gros titre */
     line-height: 1; 
-    margin-bottom: 10px; 
+    margin-bottom: 5px; 
     text-transform: uppercase;
-    white-space: nowrap; /* TITRE SUR UNE SEULE LIGNE */
+    white-space: nowrap; /* FORCE LE TITRE SUR UNE LIGNE */
 }
 
 .gallery__line { 
-    width: 100%;         /* Filet complet sous le titre */
-    height: 3px; 
+    width: 100%;         /* Souligne tout le bloc titre */
+    height: 4px; 
     background-color: white; 
-    margin-bottom: 25px; 
+    margin-bottom: 30px; 
 }
 
 #gallery-desc { 
     font-family: 'Californian FB', serif; 
-    font-size: 1.1rem; 
+    font-size: 1.3rem; 
     line-height: 1.6; 
-    max-width: 400px;    /* Évite que le texte s'étale trop */
 }
 
 /* ==========================================================================
