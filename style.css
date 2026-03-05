@@ -113,25 +113,58 @@ html, body {
     margin-top: 150px;
 }
 
+/* --- BULLE DE BD CORRIGÉE --- */
 .bubble {
-    background: var(--color-beige);
-    width: 450px;
-    min-height: 160px;
-    padding: 20px 40px;
-    border-radius: 60px;
+    background: #2a7ebc; /* Retour au bleu comme la galerie */
+    width: 400px;
+    min-height: 120px;
+    padding: 20px 30px;
+    border-radius: 40px; /* Forme plus "bulle de BD" */
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 35%; left: 32%;
+    
+    /* Positionnement vers la bouche */
+    top: 28%; 
+    left: 35%; 
+    
     z-index: 10;
     opacity: 0;
     transform: scale(0.6);
     visibility: hidden;
     transition: all var(--transition-speed) cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    
+    /* Ombre pour la faire ressortir du fond */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
-.bubble--active { opacity: 1; transform: scale(1); visibility: visible; }
+.bubble--active { 
+    opacity: 1; 
+    transform: scale(1); 
+    visibility: visible; 
+}
+
+/* LA POINTE DE LA BULLE (L'effet BD qui parle) */
+.bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -20px; /* Pointe vers le bas */
+    left: 40px;    /* Ajuste ce chiffre pour aligner la pointe avec la bouche */
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 30px solid #2a7ebc; /* Même bleu que la bulle */
+    transform: rotate(15deg); /* Incline la pointe vers le visage */
+}
+
+.bubble__text {
+    color: white; /* Texte blanc sur fond bleu */
+    font-family: var(--font-main);
+    font-size: 1.4rem; /* Taille de texte ajustée */
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.2;
+}
 
 .services {
     display: flex;
