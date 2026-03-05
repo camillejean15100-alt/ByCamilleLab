@@ -340,76 +340,49 @@ html, body {
     line-height: 1.6; 
 }
 
-/* --- SECTION À PROPOS --- */
+/* --- SECTION À PROPOS : IMAGE GRANDE ET TEXTE CENTRÉ --- */
 
-/* Applique le même fond que la section Projets */
 .about-section {
-    background-color: #F1EBD8; /* Beige uni */
-    padding: 100px 0;         /* Espacement pour aérer */
-    position: relative;
-    overflow: hidden;         /* Pour le style */
+    background-color: #F1EBD8; /* Même fond beige que les projets */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 0;
 }
 
-/* Container centré et utilisant flexbox */
 .about-container {
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    width: 90%;
     display: flex;
-    align-items: center;      /* Centre verticalement photo et texte */
-    justify-content: center;   /* Centre l'ensemble horizontalement */
-    gap: 60px;                /* Espace entre la photo et le texte */
+    align-items: center;      /* Aligne photo et texte verticalement */
+    justify-content: center;
+    gap: 100px;               /* Gros espace entre les deux blocs */
 }
 
-/* --- SECTION À PROPOS --- */
-
-/* Applique le même fond que la section Projets */
-.about-section {
-    background-color: #F1EBD8; /* Beige uni */
-    padding: 100px 0;         /* Espacement pour aérer */
-    position: relative;
-    overflow: hidden;         /* Pour le style */
-}
-
-/* Container centré et utilisant flexbox */
-.about-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    align-items: center;      /* Centre verticalement photo et texte */
-    justify-content: center;   /* Centre l'ensemble horizontalement */
-    gap: 60px;                /* Espace entre la photo et le texte */
-}
-
-/* Style pour l'image (plus grande et à gauche) */
+/* 1. L'IMAGE : Plus grande à gauche */
 .about__profile-photo {
-    width: 450px;             /* Taille augmentée de la photo */
+    width: 550px;             /* IMAGE PLUS GRANDE */
     height: auto;
-    border-radius: 50%;       /* Forme circulaire */
-    border: 10px solid white; /* Bordure blanche */
+    border-radius: 40px;      /* Coins arrondis comme sur ton design */
     display: block;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
 }
 
-/* Style pour le bloc texte (écrit en bleu) */
+/* 2. LE TEXTE : Centré et en bleu Californian FB */
 .about__content {
-    flex: 1;                  /* Prend l'espace restant */
-    max-width: 600px;         /* Limite la largeur du texte */
-    color: #1D70B8;            /* Bleu Californian FB */
-    font-family: 'Gochi Hand', cursive; /* Gochi Hand pour tout le texte */
-    text-align: center;       /* Centre le texte à l'intérieur de son bloc */
+    flex: 1;
+    text-align: center;       /* TEXTE CENTRÉ DANS SON BLOC */
+    color: #1D70B8;            /* BLEU CALIFORNIAN FB */
+    font-family: 'Gochi Hand', cursive; /* TOUT EN GOCHI HAND */
 }
 
-/* Titre en bleu et Gochi Hand */
 .about__title {
-    font-size: 2.8rem;
-    margin-bottom: 30px;
-    line-height: 1.2;
+    font-size: 3.5rem;        /* Titre imposant */
+    margin-bottom: 40px;      /* Espace sous le titre */
+    line-height: 1.1;
 }
 
-/* Description en bleu et Gochi Hand */
 .about__description {
-    font-size: 1.5rem;
+    font-size: 1.8rem;        /* Texte bien lisible */
     line-height: 1.6;
 }
