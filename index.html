@@ -3,44 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camille Lab</title>
-    <link rel="stylesheet" href="style.css?v=1">
+    <title>Camille - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <main class="site-wrapper">
-        <header>
-            <img src="logocamille.png" class="logo" alt="Logo">
-            <nav>
-                <a href="index.html">Accueil</a> |
-                <a href="projets.html">Voir mes projets</a> |
-                <a href="a-propos.html">À Propos</a> |
-                <a href="tarifs.html">Tarifs</a> |
-                <a href="contact.html">Contact</a>
-            </nav>
-        </header>
 
-        <h1>LE GRAPHISME AU SERVICE DE LA TERRE</h1>
-        
-        <div class="mission-bar">
-            « ma mission : cultivons ensemble votre image de marque »
+    <header class="main-header">
+        <div class="logo-container">
+            <img src="logocamille.png" alt="Logo Camille" class="logo">
         </div>
+        <nav class="navigation">
+            <a href="#">Accueil</a>
+            <a href="#services">Services</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
 
-        <section class="services-container">
+    <main id="accueil" class="view">
+        <h1>Créativité & Design</h1>
+        <p class="mission">Accompagner vos projets avec passion et précision.</p>
+        
+        <div class="services-grid">
             <div class="card">
-                <img src="certif.png" alt="Icon">
-                <p>Un logo et une image de marque qui vous ressemblent.</p>
+                <img src="panneaux.png" alt="Design">
+                <p>DESIGN</p>
             </div>
-            
             <div class="card">
-                <img src="panier.png" alt="Icon">
-                <p>Création d'étiquettes & de packagings pour vos produits.</p>
+                <img src="panier.png" alt="E-commerce">
+                <p>BOUTIQUE</p>
             </div>
-            
             <div class="card">
-                <img src="panneaux.png" alt="Icon">
-                <p>Panneaux & supports pour rendre votre ferme visible.</p>
+                <img src="plante.png" alt="Écologie">
+                <p>NATURE</p>
             </div>
-        </section>
+            <div class="card">
+                <img src="zoom.png" alt="Analyse">
+                <p>STRATÉGIE</p>
+            </div>
+        </div>
     </main>
+
+    <section id="portfolio" class="view">
+        <h2 class="port-title">Mon Portfolio</h2>
+        <div class="grid-portfolio">
+            <div class="box"><img src="certif.png" alt="Projet 1" style="width:100%; height:100%; object-fit:cover; border-radius:15px;"></div>
+            <div class="box"><img src="coccinelle.png" alt="Projet 2" style="width:100%; height:100%; object-fit:cover; border-radius:15px;"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+    </section>
+
+    <section id="contact" class="view">
+        <h2 class="port-title">Contactez-moi</h2>
+        <div class="card">
+            <img src="mail.jpg" alt="Email">
+            <p>Email : camille@exemple.com</p>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
 </body>
 </html>
