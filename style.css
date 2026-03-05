@@ -1,0 +1,110 @@
+/* Importation Gochi Hand */
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
+
+:root {
+    --bleu-titre: #3e3e3e; /* Ajusté selon le rendu visuel sombre/bleuté du titre */
+    --bleu-menu: #0076a3;
+    --beige-cards: #f3eed7; /* Le beige exact de la maquette */
+    --vert-menu: #8fb43e;
+}
+
+body {
+    margin: 0;
+    font-family: "Californian FB", serif;
+    background-color: #f0f0f0;
+}
+
+.hero-section {
+    background: url('fondaccueil.jpg') no-repeat center bottom;
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* NAVIGATION - Plus discrète en haut à droite */
+nav {
+    align-self: flex-end;
+    padding: 30px 50px;
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    font-family: "Californian FB", serif;
+    color: var(--bleu-menu);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+nav a.active { color: var(--vert-menu); }
+
+/* TITRE - Plus gros, mieux placé, typo Gochi Hand */
+h1 {
+    font-family: 'Gochi Hand', cursive;
+    color: var(--bleu-titre);
+    font-size: 4.5rem; /* Augmenté pour l'impact */
+    text-transform: uppercase;
+    margin: 20px 0 10px 0;
+    text-shadow: 1px 1px 0px rgba(255,255,255,0.5);
+    z-index: 10;
+}
+
+/* BANDEAU MISSION (le petit bloc arrondi au dessus des 3 carrés) */
+.mission-tag {
+    background-color: var(--beige-cards);
+    font-family: 'Gochi Hand', cursive;
+    padding: 10px 40px;
+    border-radius: 20px;
+    font-size: 1.8rem;
+    color: var(--bleu-titre);
+    margin-bottom: 30px;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+/* GRILLE DES SERVICES - Fond Beige, pas de blanc */
+.services-container {
+    display: flex;
+    gap: 25px;
+    z-index: 5;
+}
+
+.card-service {
+    background-color: var(--beige-cards);
+    width: 240px;
+    height: 220px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.card-service img {
+    height: 60px;
+    margin-bottom: 15px;
+}
+
+.card-service p {
+    font-family: "Californian FB", serif;
+    font-size: 1.1rem;
+    color: #444;
+    line-height: 1.2;
+}
+
+/* POSITIONNEMENT DES ILLUSTRATIONS */
+.camille-illustr {
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    width: 480px; /* profil-photo.png */
+}
+
+.plante-l { position: absolute; left: 0; bottom: 0; width: 300px; }
+.plante-r { position: absolute; right: 0; bottom: 0; width: 350px; }
