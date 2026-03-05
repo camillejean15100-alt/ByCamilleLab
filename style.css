@@ -208,7 +208,7 @@ html, body {
 }
 
 /* ==========================================================================
-   SECTION : PORTFOLIO (GRILLE DE CARTES)
+    PORTFOLIO & GALERIE (RESTE DU CODE)
    ========================================================================== */
 .projects__title {
     font-family: var(--font-accent);
@@ -239,75 +239,60 @@ html, body {
 
 .project-card:hover { transform: translateY(-10px); }
 
-
-/* ==========================================================================
-   SECTION : GALERIE (FENÊTRE D'AFFICHAGE ET OVERLAY)
-   ========================================================================== */
-
-/* 1. L'ARRIÈRE-PLAN (OVERLAY) */
 .gallery-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(29, 112, 183, 0.98); 
+    background: rgba(29, 112, 183, 0.97); 
     z-index: 9999;
     display: none; 
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(5px);
 }
 
 .gallery--active { display: flex !important; }
 
-/* 2. LES BOUTONS (FIXÉS) */
 .gallery__close {
     position: absolute;
-    top: 30px; right: 40px;
-    color: white; font-size: 80px;
+    top: 40px; right: 50px;
+    color: white; font-size: 90px;
     background: none; border: none; cursor: pointer;
     line-height: 0.5; z-index: 10001;
 }
 
 .gallery__wrapper {
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
-    width: 100%; 
-    max-width: 1400px; 
-    gap: 30px; /* Espace pour les flèches */
+    display: flex; align-items: center; justify-content: center;
+    width: 95%; max-width: 1400px; gap: 40px;
 }
 
-.nav-arrow { background: none; border: none; cursor: pointer; }
-.arrow-icon { font-size: 100px; color: white; font-weight: 100; }
+.nav-arrow { background: none; border: none; cursor: pointer; flex-shrink: 0; }
+.arrow-icon { font-size: 130px; color: white; font-weight: 100; line-height: 1; }
 
-/* 3. LA FENÊTRE CENTRALE (DESIGN RECTIFIÉ) */
+/* --- FENÊTRE DE GALERIE CORRIGÉE --- */
 .gallery__window {
     background: #2a7ebc; 
     border-radius: 40px; 
     padding: 60px;
-    display: flex;       /* ALIGNE L'IMAGE ET LE TEXTE CÔTE À CÔTE */
+    display: flex; 
     align-items: center; 
-    gap: 50px;           /* Espace entre l'image et le bloc texte */
+    gap: 60px;
     width: 1100px; 
     min-height: 550px;
     box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
 }
 
-/* 4. L'IMAGE (À GAUCHE - ENFIN GRANDE) */
 .gallery__img-container { 
-    flex: 1.5; /* Prend plus de place que le texte */
+    flex: 1.2; /* Ajusté pour laisser de la place au texte à droite */
 }
 
 .gallery__img-container img { 
     width: 100%; 
-    height: auto;
-    aspect-ratio: 1.5;   /* Format rectangle horizontal parfait */
+    aspect-ratio: 1.5; /* Format rectangle constant */
     object-fit: cover; 
     border-radius: 20px; 
-    display: block;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    display: block; 
 }
 
-/* 5. LE BLOC TEXTE (À DROITE) */
 .gallery__text-container { 
     flex: 1; 
     color: white; 
@@ -317,26 +302,22 @@ html, body {
 
 #gallery-title { 
     font-family: 'Californian FB', serif; 
-    font-size: 4rem;     /* Gros titre */
-    line-height: 1; 
+    font-size: 3.5rem; /* Ajusté pour garantir la tenue sur une ligne */
+    line-height: 1.1; 
     margin-bottom: 5px; 
     text-transform: uppercase;
-    white-space: nowrap; /* FORCE LE TITRE SUR UNE LIGNE */
+    white-space: nowrap; /* FORCE LE TITRE SUR UNE SEULE LIGNE */
 }
 
 .gallery__line { 
-    width: 100%;         /* Souligne tout le bloc titre */
-    height: 4px; 
+    width: 100%; /* Souligne toute la largeur disponible sous le titre */
+    height: 3px; 
     background-color: white; 
     margin-bottom: 30px; 
 }
 
 #gallery-desc { 
     font-family: 'Californian FB', serif; 
-    font-size: 1.3rem; 
+    font-size: 1.2rem; 
     line-height: 1.6; 
 }
-
-/* ==========================================================================
-   FIN DE LA SECTION GALERIE
-   ========================================================================== */
