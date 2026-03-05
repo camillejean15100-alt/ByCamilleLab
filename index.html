@@ -9,28 +9,27 @@
 </head>
 
 <body>
-    <div class="app-container">
-        
+    <div class="app-container" id="view-accueil">
         <header class="header">
             <div class="header__logo">
                 <img src="logocamille.png" alt="Camille Lab">
             </div>
             <nav class="header__nav">
                 <ul class="nav-list">
-                    <li><a href="#accueil" class="nav-list__link">Accueil</a></li>
+                    <li><a href="#" id="link-accueil" class="nav-list__link nav-list__link--active">Accueil</a></li>
                     <span class="nav-list__sep">|</span>
-                    <li><a href="#view-projets" class="nav-list__link">Voir mes projets</a></li>
+                    <li><a href="#" id="link-projets" class="nav-list__link">Voir mes projets</a></li>
                     <span class="nav-list__sep">|</span>
-                    <li><a href="#a-propos" class="nav-list__link">À Propos</a></li>
+                    <li><a href="#" class="nav-list__link">À Propos</a></li>
                     <span class="nav-list__sep">|</span>
-                    <li><a href="#tarifs" class="nav-list__link">Tarifs</a></li>
+                    <li><a href="#" class="nav-list__link">Tarifs</a></li>
                     <span class="nav-list__sep">|</span>
-                    <li><a href="#contact" class="nav-list__link">Contact</a></li>
+                    <li><a href="#" class="nav-list__link">Contact</a></li>
                 </ul>
             </nav>
         </header>
 
-        <main id="accueil" class="hero" style="background: url('fondaccueil.jpg') no-repeat center center fixed; background-size: cover;">
+        <main class="hero">
             <h1 class="hero__title">LE GRAPHISME AU SERVICE DE LA TERRE</h1>
 
             <div id="js-bubble" class="bubble">
@@ -52,32 +51,23 @@
                 </div>
             </div>
         </main>
+    </div>
 
-        <section id="view-projets" class="projects-view" style="background: url('voirmesprojets.jpg') no-repeat center center fixed; background-size: cover;">
-            <h2 class="projects__title">"De la graine à l'image : mes dernières réalisations."</h2>
-            
-            <div class="portfolio-grid">
-                <div class="project-card"></div>
-                <div class="project-card"></div>
-                <div class="project-card"></div>
-                <div class="project-card"></div>
-                <div class="project-card"></div>
-                <div class="project-card"></div>
-                <div class="project-card"></div>
-                <div class="project-card"></div>
-            </div>
-        </section>
+    <section id="view-projets" class="projects-view">
+        <h2 class="projects__title">"De la graine à l'image : mes dernières réalisations."</h2>
+        <div class="portfolio-grid">
+            <div class="project-card"></div>
+            <div class="project-card"></div>
+            <div class="project-card"></div>
+            <div class="project-card"></div>
+            <div class="project-card"></div>
+            <div class="project-card"></div>
+            <div class="project-card"></div>
+            <div class="project-card"></div>
+        </div>
+    </section>
 
-        <section id="a-propos" class="section-padding">
-            </section>
-
-        <section id="tarifs" class="section-padding">
-            </section>
-
-        <section id="contact" class="section-padding">
-            </section>
-
-    </div> <div id="js-gallery-overlay" class="gallery-overlay">
+    <div id="js-gallery-overlay" class="gallery-overlay">
         <button id="js-close-gallery" class="gallery__close">×</button>
         <div class="gallery__wrapper">
             <button id="js-prev-btn" class="nav-arrow prev"><span class="arrow-icon">‹</span></button>
@@ -86,9 +76,9 @@
                     <img src="profil-photo.png" id="gallery-img" alt="Projet"> 
                 </div>
                 <div class="gallery__text-container">
-                    <h3 id="gallery-title">TITRE PROJET</h3>
-                    <div class="gallery__line"></div>
-                    <p id="gallery-desc">Description détaillée de la réalisation...</p>
+                    <h3 id="gallery-title" style="color: white; font-family: var(--font-accent);">TITRE PROJET</h3>
+                    <div class="gallery__line" style="height: 2px; background: white; margin: 15px 0;"></div>
+                    <p id="gallery-desc" style="color: white;">Description détaillée de la réalisation...</p>
                 </div>
             </div>
             <button id="js-next-btn" class="nav-arrow next"><span class="arrow-icon">›</span></button>
@@ -96,6 +86,5 @@
     </div>
 
     <script src="script.js"></script>
-
 </body>
 </html>
