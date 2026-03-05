@@ -340,55 +340,54 @@ html, body {
     line-height: 1.6; 
 }
 
-/* --- STYLE SECTION À PROPOS --- */
+/* --- SECTION À PROPOS --- */
 
+/* Applique le même fond que la section Projets */
 .about-section {
-    background-color: #F1EBD8; /* Ton beige uni */
-    min-height: 100vh;         /* Garde la hauteur que tu avais mise */
-    display: flex;
-    align-items: center;       /* Centre tout verticalement */
+    background-color: #F1EBD8; /* Beige uni */
+    padding: 100px 0;         /* Espacement pour aérer */
     position: relative;
-    padding: 60px 0;
+    overflow: hidden;         /* Pour le style */
 }
 
+/* Container centré et utilisant flexbox */
 .about-container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 20px;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+    align-items: center;      /* Centre verticalement photo et texte */
+    justify-content: center;   /* Centre l'ensemble horizontalement */
+    gap: 60px;                /* Espace entre la photo et le texte */
 }
 
-.about__profile-wrapper {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end; /* Colle la photo vers le centre */
-    padding-right: 50px;       /* Espace entre photo et texte */
-}
-
+/* Style pour l'image (plus petite et à gauche) */
 .about__profile-photo {
-    width: 450px;              /* Taille selon ton graphisme */
+    width: 350px;             /* Taille réduite de la photo */
     height: auto;
+    border-radius: 50%;       /* Forme circulaire */
+    border: 10px solid white; /* Bordure blanche */
     display: block;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
 }
 
+/* Style pour le bloc texte (écrit en bleu) */
 .about__content {
-    flex: 1;
+    flex: 1;                  /* Prend l'espace restant */
+    max-width: 600px;         /* Limite la largeur du texte */
+    color: #1D70B8;            /* Bleu Californian FB */
+    font-family: 'Gochi Hand', cursive; /* Gochi Hand pour tout le texte */
 }
 
-/* TYPOS ET COULEURS */
+/* Titre en bleu et Gochi Hand */
 .about__title {
-    font-family: 'Gochi Hand', cursive;
-    color: #1D70B8;            /* Bleu Californian FB */
     font-size: 2.8rem;
     margin-bottom: 30px;
-    line-height: 1.1;
+    line-height: 1.2;
 }
 
+/* Description en bleu et Gochi Hand */
 .about__description {
-    font-family: 'Gochi Hand', cursive;
-    color: #1D70B8;
-    font-size: 1.6rem;
-    line-height: 1.4;          /* Espacement naturel pour Gochi Hand */
+    font-size: 1.5rem;
+    line-height: 1.6;
 }
