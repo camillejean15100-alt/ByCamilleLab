@@ -340,56 +340,50 @@ html, body {
     line-height: 1.6; 
 }
 
-/* ==========================================================================
-   VERSION FINALE : TRAIT À GAUCHE + COCCINELLE PAR-DESSUS
-   ========================================================================== */
+/* --- FIX FINAL COCCINELLE PRÈS DU TITRE --- */
+
+/* On s'assure que la section du titre est le repère */
+.projects-section {
+    position: relative;
+    overflow: visible; /* Pour ne pas couper la coccinelle si elle dépasse */
+}
 
 .decoration-coccinelle {
-    display: none;
+    display: none; /* Masqué sur l'accueil */
     position: absolute;
-    top: 50px;           /* Aligné avec ton titre */
-    left: 0;             /* COLLÉ À GAUCHE */
-    width: 600px;        /* Largeur pour que le trait soit long */
+    top: -40px;    /* Ajuste cette valeur pour la monter/descendre sur le titre */
+    left: 0;       /* COLLÉ AU BORD GAUCHE */
+    width: 100%;   /* Prend toute la largeur pour placer les éléments librement */
     height: 300px;
-    z-index: 5;
+    z-index: 999;  /* Passe par-dessus TOUT */
     pointer-events: none;
 }
 
-/* Affichage uniquement hors accueil */
+/* Affichage sur toutes les pages sauf l'accueil */
 body:not(.page-accueil) .decoration-coccinelle {
     display: block !important;
 }
 
-/* LE TRAIT (Image de fond) */
+/* LE TRAIT : Part du bord gauche */
 .decoration-coccinelle::before {
     content: '';
     position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0;
+    left: -20px;   /* On le sort un peu pour qu'il naisse du bord de l'écran */
+    width: 500px;  /* Longueur du trait */
+    height: 100%;
     background: url("./traitcoccinelle.png") no-repeat center left;
     background-size: contain;
-    transform: scale(1.4);
-    transform-origin: left center;
 }
 
-/* LA COCCINELLE (Superposée par-dessus le trait) */
+/* LA COCCINELLE : Posée au bout du trait */
 .decoration-coccinelle::after {
     content: '';
     position: absolute;
-    /* On la place au bout du trait à droite */
-    top: 40px; 
-    left: 280px; 
-    
-    width: 80px;         /* Taille de la coccinelle */
-    height: 80px;
+    top: 45px;     /* Position verticale sur le titre */
+    left: 380px;   /* Position horizontale : elle "atterrit" sur le titre */
+    width: 120px;  /* Taille de ta coccinelle */
+    height: 120px;
     background: url("./coccinelle.png") no-repeat center center;
     background-size: contain;
-    
-    /* Petite animation pour qu'elle soit vivante */
-    animation: flight 3s ease-in-out infinite;
-}
-
-@keyframes flight {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    50% { transform: translate(5px, -10px) rotate(5deg); }
 }
