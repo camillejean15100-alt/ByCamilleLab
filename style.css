@@ -341,19 +341,22 @@ html, body {
 }
 
 /* ==========================================================================
-   DÉCORATION : TRAIT EN BAS (CORRECTIF GITHUB)
-   ========================================================================== */
+   DÉCORATION : TRAIT XXL EN BAS 
+   ========================================================================= = */
 
 body:not(.page-accueil) .decoration-coccinelle {
-    display: block !important; /* Force l'affichage */
+    display: block !important;
     position: fixed;
-    bottom: 0;                /* ON PASSE EN BAS */
-    right: 0;                 /* ON RESTE À DROITE */
-    width: 350px;
-    height: 150px;            /* Hauteur ajustée pour ne voir que le trait */
+    bottom: -50px;           /* Pousse le bloc vers le bas pour ne voir que le trait */
+    right: -50px;            /* Pousse le bloc vers la droite pour le même motif */
+    
+    /* TAILLE XXL DU CONTENEUR */
+    width: 600px;            /* Augmenté pour un trait très long */
+    height: 300px;           /* Hauteur augmentée pour contenir le trait agrandi */
+    
     z-index: 4500;
     pointer-events: none;
-    overflow: hidden;         /* Cache tout ce qui dépasse du bloc (la coccinelle) */
+    overflow: hidden;        /* Cache la coccinelle */
 }
 
 body:not(.page-accueil) .decoration-coccinelle::after {
@@ -361,10 +364,12 @@ body:not(.page-accueil) .decoration-coccinelle::after {
     display: block;
     width: 100%;
     height: 100%;
-    /* Utilisation du chemin relatif sécurisé pour GitHub */
     background: url("./traitcoccinelle.png") no-repeat bottom right;
-    background-size: contain;
     
-    /* REMONTE L'IMAGE POUR CACHER LA COCCINELLE EN HAUT */
-    transform: translateY(-50px); /* Ajuste ce chiffre selon ton image originale */
+    /* AGRANDIT LE TRAIT À L'INTÉRIEUR DU CONTENEUR */
+    background-size: 150%;  /* Le trait est 1.5x plus grand que le conteneur */
+    
+    /* EFFET DE ZOOM SUPPLÉMENTAIRE ET POSITIONNEMENT */
+    transform: scale(1.3) translateY(-80px) translateX(-20px); /* Agrandit 1.3x et ajuste pour ne voir que le trait */
+    transform-origin: bottom right; /* Le zoom se fait depuis le coin bas-droite */
 }
