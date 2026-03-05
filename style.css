@@ -1,31 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-body, html {
-    height: 100%;
+body {
     background-color: #f3eed7;
-    font-family: 'Californian FB', serif;
+    font-family: 'Segoe UI', sans-serif;
+    height: 100vh;
     overflow: hidden;
 }
 
 /* --- HEADER --- */
 .main-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 50px;
-    z-index: 100;
+    padding: 20px 40px;
+    position: absolute;
+    width: 100%;
+    z-index: 10;
 }
 
-.logo { height: 80px; }
+.logo { height: 60px; }
 
 .navigation a {
     text-decoration: none;
@@ -35,61 +30,52 @@ body, html {
     font-size: 0.9rem;
 }
 
-/* --- HERO SECTION --- */
-.hero-section {
+/* --- IMAGE DE FOND --- */
+.hero-container {
     height: 100vh;
-    /* VERIFIE LE NOM DE TON IMAGE DE FOND CI-DESSOUS */
+    /* Utilise l'image SANS le texte si possible */
     background: url('image_2fda0b.jpg') no-repeat center center;
     background-size: cover;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding-top: 80px;
 }
 
-.overlay-content {
-    text-align: center;
-    width: 100%;
-    padding-top: 60px;
-}
-
-h1 {
+.hero-text h1 {
     font-family: 'Gochi Hand', cursive;
-    color: #333366;
-    font-size: clamp(2rem, 5vw, 4rem);
-    margin-bottom: 40px;
+    color: #1D70B7;
+    font-size: 3.5rem;
+    text-align: center;
+    margin-bottom: 50px;
 }
 
-/* --- CARTES --- */
-.cards-container {
+/* --- LES CARTES --- */
+.cards-wrapper {
     display: flex;
-    gap: 30px;
-    justify-content: flex-end; /* Pour décaler à droite comme sur l'image */
-    padding-right: 15%;
+    gap: 20px;
+    /* On décale vers la droite pour ne pas cacher le personnage */
+    margin-left: 25%; 
 }
 
 .card {
-    background: rgba(233, 226, 197, 0.85); /* Effet translucide */
-    width: 220px;
-    height: 250px;
-    padding: 20px;
-    border-radius: 30px;
+    background: rgba(233, 226, 197, 0.9);
+    width: 200px;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    gap: 15px;
 }
 
-.card-icon {
-    height: 60px;
-    margin-bottom: 15px;
-}
+.card .icon { font-size: 2rem; }
 
 .card p {
     color: #1D70B7;
     font-weight: bold;
-    font-size: 1rem;
-    line-height: 1.2;
+    font-size: 0.9rem;
+    line-height: 1.3;
 }
