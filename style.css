@@ -23,76 +23,69 @@ body {
 }
 body:not(:has(:target)) #accueil, :target { display: flex !important; }
 
-/* --- SECTION ACCUEIL (LA MAQUETTE) --- */
+/* --- SECTION ACCUEIL --- */
 #accueil {
     background: url('fondaccueil.jpg') no-repeat center center/cover;
-    justify-content: flex-start; /* Aligne le contenu vers le haut */
-    padding-top: 80px; /* Espace pour le header */
+    justify-content: flex-start; 
+    padding-top: 100px; /* Augmenté pour descendre le titre au-dessus du moulin */
 }
 
 .hero {
     text-align: center;
     width: 100%;
-    margin-top: 40px; /* Descend un peu le titre du header mais pas trop */
     z-index: 10;
 }
 
 h1 { 
     font-family: 'Gochi Hand'; 
-    font-size: 4.2rem; /* Plus grand */
+    font-size: 3.8rem; /* Taille de la maquette */
     color: #333366; 
-    /* Contour blanc plus épais pour la lisibilité sur le ciel */
-    text-shadow: 
-        -2px -2px 0 #fff,  
-         2px -2px 0 #fff,
-        -2px  2px 0 #fff,
-         2px  2px 0 #fff,
-         3px  3px 10px rgba(0,0,0,0.2); 
-    margin-bottom: 10px;
+    /* Lisibilité maximale sur le ciel sans trop d'épaisseur */
+    text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+    margin-bottom: 0; /* Colle la mission au titre */
 }
 
 .mission { 
     font-family: 'Gochi Hand'; 
     color: #333366; 
-    font-size: 1.6rem; 
-    background: rgba(255, 255, 255, 0.4); /* Petit fond discret pour lire sur les nuages */
-    display: inline-block;
-    padding: 5px 20px;
-    border-radius: 50px;
+    font-size: 1.2rem; /* Taille normale/petite */
+    font-weight: normal;
+    margin-bottom: 20px;
 }
 
-/* --- LES CARTES (POUSSÉES À DROITE) --- */
+/* --- LES CARTES (POUSSÉES À DROITE, NE TOUCHE PAS LE PERSO ET PLUS BASSES) --- */
 .services-grid { 
     display: flex; 
-    gap: 25px; 
-    justify-content: flex-end; /* Pousse à droite */
-    align-items: center;
+    gap: 20px; 
+    justify-content: flex-end; 
+    align-items: flex-end; /* Alignement vers le bas pour descendre les cartes */
     width: 100%;
-    height: 60%; /* Prend de la place en hauteur pour centrer verticalement */
-    padding-right: 8%; /* Espace du bord droit */
-    padding-left: 45%; /* CRUCIAL : Bloque les cartes sur la moitié droite de l'écran */
+    flex-grow: 1; /* Prend l'espace restant pour bien se placer */
+    padding-right: 5%; 
+    padding-left: 50%; /* Bloque les cartes sur la moitié droite pour libérer le perso */
+    padding-bottom: 50px; /* Espace du bord inférieur */
 }
 
 .card {
-    background: rgba(233, 226, 197, 0.95); /* Plus opaque pour mieux lire */
-    width: 230px; 
-    height: 280px; 
-    border-radius: 25px; 
-    padding: 25px; 
+    background: rgba(233, 226, 197, 0.92); 
+    width: 210px; 
+    height: 250px; 
+    border-radius: 20px; 
+    padding: 20px; 
     display: flex; 
     flex-direction: column; 
     align-items: center; 
     justify-content: center;
     text-align: center; 
-    gap: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    gap: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-.card img { height: 70px; width: auto; object-fit: contain; }
+.card img { height: 60px; width: auto; object-fit: contain; }
 .card p { 
     color: #333; 
-    font-size: 1rem; 
-    line-height: 1.4; 
+    font-size: 0.9rem; 
+    line-height: 1.2; 
     font-weight: 600; 
 }
 
