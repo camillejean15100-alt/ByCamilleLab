@@ -374,9 +374,6 @@ html, body {
     width: 550px;             /* IMAGE MASSIVE */
     height: 550px;
     object-fit: cover;
-    border-radius: 50%;
-    border: 15px solid white; /* BORDURE BLANCHE DU MODÈLE */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
 /* LE TEXTE : Centré et bleu Californian FB */
