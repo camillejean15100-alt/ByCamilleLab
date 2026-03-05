@@ -185,51 +185,53 @@ body {
 }
 
 /* ==========================================================================
-   SECTION PROJETS (LA VUE)
+   SECTION PROJETS (ZERO ESPACE BLANC)
    ========================================================================== */
 
 .projects-view {
-    display: none; /* Caché par défaut, géré par :target ou JS */
-    width: 100%;
-    height: 100vh; /* Fixe la hauteur à l'écran exact */
-    position: absolute;
+    display: none; /* Toujours géré par :target ou JS */
+    width: 100vw;
+    height: 100vh;
+    position: fixed; /* Fixé pour éviter tout décalage au chargement */
     top: 0;
     left: 0;
-    /* Fond calé en bas pour voir l'herbe, cover pour éviter le blanc */
+    margin: 0;
+    padding: 0;
+    
+    /* On force l'image à remplir CHAQUE pixel de la fenêtre */
     background: url("voirmesprojets.jpg") no-repeat center bottom;
-    background-size: cover;
+    background-size: cover; /* Remplit tout l'espace sans déformer */
+    
     z-index: 20;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* Aligne le contenu vers le haut */
-    padding-top: 160px; /* Espace pour le header */
-    overflow: hidden; /* Supprime le scroll de la page */
+    overflow: hidden; /* Interdit le scroll pour garder l'herbe fixe */
 }
 
-/* Affiche la section quand on clique sur le lien #view-projets */
 .projects-view:target {
     display: flex;
 }
 
+/* Titre décalé pour ne pas être trop haut */
 .projects__title {
     font-family: var(--font-accent);
     color: var(--color-primary);
     font-size: 42px;
     text-shadow: 2px 2px 0 white;
-    margin-bottom: 40px;
+    margin-top: 150px; /* Espace pour le logo */
+    margin-bottom: 30px;
 }
 
-/* --- GRILLE DE PROJETS --- */
+/* --- GRILLE DE PROJETS (PLUS BASSE ET PLUS ÉCARTÉE) --- */
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    /* Écarte bien les cartes pour laisser respirer le design */
-    gap: 50px 40px; 
+    gap: 60px 40px; /* Écartement vertical augmenté */
     max-width: 1200px;
     width: 90%;
     margin: 0 auto;
-    /* On remonte un peu la grille pour ne pas écraser l'herbe du bas */
-    padding-bottom: 100px; 
+    /* On descend la grille pour qu'elle s'approche de l'herbe sans la cacher */
+    padding-bottom: 50px; 
 }
 
 .project-card {
@@ -241,111 +243,47 @@ body {
     transition: transform 0.2s ease;
 }
 
-.project-card:hover {
-    transform: scale(1.05);
-}
-
 /* ==========================================================================
-   GALERIE OVERLAY (FENÊTRE BLEUE AU CLIC)
+   GALERIE OVERLAY (CONTRÔLE TOTAL)
    ========================================================================== */
 
 .gallery-overlay {
     position: fixed;
-    inset: 0;
-    background: rgba(29, 112, 183, 0.94); /* Bleu foncé de l'identité */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(29, 112, 183, 0.96);
     z-index: 9999;
-    display: none; /* Géré par le JS .gallery--active */
+    display: none;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(5px);
 }
 
 .gallery--active {
     display: flex !important;
 }
 
-.gallery__wrapper {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    width: 95%;
-    max-width: 1100px;
-    position: relative;
-}
-
-/* Fenêtre centrale bleue */
+/* La fenêtre bleue qui s'affiche au milieu */
 .gallery__window {
     background: #2a7ebc;
     border-radius: 50px;
-    padding: 60px;
+    padding: 50px;
     display: flex;
     align-items: center;
-    gap: 50px;
-    width: 100%;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+    gap: 40px;
+    width: 90%;
+    max-width: 1050px;
+    position: relative;
 }
 
-.gallery__img-container {
-    flex: 1.2;
-}
-
-.gallery__img-container img {
-    width: 100%;
-    border-radius: 20px;
-    display: block;
-}
-
-.gallery__text-container {
-    flex: 1;
-    color: white;
-    text-align: left;
-}
-
-#gallery-title {
-    font-family: var(--font-accent);
-    font-size: 3.5rem;
-    margin-bottom: 10px;
-}
-
-.gallery__line {
-    width: 100px;
-    height: 4px;
-    background: white;
-    margin-bottom: 25px;
-}
-
-#gallery-desc {
-    font-size: 1.2rem;
-    line-height: 1.5;
-}
-
-/* Bouton Fermer (X) */
 .gallery__close {
     position: absolute;
-    top: -60px;
-    right: 20px;
+    top: -70px; /* Sortie de la boîte bleue */
+    right: 0;
     color: white;
     font-size: 80px;
     background: none;
     border: none;
     cursor: pointer;
-    line-height: 1;
-}
-
-/* Flèches de navigation */
-.arrow-icon {
-    font-size: 100px;
-    color: white;
-    cursor: pointer;
-    user-select: none;
-}
-
-.nav-arrow {
-    background: none;
-    border: none;
-    transition: opacity 0.2s;
-}
-
-.nav-arrow:hover {
-    opacity: 0.6;
 }
