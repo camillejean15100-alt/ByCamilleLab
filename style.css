@@ -341,22 +341,22 @@ html, body {
 }
 
 /* ==========================================================================
-   DÉCORATION : TRAIT XXL EN BAS 
-   ========================================================================= = */
+   DÉCORATION : TRAIT XXL BAS DROITE (VERSION FORCEE)
+   ========================================================================== */
 
 body:not(.page-accueil) .decoration-coccinelle {
     display: block !important;
     position: fixed;
-    bottom: -50px;           /* Pousse le bloc vers le bas pour ne voir que le trait */
-    right: -50px;            /* Pousse le bloc vers la droite pour le même motif */
+    bottom: -20px;           /* Colle au bord bas */
+    right: -20px;            /* Colle au bord droit */
     
-    /* TAILLE XXL DU CONTENEUR */
-    width: 600px;            /* Augmenté pour un trait très long */
-    height: 300px;           /* Hauteur augmentée pour contenir le trait agrandi */
+    /* ON VOIT TRÈS LARGE */
+    width: 800px;            /* Énorme largeur pour que le trait traverse le coin */
+    height: 400px;           
     
     z-index: 4500;
     pointer-events: none;
-    overflow: hidden;        /* Cache la coccinelle */
+    overflow: hidden;        /* Masque la coccinelle qui est en haut de l'image */
 }
 
 body:not(.page-accueil) .decoration-coccinelle::after {
@@ -364,12 +364,17 @@ body:not(.page-accueil) .decoration-coccinelle::after {
     display: block;
     width: 100%;
     height: 100%;
+    
+    /* Chemin GitHub sécurisé */
     background: url("./traitcoccinelle.png") no-repeat bottom right;
     
-    /* AGRANDIT LE TRAIT À L'INTÉRIEUR DU CONTENEUR */
-    background-size: 150%;  /* Le trait est 1.5x plus grand que le conteneur */
+    /* ON ZOOM À FOND SUR LE TRAIT */
+    background-size: 180%;   /* L'image est presque 2x plus grande que le bloc */
     
-    /* EFFET DE ZOOM SUPPLÉMENTAIRE ET POSITIONNEMENT */
-    transform: scale(1.3) translateY(-80px) translateX(-20px); /* Agrandit 1.3x et ajuste pour ne voir que le trait */
-    transform-origin: bottom right; /* Le zoom se fait depuis le coin bas-droite */
+    /* ON DESCEND L'IMAGE POUR ÉJECTER LA COCCINELLE DU CADRE */
+    /* translateY pousse la coccinelle vers le haut (hors champ) */
+    /* scale agrandit le trait pour qu'il soit épais */
+    transform: scale(1.5) translateY(-120px) translateX(-40px);
+    transform-origin: bottom right;
+    opacity: 0.8;            /* Optionnel : pour que ça reste discret sous le contenu */
 }
