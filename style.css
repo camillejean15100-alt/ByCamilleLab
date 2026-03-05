@@ -361,9 +361,30 @@ html, body {
     gap: 60px;                /* Espace entre la photo et le texte */
 }
 
-/* Style pour l'image (plus petite et à gauche) */
+/* --- SECTION À PROPOS --- */
+
+/* Applique le même fond que la section Projets */
+.about-section {
+    background-color: #F1EBD8; /* Beige uni */
+    padding: 100px 0;         /* Espacement pour aérer */
+    position: relative;
+    overflow: hidden;         /* Pour le style */
+}
+
+/* Container centré et utilisant flexbox */
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;      /* Centre verticalement photo et texte */
+    justify-content: center;   /* Centre l'ensemble horizontalement */
+    gap: 60px;                /* Espace entre la photo et le texte */
+}
+
+/* Style pour l'image (plus grande et à gauche) */
 .about__profile-photo {
-    width: 350px;             /* Taille réduite de la photo */
+    width: 450px;             /* Taille augmentée de la photo */
     height: auto;
     border-radius: 50%;       /* Forme circulaire */
     border: 10px solid white; /* Bordure blanche */
@@ -377,6 +398,7 @@ html, body {
     max-width: 600px;         /* Limite la largeur du texte */
     color: #1D70B8;            /* Bleu Californian FB */
     font-family: 'Gochi Hand', cursive; /* Gochi Hand pour tout le texte */
+    text-align: center;       /* Centre le texte à l'intérieur de son bloc */
 }
 
 /* Titre en bleu et Gochi Hand */
