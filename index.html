@@ -8,88 +8,48 @@
 </head>
 <body>
 
-    <input type="radio" name="nav" id="btn-accueil" checked>
-    <input type="radio" name="nav" id="btn-projets">
-    <input type="radio" name="nav" id="btn-propos">
-    <input type="radio" name="nav" id="btn-tarifs">
-    <input type="radio" name="nav" id="btn-contact">
+    <div class="background-fixed"></div>
 
     <header class="navbar">
         <div class="logo">
             <img src="logocamille.png" alt="Camille Lab">
         </div>
+        
         <nav>
             <ul class="nav-links">
-                <li><label for="btn-accueil">Accueil</label></li>
-                <li><label for="btn-projets">Voir mes projets</label></li>
-                <li><label for="btn-propos">À Propos</label></li>
-                <li><label for="btn-tarifs">Tarifs</label></li>
-                <li><label for="btn-contact">Contact</label></li>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#projets">Voir mes projets</a></li>
+                <li><a href="#propos">À Propos</a></li>
+                <li><a href="#tarifs">Tarifs</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <main class="content-wrapper">
+    <main class="container">
         
-        <section class="section-content" id="view-accueil">
+        <section id="accueil" class="section">
             <h1 class="main-title">LE GRAPHISME AU SERVICE DE LA TERRE</h1>
             
-            <div class="hero-container">
-                <img src="profil-photo.png" alt="Illustration Camille" class="img-hero">
-                
-                <div class="speech-bubble">
-                    <p>« ma mission : cultivons ensemble votre image de marque »</p>
+            <div class="hero-content">
+                <div class="illustration-wrapper">
+                    <img src="profil-photo.png" alt="Camille" class="character">
+                    
+                    <div class="speech-bubble">
+                        <p>« ma mission : cultivons ensemble votre image de marque »</p>
+                    </div>
                 </div>
             </div>
 
-            <img src="coccinelle.png" class="bug-decor" alt="Déco">
+            <img src="coccinelle.png" class="deco-bug" alt="">
         </section>
 
-        <section class="section-content" id="view-projets">
-            <h2 class="title-sec">FUTURS PROJETS</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <img src="voirmesprojets.jpg" alt="Projet">
-                    <div class="overlay"><span>Bientôt disponible</span></div>
-                </div>
-                <div class="project-card">
-                    <img src="panier.png" alt="E-commerce">
-                    <div class="overlay"><span>En cours</span></div>
-                </div>
-                <div class="project-card placeholder">
-                    <img src="traitcoccinelle.png" alt="Ligne">
-                    <p>Germination en cours...</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="section-content" id="view-propos">
-            <h2 class="title-sec">À PROPOS</h2>
-            <div class="flex-about">
-                <img src="certif.png" alt="Certification">
-                <p>Graphisme éco-responsable et durable.</p>
-                <img src="plante.png" alt="Plante" class="decor-plante">
-            </div>
-        </section>
-
-        <section class="section-content" id="view-tarifs">
-            <h2 class="title-sec">TARIFS</h2>
-            <div class="tarifs-box">
-                <img src="panneaux.png" alt="Panneaux tarifs">
-            </div>
-        </section>
-
-        <section class="section-content" id="view-contact">
-            <h2 class="title-sec">CONTACT</h2>
-            <div class="contact-links">
-                <img src="mail.jpg" alt="Email">
-                <img src="reseaux-sociaux.png" alt="Social">
-            </div>
-        </section>
+        <section id="projets" class="section"></section>
+        <section id="propos" class="section"></section>
+        <section id="tarifs" class="section"></section>
+        <section id="contact" class="section"></section>
 
     </main>
-
-    <div class="full-screen-bg"></div>
 
 </body>
 </html>
