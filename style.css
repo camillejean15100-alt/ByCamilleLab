@@ -341,23 +341,27 @@ html, body {
 }
 
 /* ==========================================================================
-   LA COCCINELLE PRÈS DU TITRE (ENFIN !)
+   LA COCCINELLE SUR LE TITRE (VERSION FINALE ET PRÉCISE)
    ========================================================================== */
 
-/* On cible la section qui contient ton titre "De la graine à l'image..." */
-.projects-section { 
-    position: relative; /* Indispensable pour caler la coccinelle */
+/* On centre le titre pour avoir un point d'ancrage fixe */
+.projects-section {
+    position: relative;
+    padding-top: 100px;
 }
 
 .decoration-coccinelle {
     display: none;
     position: absolute;
     
-    /* POSITIONNEMENT PRÉCIS AUTOUR DU TITRE */
-    top: -20px;       /* Ajuste pour qu'elle survole le texte */    
-    width: 450px;     /* On l'agrandit pour que le trait soit long */
-    height: 250px;
-    z-index: 10;
+    /* POSITIONNEMENT : On la cale par rapport au haut de la section */
+    top: 50px; 
+    left: 50%;
+    transform: translateX(-110%); /* La pousse à gauche du centre pour viser le titre */
+    
+    width: 400px;  /* Largeur du trait + coccinelle */
+    height: 200px;
+    z-index: 5;
     pointer-events: none;
 }
 
@@ -366,7 +370,7 @@ body:not(.page-accueil) .decoration-coccinelle {
     display: block !important;
 }
 
-/* L'image complète avec le trait */
+/* L'image trait + coccinelle */
 .decoration-coccinelle::after {
     content: '';
     display: block;
@@ -374,7 +378,4 @@ body:not(.page-accueil) .decoration-coccinelle {
     height: 100%;
     background: url("./traitcoccinelle.png") no-repeat center left;
     background-size: contain;
-    
-    /* ON AGRANDIT L'IMAGE ELLE-MÊME */
-    transform: scale(1.4); 
 }
