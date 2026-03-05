@@ -81,8 +81,9 @@ h1 {
 .services-container {
     display: flex;
     gap: 20px;
-    margin-top: 40px; 
-    margin-left: 320px; /* Décalage pour laisser la place à l'illustration de gauche */
+    margin-top: 50px; /* Ajuste la hauteur si besoin */
+    margin-left: 100px; /* Réduit de 320px à 100px pour ramener les cartes vers le milieu */
+    justify-content: center; /* Aide au centrage global */
 }
 
 .card {
