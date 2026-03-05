@@ -15,14 +15,11 @@
     box-sizing: border-box; 
 }
 
-html {
-    scroll-behavior: smooth; /* Permet le glissement fluide vers les projets */
-}
-
-body {
+html, body {
     width: 100%;
+    height: 100%;
     font-family: var(--font-main);
-    overflow-x: hidden; /* Évite le scroll horizontal moche */
+    overflow-x: hidden;
 }
 
 /* --- NAVIGATION (HEADER FIXE) --- */
@@ -31,18 +28,17 @@ body {
     justify-content: space-between;
     align-items: center; 
     padding: 30px 80px;
-    position: fixed; /* Reste en haut pour naviguer n'importe quand */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 5000;
-    background: transparent; /* Pas de blanc, reste sur ton fond */
+    background: transparent;
 }
 
 .header__logo img { 
     height: 110px; 
     width: auto; 
-    display: block; 
 }
 
 .nav-list { 
@@ -59,10 +55,7 @@ body {
     transition: color 0.3s ease;
 }
 
-.nav-list__link:hover, 
-.nav-list__link--active { 
-    color: var(--color-secondary); 
-}
+.nav-list__link:hover { color: var(--color-secondary); }
 
 .nav-list__sep { 
     color: var(--color-primary); 
@@ -70,7 +63,11 @@ body {
     font-weight: bold; 
 }
 
-/* --- SECTION ACCUEIL --- */
+/* ==========================================================================
+    LOGIQUE D'AFFICHAGE FIXE (ACCUEIL VS PROJETS)
+   ========================================================================== */
+
+/* L'accueil est visible par défaut */
 .app-container {
     width: 100%;
     height: 100vh;
@@ -81,11 +78,31 @@ body {
     position: relative;
 }
 
-.hero { 
-    flex: 1; 
-    position: relative; 
-    width: 100%; 
+/* La vue projet est cachée par défaut */
+.projects-view {
+    display: none; 
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0; left: 0;
+    background: url("voirmesprojets.jpg") no-repeat center bottom;
+    background-size: cover;
+    z-index: 20;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* CENTRE LA GRILLE AU MILIEU DE LA FEUILLE */
+    overflow: hidden;
 }
+
+/* QUAND ON CLIQUE SUR PROJETS : On affiche projets et on cache accueil */
+#view-projets:target { display: flex; }
+#view-projets:target ~ .app-container { display: none; }
+
+
+/* ==========================================================================
+    CONTENU ACCUEIL (ANIMATIONS)
+   ========================================================================== */
+.hero { flex: 1; position: relative; width: 100%; }
 
 .hero__title {
     text-align: center;
@@ -93,10 +110,9 @@ body {
     font-size: 60px;
     color: var(--color-dark);
     text-shadow: 2px 2px 0 white;
-    margin-top: 150px; /* Laisse passer le logo/menu */
+    margin-top: 150px;
 }
 
-/* Bulle calée sur Camille */
 .bubble {
     background: var(--color-beige);
     width: 450px;
@@ -107,8 +123,7 @@ body {
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 35%; 
-    left: 32%;
+    top: 35%; left: 32%;
     z-index: 10;
     opacity: 0;
     transform: scale(0.6);
@@ -116,114 +131,50 @@ body {
     transition: all var(--transition-speed) cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.bubble--active { 
-    opacity: 1; 
-    transform: scale(1); 
-    visibility: visible; 
-}
+.bubble--active { opacity: 1; transform: scale(1); visibility: visible; }
 
-.bubble::after {
-    content: '';
-    position: absolute;
-    left: -25px;
-    top: 50%;
-    transform: translateY(-50%);
-    border-top: 15px solid transparent;
-    border-bottom: 15px solid transparent;
-    border-right: 30px solid var(--color-beige);
-}
-
-.bubble__text {
-    color: var(--color-dark);
-    font-size: 1.6rem;
-    font-weight: bold;
-    text-align: center;
-}
-
-/* Cartes services */
 .services {
     display: flex;
     gap: 30px;
     position: absolute;
-    bottom: 30%; 
-    right: 15%;  
+    bottom: 30%; right: 15%;  
     z-index: 5;
     opacity: 0;
     transform: translateY(50px);
     transition: all 0.8s ease-out;
 }
 
-.services--visible { 
-    opacity: 1; 
-    transform: translateY(0); 
-}
+.services--visible { opacity: 1; transform: translateY(0); }
 
 .service-card {
     background: var(--color-beige);
-    width: 250px;
-    height: 330px;
+    width: 250px; height: 330px;
     border-radius: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
     padding: 25px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.1);
 }
 
-.service-card__icon { 
-    height: 90px; 
-    margin-bottom: 25px; 
-}
-
-.service-card__text {
-    color: var(--color-dark);
-    font-weight: bold;
-    font-size: 1.15rem;
-    text-align: center;
-    line-height: 1.3;
-}
-
 /* ==========================================================================
-   PORTFOLIO (Vue Projets)
+    SECTION PORTFOLIO (GRILLE)
    ========================================================================== */
-.projects-view {
-    display: none; /* Changé en 'flex' via JS ou :target */
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0; left: 0;
-    background: url("voirmesprojets.jpg") no-repeat center bottom;
-    background-size: cover;
-    z-index: 20;
-    
-    /* Centrage absolu au milieu de la feuille */
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; 
-    overflow: hidden;
-}
-
-.projects-view:target { display: flex; }
-
 .projects__title {
     font-family: var(--font-accent);
     color: var(--color-primary);
     font-size: 42px;
-    margin-bottom: 80px; /* Espace avec la grille */
+    margin-bottom: 80px; /* Écart avec les cartes */
     text-shadow: 2px 2px 0 white;
 }
 
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    /* Écart massif entre les cartes */
-    gap: 100px 60px; 
+    gap: 100px 60px; /* ÉCARTEMENT MASSIF DEMANDÉ */
     max-width: 1400px;
     width: 90%;
     margin: 0 auto;
-    /* On remonte un peu pour dégager l'herbe du bas */
-    padding-bottom: 60px; 
+    padding-bottom: 60px; /* Dégage l'herbe en bas */
 }
 
 .project-card {
@@ -238,7 +189,7 @@ body {
 .project-card:hover { transform: translateY(-10px); }
 
 /* ==========================================================================
-   GALERIE (Overlay & Fenêtre)
+    GALERIE (DESIGN FINAL)
    ========================================================================== */
 .gallery-overlay {
     position: fixed;
@@ -256,7 +207,7 @@ body {
     background: #2a7ebc;
     border-radius: 40px;
     padding: 60px;
-    display: flex; /* Image à gauche, Texte à droite */
+    display: flex; 
     align-items: center;
     gap: 60px;
     width: 1100px;
@@ -265,7 +216,6 @@ body {
     box-shadow: 0 40px 80px rgba(0,0,0,0.4);
 }
 
-/* Image rectangulaire */
 .gallery__img-container { flex: 1.4; }
 .gallery__img-container img {
     width: 100%;
@@ -274,7 +224,6 @@ body {
     border-radius: 20px;
 }
 
-/* Texte en Californian FB */
 .gallery__text-container { flex: 1; color: white; text-align: left; }
 
 #gallery-title {
@@ -285,7 +234,7 @@ body {
     text-transform: uppercase;
 }
 
-/* LE FILET : Occupant toute la largeur du titre */
+/* LE FILET : Occupe 100% de la largeur du bloc texte */
 .gallery__line {
     width: 100%; 
     height: 3px;
@@ -299,7 +248,6 @@ body {
     line-height: 1.7;
 }
 
-/* Commandes Blanches */
 .gallery__close {
     position: absolute;
     top: 40px; right: 50px;
