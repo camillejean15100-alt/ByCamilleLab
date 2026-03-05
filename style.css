@@ -189,54 +189,93 @@ html, body {
 .project-card:hover { transform: translateY(-10px); }
 
 /* ==========================================================================
-    GALERIE (DESIGN FINAL)
+   GALERIE OVERLAY (L'ARRIÈRE-PLAN SOMBRE)
    ========================================================================== */
 .gallery-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(29, 112, 183, 0.96);
+    background: rgba(29, 112, 183, 0.97); /* Bleu marine très foncé */
     z-index: 9999;
-    display: none;
+    display: none; /* Piloté par .gallery--active via JS */
     align-items: center;
     justify-content: center;
+    backdrop-filter: blur(5px);
 }
 
-.gallery--active { display: flex !important; }
+.gallery--active {
+    display: flex !important;
+}
 
+/* --- BOUTON FERMER (CROIX X) --- */
+.gallery__close {
+    position: absolute;
+    top: 40px;
+    right: 50px;
+    color: white;
+    font-size: 90px; /* Très grande et claire */
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 0.5;
+    z-index: 10001;
+    transition: opacity 0.2s;
+}
+
+.gallery__close:hover {
+    opacity: 0.7;
+}
+
+/* ==========================================================================
+   LA FENÊTRE CENTRALE (RECTANGLE BLEU CLAIR)
+   ========================================================================== */
 .gallery__window {
-    background: #2a7ebc;
+    background: #2a7ebc; 
     border-radius: 40px;
     padding: 60px;
-    display: flex; 
+    display: flex; /* Image à gauche, Texte à droite */
     align-items: center;
     gap: 60px;
     width: 1100px;
     min-height: 550px;
     position: relative;
-    box-shadow: 0 40px 80px rgba(0,0,0,0.4);
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
 }
 
-.gallery__img-container { flex: 1.4; }
+/* --- IMAGE (GRANDE ET RECTANGULAIRE) --- */
+.gallery__img-container {
+    flex: 1.4; /* Prend plus de place que le texte */
+}
+
 .gallery__img-container img {
     width: 100%;
-    aspect-ratio: 1.5;
+    height: auto;
+    aspect-ratio: 1.5; /* Force un format rectangle horizontal */
     object-fit: cover;
     border-radius: 20px;
+    display: block;
+    background: white;
 }
 
-.gallery__text-container { flex: 1; color: white; text-align: left; }
+/* --- TEXTE (CALIFORNIAN FB) --- */
+.gallery__text-container {
+    flex: 1;
+    color: white;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
 
 #gallery-title {
-    font-family: 'Californian FB', serif;
+    font-family: 'Californian FB', serif; /* Ta police demandée */
     font-size: 3.8rem;
     line-height: 1.1;
     margin-bottom: 5px;
     text-transform: uppercase;
 }
 
-/* LE FILET : Occupe 100% de la largeur du bloc texte */
+/* LE FILET : Doit occuper tout le titre */
 .gallery__line {
-    width: 100%; 
+    width: 100%; /* Prend toute la largeur disponible sous le titre */
     height: 3px;
     background-color: white;
     margin-bottom: 35px;
@@ -248,13 +287,34 @@ html, body {
     line-height: 1.7;
 }
 
-.gallery__close {
-    position: absolute;
-    top: 40px; right: 50px;
-    color: white; font-size: 100px;
-    background: none; border: none; cursor: pointer;
-    line-height: 0.5;
+/* ==========================================================================
+   FLÈCHES DE NAVIGATION (‹ et ›)
+   ========================================================================== */
+.nav-arrow {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 20px;
+    transition: transform 0.2s;
 }
 
-.arrow-icon { font-size: 130px; color: white; font-weight: 100; }
-.nav-arrow { background: none; border: none; cursor: pointer; }
+.nav-arrow:hover {
+    transform: scale(1.2);
+}
+
+.arrow-icon {
+    font-size: 130px; /* Grandes et fines */
+    color: white;
+    font-weight: 100;
+    line-height: 1;
+}
+
+/* Wrapper pour les flèches + la fenêtre si besoin de contrainte */
+.gallery__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    max-width: 1350px;
+    gap: 30px;
+}
