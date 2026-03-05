@@ -7,127 +7,90 @@
     <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+    <div class="app-container">
+        <header class="header">
+         <div class="header__logo">
+                <img src="logocamille.png" alt="Camille Lab">
+            </div>
+            <nav class="header__nav">
+                <ul class="nav-list">
+                    <li><a href="#" class="nav-list__link">Accueil</a></li>
+                    <span class="nav-list__sep">|</span>
+                    <li><a href="#" class="nav-list__link">Voir mes projets</a></li>
+                    <span class="nav-list__sep">|</span>
+                    <li><a href="#" class="nav-list__link">À Propos</a></li>
+                    <span class="nav-list__sep">|</span>
+                    <li><a href="#" class="nav-list__link">Tarifs</a></li>
+                    <span class="nav-list__sep">|</span>
+                    <li><a href="#" class="nav-list__link">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    <header class="header">
-        <div class="header__logo">
-            <img src="logocamille.png" alt="Camille Lab">
-        </div>
-        <nav class="header__nav">
-            <ul class="nav-list">
-                <li><a href="#view-accueil" class="nav-list__link">Accueil</a></li>
-                <span class="nav-list__sep">|</span>
-                <li><a href="#view-projets" class="nav-list__link">Voir mes projets</a></li>
-                <span class="nav-list__sep">|</span>
-                <li><a href="#a-propos" class="nav-list__link">À Propos</a></li>
-                <span class="nav-list__sep">|</span>
-                <li><a href="#tarifs" class="nav-list__link">Tarifs</a></li>
-                <span class="nav-list__sep">|</span>
-                <li><a href="#contact" class="nav-list__link">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <div class="main-content">
 
-        <section id="view-accueil" class="app-container">
-            <main class="hero">
-                <h1 class="hero__title">LE GRAPHISME AU SERVICE DE LA TERRE</h1>
+        <main class="hero" style="background: url('fondaccueil.jpg') no-repeat center center fixed; background-size: cover;" >
+            <h1 class="hero__title">LE GRAPHISME AU SERVICE DE LA TERRE</h1>
 
-                <div id="js-bubble" class="bubble">
-                    <p class="bubble__text">« ma mission : cultivons ensemble votre image de marque »</p>
+            <div id="js-bubble" class="bubble">
+              <p class="bubble__text">« ma mission : cultivons ensemble votre image de marque »</p>
+            </div>
+
+
+            <div id="js-services" class="services">
+                <div class="service-card">
+                    <img src="certif.png" class="service-card__icon" alt="Identité">
+                    <p class="service-card__text">Un logo et une image de marque qui vous ressemblent.</p>
                 </div>
-
-                <div id="js-services" class="services">
-                    <div class="service-card">
-                        <img src="certif.png" class="service-card__icon" alt="Identité">
-                        <p class="service-card__text">Un logo et une image de marque qui vous ressemblent.</p>
-                    </div>
-                    <div class="service-card">
-                        <img src="panier.png" class="service-card__icon" alt="Packaging">
-                        <p class="service-card__text">Création d'étiquettes & de packagings pour vos produits.</p>
-                    </div>
-                    <div class="service-card">
-                        <img src="panneaux.png" class="service-card__icon" alt="Signalétique">
-                        <p class="service-card__text">Panneaux & supports pour rendre votre ferme visible.</p>
-                    </div>
+                <div class="service-card">
+                    <img src="panier.png" class="service-card__icon" alt="Packaging">
+                    <p class="service-card__text">Création d'étiquettes & de packagings pour vos produits.</p>
+               </div>
+                <div class="service-card">
+                    <img src="panneaux.png" class="service-card__icon" alt="Signalétique">
+                   <p class="service-card__text">Panneaux & supports pour rendre votre ferme visible.</p>
                 </div>
-            </main>
-        </section>
-        
+            </div>
+        </main>
+    </div>
 
-        <section id="view-projets" class="projects-view">
-            
-            <div class="decoration-coccinelle"></div>
-            
+        <section id="view-projets" class="projects-view" style="background: url('voirmesprojets.jpg') no-repeat center center fixed; background-size: cover;" >
             <h2 class="projects__title">"De la graine à l'image : mes dernières réalisations."</h2>
             <div class="portfolio-grid">
-                <div class="project-card js-project" data-title="TITRE 1" data-desc="Description du projet 1..."></div>
-                <div class="project-card js-project" data-title="TITRE 2" data-desc="Description du projet 2..."></div>
-                <div class="project-card js-project" data-title="TITRE 3" data-desc="Description du projet 3..."></div>
-                <div class="project-card js-project" data-title="TITRE 4" data-desc="Description du projet 4..."></div>
-                <div class="project-card js-project" data-title="TITRE 5" data-desc="Description du projet 5..."></div>
-                <div class="project-card js-project" data-title="TITRE 6" data-desc="Description du projet 6..."></div>
-                <div class="project-card js-project" data-title="TITRE 7" data-desc="Description du projet 7..."></div>
-                <div class="project-card js-project" data-title="TITRE 8" data-desc="Description du projet 8..."></div>
+                <div class="project-card"></div>
+                <div class="project-card"></div>
+                <div class="project-card"></div>
+                <div class="project-card"></div>
+                <div class="project-card"></div>
+                <div class="project-card"></div>
+                <div class="project-card"></div>
+                <div class="project-card"></div>
             </div>
         </section>
 
-       <section id="a-propos" class="about-section">
-            <div class="decoration-coccinelle"></div>
-                <div class="about-container">
-                    <div class="about__profile-wrapper">
-                        <img src="./profil-photo.png" alt="Camille - Studio Graphique" class="about__profile-photo">
-            </div>
-        
-            <div class="about__content">
-                <h2 class="about__title">« Qui se cache derrière l’écran ? »</h2>
-            
-            <p class="about__description">
-                Graphiste diplômée, j’ai d’abord travaillé en <br>
-                agence de communication. Pour mon projet <br>
-                personnel, j’ai passé mon BPREA que j’ai obtenu, <br>
-                le milieu agricole mérite une communication <br>
-                aussi authentique que ses produits.
-                <br><br>
-                Aujourd’hui, je mets mon expertise visuelle au <br>
-                service de vos exploitations.
-            </p>
+        <div id="js-gallery-overlay" class="gallery-overlay">
+            <button id="js-close-gallery" class="gallery__close">×</button>
+            <div class="gallery__wrapper">
+                <button id="js-prev-btn" class="nav-arrow prev"><span class="arrow-icon">‹</span></button>
+                <div class="gallery__window">
+                    <div class="gallery__img-container">
+                        <img src="profil-photo.png" id="gallery-img" alt="Projet"> 
+                    </div>
+                    <div class="gallery__text-container">
+                        <h3 id="gallery-title">TITRE PROJET</h3>
+                        <div class="gallery__line"></div>
+                        <p id="gallery-desc">Description détaillée de la réalisation...</p>
+                    </div>
+                </div>
+                <button id="js-next-btn" class="nav-arrow next"><span class="arrow-icon">›</span></button>
             </div>
         </div>
-    </section>
-        
-        <section id="tarifs" class="placeholder-section" style="background:#fff; height:100vh;"></section>
-        <section id="contact" class="placeholder-section" style="background:#f4f4f4; height:100vh;"></section>
-
     </div>
-
-    <div id="js-gallery-overlay" class="gallery-overlay">
-        
-        <button id="js-close-gallery" class="gallery__close">×</button>
-        
-        <div class="gallery__wrapper">
-            <button class="nav-arrow" id="js-prev-btn">
-                <span class="arrow-icon">‹</span>
-            </button>
-            
-            <div class="gallery__window">
-                <div class="gallery__img-container">
-                    <img src="" id="gallery-img" alt="Illustration projet"> 
-                </div>
-                <div class="gallery__text-container">
-                    <h3 id="gallery-title">TITRE PROJET</h3>
-                    <div class="gallery__line"></div>
-                    <p id="gallery-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-                </div>
-            </div>
-            
-            <button class="nav-arrow" id="js-next-btn">
-                <span class="arrow-icon">›</span>
-            </button>
-        </div>
-    </div>
-
     <script src="script.js"></script>
+
 </body>
+
 </html>
+
