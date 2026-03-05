@@ -58,14 +58,14 @@
         <section id="view-projets" class="projects-view">
             <h2 class="projects__title">"De la graine à l'image : mes dernières réalisations."</h2>
             <div class="portfolio-grid">
-                <div class="project-card"></div>
-                <div class="project-card"></div>
-                <div class="project-card"></div>
-                <div class="project-card"></div>
-                <div class="project-card"></div>
-                <div class="project-card"></div>
-                <div class="project-card"></div>
-                <div class="project-card"></div>
+                <div class="project-card js-project" data-title="TITRE 1" data-desc="Description du projet 1..."></div>
+                <div class="project-card js-project" data-title="TITRE 2" data-desc="Description du projet 2..."></div>
+                <div class="project-card js-project" data-title="TITRE 3" data-desc="Description du projet 3..."></div>
+                <div class="project-card js-project" data-title="TITRE 4" data-desc="Description du projet 4..."></div>
+                <div class="project-card js-project" data-title="TITRE 5" data-desc="Description du projet 5..."></div>
+                <div class="project-card js-project" data-title="TITRE 6" data-desc="Description du projet 6..."></div>
+                <div class="project-card js-project" data-title="TITRE 7" data-desc="Description du projet 7..."></div>
+                <div class="project-card js-project" data-title="TITRE 8" data-desc="Description du projet 8..."></div>
             </div>
         </section>
 
@@ -73,6 +73,32 @@
         <section id="tarifs" class="placeholder-section" style="background:#fff; height:100vh;"></section>
         <section id="contact" class="placeholder-section" style="background:#f4f4f4; height:100vh;"></section>
 
+    </div>
+
+    <div id="js-gallery-overlay" class="gallery-overlay">
+        
+        <button id="js-close-gallery" class="gallery__close">×</button>
+        
+        <div class="gallery__wrapper">
+            <button class="nav-arrow" id="js-prev-btn">
+                <span class="arrow-icon">‹</span>
+            </button>
+            
+            <div class="gallery__window">
+                <div class="gallery__img-container">
+                    <img src="" id="gallery-img" alt="Illustration projet"> 
+                </div>
+                <div class="gallery__text-container">
+                    <h3 id="gallery-title">TITRE PROJET</h3>
+                    <div class="gallery__line"></div>
+                    <p id="gallery-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                </div>
+            </div>
+            
+            <button class="nav-arrow" id="js-next-btn">
+                <span class="arrow-icon">›</span>
+            </button>
+        </div>
     </div>
 
     <script src="script.js"></script>
