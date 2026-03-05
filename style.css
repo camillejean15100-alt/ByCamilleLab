@@ -6,87 +6,78 @@
     box-sizing: border-box;
 }
 
-body, html {
-    height: 100%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    overflow: hidden; /* Empêche le scroll inutile si tout tient sur l'écran */
+body {
+    background-color: #f3eed7;
+    font-family: 'Segoe UI', sans-serif;
+    overflow-x: hidden;
 }
 
 /* --- HEADER --- */
 .main-header {
-    position: absolute;
+    position: fixed;
     top: 0;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 50px;
-    z-index: 10;
+    z-index: 100;
 }
 
-.logo {
-    height: 80px;
-}
-
-.navigation {
-    font-weight: bold;
-    color: #1D70B7;
-}
+.logo { height: 60px; }
 
 .navigation a {
     text-decoration: none;
-    color: inherit;
-    margin: 0 5px;
+    color: #1D70B7;
+    font-weight: bold;
+    margin: 0 10px;
 }
 
-/* --- SECTION HERO (IMAGE DE FOND) --- */
+/* --- HERO SECTION --- */
 .hero-section {
     height: 100vh;
-    /* REMPLACE 'fond-camille.jpg' PAR LE NOM DE TON IMAGE TELECHARGÉE */
-    background: url('fond-camille.jpg') no-repeat center center;
+    /* CHANGE LE NOM CI-DESSOUS PAR LE NOM EXACT DE TON IMAGE SUR GITHUB */
+    background: url('image_2fe90b.jpg') no-repeat center center;
     background-size: cover;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    justify-content: flex-start;
-    padding-top: 120px;
+}
+
+.content-wrapper {
+    text-align: center;
+    margin-top: 50px;
 }
 
 h1 {
     font-family: 'Gochi Hand', cursive;
     color: #1D70B7;
-    font-size: 3.5rem;
-    text-shadow: 2px 2px 4px rgba(255,255,255,0.8);
-    margin-bottom: 50px;
-    text-align: center;
+    font-size: 4rem;
+    margin-bottom: 40px;
 }
 
-/* --- CONTENEUR DES CARTES --- */
+/* --- CARTES --- */
 .cards-container {
     display: flex;
     gap: 20px;
     justify-content: center;
-    align-items: flex-start;
-    margin-left: 20%; /* Pour décaler les cartes vers la droite comme sur l'image */
+    margin-left: 15%; /* Pour décaler comme sur ton modèle */
 }
 
 .card {
-    background: rgba(233, 226, 197, 0.85); /* Couleur beige semi-transparente */
-    width: 200px;
+    background: rgba(233, 226, 197, 0.9);
+    width: 220px;
+    height: 200px;
     padding: 20px;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-.card-icon {
-    font-size: 2rem;
-    margin-bottom: 10px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
 .card p {
-    color: #333;
-    font-size: 0.9rem;
-    line-height: 1.4;
-    font-weight: 500;
+    color: #1D70B7;
+    font-weight: bold;
+    font-size: 1.1rem;
 }
