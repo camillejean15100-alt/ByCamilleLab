@@ -15,11 +15,13 @@
     <input type="radio" name="nav" id="btn-contact">
 
     <header class="navbar">
-        <div class="logo"><img src="logocamille.png" alt="Logo"></div>
+        <div class="logo">
+            <img src="logocamille.png" alt="Camille Lab">
+        </div>
         <nav>
-            <ul>
+            <ul class="nav-links">
                 <li><label for="btn-accueil">Accueil</label></li>
-                <li><label for="btn-projets">Futurs Projets</label></li>
+                <li><label for="btn-projets">Voir mes projets</label></li>
                 <li><label for="btn-propos">À Propos</label></li>
                 <li><label for="btn-tarifs">Tarifs</label></li>
                 <li><label for="btn-contact">Contact</label></li>
@@ -27,65 +29,67 @@
         </nav>
     </header>
 
-    <div class="main-wrapper">
+    <main class="content-wrapper">
         
-        <section class="page" id="sec-accueil">
+        <section class="section-content" id="view-accueil">
             <h1 class="main-title">LE GRAPHISME AU SERVICE DE LA TERRE</h1>
-            <div class="hero-block">
-                <img src="profil-photo.png" class="camille-img">
-                <div class="speech-bubble">« ma mission : cultivons ensemble votre image de marque »</div>
-            </div>
-            <img src="coccinelle.png" class="floating-bug">
-        </section>
-
-        <section class="page" id="sec-projets">
-            <h2 class="title-sec">MES FUTURS PROJETS</h2>
-            <div class="future-grid">
-                <div class="project-card">
-                    <img src="voirmesprojets.jpg" class="img-blur">
-                    <div class="status-overlay">
-                        <img src="zoom.png" class="zoom-icon">
-                        <span>Bientôt disponible...</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="placeholder-box">
-                        <img src="traitcoccinelle.png" class="loading-line">
-                        <p>En cours de création</p>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="panier.png" class="img-blur">
-                    <div class="status-overlay"><span>En réflexion</span></div>
+            
+            <div class="hero-container">
+                <img src="profil-photo.png" alt="Illustration Camille" class="img-hero">
+                
+                <div class="speech-bubble">
+                    <p>« ma mission : cultivons ensemble votre image de marque »</p>
                 </div>
             </div>
+
+            <img src="coccinelle.png" class="bug-decor" alt="Déco">
         </section>
 
-        <section class="page" id="sec-propos">
+        <section class="section-content" id="view-projets">
+            <h2 class="title-sec">FUTURS PROJETS</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="voirmesprojets.jpg" alt="Projet">
+                    <div class="overlay"><span>Bientôt disponible</span></div>
+                </div>
+                <div class="project-card">
+                    <img src="panier.png" alt="E-commerce">
+                    <div class="overlay"><span>En cours</span></div>
+                </div>
+                <div class="project-card placeholder">
+                    <img src="traitcoccinelle.png" alt="Ligne">
+                    <p>Germination en cours...</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-content" id="view-propos">
             <h2 class="title-sec">À PROPOS</h2>
-            <div class="about-box">
-                <img src="certif.png" alt="Certif">
-                <p>Éco-conception et identité visuelle.</p>
+            <div class="flex-about">
+                <img src="certif.png" alt="Certification">
+                <p>Graphisme éco-responsable et durable.</p>
+                <img src="plante.png" alt="Plante" class="decor-plante">
             </div>
-            <img src="plante.png" class="decor-plante">
         </section>
 
-        <section class="page" id="sec-tarifs">
+        <section class="section-content" id="view-tarifs">
             <h2 class="title-sec">TARIFS</h2>
-            <img src="panneaux.png" class="img-tarifs">
+            <div class="tarifs-box">
+                <img src="panneaux.png" alt="Panneaux tarifs">
+            </div>
         </section>
 
-        <section class="page" id="sec-contact">
+        <section class="section-content" id="view-contact">
             <h2 class="title-sec">CONTACT</h2>
             <div class="contact-links">
-                <img src="mail.jpg" class="mail-img">
-                <img src="reseaux-sociaux.png" class="social-img">
+                <img src="mail.jpg" alt="Email">
+                <img src="reseaux-sociaux.png" alt="Social">
             </div>
         </section>
 
-    </div>
+    </main>
 
-    <div class="fixed-background"></div>
+    <div class="full-screen-bg"></div>
 
 </body>
 </html>
