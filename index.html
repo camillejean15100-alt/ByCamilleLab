@@ -2,61 +2,95 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Camille Lab | Graphisme</title>
-    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camille Lab | Graphisme Éco-responsable</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header class="header">
-        <div class="header__logo">
+    <input type="radio" name="main-nav" id="tab-accueil" checked>
+    <input type="radio" name="main-nav" id="tab-projets">
+    <input type="radio" name="main-nav" id="tab-propos">
+    <input type="radio" name="main-nav" id="tab-tarifs">
+    <input type="radio" name="main-nav" id="tab-contact">
+
+    <header class="navbar">
+        <div class="logo">
             <img src="logocamille.png" alt="Camille Lab">
         </div>
-        <nav class="header__nav">
-            <a href="#accueil" class="nav-link" id="btn-accueil">Accueil</a>
-            <span class="nav-sep">|</span>
-            <a href="#projets" class="nav-link" id="btn-projets">Voir mes projets</a>
-            <span class="nav-sep">|</span>
-            <a href="#propos" class="nav-link" id="btn-propos">À Propos</a>
-            <span class="nav-sep">|</span>
-            <a href="#tarifs" class="nav-link" id="btn-tarifs">Tarifs</a>
-            <span class="nav-sep">|</span>
-            <a href="#contact" class="nav-link" id="btn-contact">Contact</a>
+        <nav>
+            <ul>
+                <li><label for="tab-accueil">Accueil</label></li>
+                <li><label for="tab-projets">Voir mes projets</label></li>
+                <li><label for="tab-propos">À Propos</label></li>
+                <li><label for="tab-tarifs">Tarifs</label></li>
+                <li><label for="tab-contact">Contact</label></li>
+            </ul>
         </nav>
     </header>
 
-    <main id="accueil" class="hero">
-        <h1 class="hero__title">LE GRAPHISME AU SERVICE DE LA TERRE</h1>
-        <div class="bubble">
-            <p class="bubble__text">« ma mission : cultivons ensemble votre image de marque »</p>
-        </div>
+    <main class="main-container">
+
+        <section class="page-section" id="section-accueil">
+            <h1 class="title-main">LE GRAPHISME AU SERVICE DE LA TERRE</h1>
+            <div class="hero-content">
+                <div class="char-wrapper">
+                    <img src="profil-photo.png" alt="Camille" class="img-camille">
+                    <div class="bubble">
+                        <p>« ma mission : cultivons ensemble votre image de marque »</p>
+                    </div>
+                </div>
+            </div>
+            <img src="coccinelle.png" class="decor-bug" alt="">
+        </section>
+
+        <section class="page-section" id="section-projets">
+            <h2 class="title-sec">MON PORTFOLIO</h2>
+            <div class="gallery-grid">
+                <div class="gallery-card">
+                    <img src="voirmesprojets.jpg" alt="Projet">
+                    <div class="hover-zoom"><img src="zoom.png" alt="Zoom"></div>
+                </div>
+                <div class="gallery-card">
+                    <img src="panier.png" alt="E-commerce">
+                    <div class="hover-zoom"><img src="zoom.png" alt="Zoom"></div>
+                </div>
+                <div class="gallery-card">
+                    <img src="certif.png" alt="Certifications">
+                    <div class="hover-zoom"><img src="zoom.png" alt="Zoom"></div>
+                </div>
+            </div>
+            <img src="traitcoccinelle.png" class="decor-line" alt="">
+        </section>
+
+        <section class="page-section" id="section-propos">
+            <h2 class="title-sec">À PROPOS</h2>
+            <div class="about-flex">
+                <img src="plante.png" class="img-about" alt="Plante">
+                <p class="text-content">Graphiste passionnée par le vivant, j'accompagne vos projets avec une approche durable.</p>
+            </div>
+        </section>
+
+        <section class="page-section" id="section-tarifs">
+            <h2 class="title-sec">NOS TARIFS</h2>
+            <div class="tarifs-container">
+                <img src="panneaux.png" alt="Panneaux Tarifs" class="img-tarifs">
+            </div>
+        </section>
+
+        <section class="page-section" id="section-contact">
+            <h2 class="title-sec">ME CONTACTER</h2>
+            <div class="contact-box">
+                <img src="mail.jpg" alt="Email" class="img-contact">
+                <div class="socials">
+                    <img src="reseaux-sociaux.png" alt="Suivez-moi">
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <section id="projets" class="projects-section">
-        <div class="portfolio-grid">
-            <a href="#view1" class="project-card"><img src="projet1.jpg"></a>
-            <a href="#view2" class="project-card"><img src="projet2.jpg"></a>
-            <a href="#view3" class="project-card"><img src="projet3.jpg"></a>
-        </div>
-    </section>
-
-    <div id="view1" class="gallery-overlay">
-        <a href="#projets" class="close">×</a>
-        <div class="modal-content">
-            <img src="projet1.jpg">
-            <h3>PROJET 1</h3>
-            <p>Description simple en Californian FB.</p>
-        </div>
-    </div>
-
-    <div id="view2" class="gallery-overlay">
-        <a href="#projets" class="close">×</a>
-        <div class="modal-content">
-            <img src="projet2.jpg">
-            <h3>PROJET 2</h3>
-            <p>Description simple en Californian FB.</p>
-        </div>
-    </div>
+    <div class="site-bg"></div>
 
 </body>
 </html>
