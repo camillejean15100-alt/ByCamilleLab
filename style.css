@@ -185,54 +185,45 @@ body {
 }
 
 /* ==========================================================================
-   SECTION PORTFOLIO (VUE PROJETS)
+   PORTFOLIO (Vue Projets)
    ========================================================================== */
-
 .projects-view {
-    display: none; /* Piloté par le JS ou :target */
+    display: none; /* Changé en 'flex' via JS ou :target */
     width: 100vw;
     height: 100vh;
     position: fixed;
-    top: 0;
-    left: 0;
-    /* Fond fixé en bas pour l'herbe */
+    top: 0; left: 0;
     background: url("voirmesprojets.jpg") no-repeat center bottom;
     background-size: cover;
     z-index: 20;
     
-    /* Centrage vertical de tout le contenu */
-    display: flex;
+    /* Centrage absolu au milieu de la feuille */
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Place la grille au milieu de l'écran */
+    justify-content: center; 
     overflow: hidden;
 }
 
-.projects-view:target {
-    display: flex;
-}
+.projects-view:target { display: flex; }
 
 .projects__title {
     font-family: var(--font-accent);
     color: var(--color-primary);
     font-size: 42px;
+    margin-bottom: 80px; /* Espace avec la grille */
     text-shadow: 2px 2px 0 white;
-    margin-bottom: 60px; /* Plus d'écart avec les cartes */
-    /* On s'assure que le titre ne colle pas au logo en haut */
-    padding-top: 20px; 
 }
 
-/* --- GRILLE DE PROJETS (CENTRÉE ET ESPACÉE) --- */
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    /* Écartement massif entre les cartes */
-    gap: 80px 60px; 
-    max-width: 1300px;
+    /* Écart massif entre les cartes */
+    gap: 100px 60px; 
+    max-width: 1400px;
     width: 90%;
     margin: 0 auto;
-    /* On laisse de la place pour l'herbe en bas sans que les cartes la touchent */
-    padding-bottom: 80px; 
+    /* On remonte un peu pour dégager l'herbe du bas */
+    padding-bottom: 60px; 
 }
 
 .project-card {
@@ -241,67 +232,50 @@ body {
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
-.project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-}
+.project-card:hover { transform: translateY(-10px); }
 
 /* ==========================================================================
-   GALERIE (MODALE)
+   GALERIE (Overlay & Fenêtre)
    ========================================================================== */
-
 .gallery-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(29, 112, 183, 0.97);
+    background: rgba(29, 112, 183, 0.96);
     z-index: 9999;
     display: none;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(5px);
 }
 
 .gallery--active { display: flex !important; }
 
-.gallery__wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 95%;
-    max-width: 1350px;
-    gap: 40px;
-    position: relative;
-}
-
 .gallery__window {
-    background: #2a7ebc; 
+    background: #2a7ebc;
     border-radius: 40px;
     padding: 60px;
-    display: flex;
+    display: flex; /* Image à gauche, Texte à droite */
     align-items: center;
     gap: 60px;
     width: 1100px;
     min-height: 550px;
     position: relative;
-    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.4);
 }
 
-/* IMAGE RECTANGULAIRE */
+/* Image rectangulaire */
 .gallery__img-container { flex: 1.4; }
 .gallery__img-container img {
     width: 100%;
     aspect-ratio: 1.5;
     object-fit: cover;
     border-radius: 20px;
-    display: block;
-    background: white;
 }
 
-/* TEXTE CALIFORNIAN FB */
-.gallery__text-container { flex: 1; color: white; }
+/* Texte en Californian FB */
+.gallery__text-container { flex: 1; color: white; text-align: left; }
 
 #gallery-title {
     font-family: 'Californian FB', serif;
@@ -311,9 +285,9 @@ body {
     text-transform: uppercase;
 }
 
-/* FILET QUI OCCUPE TOUT LE TITRE */
+/* LE FILET : Occupant toute la largeur du titre */
 .gallery__line {
-    width: 100%;
+    width: 100%; 
     height: 3px;
     background-color: white;
     margin-bottom: 35px;
@@ -325,20 +299,14 @@ body {
     line-height: 1.7;
 }
 
-/* BOUTONS (X ET FLÈCHES) */
+/* Commandes Blanches */
 .gallery__close {
     position: absolute;
-    top: 40px;
-    right: 50px;
-    color: white;
-    font-size: 100px;
-    background: none;
-    border: none;
-    cursor: pointer;
+    top: 40px; right: 50px;
+    color: white; font-size: 100px;
+    background: none; border: none; cursor: pointer;
     line-height: 0.5;
-    z-index: 10001;
 }
 
-.nav-arrow { background: none; border: none; cursor: pointer; transition: 0.2s; }
-.nav-arrow:hover { transform: scale(1.2); }
 .arrow-icon { font-size: 130px; color: white; font-weight: 100; }
+.nav-arrow { background: none; border: none; cursor: pointer; }
