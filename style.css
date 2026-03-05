@@ -341,5 +341,43 @@ html, body {
 }
 
 /* ==========================================================================
-   FIN DE LA SECTION GALERIE
+  /* ==========================================================================
+   SECTION : DÉCORATION COCCINELLE (HORS ACCUEIL)
    ========================================================================== */
+
+/* 1. Bloc conteneur de la coccinelle */
+.decoration-coccinelle {
+    display: none; /* Masqué par défaut sur l'accueil */
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    width: 250px;  /* Ajuste selon la taille réelle de ton image */
+    height: 150px;
+    z-index: 4000; /* Juste en dessous du header (5000) pour ne pas gêner les clics */
+    pointer-events: none; /* Permet de cliquer sur le menu à travers l'image */
+}
+
+/* 2. Affichage automatique sur toutes les pages SAUF l'accueil */
+/* Note : Ton body sur l'index doit avoir la classe "page-accueil" */
+body:not(.page-accueil) .decoration-coccinelle {
+    display: block;
+}
+
+/* 3. L'image de la coccinelle et son trait */
+.decoration-coccinelle::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url("traitcoccinelle.png") no-repeat center right;
+    background-size: contain;
+    /* Petit effet de flottement léger pour rendre ça vivant */
+    animation: floatingCoccinelle 4s ease-in-out infinite;
+}
+
+/* 4. Animation optionnelle pour la coccinelle */
+@keyframes floatingCoccinelle {
+    0%   { transform: translate(0, 0); }
+    50%  { transform: translate(-5px, 10px); }
+    100% { transform: translate(0, 0); }
+}
