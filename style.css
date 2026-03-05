@@ -341,40 +341,39 @@ html, body {
 }
 
 /* ==========================================================================
-   DÉCORATION : TRAIT XXL BAS DROITE (VERSION FORCEE)
+   DÉCORATION : COCCINELLE ET TRAIT (VERS LE TITRE)
    ========================================================================== */
 
-body:not(.page-accueil) .decoration-coccinelle {
-    display: block !important;
-    position: fixed;
-    bottom: -20px;           /* Colle au bord bas */
-    right: -20px;            /* Colle au bord droit */
+/* 1. Le conteneur doit être flexible pour suivre le titre */
+.decoration-coccinelle {
+    display: none;
+    position: absolute; /* Absolute pour bouger avec le titre */
     
-    /* ON VOIT TRÈS LARGE */
-    width: 800px;            /* Énorme largeur pour que le trait traverse le coin */
-    height: 400px;           
+    /* POSITIONNEMENT PRÈS DU TITRE */
+    top: 110px;        /* Ajuste pour monter/descendre vers ton titre bleu */
+    left: 20%;         /* Ajuste pour coller au début de ta phrase */
     
-    z-index: 4500;
+    width: 300px;      /* Largeur pour voir le trait + la coccinelle */
+    height: 180px;
+    z-index: 100;
     pointer-events: none;
-    overflow: hidden;        /* Masque la coccinelle qui est en haut de l'image */
 }
 
+/* 2. Affichage sur toutes les pages sauf l'accueil */
+body:not(.page-accueil) .decoration-coccinelle {
+    display: block !important;
+}
+
+/* 3. L'image complète (Trait + Coccinelle) */
 body:not(.page-accueil) .decoration-coccinelle::after {
     content: '';
     display: block;
     width: 100%;
     height: 100%;
+    /* Chemin relatif pour GitHub */
+    background: url("./traitcoccinelle.png") no-repeat center left;
+    background-size: contain;
     
-    /* Chemin GitHub sécurisé */
-    background: url("./traitcoccinelle.png") no-repeat bottom right;
-    
-    /* ON ZOOM À FOND SUR LE TRAIT */
-    background-size: 180%;   /* L'image est presque 2x plus grande que le bloc */
-    
-    /* ON DESCEND L'IMAGE POUR ÉJECTER LA COCCINELLE DU CADRE */
-    /* translateY pousse la coccinelle vers le haut (hors champ) */
-    /* scale agrandit le trait pour qu'il soit épais */
-    transform: scale(1.5) translateY(-120px) translateX(-40px);
-    transform-origin: bottom right;
-    opacity: 0.8;            /* Optionnel : pour que ça reste discret sous le contenu */
+    /* SI L'IMAGE EST TROP PETITE, ON PEUT L'AGRANDIR ICI */
+    transform: scale(1.2); 
 }
