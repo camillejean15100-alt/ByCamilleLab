@@ -384,6 +384,8 @@ html, body {
 .about__content {
     flex: 1;
     text-align: center;       /* CENTRE TOUT LE CONTENU (Titre + Desc) */
+    display: flex;
+    align-items: center;
 }
 
 /* TITRE : GOCHI HAND */
@@ -393,6 +395,7 @@ html, body {
     font-size: 3.5rem;
     margin-bottom: 25px;
     line-height: 1.1;
+    width: 100%;
 }
 
 /* DESCRIPTION : CALIFORNIAN FB CENTRÉE */
