@@ -340,17 +340,16 @@ html, body {
     line-height: 1.6; 
 }
 
-/* --- SECTION À PROPOS : AVEC LE FOND IMAGE --- */
+/* --- SECTION À PROPOS : VERSION NETTE --- */
 
 .about-section {
-    /* ON REMET LE FOND IMAGE COMME DANS PROJETS */
-    background: url("fondsite.jpg") no-repeat center center;
+    background: url("./fondsite.jpg") no-repeat center bottom; /* Fond avec l'herbe en bas */
     background-size: cover;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 60px 0;
+    padding: 60px 0 150px 0; /* Padding important en bas pour dégager l'herbe */
     position: relative;
 }
 
@@ -360,10 +359,10 @@ html, body {
     justify-content: center;
     max-width: 1400px;
     width: 90%;
-    gap: 80px; /* Espace entre l'image et le texte */
+    gap: 80px; 
 }
 
-/* L'IMAGE : Grande, ronde, bordure blanche épaisse */
+/* IMAGE GRANDE À GAUCHE SANS BORDURE */
 .about__image-side {
     flex: 1;
     display: flex;
@@ -371,28 +370,29 @@ html, body {
 }
 
 .about__profile-photo {
-    width: 550px;             /* IMAGE MASSIVE */
+    width: 550px;             /* Garde la taille imposante */
     height: 550px;
     object-fit: cover;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Optionnel : garde une ombre légère pour le relief */
 }
 
-/* LE TEXTE : Centré et bleu Californian FB */
+/* TEXTE BLEU CENTRÉ À DROITE */
 .about__text-side {
     flex: 1;
-    text-align: center;       /* TEXTE BIEN CENTRÉ */
+    text-align: center;       /* Centrage parfait du texte */
 }
 
 .about__title {
-    font-family: 'Gochi Hand';
-    color: #1D70B8;            /* BLEU CALIFORNIAN FB */
+    font-family: 'Gochi Hand', cursive;
+    color: #1D70B8;            /* Bleu Californian FB */
     font-size: 3.5rem;
     margin-bottom: 35px;
     line-height: 1.1;
 }
 
 .about__description {
-    font-family: 'CalifornianFB';
-    color: #1D70B8;            /* TOUT EN BLEU */
+    font-family: 'Gochi Hand', cursive;
+    color: #1D70B8;            /* Tout en bleu */
     font-size: 1.8rem;
     line-height: 1.5;
 }
