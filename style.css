@@ -91,8 +91,6 @@ html, body {
     overflow: hidden;
 }
 
-#view-projets:target { display: flex; }
-#view-projets:target ~ .app-container { display: none; }
 
 /* ==========================================================================
     CONTENU ACCUEIL (ANIMATIONS & BULLE BD)
