@@ -185,53 +185,54 @@ body {
 }
 
 /* ==========================================================================
-   SECTION PROJETS (ZERO ESPACE BLANC)
+   SECTION PORTFOLIO (VUE PROJETS)
    ========================================================================== */
 
 .projects-view {
-    display: none; /* Toujours géré par :target ou JS */
+    display: none; /* Piloté par le JS ou :target */
     width: 100vw;
     height: 100vh;
-    position: fixed; /* Fixé pour éviter tout décalage au chargement */
+    position: fixed;
     top: 0;
     left: 0;
-    margin: 0;
-    padding: 0;
-    
-    /* On force l'image à remplir CHAQUE pixel de la fenêtre */
+    /* Fond fixé en bas pour l'herbe */
     background: url("voirmesprojets.jpg") no-repeat center bottom;
-    background-size: cover; /* Remplit tout l'espace sans déformer */
-    
+    background-size: cover;
     z-index: 20;
+    
+    /* Centrage vertical de tout le contenu */
+    display: flex;
     flex-direction: column;
     align-items: center;
-    overflow: hidden; /* Interdit le scroll pour garder l'herbe fixe */
+    justify-content: center; /* Place la grille au milieu de l'écran */
+    overflow: hidden;
 }
 
 .projects-view:target {
     display: flex;
 }
 
-/* Titre décalé pour ne pas être trop haut */
 .projects__title {
     font-family: var(--font-accent);
     color: var(--color-primary);
     font-size: 42px;
     text-shadow: 2px 2px 0 white;
-    margin-top: 150px; /* Espace pour le logo */
-    margin-bottom: 30px;
+    margin-bottom: 60px; /* Plus d'écart avec les cartes */
+    /* On s'assure que le titre ne colle pas au logo en haut */
+    padding-top: 20px; 
 }
 
-/* --- GRILLE DE PROJETS (PLUS BASSE ET PLUS ÉCARTÉE) --- */
+/* --- GRILLE DE PROJETS (CENTRÉE ET ESPACÉE) --- */
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 60px 40px; /* Écartement vertical augmenté */
-    max-width: 1200px;
+    /* Écartement massif entre les cartes */
+    gap: 80px 60px; 
+    max-width: 1300px;
     width: 90%;
     margin: 0 auto;
-    /* On descend la grille pour qu'elle s'approche de l'herbe sans la cacher */
-    padding-bottom: 50px; 
+    /* On laisse de la place pour l'herbe en bas sans que les cartes la touchent */
+    padding-bottom: 80px; 
 }
 
 .project-card {
@@ -240,78 +241,104 @@ body {
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     cursor: pointer;
-    transition: transform 0.2s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* FOND SOMBRE */
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+/* ==========================================================================
+   GALERIE (MODALE)
+   ========================================================================== */
+
 .gallery-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(29, 112, 183, 0.97); /* Bleu marine très foncé */
+    background: rgba(29, 112, 183, 0.97);
     z-index: 9999;
-    display: none; /* Activé par le JS */
+    display: none;
     align-items: center;
     justify-content: center;
+    backdrop-filter: blur(5px);
 }
 
 .gallery--active { display: flex !important; }
 
-/* FENÊTRE BLEUE CLAIRE */
+.gallery__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    max-width: 1350px;
+    gap: 40px;
+    position: relative;
+}
+
 .gallery__window {
     background: #2a7ebc; 
     border-radius: 40px;
     padding: 60px;
     display: flex;
     align-items: center;
-    gap: 50px;
-    width: 1000px;
-    min-height: 520px;
+    gap: 60px;
+    width: 1100px;
+    min-height: 550px;
     position: relative;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
 }
 
-/* IMAGE (Rectangulaire) */
-.gallery__img-container { flex: 1.3; }
+/* IMAGE RECTANGULAIRE */
+.gallery__img-container { flex: 1.4; }
 .gallery__img-container img {
     width: 100%;
-    aspect-ratio: 1.5; /* Format rectangle horizontal */
+    aspect-ratio: 1.5;
     object-fit: cover;
-    border-radius: 15px;
+    border-radius: 20px;
+    display: block;
     background: white;
 }
 
-/* TEXTE (Californian FB) */
+/* TEXTE CALIFORNIAN FB */
 .gallery__text-container { flex: 1; color: white; }
 
 #gallery-title {
-    font-family: 'Californian FB', serif; 
-    font-size: 3.5rem;
+    font-family: 'Californian FB', serif;
+    font-size: 3.8rem;
+    line-height: 1.1;
     margin-bottom: 5px;
     text-transform: uppercase;
 }
 
+/* FILET QUI OCCUPE TOUT LE TITRE */
 .gallery__line {
-    width: 120px;
+    width: 100%;
     height: 3px;
-    background: white;
-    margin-bottom: 25px;
+    background-color: white;
+    margin-bottom: 35px;
 }
 
 #gallery-desc {
     font-family: 'Californian FB', serif;
-    font-size: 1.2rem;
-    line-height: 1.6;
+    font-size: 1.3rem;
+    line-height: 1.7;
 }
 
-/* CROIX ET FLÈCHES */
+/* BOUTONS (X ET FLÈCHES) */
 .gallery__close {
     position: absolute;
-    top: 40px; right: 50px;
-    color: white; font-size: 90px;
-    background: none; border: none; cursor: pointer;
+    top: 40px;
+    right: 50px;
+    color: white;
+    font-size: 100px;
+    background: none;
+    border: none;
+    cursor: pointer;
     line-height: 0.5;
+    z-index: 10001;
 }
 
 .nav-arrow { background: none; border: none; cursor: pointer; transition: 0.2s; }
-.nav-arrow:hover { transform: scale(1.1); }
-.arrow-icon { font-size: 120px; color: white; font-weight: 100; }
+.nav-arrow:hover { transform: scale(1.2); }
+.arrow-icon { font-size: 130px; color: white; font-weight: 100; }
