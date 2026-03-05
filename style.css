@@ -9,7 +9,7 @@
 body, html {
     height: 100%;
     background-color: #f3eed7;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Californian FB', serif;
     overflow: hidden;
 }
 
@@ -25,16 +25,21 @@ body, html {
     z-index: 100;
 }
 
-.logo { height: 70px; }
+.logo { height: 80px; }
 
-.navigation { color: #1D70B7; font-weight: bold; }
-.navigation a { text-decoration: none; color: inherit; margin: 0 5px; }
+.navigation a {
+    text-decoration: none;
+    color: #1D70B7;
+    font-weight: bold;
+    margin-left: 15px;
+    font-size: 0.9rem;
+}
 
-/* --- SECTION HERO --- */
+/* --- HERO SECTION --- */
 .hero-section {
     height: 100vh;
-    /* ATTENTION : Le nom de l'image doit être EXACTEMENT celui sur GitHub */
-    background: #b0e0e6 url('image_2fe90b.jpg') no-repeat center center;
+    /* VERIFIE LE NOM DE TON IMAGE DE FOND CI-DESSOUS */
+    background: url('image_2fda0b.jpg') no-repeat center center;
     background-size: cover;
     display: flex;
     flex-direction: column;
@@ -42,44 +47,49 @@ body, html {
     justify-content: center;
 }
 
-.hero-overlay {
+.overlay-content {
     text-align: center;
     width: 100%;
-    padding-top: 50px;
+    padding-top: 60px;
 }
 
 h1 {
     font-family: 'Gochi Hand', cursive;
-    color: #1D70B7;
-    font-size: clamp(2rem, 6vw, 4rem);
-    margin-bottom: 50px;
-    text-shadow: 1px 1px 2px white;
+    color: #333366;
+    font-size: clamp(2rem, 5vw, 4rem);
+    margin-bottom: 40px;
 }
 
 /* --- CARTES --- */
 .cards-container {
     display: flex;
-    gap: 20px;
-    justify-content: center;
-    padding-left: 20%; /* Pour décaler comme sur ton visuel */
+    gap: 30px;
+    justify-content: flex-end; /* Pour décaler à droite comme sur l'image */
+    padding-right: 15%;
 }
 
 .card {
-    background: rgba(233, 226, 197, 0.9);
+    background: rgba(233, 226, 197, 0.85); /* Effet translucide */
     width: 220px;
-    height: 220px;
-    padding: 25px;
-    border-radius: 20px;
+    height: 250px;
+    padding: 20px;
+    border-radius: 30px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
+.card-icon {
+    height: 60px;
+    margin-bottom: 15px;
+}
+
 .card p {
     color: #1D70B7;
     font-weight: bold;
-    font-size: 1.1rem;
-    line-height: 1.3;
+    font-size: 1rem;
+    line-height: 1.2;
 }
