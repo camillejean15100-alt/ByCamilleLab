@@ -6,10 +6,11 @@
     box-sizing: border-box;
 }
 
-body {
+body, html {
+    height: 100%;
     background-color: #f3eed7;
     font-family: 'Segoe UI', sans-serif;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 /* --- HEADER --- */
@@ -24,36 +25,35 @@ body {
     z-index: 100;
 }
 
-.logo { height: 60px; }
+.logo { height: 70px; }
 
-.navigation a {
-    text-decoration: none;
-    color: #1D70B7;
-    font-weight: bold;
-    margin: 0 10px;
-}
+.navigation { color: #1D70B7; font-weight: bold; }
+.navigation a { text-decoration: none; color: inherit; margin: 0 5px; }
 
-/* --- HERO SECTION --- */
+/* --- SECTION HERO --- */
 .hero-section {
     height: 100vh;
-    /* CHANGE LE NOM CI-DESSOUS PAR LE NOM EXACT DE TON IMAGE SUR GITHUB */
-    background: url('image_2fe90b.jpg') no-repeat center center;
+    /* ATTENTION : Le nom de l'image doit être EXACTEMENT celui sur GitHub */
+    background: #b0e0e6 url('image_2fe90b.jpg') no-repeat center center;
     background-size: cover;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
-.content-wrapper {
+.hero-overlay {
     text-align: center;
-    margin-top: 50px;
+    width: 100%;
+    padding-top: 50px;
 }
 
 h1 {
     font-family: 'Gochi Hand', cursive;
     color: #1D70B7;
-    font-size: 4rem;
-    margin-bottom: 40px;
+    font-size: clamp(2rem, 6vw, 4rem);
+    margin-bottom: 50px;
+    text-shadow: 1px 1px 2px white;
 }
 
 /* --- CARTES --- */
@@ -61,18 +61,19 @@ h1 {
     display: flex;
     gap: 20px;
     justify-content: center;
-    margin-left: 15%; /* Pour décaler comme sur ton modèle */
+    padding-left: 20%; /* Pour décaler comme sur ton visuel */
 }
 
 .card {
     background: rgba(233, 226, 197, 0.9);
     width: 220px;
-    height: 200px;
-    padding: 20px;
+    height: 220px;
+    padding: 25px;
     border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
@@ -80,4 +81,5 @@ h1 {
     color: #1D70B7;
     font-weight: bold;
     font-size: 1.1rem;
+    line-height: 1.3;
 }
