@@ -3,94 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camille Lab | Graphisme Éco-responsable</title>
+    <title>Camille Lab | Graphisme</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <input type="radio" name="main-nav" id="tab-accueil" checked>
-    <input type="radio" name="main-nav" id="tab-projets">
-    <input type="radio" name="main-nav" id="tab-propos">
-    <input type="radio" name="main-nav" id="tab-tarifs">
-    <input type="radio" name="main-nav" id="tab-contact">
+    <input type="radio" name="nav" id="btn-accueil" checked>
+    <input type="radio" name="nav" id="btn-projets">
+    <input type="radio" name="nav" id="btn-propos">
+    <input type="radio" name="nav" id="btn-tarifs">
+    <input type="radio" name="nav" id="btn-contact">
 
     <header class="navbar">
-        <div class="logo">
-            <img src="logocamille.png" alt="Camille Lab">
-        </div>
+        <div class="logo"><img src="logocamille.png" alt="Logo"></div>
         <nav>
             <ul>
-                <li><label for="tab-accueil">Accueil</label></li>
-                <li><label for="tab-projets">Voir mes projets</label></li>
-                <li><label for="tab-propos">À Propos</label></li>
-                <li><label for="tab-tarifs">Tarifs</label></li>
-                <li><label for="tab-contact">Contact</label></li>
+                <li><label for="btn-accueil">Accueil</label></li>
+                <li><label for="btn-projets">Futurs Projets</label></li>
+                <li><label for="btn-propos">À Propos</label></li>
+                <li><label for="btn-tarifs">Tarifs</label></li>
+                <li><label for="btn-contact">Contact</label></li>
             </ul>
         </nav>
     </header>
 
-    <main class="main-container">
+    <div class="main-wrapper">
+        
+        <section class="page" id="sec-accueil">
+            <h1 class="main-title">LE GRAPHISME AU SERVICE DE LA TERRE</h1>
+            <div class="hero-block">
+                <img src="profil-photo.png" class="camille-img">
+                <div class="speech-bubble">« ma mission : cultivons ensemble votre image de marque »</div>
+            </div>
+            <img src="coccinelle.png" class="floating-bug">
+        </section>
 
-        <section class="page-section" id="section-accueil">
-            <h1 class="title-main">LE GRAPHISME AU SERVICE DE LA TERRE</h1>
-            <div class="hero-content">
-                <div class="char-wrapper">
-                    <img src="profil-photo.png" alt="Camille" class="img-camille">
-                    <div class="bubble">
-                        <p>« ma mission : cultivons ensemble votre image de marque »</p>
+        <section class="page" id="sec-projets">
+            <h2 class="title-sec">MES FUTURS PROJETS</h2>
+            <div class="future-grid">
+                <div class="project-card">
+                    <img src="voirmesprojets.jpg" class="img-blur">
+                    <div class="status-overlay">
+                        <img src="zoom.png" class="zoom-icon">
+                        <span>Bientôt disponible...</span>
                     </div>
                 </div>
-            </div>
-            <img src="coccinelle.png" class="decor-bug" alt="">
-        </section>
-
-        <section class="page-section" id="section-projets">
-            <h2 class="title-sec">MON PORTFOLIO</h2>
-            <div class="gallery-grid">
-                <div class="gallery-card">
-                    <img src="voirmesprojets.jpg" alt="Projet">
-                    <div class="hover-zoom"><img src="zoom.png" alt="Zoom"></div>
+                <div class="project-card">
+                    <div class="placeholder-box">
+                        <img src="traitcoccinelle.png" class="loading-line">
+                        <p>En cours de création</p>
+                    </div>
                 </div>
-                <div class="gallery-card">
-                    <img src="panier.png" alt="E-commerce">
-                    <div class="hover-zoom"><img src="zoom.png" alt="Zoom"></div>
-                </div>
-                <div class="gallery-card">
-                    <img src="certif.png" alt="Certifications">
-                    <div class="hover-zoom"><img src="zoom.png" alt="Zoom"></div>
+                <div class="project-card">
+                    <img src="panier.png" class="img-blur">
+                    <div class="status-overlay"><span>En réflexion</span></div>
                 </div>
             </div>
-            <img src="traitcoccinelle.png" class="decor-line" alt="">
         </section>
 
-        <section class="page-section" id="section-propos">
+        <section class="page" id="sec-propos">
             <h2 class="title-sec">À PROPOS</h2>
-            <div class="about-flex">
-                <img src="plante.png" class="img-about" alt="Plante">
-                <p class="text-content">Graphiste passionnée par le vivant, j'accompagne vos projets avec une approche durable.</p>
+            <div class="about-box">
+                <img src="certif.png" alt="Certif">
+                <p>Éco-conception et identité visuelle.</p>
+            </div>
+            <img src="plante.png" class="decor-plante">
+        </section>
+
+        <section class="page" id="sec-tarifs">
+            <h2 class="title-sec">TARIFS</h2>
+            <img src="panneaux.png" class="img-tarifs">
+        </section>
+
+        <section class="page" id="sec-contact">
+            <h2 class="title-sec">CONTACT</h2>
+            <div class="contact-links">
+                <img src="mail.jpg" class="mail-img">
+                <img src="reseaux-sociaux.png" class="social-img">
             </div>
         </section>
 
-        <section class="page-section" id="section-tarifs">
-            <h2 class="title-sec">NOS TARIFS</h2>
-            <div class="tarifs-container">
-                <img src="panneaux.png" alt="Panneaux Tarifs" class="img-tarifs">
-            </div>
-        </section>
+    </div>
 
-        <section class="page-section" id="section-contact">
-            <h2 class="title-sec">ME CONTACTER</h2>
-            <div class="contact-box">
-                <img src="mail.jpg" alt="Email" class="img-contact">
-                <div class="socials">
-                    <img src="reseaux-sociaux.png" alt="Suivez-moi">
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <div class="site-bg"></div>
+    <div class="fixed-background"></div>
 
 </body>
 </html>
