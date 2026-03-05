@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: "Californian FB", serif;
+    background: url('fondaccueil.jpg') no-repeat center bottom;
+    background-size: cover;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.site-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+/* Header & Nav */
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 60px;
+}
+
+.logo { 
+    width: 140px; 
+}
+
+nav { 
+    font-weight: bold; 
+    font-size: 1.2rem; 
+}
+
+/* Menu en Bleu #1D70B7 */
+nav a { 
+    text-decoration: none; 
+    color: #1D70B7; 
+    transition: color 0.3s;
+}
+
+/* Hover vert pour le menu */
+nav a:hover, nav a.active { 
+    color: #8fb43e; 
+}
+
+/* Titre Principal */
+h1 {
+    font-family: 'Gochi Hand', cursive;
+    font-size: 4.5rem;
+    color: #1D70B7;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+
+.mission-bar {
+    font-family: 'Californian FB', serif;
+    color: #1D70B7;
+    font-size: 1.8rem;
+    padding: 10px 40px;
+    margin: 15px 0 40px 0;
+}
+
+/* Services repositionnés vers le tournesol */
+.services-container {
+    display: flex;
+    gap: 20px;
+    margin-top: 60px; /* Plus d'espace sous le titre */
+    margin-left: 280px; /* Décalage vers la droite (tournesol) */
+}
+
+.card {
+    background: rgba(243, 238, 215, 0.9);
+    width: 230px;
+    height: 250px;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+/* Texte des services en Bleu #1D70B7 */
+.card p {
+    color: #1D70B7;
+    font-size: 1.1rem;
+    line-height: 1.3;
+}
+
+/* Hover vert sur les services */
+.card:hover {
+    border: 2px solid #8fb43e;
+    transform: translateY(-5px);
+}
+
+.card img { 
+    height: 70px; 
+    margin-bottom: 15px; 
+}
