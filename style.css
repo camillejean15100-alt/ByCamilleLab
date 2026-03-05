@@ -341,27 +341,37 @@ html, body {
 }
 
 /* ==========================================================================
-   DÉCORATION : COCCINELLE ET TRAIT (CORRECTIF GITHUB)
+   DÉCORATION : COCCINELLE ET TRAIT (À GAUCHE - HORS ACCUEIL)
    ========================================================================== */
 
-body:not(.page-accueil) .decoration-coccinelle {
-    display: block !important; /* Force l'affichage si un autre style bloque */
+/* 1. Le conteneur positionné à gauche */
+.decoration-coccinelle {
+    display: none;            /* Caché par défaut */
     position: fixed;
     top: 0;
-    right: 0;
+    left: 0;                 /* ON PASSE À GAUCHE */
     width: 350px;
     height: 250px;
-    z-index: 4500;
-    pointer-events: none;
+    z-index: 4500;           /* Sous le menu pour ne pas gêner */
+    pointer-events: none;    /* Pour pouvoir cliquer sur ce qui est dessous */
 }
 
+/* 2. Affichage automatique si le body n'est pas l'accueil */
+body:not(.page-accueil) .decoration-coccinelle {
+    display: block !important;
+}
+
+/* 3. L'image calée en haut à gauche */
 body:not(.page-accueil) .decoration-coccinelle::after {
     content: '';
     display: block;
     width: 100%;
     height: 100%;
-    /* 1. Vérifie bien que l'extension est .png et non .PNG */
-    /* 2. Ajoute ./ devant pour GitHub */
-    background: url("./traitcoccinelle.png") no-repeat top right;
+    /* Utilisation du chemin relatif sécurisé pour GitHub */
+    background: url("./traitcoccinelle.png") no-repeat top left; 
     background-size: contain;
 }
+
+/* ==========================================================================
+   FIN DE SECTION : COCCINELLE
+   ========================================================================== */
