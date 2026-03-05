@@ -1,335 +1,322 @@
-:root {
-    --color-primary: #1D70B7;
-    --color-secondary: #87B347;
-    --color-dark: #214F63;
-    --color-beige: rgba(234, 220, 155, 0.95);
-    --font-main: 'Californian FB', serif;
-    --font-accent: 'Gochi Hand', cursive;
-    --transition-speed: 0.5s;
-}
+/* =========================================
+   1. POLICES & BASES
+   ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
 
-/* --- REGLAGES GLOBAUX --- */
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-}
-
-html, body {
-    width: 100%;
-    height: 100%;
-    font-family: var(--font-main);
+/* La Californian FB est une police locale. Georgia est l'alternative standard. */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Californian FB", "Georgia", serif;
+    color: #333;
     overflow-x: hidden;
+    line-height: 1.6;
 }
 
-/* --- NAVIGATION (HEADER FIXE) --- */
+h1, h2, h3, .bubble__text, .nav-list__link, .service-card__title {
+    font-family: 'Gochi Hand', cursive;
+    text-transform: none;
+}
+
+.app-container {
+    width: 100%;
+}
+
+/* =========================================
+   2. HEADER & NAVIGATION
+   ========================================= */
 .header {
     display: flex;
     justify-content: space-between;
-    align-items: center; 
-    padding: 30px 80px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 5000;
-    background: transparent;
+    align-items: center;
+    padding: 15px 50px;
+    background: #fff;
+    border-bottom: 1px solid #f0f0f0;
 }
 
-.header__logo img { 
-    height: 110px; 
-    width: auto; 
+.header__logo img {
+    height: 70px;
 }
 
-.nav-list { 
-    display: flex; 
-    list-style: none; 
-    align-items: center; 
+.nav-list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 .nav-list__link {
     text-decoration: none;
-    color: var(--color-primary);
-    font-weight: bold;
-    font-size: 1.2rem;
-    transition: color 0.3s ease;
+    color: #4a4a4a;
+    font-size: 1.4rem;
+    transition: all 0.2s ease;
 }
 
-.nav-list__link:hover { color: var(--color-secondary); }
-
-.nav-list__sep { 
-    color: var(--color-primary); 
-    margin: 0 15px; 
-    font-weight: bold; 
+.nav-list__link:hover,
+.nav-list__link.active {
+    color: #6b8e23; /* Vert Olive */
+    transform: scale(1.1) rotate(-3deg);
 }
 
-/* ==========================================================================
-    LOGIQUE D'AFFICHAGE FIXE (ACCUEIL VS PROJETS)
-   ========================================================================== */
+.nav-list__sep {
+    color: #ddd;
+}
 
-/* L'accueil est visible par défaut */
-.app-container {
-    width: 100%;
+/* =========================================
+   3. SECTION HERO (ACCUEIL)
+   ========================================= */
+.hero {
     height: 100vh;
-    background: url("fondaccueil.jpg") no-repeat center center fixed;
-    background-size: cover;
     display: flex;
     flex-direction: column;
-    position: relative;
-}
-
-/* La vue projet est cachée par défaut */
-.projects-view {
-    display: none; 
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0; left: 0;
-    background: url("voirmesprojets.jpg") no-repeat center bottom;
-    background-size: cover;
-    z-index: 20;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    justify-content: center; /* CENTRE LA GRILLE AU MILIEU DE LA FEUILLE */
-    overflow: hidden;
+    text-align: center;
+    position: relative;
+    color: white;
 }
-
-/* QUAND ON CLIQUE SUR PROJETS : On affiche projets et on cache accueil */
-#view-projets:target { display: flex; }
-#view-projets:target ~ .app-container { display: none; }
-
-
-/* ==========================================================================
-    CONTENU ACCUEIL (ANIMATIONS)
-   ========================================================================== */
-.hero { flex: 1; position: relative; width: 100%; }
 
 .hero__title {
-    text-align: center;
-    font-family: var(--font-accent);
-    font-size: 60px;
-    color: var(--color-dark);
-    text-shadow: 2px 2px 0 white;
-    margin-top: 150px;
+    font-size: 4.5rem;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+    margin-bottom: 10px;
+    padding: 0 20px;
 }
 
-/* --- BULLE DE BD CORRIGÉE --- */
+/* Bulle de mission stylisée */
 .bubble {
-    background: #2a7ebc; /* Retour au bleu comme la galerie */
-    width: 400px;
-    min-height: 120px;
-    padding: 20px 30px;
-    border-radius: 40px; /* Forme plus "bulle de BD" */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    
-    /* Positionnement vers la bouche */
-    top: 28%; 
-    left: 35%; 
-    
-    z-index: 10;
-    opacity: 0;
-    transform: scale(0.6);
-    visibility: hidden;
-    transition: all var(--transition-speed) cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    
-    /* Ombre pour la faire ressortir du fond */
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-
-.bubble--active { 
-    opacity: 1; 
-    transform: scale(1); 
-    visibility: visible; 
-}
-
-/* LA POINTE DE LA BULLE (L'effet BD qui parle) */
-.bubble::after {
-    content: '';
-    position: absolute;
-    bottom: -20px; /* Pointe vers le bas */
-    left: 40px;    /* Ajuste ce chiffre pour aligner la pointe avec la bouche */
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-top: 30px solid #2a7ebc; /* Même bleu que la bulle */
-    transform: rotate(15deg); /* Incline la pointe vers le visage */
+    background: rgba(255, 255, 255, 0.95);
+    padding: 10px 40px;
+    border-radius: 60px;
+    margin-bottom: 60px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transform: rotate(-2deg); /* Petit effet graphique */
 }
 
 .bubble__text {
-    color: white; /* Texte blanc sur fond bleu */
-    font-family: var(--font-main);
-    font-size: 1.4rem; /* Taille de texte ajustée */
-    font-weight: bold;
-    text-align: center;
-    line-height: 1.2;
+    font-size: 1.8rem;
+    color: #3d3d3d;
+    margin: 0;
 }
 
+/* =========================================
+   4. VOS SERVICES AVEC ANIMATIONS
+   ========================================= */
 .services {
     display: flex;
-    gap: 30px;
-    position: absolute;
-    bottom: 30%; right: 15%;  
-    z-index: 5;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.8s ease-out;
+    gap: 40px;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
 }
-
-.services--visible { opacity: 1; transform: translateY(0); }
 
 .service-card {
-    background: var(--color-beige);
-    width: 250px; height: 330px;
-    border-radius: 40px;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    padding: 25px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    max-width: 220px;
+    text-align: center;
+    color: #333;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    cursor: default;
 }
 
-/* ==========================================================================
-    SECTION PORTFOLIO (GRILLE)
-   ========================================================================== */
+/* --- ANIMATION AU SURVOL --- */
+.service-card:hover {
+    transform: translateY(-10px) rotate(1deg);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    background: #fdfdfd;
+}
+
+.service-card__icon {
+    width: 60px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+/* Animation de l'icône au survol de la carte */
+.service-card:hover .service-card__icon {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+.service-card__title {
+    font-size: 2rem;
+    margin: 10px 0;
+    color: #2c3e50;
+}
+
+.service-card__desc {
+    font-family: "Californian FB", serif;
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 0;
+}
+
+/* =========================================
+   5. SECTION PROJETS (GRILLE)
+   ========================================= */
+.projects-view {
+    padding: 100px 20px;
+    text-align: center;
+}
+
 .projects__title {
-    font-family: var(--font-accent);
-    color: var(--color-primary);
-    font-size: 42px;
-    margin-bottom: 80px; /* Écart avec les cartes */
-    text-shadow: 2px 2px 0 white;
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 60px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 100px 60px; /* ÉCARTEMENT MASSIF DEMANDÉ */
-    max-width: 1400px;
-    width: 90%;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding-bottom: 60px; /* Dégage l'herbe en bas */
 }
 
 .project-card {
-    background: white;
-    aspect-ratio: 1.5;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    height: 250px;
+    background: #fff;
+    border-radius: 12px;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    border: 5px solid white;
 }
 
-.project-card:hover { transform: translateY(-10px); }
+/* Animation de la vignette au survol */
+.project-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+}
 
-/* ==========================================================================
-   GALERIE OVERLAY (L'ARRIÈRE-PLAN SOMBRE)
-   ========================================================================== */
+.project-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* =========================================
+   6. GALERIE PURE CSS (LOGIQUE)
+   ========================================= */
+
+/* Cache les inputs */
+input[name="gallery-ctrl"] {
+    display: none;
+}
+
+/* Overlay principal */
 .gallery-overlay {
     position: fixed;
-    inset: 0;
-    background: rgba(29, 112, 183, 0.97); 
-    z-index: 9999;
-    display: none; 
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(5px);
-}
-
-.gallery--active {
-    display: flex !important;
-}
-
-/* --- BOUTON FERMER (CROIX X) --- */
-.gallery__close {
-    position: absolute;
-    top: 40px;
-    right: 50px;
-    color: white;
-    font-size: 90px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    line-height: 0.5;
-    z-index: 10001;
-}
-
-/* ==========================================================================
-   STRUCTURE : FLÈCHES + FENÊTRE
-   ========================================================================== */
-.gallery__wrapper {
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.92);
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 95%;
-    max-width: 1400px;
-    gap: 40px; /* Espace entre les flèches et la fenêtre */
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
 }
 
-/* --- FLÈCHES (‹ et ›) --- */
-.nav-arrow {
-    background: none;
-    border: none;
-    cursor: pointer;
-    flex-shrink: 0;
+/* Affichage si coché */
+#proj-1:checked ~ .gallery-overlay,
+#proj-2:checked ~ .gallery-overlay,
+#proj-3:checked ~ .gallery-overlay {
+    opacity: 1;
+    visibility: visible;
 }
 
-.arrow-icon {
-    font-size: 130px; 
-    color: white;
-    font-weight: 100;
-    line-height: 1;
+/* Contenus spécifiques */
+.gallery__content {
+    display: none;
+    width: 90%;
+    max-width: 1000px;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    animation: fadeIn 0.4s ease;
 }
 
-/* --- LA FENÊTRE CENTRALE --- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#proj-1:checked ~ .gallery-overlay .content-1 { display: block; }
+#proj-2:checked ~ .gallery-overlay .content-2 { display: block; }
+#proj-3:checked ~ .gallery-overlay .content-3 { display: block; }
+
 .gallery__window {
-    background: #2a7ebc; 
-    border-radius: 40px;
-    padding: 60px;
-    display: flex; 
-    align-items: center;
-    gap: 60px;
-    width: 1100px;
-    min-height: 550px;
-    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: row;
 }
 
-/* --- IMAGE --- */
 .gallery__img-container {
-    flex: 1.4;
+    flex: 1.2;
+    background: #f4f4f4;
 }
 
 .gallery__img-container img {
     width: 100%;
-    aspect-ratio: 1.5;
-    object-fit: cover;
-    border-radius: 20px;
+    height: 100%;
     display: block;
+    object-fit: contain;
 }
 
-/* --- TEXTE (CALIFORNIAN FB) --- */
 .gallery__text-container {
     flex: 1;
-    color: white;
+    padding: 50px;
+    background: white;
 }
 
-#gallery-title {
-    font-family: 'Californian FB', serif;
-    font-size: 3.8rem;
-    line-height: 1.1;
-    margin-bottom: 5px;
-    text-transform: uppercase;
+.gallery__text-container h3 {
+    font-size: 2.5rem;
+    margin-top: 0;
+    color: #2c3e50;
 }
 
-/* LE FILET : Occupe tout le titre */
 .gallery__line {
-    width: 100%; 
+    width: 80px;
     height: 3px;
-    background-color: white;
-    margin-bottom: 35px;
+    background: #6b8e23; /* Vert Olive */
+    margin: 20px 0;
 }
 
-#gallery-desc {
-    font-family: 'Californian FB', serif;
-    font-size: 1.3rem;
-    line-height: 1.7;
+.gallery__text-container p {
+    font-family: "Californian FB", serif;
+    font-size: 1.2rem;
+    color: #555;
+}
+
+/* Bouton Fermer (Label pour #close) */
+.gallery__close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 50px;
+    color: white;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    transition: color 0.2s;
+    line-height: 1;
+}
+
+.gallery__close:hover {
+    color: #6b8e23;
+}
+
+/* --- RESPONSIVE DE BASE --- */
+@media (max-width: 768px) {
+    .gallery__window { flex-direction: column; }
+    .header { padding: 10px 20px; flex-direction: column; }
+    .hero__title { font-size: 2.5rem; }
+    .bubble__text { font-size: 1.2rem; }
+    .services { flex-direction: column; gap: 20px; padding: 20px; }
+    .portfolio-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
 }
