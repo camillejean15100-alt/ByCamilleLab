@@ -341,53 +341,69 @@ html, body {
 }
 
 /* ==========================================================================
-   POSITIONNEMENT : TRAIT DEPUIS LA GAUCHE + COCCINELLE SUR LE TITRE
+   FIX FINAL : TRAIT COURT ET COCCINELLE SUR LE TITRE (CONFORME DESIGN)
    ========================================================================== */
 
-/* La section qui contient ton titre doit être le point d'ancrage */
+/* La section parent doit permettre le placement absolu */
 .projects-section {
     position: relative;
+    padding-top: 100px; /* Espace pour les éléments */
 }
 
+/* Le conteneur se place par rapport au début du titre */
 .decoration-coccinelle {
     display: none;
     position: absolute;
-    /* On aligne le bloc sur le titre */
-    top: -50px; 
-    left: 0;
-    width: 100%;
-    height: 350px;
+    
+    /* POSITIONNEMENT AJUSTÉ AU TITRE */
+    top: 30px;         /* Hauteur par rapport au titre */
+    left: 10%;         /* Aligné avec le début de ton texte bleu */
+    
+    /* TAILLE RÉDUITE POUR LE TRAIT ET LA COCCINELLE */
+    width: 350px;      /* Largeur suffisante pour le trait court + coccinelle */
+    height: 150px;
     z-index: 100;
     pointer-events: none;
 }
 
-/* Affichage sur toutes les pages sauf l'accueil */
+/* Affichage uniquement hors accueil */
 body:not(.page-accueil) .decoration-coccinelle {
     display: block !important;
 }
 
-/* LE TRAIT : Il part du bord gauche de l'écran */
+/* LE TRAIT RÉDUIT (Before) */
 .decoration-coccinelle::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    width: 500px; /* Longueur du trait pour rejoindre le titre */
+    width: 250px;     /* LONGUEUR DU TRAIT RÉDUITE DE MOITIÉ */
     height: 100%;
+    
+    /* Utilisation de ton fichier traitcoccinelle.png */
     background: url("./traitcoccinelle.png") no-repeat center left;
     background-size: contain;
+    
+    /* Pas d'agrandissement excessif, on le laisse propre */
+    transform: scale(1.0); 
+    opacity: 0.9;
 }
 
-/* LA COCCINELLE : Placée précisément au bout du trait */
+/* LA COCCINELLE (After) */
 .decoration-coccinelle::after {
     content: '';
     position: absolute;
-    /* Ces coordonnées placent la coccinelle pile sur le titre */
-    top: 55px;   
-    left: 420px; 
+    /* Placée pile au bout du trait réduit */
+    top: 25px;   
+    left: 210px;       /* Aligné sur la fin du trait (250px) */
     
-    width: 100px; 
-    height: 100px;
+    width: 90px;       /* Taille de ta coccinelle.png */
+    height: 90px;
+    
+    /* Utilisation de ton fichier coccinelle.png */
     background: url("./coccinelle.png") no-repeat center center;
     background-size: contain;
+    
+    /* Légère animation pour le style */
+    animation: bounce flight 3s ease-in-out infinite;
 }
