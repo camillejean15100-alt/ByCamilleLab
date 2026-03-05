@@ -12,140 +12,74 @@ body {
     overflow: hidden; 
     background-color: #f3eed7; 
     font-family: "Californian FB", serif; 
+    /* Ajout du fond si tu veux l'utiliser */
+    background-image: url('fondsite.jpg');
+    background-size: cover;
 }
 
 /* --- HEADER --- */
 .main-header {
     position: fixed; 
-    top: 0; 
-    width: 100%; 
-    height: 80px;
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center;
-    padding: 0 50px; 
-    z-index: 1000;
+    top: 0; width: 100%; height: 80px;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 50px; z-index: 1000;
 }
+.logo { width: 110px; }
+.navigation { color: #1D70B7; font-weight: bold; font-size: 1.1rem; }
+.navigation a { text-decoration: none; color: inherit; margin-left: 20px; }
 
-.logo { 
-    width: 110px; 
-}
-
-.navigation { 
-    color: #1D70B7; 
-    font-weight: bold; 
-    font-size: 1.1rem; 
-}
-
-.navigation a { 
-    text-decoration: none; 
-    color: inherit; 
-    margin-left: 20px;
-}
-
-/* --- LOGIQUE DE NAVIGATION (Le "Moteur") --- */
+/* --- LOGIQUE DE NAVIGATION --- */
 .view { 
-    display: none; 
+    display: none; /* Cache tout par défaut */
     position: fixed; 
-    top: 0; 
-    left: 0; 
-    width: 100vw; 
-    height: 100vh; 
+    top: 0; left: 0; 
+    width: 100vw; height: 100vh; 
     flex-direction: column; 
     align-items: center; 
     justify-content: center; 
 }
 
-/* Affiche l'accueil par défaut OU la section ciblée par l'URL (#) */
-body:not(:has(:target)) #accueil, :target { 
-    display: flex !important; 
-}
+/* Force l'affichage de l'accueil si aucun lien n'est cliqué */
+#accueil { display: flex; } 
 
-/* --- SECTION ACCUEIL --- */
+/* Affiche la section ciblée par le menu */
+:target { display: flex !important; }
+
+/* Cache l'accueil si une autre section est ciblée */
+:target ~ #accueil { display: none !important; }
+
+/* --- CONTENU --- */
 h1 { 
-    font-family: 'Gochi Hand'; 
-    font-size: 4rem; 
-    color: #333366; 
-    -webkit-text-stroke: 1px #fff; 
-    text-align: center; 
-    width: 100%; 
-    margin-bottom: 10px;
+    font-family: 'Gochi Hand'; font-size: 4rem; color: #333366; 
+    -webkit-text-stroke: 1px #fff; text-align: center; margin-bottom: 10px;
 }
-
 .mission { 
-    color: #333366; 
-    font-size: 1.6rem; 
-    margin-bottom: 40px; 
-    width: 100%; 
-    text-align: center; 
+    color: #333366; font-size: 1.6rem; margin-bottom: 40px; text-align: center; 
 }
 
-/* --- GRILLE DES SERVICES (DÉCALÉE À DROITE) --- */
+/* --- SERVICES (DÉCALÉS À DROITE) --- */
 .services-grid { 
-    display: flex; 
-    gap: 30px; 
-    width: 100%;
-    justify-content: flex-end; /* Pousse les cartes vers la droite */
-    padding-right: 25%;        /* Espace entre les cartes et le bord droit */
+    display: flex; gap: 30px; width: 100%;
+    justify-content: flex-end; 
+    padding-right: 15%; /* Ajuste ici pour décaler plus ou moins */
 }
 
-/* --- CARTES SERVICES (CONTENU CENTRÉ) --- */
 .card {
-    background: #e9e2c5; 
-    width: 220px; 
-    height: 250px; 
-    border-radius: 30px; 
-    padding: 25px; 
-    
-    /* Centrage interne des icônes */
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; /* Centre verticalement */
-    align-items: center;     /* Centre horizontalement */
-    gap: 15px;               /* Espace entre l'image et le texte */
-    
-    text-align: center;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease;
+    background: #e9e2c5; width: 220px; height: 250px; 
+    border-radius: 30px; padding: 25px; 
+    display: flex; flex-direction: column; 
+    justify-content: center; align-items: center; gap: 15px;
+    text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    transition: 0.3s;
 }
+.card:hover { transform: translateY(-10px); }
+.card img { height: 70px; width: auto; object-fit: contain; }
+.card p { color: #1D70B7; font-weight: 900; font-size: 1.1rem; }
 
-.card:hover {
-    transform: translateY(-10px); /* Petit effet de lévitation au survol */
-}
-
-.card img { 
-    height: 75px; 
-    width: auto;
-    object-fit: contain; 
-}
-
-.card p { 
-    color: #1D70B7; 
-    font-weight: 900; 
-    font-size: 1.1rem; 
-    margin: 0;
-}
-
-/* --- SECTION PORTFOLIO --- */
-.port-title { 
-    font-family: 'Gochi Hand'; 
-    color: #1D70B7; 
-    font-size: 2.5rem; 
-    margin-bottom: 30px; 
-}
-
+/* --- PORTFOLIO --- */
+.port-title { font-family: 'Gochi Hand'; color: #1D70B7; font-size: 2.5rem; margin-bottom: 30px; }
 .grid-portfolio {
-    display: grid; 
-    grid-template-columns: repeat(4, 220px); 
-    gap: 25px; 
-    justify-content: center; 
-    margin: 0 auto; 
+    display: grid; grid-template-columns: repeat(4, 220px); 
+    gap: 25px; justify-content: center; 
 }
-
-.box { 
-    background: white; 
-    height: 170px; 
-    border-radius: 15px; 
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
-    overflow: hidden; /* Pour que les images ne dépassent pas des coins arrondis */
-}
+.box { background: white; height: 170px; border-radius: 15px; overflow: hidden; }
