@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camille - Portfolio</title>
+    <title>Camille Lab | Graphisme</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,53 +11,49 @@
     <header class="main-header">
         <img src="logocamille.png" alt="Logo" class="logo">
         <nav class="navigation">
-            <a href="#">Accueil</a>
-            <a href="#portfolio">Portfolio</a>
+            <a href="#accueil">Accueil</a>
+            <a href="#portfolio">Voir mes projets</a>
+            <a href="#propos">À Propos</a>
+            <a href="#tarifs">Tarifs</a>
             <a href="#contact">Contact</a>
         </nav>
     </header>
 
-    <main id="accueil" class="view">
-        <h1>Créativité & Design</h1>
-        <p class="mission">Accompagner vos projets avec passion et précision.</p>
-        
-        <div class="services-grid">
-            <div class="card">
-                <img src="panneaux.png" alt="Design">
-                <p>DESIGN</p>
-            </div>
-            <div class="card">
-                <img src="panier.png" alt="Boutique">
-                <p>BOUTIQUE</p>
-            </div>
-            <div class="card">
-                <img src="plante.png" alt="Nature">
-                <p>NATURE</p>
-            </div>
-            <div class="card">
-                <img src="zoom.png" alt="Stratégie">
-                <p>STRATÉGIE</p>
+    <section id="accueil" class="view">
+        <div class="hero-content">
+            <h1>LE GRAPHISME AU SERVICE DE LA TERRE</h1>
+            
+            <div class="services-row">
+                <div class="info-bubble">
+                    <img src="certif.png" alt="Logo">
+                    <p>Un logo et une image de marque qui vous ressemblent.</p>
+                </div>
+                <div class="info-bubble">
+                    <img src="panier.png" alt="Packaging">
+                    <p>Création d'étiquettes & de packagings pour vos produits.</p>
+                </div>
+                <div class="info-bubble">
+                    <img src="panneaux.png" alt="Supports">
+                    <p>Panneaux & supports pour rendre votre ferme visible.</p>
+                </div>
             </div>
         </div>
-    </main>
+        <img src="fondaccueil.jpg" class="full-bg-img">
+    </section>
 
     <section id="portfolio" class="view">
-        <h2 class="port-title">Mon Portfolio</h2>
+        <h2 class="section-title">Mes Projets</h2>
         <div class="grid-portfolio">
-            <div class="box"><img src="certif.png" alt="Projet" style="width:100%;height:100%;object-fit:cover;border-radius:15px;"></div>
-            <div class="box"><img src="coccinelle.png" alt="Projet" style="width:100%;height:100%;object-fit:cover;border-radius:15px;"></div>
+            <div class="box"></div>
+            <div class="box"></div>
             <div class="box"></div>
             <div class="box"></div>
         </div>
     </section>
 
-    <section id="contact" class="view">
-        <h2 class="port-title">Contactez-moi</h2>
-        <div class="card">
-            <img src="mail.jpg" alt="Email">
-            <p>camille@exemple.com</p>
-        </div>
-    </section>
+    <section id="propos" class="view"><h2 class="section-title">À Propos</h2></section>
+    <section id="tarifs" class="view"><h2 class="section-title">Tarifs</h2></section>
+    <section id="contact" class="view"><h2 class="section-title">Contact</h2></section>
 
 </body>
 </html>
